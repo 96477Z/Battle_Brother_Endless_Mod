@@ -710,7 +710,20 @@ local gt = getroottable();
 				{
 					s = s + bro.getStashModifier();
 				}
-				s = s + this.Math.min(200, this.World.Retinue.hasFollower("follower.quartermaster") ? this.Math.floor(100 * (1 + 1.01 * this.World.Assets.m.EL_WorldLevel)) : 0);
+				this.logInfo("base stash:"+s);
+				local current_account = s;
+				local need_factor = 2;
+				local need_account = 100;
+				local bonus = 0;
+				local bonus_factor = 100;
+				while(current_account >= need_account) {
+					current_account -= need_account;
+					need_account *= need_factor;
+					bonus += bonus_factor;
+				}
+				s = bonus + this.Math.floor(100.0 * current_account / need_account);
+				this.logInfo("final stash:"+s);
+				s += this.World.Retinue.hasFollower("follower.quartermaster") ? 100 : 0;
 				if (resize && s != this.Stash.getCapacity())
 				{
 					this.Stash.resize(s);

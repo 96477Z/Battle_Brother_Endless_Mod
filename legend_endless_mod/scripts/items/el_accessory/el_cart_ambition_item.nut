@@ -101,13 +101,13 @@ this.el_cart_ambition_item <- this.inherit("scripts/items/accessory/accessory", 
         local need_factor = 1;
         local need_account = need_factor;
         local bonus = 0;
-        local bonus_factor = 1;
+        local bonus_factor = 1.5;
         while(stash_capacity >= need_account) {
             stash_capacity -= need_account;
             need_account += need_factor;
             bonus += bonus_factor;
         }
-        return bonus;
+        return this.Math.floor(bonus);
 	}
 
 });
