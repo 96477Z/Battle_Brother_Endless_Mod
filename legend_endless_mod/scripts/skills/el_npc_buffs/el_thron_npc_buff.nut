@@ -49,6 +49,11 @@ this.el_thron_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buff"
             this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(_attacker) + " 被反弹了!");
         }
 	}
+	
+    function onAfterUpdate( _properties ) {
+		this.el_npc_buff.onAfterUpdate(_properties);
+		this.m.Description = "收到伤害时对攻击者对应部位造成一段伤害。";
+    }
 
 });
 

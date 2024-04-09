@@ -32,11 +32,31 @@ gt.Const.EL_Helmet <- {
 	EL_EquipmentEssence = {
 		LevelFactor = 0.08,
 		RankFactor = 3,
-		UpgradeLevelFactor = 1,
-		UpgradeRankFactor = 1,
+		UpgradeLevelFactor = [
+			0.8,
+			0.9,
+			0.9,
+			1.0
+		],
+		UpgradeRankFactor = [
+			0.8,
+			0.9,
+			0.9,
+			1.0
+		],
 		UpgradeRankNormalEssenceFactor = 10,
-		DisassembleFactor = 0.8,
-		RecraftFactor = 1,
+		DisassembleFactor = [
+			1.0,
+			0.9,
+			0.9,
+			0.8
+		],
+		RecraftFactor = [
+			0.8,
+			0.9,
+			0.9,
+			1.0
+		],
 		SeniorEquipmentEssenceMult = 0.1,
 		LowerEquipmentEssenceMult = 3,
 		StrengthenEntryNum = 1,

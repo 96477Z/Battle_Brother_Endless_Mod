@@ -373,7 +373,7 @@ local gt = getroottable();
 				if(this.m.EL_Level < EL_getLevelMax())
 				{
 					local min_calculate_weight = this.Const.EL_Accessory.EL_EquipmentEssence.MinCalculateWeight;
-					result[this.Const.EL_Item.Type.Normal] += this.Math.floor(this.Math.pow(this.Const.EL_Accessory.EL_EquipmentEssence.RankFactor, this.Math.min(this.m.EL_RankLevel, this.Const.EL_Item.Type.Epic)) * this.Const.EL_Accessory.EL_EquipmentEssence.UpgradeLevelFactor 
+					result[this.Const.EL_Item.Type.Normal] += this.Math.floor(this.Math.pow(this.Const.EL_Accessory.EL_EquipmentEssence.RankFactor, this.Math.min(this.m.EL_RankLevel, this.Const.EL_Item.Type.Epic)) * this.Const.EL_Accessory.EL_EquipmentEssence.UpgradeLevelFactor[this.World.Assets.getEconomicDifficulty()] 
 															* this.Math.abs(min_calculate_weight * (1 + this.Const.EL_Accessory.EL_LevelFactor.StaminaModifier * this.m.EL_Level)));
 				}
 				return result;
@@ -392,8 +392,8 @@ local gt = getroottable();
 					}
 					else
 					{
-						result[rank_level] += this.Math.ceil(this.Const.EL_Accessory.EL_EquipmentEssence.UpgradeRankFactor * this.Math.abs(min_calculate_weight));
-						result[this.Const.EL_Item.Type.Normal] += this.Math.floor(this.Math.pow(this.Const.EL_Accessory.EL_EquipmentEssence.RankFactor, this.Math.min(this.m.EL_RankLevel, this.Const.EL_Item.Type.Epic)) * this.Const.EL_Accessory.EL_EquipmentEssence.UpgradeLevelFactor 
+						result[rank_level] += this.Math.ceil(this.Const.EL_Accessory.EL_EquipmentEssence.UpgradeRankFactor[this.World.Assets.getEconomicDifficulty()] * this.Math.abs(min_calculate_weight));
+						result[this.Const.EL_Item.Type.Normal] += this.Math.floor(this.Math.pow(this.Const.EL_Accessory.EL_EquipmentEssence.RankFactor, this.Math.min(this.m.EL_RankLevel, this.Const.EL_Item.Type.Epic)) * this.Const.EL_Accessory.EL_EquipmentEssence.UpgradeLevelFactor[this.World.Assets.getEconomicDifficulty()] 
 																* this.Math.abs(min_calculate_weight * (1 + this.Const.EL_Accessory.EL_LevelFactor.StaminaModifier * this.m.EL_Level)) * this.Const.EL_Accessory.EL_EquipmentEssence.UpgradeRankNormalEssenceFactor);	
 					}
 				}
@@ -414,7 +414,7 @@ local gt = getroottable();
 				local extra_mult = this.World.Flags.get("EL_HasUpgradeItemAmbitionRule") ? 0.2 : 0.0;
 				local min_calculate_weight = this.Const.EL_Accessory.EL_EquipmentEssence.MinCalculateWeight;
 				result[this.Const.EL_Item.Type.Normal] += this.Math.floor(this.Math.pow(this.Const.EL_Accessory.EL_EquipmentEssence.RankFactor, this.Math.min(this.m.EL_RankLevel, this.Const.EL_Item.Type.Epic)) 
-														* (this.Const.EL_Accessory.EL_EquipmentEssence.DisassembleFactor + extra_mult)
+														* (this.Const.EL_Accessory.EL_EquipmentEssence.DisassembleFactor[this.World.Assets.getEconomicDifficulty()] + extra_mult)
 														* this.Math.abs(min_calculate_weight * (1 + this.Const.EL_Accessory.EL_LevelFactor.StaminaModifier * this.m.EL_Level)));
 				if(this.m.EL_RankLevel == this.Const.EL_Item.Type.Legendary)
 				{
@@ -422,7 +422,7 @@ local gt = getroottable();
 				}
 				else if(this.m.EL_RankLevel != this.Const.EL_Item.Type.Normal)
 				{
-					result[this.m.EL_RankLevel] += this.Math.ceil(this.Const.EL_Accessory.EL_EquipmentEssence.DisassembleFactor * this.Math.abs(min_calculate_weight));
+					result[this.m.EL_RankLevel] += this.Math.ceil(this.Const.EL_Accessory.EL_EquipmentEssence.DisassembleFactor[this.World.Assets.getEconomicDifficulty()] * this.Math.abs(min_calculate_weight));
 				}
 				return result;
 			}
@@ -432,9 +432,9 @@ local gt = getroottable();
 				local result = [0, 0, 0, 0, 0];
 				local rank_level = this.Math.min(this.m.EL_RankLevel, this.Const.EL_Item.Type.Epic);
 				local min_calculate_weight = this.Const.EL_Accessory.EL_EquipmentEssence.MinCalculateWeight;
-				result[this.Const.EL_Item.Type.Normal] += this.Math.floor(this.Math.pow(this.Const.EL_Accessory.EL_EquipmentEssence.RankFactor, rank_level) * this.Const.EL_Accessory.EL_EquipmentEssence.RecraftFactor 
+				result[this.Const.EL_Item.Type.Normal] += this.Math.floor(this.Math.pow(this.Const.EL_Accessory.EL_EquipmentEssence.RankFactor, rank_level) * this.Const.EL_Accessory.EL_EquipmentEssence.RecraftFactor[this.World.Assets.getEconomicDifficulty()] 
 														* this.Math.abs(min_calculate_weight * (1 + this.Const.EL_Accessory.EL_LevelFactor.StaminaModifier * this.World.Assets.m.EL_WorldLevel)));
-				result[rank_level] += this.Math.ceil(this.Const.EL_Accessory.EL_EquipmentEssence.SeniorEquipmentEssenceMult * this.Const.EL_Accessory.EL_EquipmentEssence.RecraftFactor 
+				result[rank_level] += this.Math.ceil(this.Const.EL_Accessory.EL_EquipmentEssence.SeniorEquipmentEssenceMult * this.Const.EL_Accessory.EL_EquipmentEssence.RecraftFactor[this.Const.Difficulty.Legendary] 
 												   * this.Math.abs(min_calculate_weight));
 				return result;
 			}

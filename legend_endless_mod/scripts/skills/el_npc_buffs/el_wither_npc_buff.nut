@@ -62,5 +62,10 @@ this.el_wither_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buff
             this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " 周围凋零了!");
         }
 	}
+	
+    function onAfterUpdate( _properties ) {
+		this.el_npc_buff.onAfterUpdate(_properties);
+		this.m.Description = "回合结束时对周围4格范围内所有敌方单位造成一段无视护甲的伤害，每远离1格衰减百分之50%伤害。";
+    }
 });
 

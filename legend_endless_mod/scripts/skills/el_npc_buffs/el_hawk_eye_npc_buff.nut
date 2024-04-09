@@ -17,6 +17,7 @@ this.el_hawk_eye_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_bu
 	function onAfterUpdate( _properties )
 	{
         local skills = this.getContainer().getActor().getSkills().m.Skills;
+		this.getContainer().getActor().getSkills().removeByID("special.night");
 		foreach( skill in skills )
 		{
 			if (skill.m.IsWeaponSkill && skill.isRanged())
@@ -25,6 +26,11 @@ this.el_hawk_eye_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_bu
 			}
 		}
 	}
+	
+    function onAfterUpdate( _properties ) {
+		this.el_npc_buff.onAfterUpdate(_properties);
+		this.m.Description = "攻击距离增加" + (this.Const.EL_NPC.EL_NPCBuff.Factor.HawkEye.MaxRangeMult[this.m.EL_RankLevel] - 1) * 100 + "%（向上取整），视野增加" + (this.Const.EL_NPC.EL_NPCBuff.Factor.HawkEye.VisionMult[this.m.EL_RankLevel] - 1) * 100 + "%，爆头率额外增加" + this.Const.EL_NPC.EL_NPCBuff.Factor.HawkEye.HeadHitChanceOffset[this.m.EL_RankLevel] + "%。不再受到夜间视野的影响。";
+    }
 
 });
 

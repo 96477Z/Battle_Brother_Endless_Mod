@@ -46,11 +46,31 @@ gt.Const.EL_Weapon <- {
 	EL_EquipmentEssence = {
 		LevelFactor = 0.08,
 		RankFactor = 3,
-		UpgradeLevelFactor = 3,
-		UpgradeRankFactor = 3,
+		UpgradeLevelFactor = [
+			2.4,
+			2.7,
+			2.7,
+			3.0
+		],
+		UpgradeRankFactor = [
+			2.4,
+			2.7,
+			2.7,
+			3.0
+		],
 		UpgradeRankNormalEssenceFactor = 10,
-		DisassembleFactor = 2.4,
-		RecraftFactor = 3,
+		DisassembleFactor = [
+			3.0,
+			2.7,
+			2.7,
+			2.4
+		],
+		RecraftFactor = [
+			2.4,
+			2.7,
+			2.7,
+			3.0
+		],
 		SeniorEquipmentEssenceMult = 0.1,
 		LowerEquipmentEssenceMult = 3,
 		StrengthenEntryNum = 3,
