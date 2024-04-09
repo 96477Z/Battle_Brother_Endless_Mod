@@ -311,7 +311,7 @@ local gt = getroottable();
             if(level_ups > this.Const.EL_NPC.EL_LevelUp.MaxXPLevel) {
                 level_ups = this.Const.EL_NPC.EL_LevelUp.MaxXPLevel + (level_ups - this.Const.EL_NPC.EL_LevelUp.MaxXPLevel) * this.Const.EL_NPC.EL_LevelUp.PropertiesLevelUpMultAfterMaxXPLevel;
             }
-            level_ups -= this.Const.EL_NPC.EL_LevelUp.LevelUpsOffset;
+            level_ups -= this.Const.EL_NPC.EL_LevelUp.LevelUpsOffset + this.Const.EL_NPC.EL_LevelUp.LevelUpsCombatLevelOffect[this.World.Assets.getCombatDifficulty()];
             if(level_ups < 0) {
                 level_ups = 0;
             }
@@ -1274,6 +1274,7 @@ local gt = getroottable();
 		{
             onDropLootForPlayer(_lootTable);
             this.EL_dropLootItems(_lootTable);
+            this.EL_dropEquipmentEssence(_lootTable);
             foreach(item in _lootTable)
             {
                 if(item.EL_getRankLevel() > item.EL_getRankLevelMax() && item.EL_isValid())
@@ -1294,8 +1295,12 @@ local gt = getroottable();
                     item.EL_setRankLevel(item.EL_getRankLevelMax());
                     item.EL_recraft();
                 }
+                else if(item.isConsumed())
+                {
+                    item.setAmount(item.getAmount() * this.Const.EL_NPC.EL_Troop.DropEconomicDifficultyFactor[this.World.Assets.getEconomicDifficulty()])
+                }
+
             }
-            this.EL_dropEquipmentEssence(_lootTable);
 		}
 
 

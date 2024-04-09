@@ -231,7 +231,12 @@ local gt = getroottable();
 		{
 			if(this.m.EL_CurrentUpdateDay < this.World.getTime().Days) {
 				this.EL_UpdateWorldStrengthAndLevel();
+				if(this.World.Flags.get("EL_HasCrownsAmbitionRule"))
+				{
+					this.World.Assets.addMoney(this.Math.min(10000, this.Math.round(this.World.Assets.getMoney() * 0.01)));
+				}
 			}		
+			
 			update(_worldState);
 		}
 

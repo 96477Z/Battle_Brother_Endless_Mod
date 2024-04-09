@@ -48,6 +48,11 @@ this.el_growth_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buff
 	function EL_reset() {
 		this.m.EL_Stack = 0;
 	}
+	
+    function onAfterUpdate( _properties ) {
+		this.el_npc_buff.onAfterUpdate(_properties);
+		this.m.Description = "回合开始时增加" + this.Const.EL_NPC.EL_NPCBuff.Factor.Growth.DamageMultPurStack[this.m.EL_RankLevel] * 100 + "%增减伤和" + this.Const.EL_NPC.EL_NPCBuff.Factor.Growth.MeleeSkillOffsetPurStack[this.m.EL_RankLevel] + "点双攻双防。";
+    }
 
 });
 

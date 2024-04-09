@@ -78,7 +78,7 @@ this.el_frostmourne <- this.inherit("scripts/items/weapons/weapon", {
 				result.insert(i, {
 					id = 9,
 					type = "text",
-					icon = "ui/icons/special.png",
+					icon = "ui/tooltips/soul_energy.png",
 					text = "灵魂能量：" + this.World.Assets.EL_getSoulEnergy() + " / " + this.World.Assets.EL_getSoulEnergyMax()
 				});
 				result.insert(i, {

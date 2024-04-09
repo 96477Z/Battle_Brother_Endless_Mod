@@ -1,7 +1,5 @@
 this.el_recovery_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buff", {
-	m = {
-        EL_DefenseState = this.Const.EL_NPC.EL_NPCBuff.Factor.Evasion.RangeState
-    },
+	m = {},
 	function create()
 	{
 		this.el_npc_buff.create();
@@ -53,8 +51,12 @@ this.el_recovery_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_bu
 			off_hand.setCondition(this.Math.min(off_hand.getConditionMax(), off_hand.getCondition() + this.Math.floor(off_hand.getConditionMax() * this.Const.EL_NPC.EL_NPCBuff.Factor.Recovery.ArmorRecoveryRate[this.m.EL_RankLevel])));
 		}
 		this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " 恢复了!");
-
 	}
+	
+    function onAfterUpdate( _properties ) {
+		this.el_npc_buff.onAfterUpdate(_properties);
+		this.m.Description = "每回合恢复" + this.Const.EL_NPC.EL_NPCBuff.Factor.Recovery.HitpointsRecoveryRate[this.m.EL_RankLevel] * 100 + "%的最大生命，装备耐久和" + this.Const.EL_NPC.EL_NPCBuff.Factor.Recovery.FatigueRecoveryRate[this.m.EL_RankLevel] + "的疲劳。";
+    }
 
 });
 

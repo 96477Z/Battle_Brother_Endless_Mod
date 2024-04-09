@@ -44,7 +44,7 @@ this.el_ice_armor <- this.inherit("scripts/items/armor/armor", {
 				result.insert(i, {
 					id = 8,
 					type = "text",
-					icon = "ui/icons/special.png",
+					icon = "ui/tooltips/soul_energy.png",
 					text = "灵魂能量：" + this.World.Assets.EL_getSoulEnergy() + " / " + this.World.Assets.EL_getSoulEnergyMax()
 				});
 				return result;
@@ -53,7 +53,7 @@ this.el_ice_armor <- this.inherit("scripts/items/armor/armor", {
 		result.push({
             id = 8,
             type = "text",
-            icon = "ui/tooltips/soul_energy.png",
+			icon = "ui/tooltips/soul_energy.png",
             text = "灵魂能量：" + this.World.Assets.EL_getSoulEnergy() + " / " + this.World.Assets.EL_getSoulEnergyMax()
 		});
 		result.push({

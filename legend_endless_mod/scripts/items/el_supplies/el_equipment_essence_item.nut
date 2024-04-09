@@ -88,6 +88,16 @@ this.el_equipment_essence_item <- this.inherit("scripts/items/item", {
 		return result;
 	}
 
+	function getAmount()
+	{
+		return this.m.EL_Amount; 
+	}
+
+	function setAmount( _EL_Amount )
+	{
+		this.m.EL_Amount = this.Math.floor(_EL_Amount);
+	}
+
 
 	function EL_getAmount()
 	{

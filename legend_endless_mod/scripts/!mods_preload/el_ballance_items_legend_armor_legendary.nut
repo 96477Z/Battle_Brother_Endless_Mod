@@ -245,7 +245,7 @@ local gt = getroottable();
         o.create = function()
         {
             create();
-            this.EL_generateByRankAndLevel(this.Const.EL_Item.Type.Legendary, this.Math.min(this.World.Assets.m.EL_WorldLevel, this.Const.EL_Item.MaxLevel));
+            this.EL_generateByRankAndLevel(this.Const.EL_Item.Type.Legendary, this.Math.min(this.World.Assets.m.EL_WorldLevel, EL_getLevelMax()));
         }
 
         o.getTooltip = function()

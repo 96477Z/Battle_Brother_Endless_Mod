@@ -20,11 +20,31 @@ gt.Const.EL_Accessory <- {
 	EL_EquipmentEssence = {
 		LevelFactor = 0.08,
 		RankFactor = 3,
-		UpgradeLevelFactor = 1,
-		UpgradeRankFactor = 1,
+		UpgradeLevelFactor = [
+			0.8,
+			0.9,
+			0.9,
+			1.0
+		],
+		UpgradeRankFactor = [
+			0.8,
+			0.9,
+			0.9,
+			1.0
+		],
 		UpgradeRankNormalEssenceFactor = 10,
-		DisassembleFactor = 0.8,
-		RecraftFactor = 1,
+		DisassembleFactor = [
+			1.0,
+			0.9,
+			0.9,
+			0.8
+		],
+		RecraftFactor = [
+			0.8,
+			0.9,
+			0.9,
+			1.0
+		],
 		SeniorEquipmentEssenceMult = 0.1,
 		LowerEquipmentEssenceMult = 3,
 		StrengthenEntryNum = 3,
@@ -59,8 +79,18 @@ gt.Const.EL_Accessory <- {
 		"accessory/sergeant_badge_item",
 		"accessory/undead_trophy_item",
 		"el_accessory/el_arena_champion_item",
+		"el_accessory/el_armor_ambition_item",
+		"el_accessory/el_cart_ambition_item",
 		"el_accessory/el_core_item",
-		"el_accessory/el_taelia_present_item"
+		"el_accessory/el_disassemble_item_ambition_item",
+		"el_accessory/el_have_crowns_ambition_item",
+		"el_accessory/el_have_renown_ambition_item",
+		"el_accessory/el_have_talent_ambition_item",
+		"el_accessory/el_named_item_ambition_item",
+		"el_accessory/el_taelia_present_item",
+		"el_accessory/el_trade_ambition_item",
+		"el_accessory/el_upgrade_item_ambition_item",
+		"el_accessory/el_win_arena_fights_ambition_item"
 	],
 	EL_NormalAccessoryList = [
 		"accessory/alp_trophy_item",

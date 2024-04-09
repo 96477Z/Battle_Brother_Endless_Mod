@@ -16,7 +16,7 @@ this.el_reduce_direct_damage_received_mult_entry <- this.inherit("scripts/skills
 			return {
 				id = _id,
 				type = "text",
-				text = "[color=" + colour + "]减少头部受到的忽视护甲伤害" + (1.0 - this.Math.round(this.Math.pow(1.0 - this.m.EL_CurrentLevel * this.m.EL_ReduceDirectDamageReceivedMult * 0.01, this.m.EL_StrengthLevel) * 100) * 0.01) * 100 +
+				text = "[color=" + colour + "]减少身体受到的忽视护甲伤害" + (1.0 - this.Math.round(this.Math.pow(1.0 - this.m.EL_CurrentLevel * this.m.EL_ReduceDirectDamageReceivedMult * 0.01, this.m.EL_StrengthLevel) * 100) * 0.01) * 100 +
 					   "% (" + (1.0 - this.Math.round(this.Math.pow(1.0 - this.m.EL_ReduceDirectDamageReceivedMult * 0.01, this.m.EL_StrengthLevel) * 100) * 0.01) * 100 + "%)[/color]"
 			};
 		}
@@ -25,7 +25,7 @@ this.el_reduce_direct_damage_received_mult_entry <- this.inherit("scripts/skills
 			return {
 				id = _id,
 				type = "text",
-				text = "[color=" + colour + "]减少头部受到的忽视护甲伤害" + (1.0 - this.Math.round(this.Math.pow(1.0 - this.m.EL_ReduceDirectDamageReceivedMult * 0.01, this.m.EL_StrengthLevel) * 100) * 0.01) * 100 + "%[/color]"
+				text = "[color=" + colour + "]减少身体受到的忽视护甲伤害" + (1.0 - this.Math.round(this.Math.pow(1.0 - this.m.EL_ReduceDirectDamageReceivedMult * 0.01, this.m.EL_StrengthLevel) * 100) * 0.01) * 100 + "%[/color]"
 			};
 		}
 	}

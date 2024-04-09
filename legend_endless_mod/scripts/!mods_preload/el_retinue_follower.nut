@@ -269,7 +269,8 @@ local gt = getroottable();
 		{
             create();
             this.m.Effects = [
-                "仓库容量、工具上限、弹药上限与医疗用品上限提升"
+                "仓库容量上限提升100",
+                "工具上限、弹药上限与医疗用品上限提升(100+世界等级)"
             ];
 		}
 
@@ -278,17 +279,17 @@ local gt = getroottable();
 		{
             if ("AmmoMaxAdditional" in this.World.Assets.m)
             {
-                this.World.Assets.m.AmmoMaxAdditional = this.Math.floor(100 * (1 + 1.01 * this.World.Assets.m.EL_WorldLevel));
+                this.World.Assets.m.AmmoMaxAdditional = this.Math.floor(100 * (1 + 0.01 * this.World.Assets.m.EL_WorldLevel));
             }
 
             if ("MedicineMaxAdditional" in this.World.Assets.m)
             {
-                this.World.Assets.m.MedicineMaxAdditional = this.Math.floor(100 * (1 + 1.01 * this.World.Assets.m.EL_WorldLevel));
+                this.World.Assets.m.MedicineMaxAdditional = this.Math.floor(100 * (1 + 0.01 * this.World.Assets.m.EL_WorldLevel));
             }
 
             if ("ArmorPartsMaxAdditional" in this.World.Assets.m)
             {
-                this.World.Assets.m.ArmorPartsMaxAdditional = this.Math.floor(100 * (1 + 1.01 * this.World.Assets.m.EL_WorldLevel));
+                this.World.Assets.m.ArmorPartsMaxAdditional = this.Math.floor(100 * (1 + 0.01 * this.World.Assets.m.EL_WorldLevel));
             }
             this.World.State.getPlayer().calculateStashModifier();
 		}

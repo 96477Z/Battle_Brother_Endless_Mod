@@ -35,6 +35,16 @@ local gt = getroottable();
 			local wageMult = this.m.CurrentProperties.DailyWageMult * (this.World.State != null ? this.World.Assets.m.DailyWageMult * follow_mult : 1.0) - (this.World.State != null ? this.World.State.getPlayer().getWageModifier() : 0.0);
 			return this.Math.max(0, this.m.CurrentProperties.DailyWage * wageMult);
 		}
+
+		local onCombatStart = o.onCombatStart;
+		o.onCombatStart = function ()
+		{
+			if(this.World.Flags.get("EL_HasWinArenaFightsAmbitionRule"))
+			{
+				this.setMoraleState(this.Const.MoraleState.Confident);
+			}
+			onCombatStart();
+		}
 	});
 
 	::mods_hookExactClass("ui/screens/world/modules/world_town_screen/town_hire_dialog_module", function( o )
@@ -337,8 +347,15 @@ local gt = getroottable();
 			{
 				for( local i = 0; i < this.Const.Attributes.COUNT; ++i )
 				{
-					this.m.Attributes[i].insert(0, this.Math.rand(this.Const.EL_Player.EL_LevelUpAttributes[i].Min[this.m.Talents[i]],
+					if(this.World.Flags.get("EL_HasTalentAmbitionRule"))
+					{
+						this.m.Attributes[i].insert(0, this.Const.EL_Player.EL_LevelUpAttributes[i].Max[this.m.Talents[i]]);
+					}
+					else
+					{
+						this.m.Attributes[i].insert(0, this.Math.rand(this.Const.EL_Player.EL_LevelUpAttributes[i].Min[this.m.Talents[i]],
 																  this.Const.EL_Player.EL_LevelUpAttributes[i].Max[this.m.Talents[i]]));
+					}
 
 					// this.logInfo("1 this.m.Attributes[" + i + "][0] = " + this.m.Attributes[i][0]);
 					// this.logInfo("1 this.m.Attributes[" + i + "][0] min = " + this.Const.EL_Player.EL_LevelUpAttributes[i].Min[this.m.Talents[i]]);
@@ -458,6 +475,7 @@ local gt = getroottable();
 			}
 
 			local world_level = this.World.Assets.m.EL_WorldLevel < this.Const.EL_Player.EL_CombatXP.MaxWorldLevel ? this.World.Assets.m.EL_WorldLevel : this.Const.EL_Player.EL_CombatXP.MaxWorldLevel;
+			world_level -= this.Const.EL_Player.EL_CombatXP.WorldLevelCombatLevelOffset[this.World.Assets.getCombatDifficulty()];
 
 			//multiply xp if player level is lower then the world level
 			local below_offset = this.Const.EL_Player.EL_CombatXP.BelowOffset - (this.World.Retinue.hasFollower("follower.drill_sergeant") ? this.Const.EL_Player.EL_CombatXP.BelowOffset : 0);
@@ -693,7 +711,20 @@ local gt = getroottable();
 				{
 					s = s + bro.getStashModifier();
 				}
-				s = s + this.Math.min(200, this.World.Retinue.hasFollower("follower.quartermaster") ? this.Math.floor(100 * (1 + 1.01 * this.World.Assets.m.EL_WorldLevel)) : 0);
+				this.logInfo("base stash:"+s);
+				local current_account = s;
+				local need_factor = 2;
+				local need_account = 100;
+				local bonus = 0;
+				local bonus_factor = 100;
+				while(current_account >= need_account) {
+					current_account -= need_account;
+					need_account *= need_factor;
+					bonus += bonus_factor;
+				}
+				s = bonus + this.Math.floor(100.0 * current_account / need_account);
+				this.logInfo("final stash:"+s);
+				s += this.World.Retinue.hasFollower("follower.quartermaster") ? 100 : 0;
 				if (resize && s != this.Stash.getCapacity())
 				{
 					this.Stash.resize(s);
@@ -1440,6 +1471,22 @@ local gt = getroottable();
 			}
 		}
 
+		local onTurnStart = o.onTurnStart;
+		o.onTurnStart = function()
+		{
+			if(this.World.Flags.get("EL_HasCartAmbitionRule"))
+			{
+				local items = this.getItems().getAllItems();
+				foreach(item in items)
+				{
+					if(item != null && item.isItemType(this.Const.Items.ItemType.Ammo))
+					{
+						item.m.Ammo = this.Math.min(item.m.Ammo + 1, item.m.AmmoMax);
+					}
+				}
+			}
+			onTurnStart();
+		}
 	});
 
 
@@ -1575,8 +1622,120 @@ local gt = getroottable();
 							text = "Fatigue is gained for every action, like moving or using skills, and when being hit in combat or dodging in melee. It is reduced at a fixed rate of 10 each turn or as much as necessary for a character to start every turn with 10 less than their maximum fatigue. The recovery rate will be increased by 1 every 20 maximum fatigue. If a character accumulates too much fatigue they may need to rest a turn (i.e. do nothing) before being able to use more specialized skills again."
 						}
 					];
+				case "menu-screen.new-campaign.EasyDifficulty":
+					return [
+						{
+							id = 1,
+							type = "title",
+							text = "Beginner Difficulty"
+						},
+						{
+							id = 2,
+							type = "description",
+							text = "Recommended for players new to the game.\n\nYour men get a small bonus to hit chance, and the enemy gets a small penalty, to ease you into the game.\n\n世界等级的提升速度最慢，怪物面板属性提升所需的等级滞后，玩家角色获取经验速度大幅增加。"
+						}
+					];
+
+				case "menu-screen.new-campaign.NormalDifficulty":
+					return [
+						{
+							id = 1,
+							type = "title",
+							text = "Veteran Difficulty"
+						},
+						{
+							id = 2,
+							type = "description",
+							text = "Recommended for veterans of the game or the genre.\n\n世界等级的提升速度缓慢，怪物面板属性提升所需的等级滞后，玩家角色获取经验速度增加。\n\nProvides for a balanced playing experience that can be quite challenging."
+						}
+					];
+
+				case "menu-screen.new-campaign.HardDifficulty":
+					return [
+						{
+							id = 1,
+							type = "title",
+							text = "Expert Difficulty"
+						},
+						{
+							id = 2,
+							type = "description",
+							text = "Your opponents will be more challenging and numerous.\n\nRecommended for experts in the game who want an even deadlier challenge."
+						}
+					];
+
+				case "menu-screen.new-campaign.LegendaryDifficulty":
+					return [
+						{
+							id = 1,
+							type = "title",
+							text = "Legendary Difficulty"
+						},
+						{
+							id = 2,
+							type = "description",
+							text = "Your opponents will be brutal. This is where legends are forged.\n\n Every enemy gains a series of new perks. Zombies with poisonous bites, battleforged orcs, overwhelming barbarians, crippling goblins, underdog backstabber thugs, fearsome vampires, muscular stollwurms\n\n世界等级的提升速度加快，怪物面板属性提升所需的等级提前，玩家角色获取经验速度降低。"
+						}
+					];
+
+				case "menu-screen.new-campaign.EasyDifficultyEconomic":
+					return [
+						{
+							id = 1,
+							type = "title",
+							text = "Beginner Difficulty"
+						},
+						{
+							id = 2,
+							type = "description",
+							text = "Contracts will pay more, there will be more recruits available, and you\'ll be able to carry more resources at once. \n\n 掉落的精华、金钱、工具、药品数量大幅上升，装备升级升阶重铸所需的普通精华大幅减少，装备分解获得的所有精华大幅上升。\n\n 100% heal and repair rate outside camp. prices are 5%% better when buying and selling, +10% from contract payments, recruits are twice as common. \n\nRecommended for players new to the game."
+						}
+					];
+
+				case "menu-screen.new-campaign.NormalDifficultyEconomic":
+					return [
+						{
+							id = 1,
+							type = "title",
+							text = "Veteran Difficulty"
+						},
+						{
+							id = 2,
+							type = "description",
+							text = "Provides for a balanced playing experience that can be quite challenging. 66% heal and repair rate outside camp. +50% more recruits available. \n\n 掉落的精华、金钱、工具、药品数量上升，装备升级升阶重铸所需的普通精华减少，装备分解获得的所有精华上升。\n\nRecommended for veterans of the game or the genre."
+						}
+					];
+
+				case "menu-screen.new-campaign.HardDifficultyEconomic":
+					return [
+						{
+							id = 1,
+							type = "title",
+							text = "Expert Difficulty"
+						},
+						{
+							id = 2,
+							type = "description",
+							text = "Contracts will pay less, and deserters will take their equipment with them.\n\n 33% heal and repair rate outside camp. -5% buy -5% sell -5% payments \n\n Recommended for experts in the game who want more of a challenge managing the company\'s funds and supplies."
+						}
+					];
+
+				case "menu-screen.new-campaign.LegendaryDifficultyEconomic":
+					return [
+						{
+							id = 1,
+							type = "title",
+							text = "Legendary Difficulty"
+						},
+						{
+							id = 2,
+							type = "description",
+							text = "Contract pay will be pitiful.\n\n  10% heal and repair rate outside camp. -10% buy, -10% sell, -10% payments -50% less recruits avaialable. \n\n 掉落的精华、金钱、工具、药品数量降低，装备升级升阶重铸所需的普通精华增加，装备分解获得的所有精华减少。\n\nRecommended for those who want the most challenging experience."
+						}
+					];
 
 				}
+				
 
 			return general_queryUIElementTooltipData(_entityId, _elementId, _elementOwner);
 		}

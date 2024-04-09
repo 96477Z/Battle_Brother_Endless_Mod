@@ -9,7 +9,7 @@ this.el_cart_ambition_1 <- this.inherit("scripts/ambitions/ambition", {
 		this.ambition.create();
 		this.m.ID = "ambition.el_cart_1";
 		this.m.Duration = 99999.0 * this.World.getTime().SecondsPerDay;
-		this.m.ButtonText = "We can barely carry any more equipment or spoils of war.\nLet us save up " + this.m.EL_MoneyNeed + " crowns to buy us a cart and relieve our backs!";
+		this.m.ButtonText = "We can barely carry any more equipment or spoils of war.\n让我们存个" + this.m.EL_MoneyNeed + "克朗买辆货车来减轻负担吧！";
 		this.m.RewardTooltip = "You\'ll unlock an additional " + this.m.EL_SlotGiven + " slots in your inventory.";
 		this.m.UIText = "Have at least " + this.m.EL_MoneyNeed + " crowns";
 		this.m.TooltipText = "Gather the amount of " + this.m.EL_MoneyNeed + " crowns or more, so that you can afford to buy a cart for additional inventory space. You can make money by completing contracts, looting camps and ruins, or trading.";

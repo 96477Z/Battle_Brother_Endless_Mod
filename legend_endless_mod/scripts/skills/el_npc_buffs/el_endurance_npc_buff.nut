@@ -39,6 +39,21 @@ this.el_endurance_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_b
             _properties.IsResistantToMiasma = true;
         }
 	}
+	
+    function onAfterUpdate( _properties ) {
+		this.el_npc_buff.onAfterUpdate(_properties);
+        switch(this.m.EL_RankLevel){
+            case 0:
+                this.m.Description = "免疫眩晕和定身。";
+                break;
+            case 1:
+                this.m.Description = "免疫眩晕和定身和部分控制效果。";
+                break;
+            case 2:
+                this.m.Description = "免疫大部分负面效果。";
+                break;
+        }
+    }
 
 });
 

@@ -237,6 +237,15 @@ local gt = getroottable();
 			return this.m.EL_Level;
 		}
 
+		o.EL_getLevelMax <- function()
+		{
+			if(this.World.Flags.get("EL_HasUpgradeItemAmbitionRule"))
+			{
+				return this.Const.EL_Item.MaxLevel + 10;
+			}
+			return this.Const.EL_Item.MaxLevel;
+		}
+
 		o.EL_setLevel <- function( _EL_level )
 		{
 			if(this.m.EL_Level != -1)

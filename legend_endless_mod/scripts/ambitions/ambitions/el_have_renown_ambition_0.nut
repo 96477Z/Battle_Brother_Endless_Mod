@@ -34,6 +34,33 @@ this.el_have_renown_ambition_0 <- this.inherit("scripts/ambitions/ambition", {
 		return false;
 	}
 
+	function onReward()
+	{
+		this.m.SuccessList.push({
+			id = 10,
+			icon = "ui/icons/special.png",
+			text = "Nobles will now give you contracts"
+		});
+
+		if (!this.World.Assets.getOrigin().isFixedLook())
+		{
+			if (this.World.Assets.getOrigin().getID() == "scenario.southern_quickstart")
+			{
+				this.World.Assets.updateLook(14);
+			}
+			else
+			{
+				this.World.Assets.updateLook(2);
+			}
+
+			this.m.SuccessList.push({
+				id = 10,
+				icon = "ui/icons/special.png",
+				text = "Your look on the worldmap has been updated"
+			});
+		}
+	}
+
 	function onSerialize( _out )
 	{
 		this.ambition.onSerialize(_out);

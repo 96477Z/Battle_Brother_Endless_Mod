@@ -104,6 +104,12 @@ gt.Const.EL_NPC <- {
 
     EL_LevelUp = {
         LevelUpsOffset = 15,
+        LevelUpsCombatLevelOffect = [
+            3,
+            2,
+            1,
+            0
+        ],
         LevelUpAttributes = {
             HitpointsMult = 0.08,
             Bravery = 0.5,
@@ -150,6 +156,12 @@ gt.Const.EL_NPC <- {
             NormalDropLevelMult = 0.08,
             NormalDropMultPurRank = 3
         },
+        DropEconomicDifficultyFactor = [
+            1.331,
+            1.21,
+            1.1,
+            1.0
+        ],
 
 
         ExtraCombatLevel = {

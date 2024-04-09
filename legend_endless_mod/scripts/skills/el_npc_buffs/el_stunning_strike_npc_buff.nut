@@ -25,6 +25,11 @@ this.el_stunning_strike_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el
 			}
         }
 	}
+	
+    function onAfterUpdate( _properties ) {
+		this.el_npc_buff.onAfterUpdate(_properties);
+		this.m.Description = "攻击命中时" + this.Const.EL_NPC.EL_NPCBuff.Factor.StunningStrike.Chance[this.m.EL_RankLevel] + "%概率造成" + this.Const.EL_NPC.EL_NPCBuff.Factor.StunningStrike.StunTurns[this.m.EL_RankLevel] + "回合眩晕。";
+    }
 
 });
 

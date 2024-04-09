@@ -79,15 +79,13 @@ this.el_have_talent_ambition_5 <- this.inherit("scripts/ambitions/ambition", {
 
 	function onReward()
 	{
-		//TODO(Johnasd4):Change the item to the real reward
-		// local item = this.new("scripts/items/tools/player_banner");
-		// item.EL_generateByRankAndLevel(4, 0);
-		// stash.add(item);
-		// this.m.SuccessList.push({
-		// 	id = 10,
-		// 	icon = "ui/items/" + item.getIcon(),
-		// 	text = "You gain " + item.getName()
-		// });
+		local item = this.new("scripts/items/el_accessory/el_have_talent_ambition_item");
+		stash.add(item);
+		this.m.SuccessList.push({
+			id = 10,
+			icon = "ui/items/" + item.getIcon(),
+			text = "You gain " + item.getName()
+		});
 	}
 
 	function onSerialize( _out )

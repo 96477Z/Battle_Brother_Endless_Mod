@@ -26,6 +26,11 @@ this.el_stamp_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buff"
 		}
         skill.EL_addStack(this.Const.EL_NPC.EL_NPCBuff.Factor.Stamp.StackPurHit[this.m.EL_RankLevel], user);
 	}
+	
+    function onAfterUpdate( _properties ) {
+		this.el_npc_buff.onAfterUpdate(_properties);
+		this.m.Description = "攻击会给目标上" + this.Const.EL_NPC.EL_NPCBuff.Factor.Stamp.StackPurHit[this.m.EL_RankLevel] + "层印记，印记达到5层会爆炸，对周围2格范围内的敌军造成伤害，并上1层印记（包括爆炸者本身）。";
+    }
 
 });
 

@@ -281,7 +281,7 @@ local gt = getroottable();
             local buildingRarityMult = this.getSettlement().getModifiers().BuildingRarityMult;
             local isTrader = this.World.Retinue.hasFollower("follower.trader");
             
-            local follower_exist = this.World.Retinue.hasFollower("follower.bounty_hunter");
+            local follower_exist = this.World.Retinue.hasFollower("follower.cook");
             local EL_worldLevel = this.Math.min(this.World.Assets.m.EL_WorldLevel, this.Const.EL_Shop.EL_ShopLevelMax);
             //this.logInfo("当前世界等级" + EL_worldLevel);
             local EL_coreMaxNum = this.Const.EL_Shop.EL_Core.EL_ShopMaxNum * (1 + EL_worldLevel * this.Const.EL_Shop.EL_ItemNumberLevelFactor);

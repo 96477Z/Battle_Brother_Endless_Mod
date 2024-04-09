@@ -9,7 +9,7 @@ this.el_cart_ambition_4 <- this.inherit("scripts/ambitions/ambition", {
 		this.ambition.create();
 		this.m.ID = "ambition.el_cart_4";
 		this.m.Duration = 99999.0 * this.World.getTime().SecondsPerDay;
-		this.m.ButtonText = "We can barely carry any more equipment or spoils of war.\nLet us save up " + this.m.EL_MoneyNeed + " crowns to buy us a cart and relieve our backs!";
+		this.m.ButtonText = "We can barely carry any more equipment or spoils of war.\n让我们存个" + this.m.EL_MoneyNeed + "克朗买辆货车来减轻负担吧！";
 		this.m.RewardTooltip = "You\'ll unlock an additional " + this.m.EL_SlotGiven + " slots in your inventory.奖励一件传奇饰品。";
 		this.m.UIText = "Have at least " + this.m.EL_MoneyNeed + " crowns";
 		this.m.TooltipText = "Gather the amount of " + this.m.EL_MoneyNeed + " crowns or more, so that you can afford to buy a cart for additional inventory space. You can make money by completing contracts, looting camps and ruins, or trading.";
@@ -58,15 +58,13 @@ this.el_cart_ambition_4 <- this.inherit("scripts/ambitions/ambition", {
             icon = "ui/icons/special.png",
             text = "You gain " + this.m.EL_SlotGiven + " additional inventory slots"
         });
-		//TODO(Johnasd4):Change the item to the real reward
-		// local item = this.new("scripts/items/tools/player_banner");
-		// item.EL_generateByRankAndLevel(4, 0);
-		// stash.add(item);
-		// this.m.SuccessList.push({
-		// 	id = 10,
-		// 	icon = "ui/items/" + item.getIcon(),
-		// 	text = "You gain " + item.getName()
-		// });
+		local item = this.new("scripts/items/el_accessory/el_cart_ambition_item");
+		stash.add(item);
+		this.m.SuccessList.push({
+			id = 10,
+			icon = "ui/items/" + item.getIcon(),
+			text = "You gain " + item.getName()
+		});
 	}
 
 	function onSerialize( _out )

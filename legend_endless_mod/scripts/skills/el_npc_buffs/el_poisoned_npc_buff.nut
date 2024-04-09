@@ -20,6 +20,11 @@ this.el_poisoned_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_bu
             this.Const.EL_Config.EL_addPoisonsToActorNoRepeatCheck(_targetEntity, poison_num_left);
         }
 	}
+	
+    function onAfterUpdate( _properties ) {
+		this.el_npc_buff.onAfterUpdate(_properties);
+		this.m.Description = "攻击命中时" + this.Const.EL_NPC.EL_NPCBuff.Factor.Poisoned.Chance[this.m.EL_RankLevel] + "%使目标获得" + this.Const.EL_NPC.EL_NPCBuff.Factor.Poisoned.PoisonNum[this.m.EL_RankLevel] + "种中毒状态。";
+    }
 
 });
 

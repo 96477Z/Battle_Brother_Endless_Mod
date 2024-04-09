@@ -36,6 +36,11 @@ this.el_evasion_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buf
             this.m.Name = "闪避(远程)";
         }
     }
+	
+    function onAfterUpdate( _properties ) {
+		this.el_npc_buff.onAfterUpdate(_properties);
+		this.m.Description = "增加近战和远程防御" + this.Const.EL_NPC.EL_NPCBuff.Factor.Evasion.DefenseOffset[this.m.EL_RankLevel] + "，每回合切换远程和近战偏向，对应的偏向防御增幅" + this.Const.EL_NPC.EL_NPCBuff.Factor.Evasion.DefenseOffsetSelectedMult + "倍。";
+    }
 
 });
 

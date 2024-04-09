@@ -1466,7 +1466,11 @@ local gt = getroottable();
 				::Const.ItemSlot.Head
 			]);
             local extra_movement_fatigue_cost = this.Math.floor((armorFat / (1.0 + actor.getLevel() * 0.08)) * 0.05 - 1);
-
+            
+            if(this.World.Flags.get("EL_HasArmorAmbitionRule"))
+            {
+                extra_movement_fatigue_cost = 0;
+            }
             local body_armor = 0;
             local head_armor = 0;
             local body = actor.getItems().getItemAtSlot(this.Const.ItemSlot.Body);
@@ -1564,8 +1568,12 @@ local gt = getroottable();
                 ::Const.ItemSlot.Body,
                 ::Const.ItemSlot.Head
             ]);
-            local extra_movement_fatigue_cost = this.Math.floor((armorFat / (1.0 + actor.getLevel() * 0.08)) * 0.05 - 1);
-            _properties.MovementFatigueCostAdditional += extra_movement_fatigue_cost;
+            
+            if(!this.World.Flags.get("EL_HasArmorAmbitionRule"))
+            {
+                local extra_movement_fatigue_cost = this.Math.floor((armorFat / (1.0 + actor.getLevel() * 0.08)) * 0.05 - 1);
+                _properties.MovementFatigueCostAdditional += extra_movement_fatigue_cost;
+            }
         }
 	});
 

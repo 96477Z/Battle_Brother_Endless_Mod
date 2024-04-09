@@ -49,7 +49,7 @@ this.el_crown_of_rule <- this.inherit("scripts/items/helmets/helmet", {
 				result.insert(i, {
 					id = 8,
 					type = "text",
-					icon = "ui/icons/special.png",
+					icon = "ui/tooltips/soul_energy.png",
 					text = "灵魂能量：" + this.World.Assets.EL_getSoulEnergy() + " / " + this.World.Assets.EL_getSoulEnergyMax()
 				});
 				return result;
