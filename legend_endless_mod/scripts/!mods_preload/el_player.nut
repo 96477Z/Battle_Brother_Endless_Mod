@@ -808,7 +808,7 @@ local gt = getroottable();
 				{
 					s = s + bro.getStashModifier();
 				}
-				this.logInfo("base stash:"+s);
+				//this.logInfo("base stash:"+s);
 				local current_account = s;
 				local need_factor = 2;
 				local need_account = 100;
@@ -820,7 +820,7 @@ local gt = getroottable();
 					bonus += bonus_factor;
 				}
 				s = bonus + this.Math.floor(100.0 * current_account / need_account);
-				this.logInfo("final stash:"+s);
+				//this.logInfo("final stash:"+s);
 				s += this.World.Retinue.hasFollower("follower.quartermaster") ? 100 : 0;
 				if (resize && s != this.Stash.getCapacity())
 				{
@@ -1883,7 +1883,7 @@ local gt = getroottable();
 		{
 			local result = convertEntityHireInformationToUIData(_entity);
 			local background = _entity.getBackground();
-			local base_properties = this.getBaseProperties();
+			local base_properties = _entity.getBaseProperties();
 			result.Name = _entity.getNameOnly();
 			result.InitialMoneyCost = this.Math.ceil(_entity.getHiringCost() * this.World.Assets.m.HiringCostMult * (this.World.Retinue.hasFollower("follower.recruiter") ? 0.8 : 1.0));
 			if(_entity.EL_getRankLevel() == 0)
