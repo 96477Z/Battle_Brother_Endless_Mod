@@ -109,7 +109,7 @@ local gt = getroottable();
 		}
 
 		local setTitle = o.setTitle;
-		o.setTitle = function ()
+		o.setTitle = function ( _value )
 		{
 			this.m.Title = _value;
 			if(this.m.Title != "")
