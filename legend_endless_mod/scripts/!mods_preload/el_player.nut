@@ -45,6 +45,95 @@ local gt = getroottable();
 			}
 			onCombatStart();
 		}
+
+		local getHiringTalents = o.getHiringTalents;
+		o.getHiringTalents = function ()
+		{
+			local ret = [];
+
+			if (!this.m.IsTryoutDone)
+			{
+				return ret;
+			}
+
+			local talents = this.getTalents();
+
+			for( local i = 0; i < this.Const.Attributes.COUNT; i = i )
+			{
+				local r = {
+					talent = "",
+					value = talents[i]
+				};
+
+				switch(i)
+				{
+				case 0:
+					r.talent = "HP";
+					break;
+
+				case 1:
+					r.talent = "RES";
+					break;
+
+				case 2:
+					r.talent = "FAT";
+					break;
+
+				case 3:
+					r.talent = "INIT";
+					break;
+
+				case 4:
+					r.talent = "MA";
+					break;
+
+				case 5:
+					r.talent = "RA";
+					break;
+
+				case 6:
+					r.talent = "MD";
+					break;
+
+				case 7:
+					r.talent = "RD";
+					break;
+				}
+
+				ret.push(r);
+
+				i = ++i;
+			}
+
+			return ret;
+		}
+
+		local setTitle = o.setTitle;
+		o.setTitle = function ()
+		{
+			this.m.Title = _value;
+			if(this.m.Title != "")
+			{
+				this.m.Title += " - ";
+			}
+			if(this.m.EL_getRankLevel() == 0)
+			{
+				this.m.Title += "普通";
+			}
+			else if(this.m.EL_getRankLevel() == 1)
+			{
+				this.m.Title += "精英";
+			}
+			else if(this.m.EL_getRankLevel() == 2)
+			{
+				this.m.Title += "英雄";
+			}
+			this.m.Title += "(" + this.m.EL_getCombatLevel() + ")"
+			if (this.m.Background != null)
+			{
+				this.m.Background.buildDescription(true);
+			}
+		}
 	});
 
 	::mods_hookExactClass("ui/screens/world/modules/world_town_screen/town_hire_dialog_module", function( o )
@@ -1735,7 +1824,7 @@ local gt = getroottable();
 					];
 
 				}
-				
+
 
 			return general_queryUIElementTooltipData(_entityId, _elementId, _elementOwner);
 		}
@@ -1786,8 +1875,30 @@ local gt = getroottable();
 		{
 			local result = convertEntityHireInformationToUIData(_entity);
 			local background = _entity.getBackground();
+			local base_properties = this.getBaseProperties();
 			result.Name = _entity.getNameOnly();
 			result.InitialMoneyCost = this.Math.ceil(_entity.getHiringCost() * this.World.Assets.m.HiringCostMult * (this.World.Retinue.hasFollower("follower.recruiter") ? 0.8 : 1.0));
+			if(_entity.EL_getRankLevel() == 0)
+			{
+				result.tryoutName = _entity.getNameOnly() + " - 普通";
+			}
+			else if(_entity.EL_getRankLevel() == 1)
+			{
+				result.tryoutName = _entity.getNameOnly() + " - 精英";
+			}
+			else if(_entity.EL_getRankLevel() == 1)
+			{
+				result.tryoutName = _entity.getNameOnly() + " - 英雄";
+			}
+			result.rankName <- _entity.EL_getRankLevel();
+			result.hitpoints <- base_properties.Hitpoints;
+			result.bravery <- base_properties.Bravery;
+			result.fatigue <- base_properties.Stamina;
+			result.initiative <- base_properties.Initiative;
+			result.meleeSkill <- base_properties.MeleeSkill;
+			result.rangeSkill <- base_properties.RangedSkill;
+			result.meleeDefense <- base_properties.MeleeDefense;
+			result.rangeDefense <- base_properties.RangedDefense;
 			return result;
 		}
 	});
