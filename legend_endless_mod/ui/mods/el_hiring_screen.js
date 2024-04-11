@@ -97,8 +97,8 @@ WorldTownScreenHireDialogModule.prototype.updateDetailsPanel = function(_element
                // + data.Talents[i].talent + '
                 var text = $('<span class="text-font-small font-color-assets-positive-value"></span>');
                 text.append(img);
-                text.append(value);
                 text.append(stars);
+                text.append(value);
                 if(i == 1 || i == 3 || i == 5 )
                 {
                     text.append($('<br/>'));
