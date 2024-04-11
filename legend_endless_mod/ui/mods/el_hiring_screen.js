@@ -98,7 +98,7 @@ WorldTownScreenHireDialogModule.prototype.updateDetailsPanel = function(_element
                 var text = $('<span class="text-font-small font-color-assets-positive-value"></span>');
                 text.append(img);
                 text.append(stars);
-                text.append("(" + value + ")");
+                text.append(value);
                 this.mDetailsPanel.CharacterTraitsContainer.append(text);
             }
         }
