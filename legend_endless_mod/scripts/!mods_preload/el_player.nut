@@ -116,19 +116,19 @@ local gt = getroottable();
 			{
 				this.m.Title += " - ";
 			}
-			if(this.m.EL_getRankLevel() == 0)
+			if(this.EL_getRankLevel() == 0)
 			{
 				this.m.Title += "普通";
 			}
-			else if(this.m.EL_getRankLevel() == 1)
+			else if(this.EL_getRankLevel() == 1)
 			{
 				this.m.Title += "精英";
 			}
-			else if(this.m.EL_getRankLevel() == 2)
+			else if(this.EL_getRankLevel() == 2)
 			{
 				this.m.Title += "英雄";
 			}
-			this.m.Title += "(" + this.m.EL_getCombatLevel() + ")"
+			this.m.Title += "(" + this.EL_getCombatLevel() + ")"
 			if (this.m.Background != null)
 			{
 				this.m.Background.buildDescription(true);
