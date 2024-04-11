@@ -53,42 +53,42 @@ WorldTownScreenHireDialogModule.prototype.updateDetailsPanel = function(_element
                     case "HP":
                         icon = Asset.ICON_HEALTH;
                         tooltipId = TooltipIdentifier.CharacterStats.Hitpoints;
-                        value.append(data.hitpoints);
+                        value.append(data['hitpoints']);
                         break;
                     case "FAT":
                         icon = Asset.ICON_FATIGUE;
                         tooltipId = TooltipIdentifier.CharacterStats.Fatigue;
-                        value.append(data.fatigue);
+                        value.append(data['fatigue']);
                         break;
                     case "RES":
                         icon = Asset.ICON_BRAVERY;
                         tooltipId = TooltipIdentifier.CharacterStats.Bravery;
-                        value.append(data.bravery);
+                        value.append(data['bravery']);
                         break;
                     case "INIT":
                         icon = Asset.ICON_INITIATIVE;
                         tooltipId = TooltipIdentifier.CharacterStats.Initiative;
-                        value.append(data.initiative);
+                        value.append(data['initiative']);
                         break;
                     case "MA":
                         icon = Asset.ICON_MELEE_SKILL;
                         tooltipId = TooltipIdentifier.CharacterStats.MeleeSkill;
-                        value.append(data.meleeSkill);
+                        value.append(data['meleeSkill']);
                         break;
                     case "MD":
                         icon = Asset.ICON_MELEE_DEFENCE;
                         tooltipId = TooltipIdentifier.CharacterStats.MeleeDefense;
-                        value.append(data.meleeDefense);
+                        value.append(data['meleeDefense']);
                         break;
                     case "RA":
                         icon = Asset.ICON_RANGE_SKILL;
                         tooltipId = TooltipIdentifier.CharacterStats.RangeSkill;
-                        value.append(data.rangeSkill);
+                        value.append(data['rangeSkill']);
                         break;
                     case "RD":
                         icon = Asset.ICON_RANGE_DEFENCE;
                         tooltipId = TooltipIdentifier.CharacterStats.RangeDefense;
-                        value.append(data.rangeDefense);
+                        value.append(data['rangeDefense']);
                         break;
                 }
                 var img = $('<img src="' + Path.GFX + icon + '"/>');
