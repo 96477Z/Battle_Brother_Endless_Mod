@@ -128,7 +128,6 @@ local gt = getroottable();
 			{
 				this.m.Title += "英雄";
 			}
-			this.m.Title += "(" + this.EL_getCombatLevel() + ")"
 			if (this.m.Background != null)
 			{
 				this.m.Background.buildDescription(true);
@@ -1880,15 +1879,15 @@ local gt = getroottable();
 			result.InitialMoneyCost = this.Math.ceil(_entity.getHiringCost() * this.World.Assets.m.HiringCostMult * (this.World.Retinue.hasFollower("follower.recruiter") ? 0.8 : 1.0));
 			if(_entity.EL_getRankLevel() == 0)
 			{
-				result.tryoutName = _entity.getNameOnly() + " - 普通";
+				result.tryoutName <- _entity.getNameOnly() + " - 普通";
 			}
 			else if(_entity.EL_getRankLevel() == 1)
 			{
-				result.tryoutName = _entity.getNameOnly() + " - 精英";
+				result.tryoutName <- _entity.getNameOnly() + " - 精英";
 			}
 			else if(_entity.EL_getRankLevel() == 1)
 			{
-				result.tryoutName = _entity.getNameOnly() + " - 英雄";
+				result.tryoutName <- _entity.getNameOnly() + " - 英雄";
 			}
 			result.rankName <- _entity.EL_getRankLevel();
 			result.hitpoints <- base_properties.Hitpoints;
