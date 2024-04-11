@@ -137,7 +137,10 @@ local gt = getroottable();
 		o.onHired = function ()
 		{
 			onHired();
-			this.setTitle("");
+			if(this.getTitle() == "")
+			{
+				this.setTitle("");
+			}
 		}
 	});
 
