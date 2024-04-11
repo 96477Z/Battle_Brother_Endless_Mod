@@ -36,7 +36,7 @@ WorldTownScreenHireDialogModule.prototype.updateDetailsPanel = function(_element
                 icon.bindTooltip({ contentType: 'status-effect', entityId: data.ID, statusEffectId: data.Traits[i].id });
                 this.mDetailsPanel.CharacterTraitsContainer.append(icon);
             }
-            this.mDetailsPanel.CharacterBackgroundTextScrollContainer.prepend($('<br/><br/><br/>'));
+            this.mDetailsPanel.CharacterBackgroundTextScrollContainer.prepend($('<br/><br/><br/><br/><br/>'));
             this.mDetailsPanel.CharacterTraitsContainer.append($('<br/>'));
             for(var i = 0; i < data.Talents.length; ++i)
             {
