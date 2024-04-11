@@ -133,6 +133,12 @@ local gt = getroottable();
 				this.m.Background.buildDescription(true);
 			}
 		}
+		local onHired = o.onHired;
+		o.onHired = function ()
+		{
+			onHired();
+			this.setTitle("");
+		}
 	});
 
 	::mods_hookExactClass("ui/screens/world/modules/world_town_screen/town_hire_dialog_module", function( o )
