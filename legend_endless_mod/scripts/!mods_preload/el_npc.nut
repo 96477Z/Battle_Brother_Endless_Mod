@@ -1297,7 +1297,7 @@ local gt = getroottable();
                 }
                 else if(item.isConsumed())
                 {
-                    item.setAmount(item.getAmount() * this.Const.EL_NPC.EL_Troop.DropEconomicDifficultyFactor[this.World.Assets.getEconomicDifficulty()])
+                    item.setAmount(this.Math.floor(item.getAmount() * this.Const.EL_NPC.EL_Troop.DropEconomicDifficultyFactor[this.World.Assets.getEconomicDifficulty()]));
                 }
 
             }

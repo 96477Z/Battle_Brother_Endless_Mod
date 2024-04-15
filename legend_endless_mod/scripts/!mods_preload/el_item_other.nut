@@ -164,7 +164,7 @@ local gt = getroottable();
 			local item = bro.m.Items.getItemByInstanceID(_data[1]);
 			if(item.EL_canUpgradeRankInBagOrStash() && !this.Tactical.isActive())
 			{
-				local limited_rank = EL_getLevelMax();
+				local limited_rank = item.EL_getRankLevelMax();
 				if(!item.isItemType(this.Const.Items.ItemType.Accessory))
 				{
 					local accessory = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
@@ -193,7 +193,7 @@ local gt = getroottable();
 					{
 						this.World.Assets.EL_addEquipmentEssence(rank, -equipment_essence_need[rank]);
 					}
-					//this.World.Assets.EL_addSoulEnergy(-item.EL_getUpgradeRankSoulEnergy());
+					this.World.Assets.EL_addSoulEnergy(-item.EL_getUpgradeRankSoulEnergy());
 					item.EL_upgradeRank();
 					item.onUnequip();
 					item.onEquip();

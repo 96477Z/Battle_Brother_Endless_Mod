@@ -40,7 +40,7 @@ this.el_vampire_entry <- this.inherit("scripts/skills/el_entrys/el_entry", {
 
 	function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
-		if (_targetEntity == null || _targetEntity.isDying() || !_targetEntity.isAlive() || skill.isAttack()) {
+		if (_targetEntity == null || skill.isAttack()) {
 			return;
 		}
 		if (_damageInflictedHitpoints <= 0)
@@ -48,10 +48,6 @@ this.el_vampire_entry <- this.inherit("scripts/skills/el_entrys/el_entry", {
 			return;
 		}
 		local actor = this.m.Container.getActor();
-		if (actor.getHitpoints() == actor.getHitpointsMax())
-		{
-			return;
-		}
         local vampire_number = this.Math.round(_damageInflictedHitpoints * this.m.EL_Vampire * 0.01);
 		actor.setHitpoints(this.Math.min(actor.getHitpointsMax(), actor.getHitpoints() + vampire_number));
 	}
