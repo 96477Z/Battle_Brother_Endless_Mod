@@ -844,25 +844,25 @@ local gt = getroottable();
 		o.adjustHiringCostBasedOnEquipment = function ()
 		{
 			local actor = this.getContainer().getActor();
-			//this.logInfo("actor name:" + actor.getName());
+			this.logInfo("actor name:" + actor.getName());
 			local items = actor.getItems().getAllItems();
 			local cost = 0;
 			foreach( i in items )
 			{
 				cost = cost + i.getValue();
 			}
-			//this.logInfo("item value:" + cost);
+			this.logInfo("item value:" + cost);
 			actor.m.HiringCost = this.m.HiringCost;
-			//this.logInfo("HiringCost:" + actor.m.HiringCost);
+			this.logInfo("HiringCost:" + actor.m.HiringCost);
 
 			actor.m.HiringCost *= this.Const.EL_Player.EL_Champion.HiringCostMult[actor.m.EL_RankLevel];
 			actor.m.HiringCost += this.Const.EL_Player.EL_Champion.HiringCostOffset[actor.m.EL_RankLevel];
-			//this.logInfo("after rank HiringCost:" + actor.m.HiringCost);
+			this.logInfo("after rank HiringCost:" + actor.m.HiringCost);
 			actor.m.HiringCost *= (1 + this.Const.EL_Player.EL_Hiring.EL_LevelMult * actor.m.Level);
-			//this.logInfo("after level HiringCost:" + actor.m.HiringCost);
+			this.logInfo("after level HiringCost:" + actor.m.HiringCost);
 			actor.m.HiringCost += cost * this.Const.EL_Player.EL_Hiring.EL_ItemCostMult;
 			actor.m.HiringCost = this.Math.ceil(actor.m.HiringCost);
-			//this.logInfo("after item HiringCost:" + actor.m.HiringCost);
+			this.logInfo("after item HiringCost:" + actor.m.HiringCost);
 		};
 
 		o.calculateAdditionalRecruitmentLevels = function ()
