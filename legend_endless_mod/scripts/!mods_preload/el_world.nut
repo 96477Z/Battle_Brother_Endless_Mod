@@ -94,6 +94,7 @@ local gt = getroottable();
 			for(local i = 0; i < this.m.EL_EquipmentEssence.len(); ++i) {
                 this.m.EL_EquipmentEssence[i] = _in.readI32();
             }
+			this.m.Money = this.Math.floor(this.m.Money);
 		}
 
 		o.EL_getWorldDifficultFactor <- function()
