@@ -7,7 +7,7 @@ this.el_core_item <- this.inherit("scripts/items/trade/trading_good_item", {
 	{
 		this.m.ID = "accessory.el_core_rank_" + this.m.EL_RankLevel;
 		this.m.Name = "Core";
-		this.m.Description = "魔核，，可以用来强化你的兄弟或者卖了换克朗。";
+		this.m.Description = "魔核，可以用来强化你的兄弟或者卖了换克朗。";
 		this.m.SlotType = this.Const.ItemSlot.None;
 		this.m.ItemType = this.Const.Items.ItemType.TradeGood | this.Const.Items.ItemType.Usable | this.Const.Items.ItemType.Misc;
 		this.m.IsDroppedAsLoot = true;
