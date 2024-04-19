@@ -24,9 +24,9 @@ gt.Const.EL_PlayerOther <- {
             300
         ],
         Stash = [
-            30,
             60,
-            150
+            120,
+            300
         ],
         Terrain = [
             0.1,
