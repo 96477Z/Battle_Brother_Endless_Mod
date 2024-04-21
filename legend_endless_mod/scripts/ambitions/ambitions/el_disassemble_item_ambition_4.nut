@@ -41,6 +41,7 @@ this.el_disassemble_item_ambition_4 <- this.inherit("scripts/ambitions/ambition"
 
 	function onReward()
 	{
+		local stash = this.World.Assets.getStash();
 		local item = this.new("scripts/items/el_accessory/el_disassemble_item_ambition_item");
 		stash.add(item);
 		this.m.SuccessList.push({

@@ -169,6 +169,7 @@ this.el_named_item_ambition_4 <- this.inherit("scripts/ambitions/ambition", {
 
 	function onReward()
 	{
+		local stash = this.World.Assets.getStash();
 		this.World.Assets.addBusinessReputation(100);
 		this.m.SuccessList.push({
 			id = 10,

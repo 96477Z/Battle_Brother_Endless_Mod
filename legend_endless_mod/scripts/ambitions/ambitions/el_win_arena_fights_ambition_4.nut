@@ -41,6 +41,7 @@ this.el_win_arena_fights_ambition_4 <- this.inherit("scripts/ambitions/ambition"
 
 	function onReward()
 	{
+		local stash = this.World.Assets.getStash();
 		local item = this.new("scripts/items/el_accessory/el_win_arena_fights_ambition_item");
 		stash.add(item);
 		this.m.SuccessList.push({

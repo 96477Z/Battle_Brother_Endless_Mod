@@ -79,6 +79,7 @@ this.el_have_talent_ambition_5 <- this.inherit("scripts/ambitions/ambition", {
 
 	function onReward()
 	{
+		local stash = this.World.Assets.getStash();
 		local item = this.new("scripts/items/el_accessory/el_have_talent_ambition_item");
 		stash.add(item);
 		this.m.SuccessList.push({
