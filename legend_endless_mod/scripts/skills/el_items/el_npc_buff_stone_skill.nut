@@ -1,5 +1,7 @@
 this.el_npc_buff_stone_skill <- this.inherit("scripts/skills/skill", {
 	m = {
+		EL_RankLevel = 0,
+		EL_DecreaseLevelCount = 3
 	},
 	function create()
 	{
@@ -11,6 +13,16 @@ this.el_npc_buff_stone_skill <- this.inherit("scripts/skills/skill", {
 		this.m.Order = this.Const.SkillOrder.First;
 	}
 
+    function EL_updateRankLevel() {
+		local skills = this.getContainer().getActor().getSkills().m.Skills;
+		foreach(skill in skills) {
+			if(skill.EL_isNPCBuff()) {
+				this.m.EL_RankLevel = skill.EL_getRankLevel();
+				break;
+			}
+		}
+    }
+
 	function onAfterUpdate( _properties )
 	{
 		local skills = this.getContainer().getActor().getSkills().m.Skills;
@@ -21,6 +33,25 @@ this.el_npc_buff_stone_skill <- this.inherit("scripts/skills/skill", {
 			}
 		}
 	}
+
+	function onCombatFinished()
+	{
+		if(this.m.EL_RankLevel > this.getContainer().getActor().El_getRankLevel())
+		{
+			--EL_DecreaseLevelCount;
+			if(EL_DecreaseLevelCount == 0)
+			{
+				EL_DecreaseLevelCount = 3;
+				foreach(skill in skills) {
+					if(skill.EL_isNPCBuff()) {
+						skill.EL_setRankLevel(skill.EL_getRankLevel() - 1);
+					}
+				}
+			}
+		}
+		this.skill.onCombatFinished();
+	}
+
 
 	function getTooltip()
 	{
@@ -49,6 +80,15 @@ this.el_npc_buff_stone_skill <- this.inherit("scripts/skills/skill", {
 				});
 			}
 		}
+		if(this.m.EL_RankLevel > this.getContainer().getActor().El_getRankLevel())
+		{
+			ret.push({
+				id = 10,
+				type = "text",
+				text = "[color=" + this.Const.UI.Color.NegativeValue + "]角色等阶不足，将在 " + this.m.EL_DecreaseLevelCount + " 场战斗后降阶！[/color]"
+			});
+		}
+
 		return ret;
 	}
 

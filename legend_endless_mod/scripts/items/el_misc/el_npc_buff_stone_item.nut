@@ -6,7 +6,7 @@ this.el_npc_buff_stone_item <- this.inherit("scripts/items/trade/trading_good_it
 	{
 		this.m.ID = "accessory.npc_buff_stone";
 		this.m.Name = "魔法石";
-		this.m.Description = "装有力量的石头，使用以获得力量。\n注意：会清除目前已有的NPCBuff。";
+		this.m.Description = "装有力量的石头，使用以获得力量。\n注意：会清除目前已有的NPCBuff，如果角色等阶小于NPCBuff等阶，每三场战斗NPCBuff会降低一阶，直到持平为止。";
 		this.m.SlotType = this.Const.ItemSlot.None;
 		this.m.ItemType = this.Const.Items.ItemType.TradeGood | this.Const.Items.ItemType.Usable | this.Const.Items.ItemType.Misc;
 		this.m.IsDroppedAsLoot = true;
@@ -72,10 +72,11 @@ this.el_npc_buff_stone_item <- this.inherit("scripts/items/trade/trading_good_it
 			skills.remove(skill);
 		}
 		foreach(skill in this.m.EL_NPCBuffs) {
-			skill.EL_setRankLevel(this.Math.min(_actor.EL_getRankLevel(), skill.EL_getRankLevel()));
 			skills.add(skill);
 		}
-		skills.add(this.new("scripts/skills/el_items/el_npc_buff_stone_skill"));
+		local skill = this.new("scripts/skills/el_items/el_npc_buff_stone_skill");
+		skills.add(skill);
+		skill.EL_updateRankLevel()
 		return true;
 	}
 
@@ -103,7 +104,7 @@ this.el_npc_buff_stone_item <- this.inherit("scripts/items/trade/trading_good_it
 		{
 			this.m.Icon = "el_misc/el_npc_buff_stone_" + this.m.EL_NPCBuffs[0].m.EL_RankLevel + ".png";
 		}
-		
+
 		return this.m.Icon;
 	}
 
