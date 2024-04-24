@@ -20,7 +20,7 @@ this.el_berserker_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_b
 	function onUpdate( _properties )
 	{
 		local actor = this.getContainer().getActor();
-		local stack = this.Math.floor(10 - (actor.getHitpointsPct() * 10));
+		local stack = this.Math.floor(10 - ((properties.Armor[this.Const.BodyPart.Body] * properties.Armor[this.Const.BodyPart.Body] + properties.Armor[this.Const.BodyPart.Head] * properties.Armor[this.Const.BodyPart.Head] + actor.getHitpoints())/(properties.ArmorMax[this.Const.BodyPart.Body] * properties.ArmorMult[this.Const.BodyPart.Body] + properties.ArmorMax[this.Const.BodyPart.Head] * properties.ArmorMult[this.Const.BodyPart.Head] + actor.getHitpointsMax()) * 10));
 		if(stack != 0) {
 			this.m.Name = "狂战士(x" + stack + ")";
 		}
@@ -31,12 +31,12 @@ this.el_berserker_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_b
 		_properties.MeleeSkill += this.Const.EL_NPC.EL_NPCBuff.Factor.Berserker.MeleeSkillOffsetPurStack[this.m.EL_RankLevel] * stack;
         _properties.RangedSkill += this.Const.EL_NPC.EL_NPCBuff.Factor.Berserker.RangedSkillOffsetPurStack[this.m.EL_RankLevel] * stack;
 	}
-	
+
     function onAfterUpdate( _properties ) {
 		this.el_npc_buff.onAfterUpdate(_properties);
-		this.m.Description = "每少10%的血，增加" +  this.Const.EL_NPC.EL_NPCBuff.Factor.Berserker.MeleeSkillOffsetPurStack[this.m.EL_RankLevel] + "点双攻以及" + this.Const.EL_NPC.EL_NPCBuff.Factor.Berserker.DamageMultPurStack[this.m.EL_RankLevel] * 100 + "%的伤害。";
+		this.m.Description = "计算时护甲值视为生命值，每少10%的生命值，增加" +  this.Const.EL_NPC.EL_NPCBuff.Factor.Berserker.MeleeSkillOffsetPurStack[this.m.EL_RankLevel] + "点双攻以及" + this.Const.EL_NPC.EL_NPCBuff.Factor.Berserker.DamageMultPurStack[this.m.EL_RankLevel] * 100 + "%的伤害。";
     }
-	
+
 	// function getTooltip()
 	// {
 	// 	local actor = this.getContainer().getActor();
