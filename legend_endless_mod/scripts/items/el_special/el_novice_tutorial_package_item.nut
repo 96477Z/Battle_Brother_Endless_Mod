@@ -15,7 +15,7 @@ this.el_novice_tutorial_package_item <- this.inherit("scripts/items/item", {
 		this.m.IsUsable = true;
 		this.m.IconLarge = "";
 		this.m.Icon = "accessory/gladiator_necklace.png";
-		this.m.Value = this.m.PageNum * 50;
+		this.m.Value = 0;
 	}
 
 	function getTooltip()

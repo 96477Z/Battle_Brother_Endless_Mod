@@ -5,7 +5,7 @@ this.el_novice_tutorial_page_0_item <- this.inherit("scripts/items/item", {
 	{
 		this.m.ID = "el_special_item.novice_tutorial_page_0";
 		this.m.Name = "引导 - 世界等级";
-		this.m.Description = "新手引导，包含名词解释和内容介绍，使用以获得少量随机金钱（1-100）。";
+		this.m.Description = "新手引导，包含名词解释和内容介绍。";
 		this.m.SlotType = this.Const.ItemSlot.None;
 		this.m.ItemType = this.Const.Items.ItemType.Usable;
 		this.m.IsDroppedAsLoot = false;
@@ -50,7 +50,6 @@ this.el_novice_tutorial_page_0_item <- this.inherit("scripts/items/item", {
 
 	function onUse( _actor, _item = null )
 	{
-        this.World.Assets.addMoney(this.Math.rand(1, 100));
 		return true;
 	}
 
