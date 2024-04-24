@@ -142,6 +142,15 @@ this.el_phoenix_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buf
                 )
                 {
                     skills.remove(skill);
+                    continue;
+                }
+                if( skill.isType(this.Const.SkillType.Injury) ||
+                    skill.isType(this.Const.SkillType.PermanentInjury) ||
+                    skill.isType(this.Const.SkillType.TemporaryInjury) ||
+                    skill.isType(this.Const.SkillType.SemiInjury) )
+                {
+                    skills.remove(skill);
+                    continue;
                 }
             }
             // local stunned_effect = skills.getSkillByID("effects.stunned");
@@ -174,7 +183,7 @@ this.el_phoenix_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buf
 			this.m.Name = "不死鸟";
 		}
     }
-	
+
     function onAfterUpdate( _properties ) {
 		this.el_npc_buff.onAfterUpdate(_properties);
 		this.m.Description = "受到致死攻击进入涅槃状态，再下个回合开始阶段退出涅槃状态并恢复全部血量，护甲，疲劳和行动点，清空所有buff，士气恢复为自信。每场可生效" + this.Const.EL_NPC.EL_NPCBuff.Factor.Phoenix.RiseTimes[this.m.EL_RankLevel] + "次";
