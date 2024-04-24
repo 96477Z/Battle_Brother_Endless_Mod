@@ -51,6 +51,13 @@ local gt = getroottable();
 			}
 		}
 
+		local setCampaignSettings = o.setCampaignSettings
+		o.setCampaignSettings = function( _settings )
+		{
+			setCampaignSettings(_settings);
+			this.m.Stash.add(this.new("scripts/items/el_special/el_novice_tutorial_package_item"));
+		}
+
 		local onSerialize = o.onSerialize;
 		o.onSerialize = function ( _out )
 		{
@@ -68,7 +75,7 @@ local gt = getroottable();
 			_out.writeI32(this.m.EL_LastArenaDay);
 			_out.writeI32(this.m.EL_ArenaLevel);
 			_out.writeI32(this.m.EL_ArenaMaxLevel);
-			
+
 			for(local i = 0; i < this.m.EL_EquipmentEssence.len(); ++i) {
                 _out.writeI32(this.m.EL_EquipmentEssence[i]);
             }
@@ -134,7 +141,7 @@ local gt = getroottable();
 				{
 					soul_energy_max += main_hand.EL_getRankLevel() * 100;
 				}
-			} 
+			}
 			if(_num > 0)
 			{
 				_num = this.Math.round(_num * this.EL_getSoulEnergyGianMult());
@@ -236,8 +243,8 @@ local gt = getroottable();
 				{
 					this.World.Assets.addMoney(this.Math.min(10000, this.Math.round(this.World.Assets.getMoney() * 0.01)));
 				}
-			}		
-			
+			}
+
 			update(_worldState);
 		}
 
