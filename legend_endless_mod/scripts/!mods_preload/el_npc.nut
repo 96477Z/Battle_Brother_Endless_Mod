@@ -1248,6 +1248,7 @@ local gt = getroottable();
                 essence.EL_setAmount(num);
                 _lootTable.push(essence);
             }
+            this.m.EL_LootEquipmentEssence = [0, 0, 0, 0, 0];
 		}
 
 		o.EL_addEquipmentEssence <- function(_EL_rank, _EL_num)
