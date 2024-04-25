@@ -68,13 +68,14 @@ gt.Const.EL_Config <- {
             return 0;
         }
         local skills = _EL_actor.getSkills();
-        while(_EL_num > 0 && _EL_BuffList.len() > 0) {
-            local r = this.Math.rand(0, _EL_BuffList.len() - 1);
-            if(!skills.hasSkill(_EL_BuffList[r].ID)) {
-                skills.add(this.new("scripts/skills/" + _EL_BuffList[r].Script));
+        local buff_list = clone _EL_BuffList;
+        while(_EL_num > 0 && buff_list.len() > 0) {
+            local r = this.Math.rand(0, buff_list.len() - 1);
+            if(!skills.hasSkill(buff_list[r].ID)) {
+                skills.add(this.new("scripts/skills/" + buff_list[r].Script));
                 --_EL_num;
             }
-            _EL_BuffList.remove(r);
+            buff_list.remove(r);
         }
         return _EL_num;
     }
@@ -84,18 +85,20 @@ gt.Const.EL_Config <- {
             return 0;
         }
         local skills = _EL_actor.getSkills();
-        while(_EL_num > 0 && _EL_BuffList.len() > 0) {
-            local r = this.Math.rand(0, _EL_BuffList.len() - 1);
-            skills.add(this.new("scripts/skills/" + _EL_BuffList[r].Script));
+        local buff_list = clone _EL_BuffList;
+        while(_EL_num > 0 && buff_list.len() > 0) {
+            local r = this.Math.rand(0, buff_list.len() - 1);
+            skills.add(this.new("scripts/skills/" + buff_list[r].Script));
             --_EL_num;
-            _EL_BuffList.remove(r);
+            buff_list.remove(r);
         }
         return _EL_num;
     }
 
     function EL_addInjurysToActor_P(_EL_actor, _EL_num, _EL_injuryTypeList, _EL_injuryThresholdMin = 0, _EL_injuryThresholdMax = 1) {
         local usable_injurys = [];
-        foreach(injury_type in _EL_injuryTypeList) {
+        local buff_list = clone _EL_injuryTypeList;
+        foreach(injury_type in buff_list) {
             foreach(injury in injury_type) {
                 if(injury.Threshold >= _EL_injuryThresholdMin && injury.Threshold <= _EL_injuryThresholdMax) {
                     usable_injurys.push(injury);
