@@ -1891,7 +1891,7 @@ local gt = getroottable();
 			{
 				result.tryoutName <- _entity.getNameOnly() + " - 精英";
 			}
-			else if(_entity.EL_getRankLevel() == 1)
+			else if(_entity.EL_getRankLevel() == 2)
 			{
 				result.tryoutName <- _entity.getNameOnly() + " - 英雄";
 			}
