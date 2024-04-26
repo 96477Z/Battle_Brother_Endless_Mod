@@ -55,7 +55,7 @@ local gt = getroottable();
 		o.setCampaignSettings = function( _settings )
 		{
 			setCampaignSettings(_settings);
-			this.m.Stash.add(this.new("scripts/items/el_special/el_novice_tutorial_package_item"));
+			this.m.Stash.add(this.new("scripts/items/el_special/el_novice_tutorial_book_item"));
 		}
 
 		local onSerialize = o.onSerialize;

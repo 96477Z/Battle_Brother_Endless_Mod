@@ -130,7 +130,11 @@ local gt = getroottable();
             else
             {
                 this.World.Assets.m.EL_LastArenaDay = day;
-                this.World.Assets.m.EL_ArenaLevel = this.World.Assets.m.EL_ArenaMaxLevel - 1;
+                if(this.World.Assets.m.EL_ArenaMaxLevel > 0)
+                {
+                    this.World.Assets.m.EL_ArenaLevel = this.World.Assets.m.EL_ArenaMaxLevel - 1;
+                }
+
             }
             this.m.Payment.Pool = this.Math.floor(this.m.Payment.Pool * 0.7);
             this.m.Payment.Pool *= this.World.Assets.m.EL_ArenaLevel + 1;

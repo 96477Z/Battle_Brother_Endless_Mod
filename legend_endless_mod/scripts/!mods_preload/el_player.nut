@@ -744,13 +744,9 @@ local gt = getroottable();
 		o.getTryoutCost = function ()
 		{
 			local follower_mult = this.World.Retinue.hasFollower("follower.recruiter") ? 0.5 : 1;
-			return this.m.CurrentProperties.DailyWage * this.Const.EL_Player.EL_Hiring.EL_TryoutCostMult * this.World.Assets.m.TryoutPriceMult * follower_mult;
+			return this.Math.ceil(this.m.CurrentProperties.DailyWage * this.Const.EL_Player.EL_Hiring.EL_TryoutCostMult * this.World.Assets.m.TryoutPriceMult * follower_mult);
 		};
 
-		function getTryoutCost()
-		{
-			return this.Math.ceil(this.Math.max(10, this.Math.min(this.m.HiringCost - 25, 25 + this.m.HiringCost * this.Const.Tryouts.CostMult) * this.World.Assets.m.TryoutPriceMult));
-		}
 		o.getXPForNextLevel = function ()
 		{
 			if (this.m.Level >= this.Const.LevelXP.len() - 10 && ("State" in this.World) && this.World.State != null && this.World.Assets.getOrigin().getID() == "scenario.manhunters" && this.getBackground().getID() == "background.slave")
@@ -822,6 +818,7 @@ local gt = getroottable();
 				s = bonus + this.Math.floor(100.0 * current_account / need_account);
 				//this.logInfo("final stash:"+s);
 				s += this.World.Retinue.hasFollower("follower.quartermaster") ? 100 : 0;
+				s += this.World.Flags.get("EL_TotorialBookExtraStash");
 				if (resize && s != this.Stash.getCapacity())
 				{
 					this.Stash.resize(s);
@@ -1898,7 +1895,6 @@ local gt = getroottable();
 			{
 				result.tryoutName <- _entity.getNameOnly() + " - 英雄";
 			}
-			result.rankName <- _entity.EL_getRankLevel();
 			result.hitpoints <- base_properties.Hitpoints;
 			result.bravery <- base_properties.Bravery;
 			result.fatigue <- base_properties.Stamina;

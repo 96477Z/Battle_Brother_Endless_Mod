@@ -1,12 +1,11 @@
-this.el_novice_tutorial_package_item <- this.inherit("scripts/items/item", {
+this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 	m = {
-        PageNumGiven = 0,
         PageNum = 10
     },
 	function create()
 	{
-		this.m.ID = "el_special_item.novice_tutorial_package";
-		this.m.Name = "新手引导";
+		this.m.ID = "el_special_item.novice_tutorial_book";
+		this.m.Name = "新手引导书";
 		this.m.Description = "使用获得新增内容名词说明。";
 		this.m.SlotType = this.Const.ItemSlot.None;
 		this.m.ItemType = this.Const.Items.ItemType.Usable;
@@ -52,22 +51,14 @@ this.el_novice_tutorial_package_item <- this.inherit("scripts/items/item", {
 
 	function onUse( _actor, _item = null )
 	{
-		for(local i = this.m.PageNumGiven; i < this.m.PageNum; ++i)
+		this.World.Flags.set("EL_TotorialBookExtraStash", this.m.PageNum);
+		this.calculateStashModifier();
+		for(local i = 1; i <= this.m.PageNum; ++i)
 		{
-			if(this.m.PageNumGiven == i)
-			{
-				if(this.World.Assets.getStash().getNumberOfEmptySlots() >= 1)
-				{
-					this.World.Assets.getStash().add("scripts/items/el_special/el_novice_tutorial_page_" + this.m.PageNumGiven + "_item");
-					++this.m.PageNumGiven;
-				}
-				else
-				{
-					break;
-				}
-			}
+			local page_num_str = i >= 10 ? ("" + i) : ("0" + i)
+			this.World.Assets.getStash().add("scripts/items/el_special/el_novice_tutorial_page_" + i + "_item");
 		}
-		return this.m.PageNumGiven == this.m.PageNum;
+		return true;
 	}
 
 });
