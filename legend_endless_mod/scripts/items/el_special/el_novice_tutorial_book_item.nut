@@ -34,7 +34,7 @@ this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 		result.push({
 			id = 65,
 			type = "text",
-			text = "Right-click to use. This item will be consumed in the process."
+			text = "右键点击使用"
 		});
 		return result;
 	}
@@ -47,7 +47,7 @@ this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 	function onUse( _actor, _item = null )
 	{
 		this.World.Flags.set("EL_TotorialBookExtraStash", this.m.PageNum);
-		this.calculateStashModifier();
+		this.World.State.getPlayer().calculateStashModifier();
 		for(local i = 0; i < this.m.PageNum; ++i)
 		{
 			local page_num_str = i >= 10 ? ("" + i) : ("0" + i)
@@ -66,7 +66,7 @@ this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 			}
 			if(has_page == false)
 			{
-				local page = this.new("scripts/items/el_special/el_novice_tutorial_page_" + i + "_item");
+				local page = this.new("scripts/items/el_special/el_novice_tutorial_page_" + page_num_str + "_item");
 				this.World.Assets.getStash().add(page);
 			}
 		}
