@@ -704,8 +704,8 @@ local gt = getroottable();
                 strongest_leader_chance = this.Const.EL_NPC.EL_NormalTeam.StrongestLeaderChance.EL_getChance(world_level);
             }
             if(follower_exist) {
-                random_leader_chance = random_leader_chance * 2 + 200;
-                strongest_leader_chance = strongest_leader_chance * 2 + 200;
+                random_leader_chance = random_leader_chance * 2 + 20;
+                strongest_leader_chance = strongest_leader_chance * 2 + 20;
             }
             if(random_leader_chance * 10 >= this.Math.rand(1, 1000)) {
                 this.m.EL_HaveRandomLeader = true;

@@ -187,7 +187,7 @@ this.el_world_arena_event <- this.inherit("scripts/events/event", {
                 p.IsLootingProhibited = false;
                 p.IsWithoutAmbience = true;
                 p.IsFogOfWarVisible = false;
-                p.IsArenaMode = false;
+                p.IsArenaMode = true;
                 p.IsAutoAssigningBases = false;
                 p.Players = [];
                 p.Entities = [];
@@ -351,13 +351,11 @@ this.el_world_arena_event <- this.inherit("scripts/events/event", {
                     text = "你获得了 传奇魔核 * " + (level * 3 + 3)
                 });
 
-                this.World.Assets.EL_addEquipmentEssence(4, 3 * level);
-                if(level != 0) {
-                    this.List.push({
-                        id = 16,
-                        text = "你获得了 传奇精华 * " + (level * 3)
-                    });
-                }
+                this.World.Assets.EL_addEquipmentEssence(4, 3 * level + 3);
+                this.List.push({
+                    id = 16,
+                    text = "你获得了 传奇精华 * " + (level * 3)
+                });
                 local reward_money = this.Math.floor(100000 * (level + 1) * this.World.Assets.EL_getHalfWorldDifficultFactor() * (1 + 0.08 * this.World.Assets.m.EL_WorldLevel));
                 this.World.Assets.addMoney(reward_money);
                 this.List.push({
