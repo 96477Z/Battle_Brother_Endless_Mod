@@ -818,7 +818,10 @@ local gt = getroottable();
 				s = bonus + this.Math.floor(100.0 * current_account / need_account);
 				//this.logInfo("final stash:"+s);
 				s += this.World.Retinue.hasFollower("follower.quartermaster") ? 100 : 0;
-				s += this.World.Flags.get("EL_TotorialBookExtraStash");
+				if(this.World.Flags.has("EL_TotorialBookExtraStash"))
+				{
+					s += this.World.Flags.get("EL_TotorialBookExtraStash");
+				}
 				if (resize && s != this.Stash.getCapacity())
 				{
 					this.Stash.resize(s);
