@@ -3,7 +3,7 @@ this.el_novice_tutorial_page_33_item <- this.inherit("scripts/items/el_special/e
     },
 	function create()
 	{
-		this.m.page_num_str = "33";
+		this.m.page_num_str = "00";
 		this.m.page_title_str = "鸣谢";
 		this.m.page_info_str =
 		  "如果您愿意支持作者，可以通过扫描开发文档二维码来赞助，这将为未来的更新提供重要的动力。\n"
