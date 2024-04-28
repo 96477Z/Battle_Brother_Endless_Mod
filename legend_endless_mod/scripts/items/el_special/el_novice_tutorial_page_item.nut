@@ -1,12 +1,13 @@
 this.el_novice_tutorial_page_item <- this.inherit("scripts/items/item", {
 	m = {
 		page_num_str = "",
+		page_title_str = "",
 		page_info_str = ""
     },
 	function create()
 	{
 		this.m.ID = "el_special_item.novice_tutorial_page_" + this.m.page_num_str;
-		this.m.Name = "新手引导 - " + this.m.page_num_str;
+		this.m.Name = "新手引导 - " + this.m.page_title_str;
 		this.m.SlotType = this.Const.ItemSlot.None;
 		this.m.ItemType = this.Const.Items.ItemType.None;
 		this.m.IsDroppedAsLoot = false;

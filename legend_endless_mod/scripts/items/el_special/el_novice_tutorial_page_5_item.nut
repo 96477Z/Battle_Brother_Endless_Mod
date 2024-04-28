@@ -4,7 +4,7 @@ this.el_novice_tutorial_page_5_item <- this.inherit("scripts/items/el_special/el
 	function create()
 	{
 		this.m.page_num_str = "05";
-		this.m.Description = "普通兄弟相关";
+		this.m.page_title_str = "普通兄弟";
 		this.m.page_info_str = "说明";
 		this.el_novice_tutorial_page_item.create();
 	}

@@ -4,7 +4,7 @@ this.el_novice_tutorial_page_21_item <- this.inherit("scripts/items/el_special/e
 	function create()
 	{
 		this.m.page_num_str = "21";
-		this.m.Description = "稀有词条相关";
+		this.m.page_title_str = "稀有词条";
 		this.m.page_info_str = "说明";
 		this.el_novice_tutorial_page_item.create();
 	}

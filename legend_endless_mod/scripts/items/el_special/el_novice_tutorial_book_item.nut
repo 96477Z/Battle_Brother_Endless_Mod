@@ -1,6 +1,6 @@
 this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 	m = {
-        PageNum = 10
+        PageNum = 33
     },
 	function create()
 	{
