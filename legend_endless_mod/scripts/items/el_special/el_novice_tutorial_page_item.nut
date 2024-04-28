@@ -56,7 +56,7 @@ this.el_novice_tutorial_page_item <- this.inherit("scripts/items/item", {
 
 	function onUse( _actor, _item = null )
 	{
-		return true;
+		return false;
 	}
 
 });
