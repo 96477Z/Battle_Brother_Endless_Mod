@@ -1,7 +1,7 @@
 this.el_armor_ambition_2 <- this.inherit("scripts/ambitions/ambition", {
 	m = {
         EL_RankNeed = this.Const.EL_Item.Type.Fine,
-        EL_ConditionMaxNeed = 200
+        EL_ConditionMaxNeed = 300
     },
 	function create()
 	{
@@ -27,11 +27,11 @@ this.el_armor_ambition_2 <- this.inherit("scripts/ambitions/ambition", {
 		{
 			if (item != null)
 			{
-				if (item.isItemType(this.Const.Items.ItemType.Armor) && item.EL_getBaseWithRankConditionMax() >= this.m.EL_ConditionMaxNeed && item.EL_getRankLevel() >= EL_RankNeed)
+				if (item.isItemType(this.Const.Items.ItemType.Armor) && item.getArmorMax() / (1 + this.Const.EL_Armor.EL_LevelFactor.Condition * item.m.EL_CurrentLevel) >= this.m.EL_ConditionMaxNeed && item.EL_getRankLevel() >= EL_RankNeed)
 				{
 					++ret.Armor;
 				}
-				else if (item.isItemType(this.Const.Items.ItemType.Helmet) && item.EL_getBaseWithRankConditionMax() >= this.m.EL_ConditionMaxNeed && item.EL_getRankLevel() >= EL_RankNeed)
+				else if (item.isItemType(this.Const.Items.ItemType.Helmet) && item.getArmorMax() / (1 + this.Const.EL_Armor.EL_LevelFactor.Condition * item.m.EL_CurrentLevel) >= this.m.EL_ConditionMaxNeed && item.EL_getRankLevel() >= EL_RankNeed)
 				{
 					++ret.Helmet;
 				}

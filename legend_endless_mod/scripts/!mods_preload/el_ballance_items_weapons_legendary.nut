@@ -56,5 +56,24 @@ local gt = getroottable();
 			this.m.Value = 0;
             this.EL_generateByRankAndLevel(this.Const.EL_Item.Type.Legendary, 0);
         }
+
+        o.getTooltip = function()
+        {
+            local result = this.weapon.getTooltip();
+            for(local i = 0; i < result.len(); ++i)
+			{
+				if(result[i].type == "text" && result[i].text == "——————————————")
+				{
+					result.insert(i, {
+						id = 6,
+						type = "text",
+                        icon = "ui/icons/special.png",
+                        text = "Resurrects any human killed with it as a Wiederganger fighting for you"
+					});
+					break;
+				}
+			}
+            return result;
+        }
     });
 });

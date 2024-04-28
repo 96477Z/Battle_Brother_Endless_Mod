@@ -7,7 +7,6 @@ this.el_novice_tutorial_page_item <- this.inherit("scripts/items/item", {
 	{
 		this.m.ID = "el_special_item.novice_tutorial_page_" + this.m.page_num_str;
 		this.m.Name = "新手引导 - " + this.m.page_num_str;
-		this.m.Description = "新手引导，包含名词解释和内容介绍。";
 		this.m.SlotType = this.Const.ItemSlot.None;
 		this.m.ItemType = this.Const.Items.ItemType.None;
 		this.m.IsDroppedAsLoot = false;

@@ -3,10 +3,10 @@ this.el_magic_thief_scenario <- this.inherit("scripts/scenarios/world/starting_s
 	function create()
 	{
 		this.m.ID = "scenario.el_magic_thief";
-		this.m.Name = "窃法者";
+		this.m.Name = "无尽-窃法者";
 		this.m.Description = "[p=c][img]gfx/ui/events/event_80.png[/img][/p][p]窃法者非常渴望力量，会不择手段的获取力量，通过对尸体的提炼，得到装有尸体生前力量的石头，因此遭到人们的厌恶。\n\n[color=#bcad8c]随机背景:[/color] 每个开局人物都不同。\n[color=#bcad8c]随机装备:[/color] 每个开局装备都不同。\n[color=#bcad8c]窃法者专属:[/color] 击杀敌方单位时会获得装有NPCBuff的技能石，技能石最多拥有3个技能，如果目标身上不止3个技能则随机选择3个，通过使用技能石获取NPCBuff（每次使用会清除之前的NPCBuff）。\n[color=#bcad8c]难以信任:[/color] 声望获取速度为50%。[/p]";
 		this.m.Difficulty = 1;
-		this.m.Order = 1;
+		this.m.Order = -4;
 	}
 
 	function isValid()
