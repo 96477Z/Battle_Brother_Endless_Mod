@@ -53,7 +53,7 @@ this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 	{
 		this.World.Flags.set("EL_TotorialBookExtraStash", this.m.PageNum);
 		this.calculateStashModifier();
-		for(local i = 1; i <= this.m.PageNum; ++i)
+		for(local i = 0; i < this.m.PageNum; ++i)
 		{
 			local page_num_str = i >= 10 ? ("" + i) : ("0" + i)
 			this.World.Assets.getStash().add("scripts/items/el_special/el_novice_tutorial_page_" + i + "_item");
