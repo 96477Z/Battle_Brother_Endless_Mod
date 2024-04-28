@@ -66,7 +66,8 @@ this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 			}
 			if(has_page == false)
 			{
-				this.World.Assets.getStash().add("scripts/items/el_special/el_novice_tutorial_page_" + i + "_item");
+				local page = this.new("scripts/items/el_special/el_novice_tutorial_page_" + i + "_item");
+				this.World.Assets.getStash().add(page);
 			}
 		}
 		return false;
