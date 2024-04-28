@@ -751,7 +751,7 @@ local gt = getroottable();
 				damage -= armor * this.Const.EL_PlayerNPC.EL_ArmorDirectDamageMitigationMult
 			}
 
-			if (armor <= 0 || _hitInfo.DamageDirect >= 1.0)
+			if (armor <= 0 || (_hitInfo.DamageDirect >= 1.0 && p.DamageReceivedDirectMult != 0))
 			{
 				damage = damage + this.Math.max(0, _hitInfo.DamageRegular * this.Math.maxf(0.0, 1.0 - _hitInfo.DamageDirect * p.DamageReceivedDirectMult) - armorDamage);
 			}

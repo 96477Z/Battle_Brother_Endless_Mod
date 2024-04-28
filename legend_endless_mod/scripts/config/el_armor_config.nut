@@ -744,9 +744,12 @@ gt.Const.EL_Armor <- {
 		{
 			local r = this.Math.rand(0, index_pool.len() - 1);
 			local entry = this.new(this.Const.EL_Armor.EL_Entry.Pool.Entrys[index_pool[r]].Scripts);
-			entry.EL_setStrengthLevel(blocked_num)
 			index_pool.remove(r);
-			_item.EL_addEntryToList(entry);
+			if(!_item.EL_hasEntry(entry.getID()))
+			{
+				entry.EL_setStrengthLevel(blocked_num);
+				_item.EL_addEntryToList(entry);
+			}
 		}
 	}
 };

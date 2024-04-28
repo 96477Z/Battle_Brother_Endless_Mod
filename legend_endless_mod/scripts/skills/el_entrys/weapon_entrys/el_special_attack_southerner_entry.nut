@@ -15,7 +15,7 @@ this.el_special_attack_southerner_entry <- this.inherit("scripts/skills/el_entry
 		local result = {
 			id = _id,
 			type = "text",
-			text = "[color=" + colour + "]对南方人 + " + this.m.EL_DamageMult + "%伤害和" + this.m.EL_AdditionalAccuracy + "%命中率[/color]"
+			text = "[color=" + colour + "]对南方强盗 + " + this.m.EL_DamageMult + "%伤害和" + this.m.EL_AdditionalAccuracy + "%命中率[/color]"
 		};
 		return result;
 	}

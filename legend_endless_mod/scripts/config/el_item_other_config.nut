@@ -68,6 +68,7 @@ gt.Const.EL_Item_Other <- {
 		"helmets/legendary/emperors_countenance",
 		"helmets/legendary/ijirok_helmet",
 		"helmets/legendary/mask_of_davkul",
+		"helmets/legendary/fangshire",
 		"legend_armor/legendary/legend_armor_of_davkul",
 		"legend_armor/legendary/legend_emperors_armor",
 		"legend_armor/legendary/legend_ijirok_armor",

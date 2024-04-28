@@ -445,6 +445,13 @@ local gt = getroottable();
 		::mods_hookExactClass("items/" + this.Const.EL_Accessory.EL_SeniorAccessoryList[i], function ( o )
 		{
 			o.m.EL_RankLevel <- 1;
+			
+			local create = o.create;
+			o.create = function ()
+			{
+				create();
+				this.m.ItemType = this.m.ItemType | this.Const.Items.ItemType.Named;
+			};
 
 			o.isDroppedAsLoot <- function()
 			{

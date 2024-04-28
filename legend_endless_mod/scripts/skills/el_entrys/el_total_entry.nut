@@ -26,15 +26,26 @@ this.el_total_entry <- this.inherit("scripts/skills/skill", {
 		EL_MeleeRangeMax = 0,
 		EL_SaveAmmo = 0.0,
 		
-		EL_DamageMultForNortherner = 0.0,
+		EL_DamageMultForNortherner = 1.0,
+		EL_DamageReceivedMultForNortherner = 1.0,
 		EL_AdditionalAccuracyForNortherner = 0,
-		EL_DamageMultForSoutherner = 0.0,
+		EL_DamageMultForNorthNoble = 1.0,
+		EL_DamageReceivedMultForNorthNoble = 1.0,
+		EL_AdditionalAccuracyForNorthNoble = 0,
+		EL_DamageMultForSoutherner = 1.0,
+		EL_DamageReceivedMultForSoutherner = 1.0,
 		EL_AdditionalAccuracyForSoutherner = 0,
-		EL_DamageMultForUndead = 0.0,
+		EL_DamageMultForSouthNoble = 1.0,
+		EL_DamageReceivedMultForSouthNoble = 1.0,
+		EL_AdditionalAccuracyForSouthNoble = 0,
+		EL_DamageMultForUndead = 1.0,
+		EL_DamageReceivedMultForUndead = 1.0,
 		EL_AdditionalAccuracyForUndead = 0,
-		EL_DamageMultForBeast = 0.0,
+		EL_DamageMultForBeast = 1.0,
+		EL_DamageReceivedMultForBeast = 1.0,
 		EL_AdditionalAccuracyForBeast = 0,
-		EL_DamageMultForGreenskin = 0.0,
+		EL_DamageMultForGreenskin = 1.0,
+		EL_DamageReceivedMultForGreenskin = 1.0,
 		EL_AdditionalAccuracyForGreenskin = 0,
 
 		EL_HitpointsRecoverDaliy = 0,
@@ -98,17 +109,28 @@ this.el_total_entry <- this.inherit("scripts/skills/skill", {
 		this.m.EL_Curse = 0.0
 		this.m.EL_TargetAttractionMult = 1;
 		this.m.EL_MeleeRangeMax = 0;
-		this.m.EL_SaveAmmo = 0.0;
-
-		this.m.EL_DamageMultForNortherner = 0.0;
+		this.m.EL_SaveAmmo = 0.0;		
+		
+		this.m.EL_DamageMultForNortherner = 1.0;
+		this.m.EL_DamageReceivedMultForNortherner = 1.0;
 		this.m.EL_AdditionalAccuracyForNortherner = 0;
-		this.m.EL_DamageMultForSoutherner = 0.0;
+		this.m.EL_DamageMultForNorthNoble = 1.0;
+		this.m.EL_DamageReceivedMultForNorthNoble = 1.0;
+		this.m.EL_AdditionalAccuracyForNorthNoble = 0;
+		this.m.EL_DamageMultForSoutherner = 1.0;
+		this.m.EL_DamageReceivedMultForSoutherner = 1.0;
 		this.m.EL_AdditionalAccuracyForSoutherner = 0;
-		this.m.EL_DamageMultForUndead = 0.0;
+		this.m.EL_DamageMultForSouthNoble = 1.0;
+		this.m.EL_DamageReceivedMultForSouthNoble = 1.0;
+		this.m.EL_AdditionalAccuracyForSouthNoble = 0;
+		this.m.EL_DamageMultForUndead = 1.0;
+		this.m.EL_DamageReceivedMultForUndead = 1.0;
 		this.m.EL_AdditionalAccuracyForUndead = 0;
-		this.m.EL_DamageMultForBeast = 0.0;
+		this.m.EL_DamageMultForBeast = 1.0;
+		this.m.EL_DamageReceivedMultForBeast = 1.0;
 		this.m.EL_AdditionalAccuracyForBeast = 0;
-		this.m.EL_DamageMultForGreenskin = 0.0;
+		this.m.EL_DamageMultForGreenskin = 1.0;
+		this.m.EL_DamageReceivedMultForGreenskin = 1.0;
 		this.m.EL_AdditionalAccuracyForGreenskin = 0;
 
 		this.m.EL_HitpointsRecoverDaliy = 0;
@@ -346,13 +368,20 @@ this.el_total_entry <- this.inherit("scripts/skills/skill", {
 				text = this.m.EL_SaveAmmo + "% 不消耗弹药"
 			});
 		}
-		
-		if(this.m.EL_DamageMultForNortherner)
+		if(this.m.EL_DamageMultForNortherner != 1)
 		{
 			result.push({
 				id = 10,
 				type = "text",
-				text = "对北方人 + " + this.m.EL_DamageMultForNortherner + "% 伤害"
+				text = "对北方强盗和野蛮人 + " + (this.m.EL_DamageMultForNortherner - 1) + "% 伤害"
+			});
+		}
+		if(this.m.EL_DamageReceivedMultForNortherner != 1)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				text = "对北方强盗和野蛮人 - " + (1 - this.m.EL_DamageReceivedMultForNortherner) + "% 受到伤害"
 			});
 		}
 		if(this.m.EL_AdditionalAccuracyForNortherner)
@@ -360,15 +389,47 @@ this.el_total_entry <- this.inherit("scripts/skills/skill", {
 			result.push({
 				id = 10,
 				type = "text",
-				text = "对北方人 + " + this.m.EL_AdditionalAccuracyForNortherner + "% 命中率"
+				text = "对北方强盗和野蛮人 + " + this.m.EL_AdditionalAccuracyForNortherner + "% 命中率"
 			});
 		}
-		if(this.m.EL_DamageMultForSoutherner)
+		if(this.m.EL_DamageMultForNorthNoble != 1)
 		{
 			result.push({
 				id = 10,
 				type = "text",
-				text = "对南方人 + " + this.m.EL_DamageMultForSoutherner + "% 伤害"
+				text = "对北方贵族和村兵 + " + (this.m.EL_DamageMultForNorthNoble - 1) + "% 伤害"
+			});
+		}
+		if(this.m.EL_DamageReceivedMultForNorthNoble != 1)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				text = "对北方贵族和村兵 - " + (1 - this.m.EL_DamageReceivedMultForNorthNoble) + "% 受到伤害"
+			});
+		}
+		if(this.m.EL_AdditionalAccuracyForNorthNoble)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				text = "对北方贵族和村兵 + " + this.m.EL_AdditionalAccuracyForNorthNoble + "% 命中率"
+			});
+		}
+		if(this.m.EL_DamageMultForSoutherner != 1)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				text = "对南方强盗 + " + (this.m.EL_DamageMultForSoutherner - 1) + "% 伤害"
+			});
+		}
+		if(this.m.EL_DamageReceivedMultForSoutherner != 1)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				text = "对南方强盗 - " + (1 - this.m.EL_DamageReceivedMultForSoutherner) + "% 受到伤害"
 			});
 		}
 		if(this.m.EL_AdditionalAccuracyForSoutherner)
@@ -376,15 +437,47 @@ this.el_total_entry <- this.inherit("scripts/skills/skill", {
 			result.push({
 				id = 10,
 				type = "text",
-				text = "对南方人 + " + this.m.EL_AdditionalAccuracyForSoutherner + "% 命中率"
+				text = "对南方强盗 + " + this.m.EL_AdditionalAccuracyForSoutherner + "% 命中率"
 			});
 		}
-		if(this.m.EL_DamageMultForUndead)
+		if(this.m.EL_DamageMultForSouthNoble != 1)
 		{
 			result.push({
 				id = 10,
 				type = "text",
-				text = "对亡灵 + " + this.m.EL_DamageMultForUndead + "% 伤害"
+				text = "对南方贵族和村兵 + " + (this.m.EL_DamageMultForSouthNoble - 1) + "% 伤害"
+			});
+		}
+		if(this.m.EL_DamageReceivedMultForSouthNoble != 1)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				text = "对南方贵族和村兵 - " + (1 - this.m.EL_DamageReceivedMultForSouthNoble) + "% 受到伤害"
+			});
+		}
+		if(this.m.EL_AdditionalAccuracyForSouthNoble)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				text = "对南方贵族和村兵 + " + this.m.EL_AdditionalAccuracyForSouthNoble + "% 命中率"
+			});
+		}
+		if(this.m.EL_DamageMultForUndead != 1)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				text = "对亡灵 + " + (this.m.EL_DamageMultForUndead - 1) + "% 伤害"
+			});
+		}
+		if(this.m.EL_DamageReceivedMultForUndead != 1)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				text = "对亡灵 - " + (1 - this.m.EL_DamageReceivedMultForUndead) + "% 受到伤害"
 			});
 		}
 		if(this.m.EL_AdditionalAccuracyForUndead)
@@ -395,12 +488,20 @@ this.el_total_entry <- this.inherit("scripts/skills/skill", {
 				text = "对亡灵 + " + this.m.EL_AdditionalAccuracyForUndead + "% 命中率"
 			});
 		}
-		if(this.m.EL_DamageMultForBeast)
+		if(this.m.EL_DamageMultForBeast != 1)
 		{
 			result.push({
 				id = 10,
 				type = "text",
-				text = "对野兽 + " + this.m.EL_DamageMultForBeast + "% 伤害"
+				text = "对野兽 + " + (this.m.EL_DamageMultForBeast - 1) + "% 伤害"
+			});
+		}
+		if(this.m.EL_DamageReceivedMultForBeast != 1)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				text = "对野兽 - " + (1 - this.m.EL_DamageReceivedMultForBeast) + "% 受到伤害"
 			});
 		}
 		if(this.m.EL_AdditionalAccuracyForBeast)
@@ -411,12 +512,20 @@ this.el_total_entry <- this.inherit("scripts/skills/skill", {
 				text = "对野兽 + " + this.m.EL_AdditionalAccuracyForBeast + "% 命中率"
 			});
 		}
-		if(this.m.EL_DamageMultForGreenskin)
+		if(this.m.EL_DamageMultForGreenskin != 1)
 		{
 			result.push({
 				id = 10,
 				type = "text",
-				text = "对兽人和哥布林 + " + this.m.EL_DamageMultForGreenskin + "% 伤害"
+				text = "对兽人和哥布林 + " + (this.m.EL_DamageMultForGreenskin - 1) + "% 伤害"
+			});
+		}
+		if(this.m.EL_DamageReceivedMultForGreenskin != 1)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				text = "对兽人和哥布林 - " + (1 - this.m.EL_DamageReceivedMultForGreenskin) + "% 受到伤害"
 			});
 		}
 		if(this.m.EL_AdditionalAccuracyForGreenskin)
