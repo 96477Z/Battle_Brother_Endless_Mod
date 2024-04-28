@@ -974,7 +974,7 @@ local gt = getroottable();
                 }
             }
 
-            this.World.Assets.getStash().add(this.new("scripts/items/supplies/bread_item"));
+            t(this.new("scripts/items/supplies/bread_item"));
             this.World.Assets.getStash().add(this.new("scripts/items/supplies/wine_item"));
             this.World.Assets.getStash().add(this.new("scripts/items/tools/holy_water_item"));
             this.World.Assets.getStash().add(this.new("scripts/items/weapons/legend_wooden_stake"));
