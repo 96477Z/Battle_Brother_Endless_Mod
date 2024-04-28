@@ -1,4 +1,4 @@
-this.el_novice_tutorial_page_2_item <- this.inherit("scripts/items/el_special/el_novice_tutorial_page_item", {
+this.el_novice_tutorial_page_02_item <- this.inherit("scripts/items/el_special/el_novice_tutorial_page_item", {
 	m = {
     },
 	function create()

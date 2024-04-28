@@ -6,7 +6,7 @@ this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 	{
 		this.m.ID = "el_special_item.novice_tutorial_book";
 		this.m.Name = "新手引导书";
-		this.m.Description = "使用获得新增内容名词说明。";
+		this.m.Description = "使用获得新增内容名词说明（可重复使用补充缺少的说明）。";
 		this.m.SlotType = this.Const.ItemSlot.None;
 		this.m.ItemType = this.Const.Items.ItemType.Usable;
 		this.m.IsDroppedAsLoot = false;
@@ -31,11 +31,6 @@ this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 				text = this.getDescription()
 			}
 		];
-        result.push({
-			id = 64,
-			type = "text",
-			text = "剩余 " + (this.m.PageNum - this.m.PageNumGiven) + " 页未获得。"
-		});
 		result.push({
 			id = 65,
 			type = "text",
@@ -56,9 +51,25 @@ this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 		for(local i = 0; i < this.m.PageNum; ++i)
 		{
 			local page_num_str = i >= 10 ? ("" + i) : ("0" + i)
-			this.World.Assets.getStash().add("scripts/items/el_special/el_novice_tutorial_page_" + i + "_item");
+			local items = this.World.Assets.getStash().getItems();
+			local has_page = false;
+			foreach( item in items )
+			{
+				if (item != null)
+				{
+					if (item.getID() == "el_special_item.novice_tutorial_page_" + page_num_str)
+					{
+						has_page = true;
+						break;
+					}
+				}
+			}
+			if(has_page == false)
+			{
+				this.World.Assets.getStash().add("scripts/items/el_special/el_novice_tutorial_page_" + i + "_item");
+			}
 		}
-		return true;
+		return false;
 	}
 
 });
