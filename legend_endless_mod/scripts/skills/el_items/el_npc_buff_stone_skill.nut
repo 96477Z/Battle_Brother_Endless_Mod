@@ -36,7 +36,7 @@ this.el_npc_buff_stone_skill <- this.inherit("scripts/skills/skill", {
 
 	function onCombatFinished()
 	{
-		if(this.m.EL_RankLevel > this.getContainer().getActor().El_getRankLevel())
+		if(this.m.EL_RankLevel > this.getContainer().getActor().EL_getRankLevel())
 		{
 			--EL_DecreaseLevelCount;
 			if(EL_DecreaseLevelCount == 0)
@@ -80,7 +80,7 @@ this.el_npc_buff_stone_skill <- this.inherit("scripts/skills/skill", {
 				});
 			}
 		}
-		if(this.m.EL_RankLevel > this.getContainer().getActor().El_getRankLevel())
+		if(this.m.EL_RankLevel > this.getContainer().getActor().EL_getRankLevel())
 		{
 			ret.push({
 				id = 10,
