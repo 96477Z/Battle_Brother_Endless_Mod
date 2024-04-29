@@ -312,6 +312,34 @@ local gt = getroottable();
 			{
 				return -1;
 			}
+			else if (_item1.EL_isNoviceTutorial() && _item2.EL_isNoviceTutorial())
+			{
+				if(_item2.getID() == "el_special_item.novice_tutorial_book")
+				{
+					return 1;
+				}
+				else if(_item1.getID() == "el_special_item.novice_tutorial_book")
+				{
+					return -1;
+				}
+				if(_item1.m.page_num_str > _item2.m.page_num_str)
+				{
+					return 1;
+				}
+				else
+				{
+					return -1;
+				}
+				return 0;
+			}
+			else if (_item2.EL_isNoviceTutorial())
+			{
+				return 1;
+			}
+			else if (_item1.EL_isNoviceTutorial())
+			{
+				return -1;
+			}
 			else if (_item1.getItemType() > _item2.getItemType())
 			{
 				return -1;
