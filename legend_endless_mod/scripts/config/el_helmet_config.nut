@@ -1046,27 +1046,27 @@ gt.Const.EL_Helmet <- {
 			},
 			EL_SpecialDefenseSouthNoble = {
 				ID = "el_helmet_entry.special_defense_south_noble",
-				BaseDamageMult = 30,
-				RandomMinDamageMult = [
+				BaseDamageHeadReduction = 50,
+				RandomMinDamageHeadReduction = [
 					1,
 					1,
-					601,
-					1201,
-					3000
+					11,
+					21,
+					50
 				],
-				RandomMaxDamageMult = [
-					1200,
-					1800,
-					2400,
-					3000,
-					3000
+				RandomMaxDamageHeadReduction = [
+					20,
+					30,
+					40,
+					50,
+					50
 				],
 				ColourRange = [
-					36,
-					42,
-					48,
-					54,
-					60
+					6,
+					7,
+					8,
+					9,
+					10
 				],
 				ValidEntity = [
 					this.Const.EntityType.Conscript,
