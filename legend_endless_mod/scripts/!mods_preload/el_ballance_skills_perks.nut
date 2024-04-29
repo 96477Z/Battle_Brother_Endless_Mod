@@ -1612,7 +1612,7 @@ gt.Const.EL_Config.EL_modStrings <- function()
         },
         {
             ID = "perk.legend_muscularity",
-            tooltip = "把你的重量运用到每次攻击，增加基于最大生命值的伤害（生命值越高收益越小）。"
+            tooltip = "把你的重量运用到每次攻击，增加基于最大生命值的伤害（生命值越高，单位生命值收益越小）。"
         },
         {
             ID = "perk.legend_pacifist",

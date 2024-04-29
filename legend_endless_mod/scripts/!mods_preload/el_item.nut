@@ -302,6 +302,11 @@ local gt = getroottable();
 			return false;
 		}
 
+		o.EL_isNoviceTutorial <- function()
+		{
+			return false;
+		}
+
 		o.EL_generateByRankAndLevel <- function( _EL_rankLevel, EL_level, EL_additionalRarityChance = 0 )
 		{
 		}

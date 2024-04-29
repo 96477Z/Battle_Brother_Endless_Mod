@@ -131,6 +131,13 @@ this.el_frostmourne <- this.inherit("scripts/items/weapons/weapon", {
 
     function EL_upgradeRank()
     {
+		for(local index = 0; index < this.m.EL_EntryList.len(); ++index)
+        {
+            if(this.m.EL_EntryList[index].getID() == "el_special_entry.repair_by_engrgy")
+            {
+                this.m.EL_EntryList.remove(index);
+            }
+        }
         this.weapon.EL_upgradeRank();
         EL_addRepairEntry();
     }
