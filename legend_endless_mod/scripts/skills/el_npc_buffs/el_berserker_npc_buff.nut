@@ -20,7 +20,7 @@ this.el_berserker_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_b
 	function onUpdate( _properties )
 	{
 		local actor = this.getContainer().getActor();
-		local stack = this.Math.floor(10 - ((properties.Armor[this.Const.BodyPart.Body] * properties.Armor[this.Const.BodyPart.Body] + properties.Armor[this.Const.BodyPart.Head] * properties.Armor[this.Const.BodyPart.Head] + actor.getHitpoints())/(properties.ArmorMax[this.Const.BodyPart.Body] * properties.ArmorMult[this.Const.BodyPart.Body] + properties.ArmorMax[this.Const.BodyPart.Head] * properties.ArmorMult[this.Const.BodyPart.Head] + actor.getHitpointsMax()) * 10));
+		local stack = this.Math.floor(10 - ((_properties.Armor[this.Const.BodyPart.Body] * _properties.Armor[this.Const.BodyPart.Body] + _properties.Armor[this.Const.BodyPart.Head] * _properties.Armor[this.Const.BodyPart.Head] + actor.getHitpoints())/(_properties.ArmorMax[this.Const.BodyPart.Body] * _properties.ArmorMult[this.Const.BodyPart.Body] + _properties.ArmorMax[this.Const.BodyPart.Head] * _properties.ArmorMult[this.Const.BodyPart.Head] + actor.getHitpointsMax()) * 10));
 		if(stack != 0) {
 			this.m.Name = "狂战士(x" + stack + ")";
 		}

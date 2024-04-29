@@ -1,6 +1,6 @@
 this.el_special_defense_beast_entry <- this.inherit("scripts/skills/el_entrys/el_accessory_entry", {
 	m = {
-        EL_DamageBodyReduction = 0.0,
+        EL_DamageHeadReduction = 0.0,
 		EL_Bonus = 0
     },
 	function create()
@@ -34,7 +34,7 @@ this.el_special_defense_beast_entry <- this.inherit("scripts/skills/el_entrys/el
 	{
         for (local index = 0; index <= this.Const.EL_Item.Type.Legendary; ++index)
         {
-            if (this.m.EL_DamageBodyReduction * 0.1 <= this.Const.EL_Helmet.EL_Entry.Factor.EL_SpecialDefenseBeast.ColourRange[index])
+            if (this.m.EL_DamageHeadReduction * 0.1 <= this.Const.EL_Helmet.EL_Entry.Factor.EL_SpecialDefenseBeast.ColourRange[index])
             {
                 return this.Const.EL_Item.Colour[index];
             }
@@ -44,39 +44,39 @@ this.el_special_defense_beast_entry <- this.inherit("scripts/skills/el_entrys/el
 
 	function EL_createAddition()
 	{
-		local randomMin = this.Const.EL_Helmet.EL_Entry.Factor.EL_SpecialDefenseBeast.RandomMinDamageBodyReduction[this.getItem().m.EL_RankLevel];
-		local randomMax = this.Const.EL_Helmet.EL_Entry.Factor.EL_SpecialDefenseBeast.RandomMaxDamageBodyReduction[this.getItem().m.EL_RankLevel];
-		this.m.EL_DamageBodyReduction = this.Const.EL_Helmet.EL_Entry.Factor.EL_SpecialDefenseBeast.BaseDamageBodyReduction + this.Math.rand(randomMin, randomMax);
+		local randomMin = this.Const.EL_Helmet.EL_Entry.Factor.EL_SpecialDefenseBeast.RandomMinDamageHeadReduction[this.getItem().m.EL_RankLevel];
+		local randomMax = this.Const.EL_Helmet.EL_Entry.Factor.EL_SpecialDefenseBeast.RandomMaxDamageHeadReduction[this.getItem().m.EL_RankLevel];
+		this.m.EL_DamageHeadReduction = this.Const.EL_Helmet.EL_Entry.Factor.EL_SpecialDefenseBeast.BaseDamageHeadReduction + this.Math.rand(randomMin, randomMax);
 	}
 
 	function EL_strengthen()
 	{
-		this.m.EL_DamageBodyReduction = 10 * this.Const.EL_Helmet.EL_Entry.EntryStrengthenMult * this.Const.EL_Helmet.EL_Entry.Factor.EL_SpecialDefenseBeast.ColourRange[this.Const.EL_Item.Type.Legendary];
+		this.m.EL_DamageHeadReduction = 10 * this.Const.EL_Helmet.EL_Entry.EntryStrengthenMult * this.Const.EL_Helmet.EL_Entry.Factor.EL_SpecialDefenseBeast.ColourRange[this.Const.EL_Item.Type.Legendary];
 	}
 
 	function EL_onUpgradeRank()
 	{
 		if(EL_getEntryColour() != this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Legendary])
 		{
-			this.m.EL_DamageBodyReduction += this.Const.EL_Helmet.EL_Entry.Factor.EL_SpecialDefenseBeast.RandomMaxDamageBodyReduction[this.Const.EL_Item.Type.Normal] / 2;
+			this.m.EL_DamageHeadReduction += this.Const.EL_Helmet.EL_Entry.Factor.EL_SpecialDefenseBeast.RandomMaxDamageHeadReduction[this.Const.EL_Item.Type.Normal] / 2;
 		}
 	}
 
 	function EL_onItemUpdate( _item )
 	{
-		this.m.EL_Bonus = this.m.EL_DamageBodyReduction * 0.2 * (1.0 + _item.m.EL_CurrentLevel * this.Const.EL_Helmet.EL_LevelFactor.DamageBodyRegularReduction);
+		this.m.EL_Bonus = this.m.EL_DamageHeadReduction * 0.2 * (1.0 + _item.m.EL_CurrentLevel * this.Const.EL_Helmet.EL_LevelFactor.DamageHeadRegularReduction);
 	}
 
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{
-		if (_attacker != null && _attacker.isAlive() && _hitInfo.BodyPart == this.Const.BodyPart.Body)
+		if (_attacker != null && _attacker.isAlive() && _hitInfo.HeadPart == this.Const.HeadPart.Head)
 		{
 			foreach(valid_type in this.Const.EL_Helmet.EL_Entry.Factor.EL_SpecialDefenseBeast.ValidEntity)
 			{
 				if(_attacker.getType() == valid_type)
 				{
-					_properties.EL_DamageBodyReduction += this.Math.ceil(this.m.EL_CurrentLevel * this.m.EL_Bonus);
-					_properties.EL_DamageBodyRegularReduction += this.Math.ceil(this.m.EL_CurrentLevel * this.m.EL_Bonus);;
+					_properties.EL_DamageHeadReduction += this.Math.ceil(this.m.EL_CurrentLevel * this.m.EL_Bonus);
+					_properties.EL_DamageHeadRegularReduction += this.Math.ceil(this.m.EL_CurrentLevel * this.m.EL_Bonus);;
 					return;
 				}
 			}
@@ -85,11 +85,11 @@ this.el_special_defense_beast_entry <- this.inherit("scripts/skills/el_entrys/el
 
     function onSerialize( _out )
 	{
-		_out.writeF32(this.m.EL_DamageBodyReduction);
+		_out.writeF32(this.m.EL_DamageHeadReduction);
 	}
 
 	function onDeserialize( _in )
 	{
-		this.m.EL_DamageBodyReduction = _in.readF32();
+		this.m.EL_DamageHeadReduction = _in.readF32();
 	}
 });
