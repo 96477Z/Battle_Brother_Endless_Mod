@@ -75,7 +75,7 @@ this.el_special_defense_undead_entry <- this.inherit("scripts/skills/el_entrys/e
 			{
 				if(_attacker.getType() == valid_type)
 				{
-					_properties.EL_DamageHeadReduction += this.Math.ceil(this.m.EL_CurrentLevel * this.m.EL_Bonus);
+					_properties.EL_DamageHeadArmorReduction += this.Math.ceil(this.m.EL_CurrentLevel * this.m.EL_Bonus);
 					_properties.EL_DamageHeadRegularReduction += this.Math.ceil(this.m.EL_CurrentLevel * this.m.EL_Bonus);;
 					return;
 				}
