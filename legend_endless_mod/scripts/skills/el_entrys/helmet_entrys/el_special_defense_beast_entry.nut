@@ -69,7 +69,7 @@ this.el_special_defense_beast_entry <- this.inherit("scripts/skills/el_entrys/el
 
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{
-		if (_attacker != null && _attacker.isAlive() && _hitInfo.HeadPart == this.Const.HeadPart.Head)
+		if (_attacker != null && _attacker.isAlive() && _hitInfo.BodyPart == this.Const.BodyPart.Head)
 		{
 			foreach(valid_type in this.Const.EL_Helmet.EL_Entry.Factor.EL_SpecialDefenseBeast.ValidEntity)
 			{
