@@ -69,13 +69,13 @@ this.el_special_defense_south_noble_entry <- this.inherit("scripts/skills/el_ent
 
 	function onBeforeDamageReceived( _attacker, _skill, _hitInfo, _properties )
 	{
-		if (_attacker != null && _attacker.isAlive() && _hitInfo.HeadPart == this.Const.HeadPart.Head)
+		if (_attacker != null && _attacker.isAlive() && _hitInfo.BodyPart == this.Const.BodyPart.Head)
 		{
 			foreach(valid_type in this.Const.EL_Helmet.EL_Entry.Factor.EL_SpecialDefenseSouthNoble.ValidEntity)
 			{
 				if(_attacker.getType() == valid_type)
 				{
-					_properties.EL_DamageHeadReduction += this.Math.ceil(this.m.EL_CurrentLevel * this.m.EL_Bonus);
+					_properties.EL_DamageHeadArmorReduction += this.Math.ceil(this.m.EL_CurrentLevel * this.m.EL_Bonus);
 					_properties.EL_DamageHeadRegularReduction += this.Math.ceil(this.m.EL_CurrentLevel * this.m.EL_Bonus);;
 					return;
 				}

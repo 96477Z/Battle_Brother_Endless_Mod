@@ -75,7 +75,7 @@ this.el_special_defense_north_noble_entry <- this.inherit("scripts/skills/el_ent
 			{
 				if(_attacker.getType() == valid_type)
 				{
-					_properties.EL_DamageBodyReduction += this.Math.ceil(this.m.EL_CurrentLevel * this.m.EL_Bonus);
+					_properties.EL_DamageBodyArmorReduction += this.Math.ceil(this.m.EL_CurrentLevel * this.m.EL_Bonus);
 					_properties.EL_DamageBodyRegularReduction += this.Math.ceil(this.m.EL_CurrentLevel * this.m.EL_Bonus);;
 					return;
 				}
