@@ -38,10 +38,10 @@ this.el_npc_buff_stone_skill <- this.inherit("scripts/skills/skill", {
 	{
 		if(this.m.EL_RankLevel > this.getContainer().getActor().EL_getRankLevel())
 		{
-			--EL_DecreaseLevelCount;
-			if(EL_DecreaseLevelCount == 0)
+			--this.m.EL_DecreaseLevelCount;
+			if(this.m.EL_DecreaseLevelCount == 0)
 			{
-				EL_DecreaseLevelCount = 3;
+				this.m.EL_DecreaseLevelCount = 3;
 				foreach(skill in skills) {
 					if(skill.EL_isNPCBuff()) {
 						skill.EL_setRankLevel(skill.EL_getRankLevel() - 1);
