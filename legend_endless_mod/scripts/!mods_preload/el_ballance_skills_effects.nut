@@ -586,6 +586,41 @@ local gt = getroottable();
 
 	});
 
+	::mods_hookExactClass("skills/effects/legend_berserker_rage_effect", function(o){
+        local getTooltip = o.getTooltip;
+        o.getTooltip = function()
+        {
+            local result = getTooltip();
+            result[3] = {
+				id = 11,
+				type = "text",
+				icon = "ui/icons/melee_defense.png",
+				text = "仅受到[color=" + this.Const.UI.Color.PositiveValue + "]" + this.Math.round(1.0 / (1.0 + 0.04 * this.m.RageStacks) * 10000) / 100 + "%[/color]的伤害"
+			};
+            return result;
+        }
+        
+        o.onUpdate = function( _properties )
+        {
+            this.m.IsHidden = this.m.RageStacks == 0;
+            _properties.DamageReceivedTotalMult /= 1.0 + 0.04 * this.m.RageStacks;
+            _properties.Bravery += 1 * this.m.RageStacks;
+            _properties.DamageRegularMin += 1 * this.m.RageStacks;
+            _properties.DamageRegularMax += 1 * this.m.RageStacks;
+            _properties.Initiative += 1 * this.m.RageStacks;
+        }
+
+        local onDamageReceived = o.onDamageReceived;
+        o.onDamageReceived = function( _attacker, _damageHitpoints, _damageArmor )
+        {
+            if(_damageHitpoints + _damageArmor == 0) {
+                return;
+            }
+            onDamageReceived(_attacker, _damageHitpoints, _damageArmor);
+        }
+
+	});
+
 	::mods_hookExactClass("skills/effects/legend_dazed_effect", function(o){
 
         o.getTooltip = function()
