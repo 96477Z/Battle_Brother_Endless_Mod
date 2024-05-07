@@ -12,6 +12,9 @@ this.el_revenge_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buf
 
 	function onDamageReceived( _attacker, _damageHitpoints, _damageArmor )
 	{
+		if(_damageHitpoints + _damageArmor == 0) {
+			return;
+		}
         ++this.m.EL_Stack;
         this.getContainer().getActor().getSkills().update();
 	}
@@ -53,7 +56,7 @@ this.el_revenge_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buf
 	function EL_reset() {
 		this.m.EL_Stack = 0;
 	}
-	
+
     function onAfterUpdate( _properties ) {
 		this.el_npc_buff.onAfterUpdate(_properties);
 		this.m.Description = "每次受到伤害增加" + this.Const.EL_NPC.EL_NPCBuff.Factor.Revenge.MeleeSkillOffsetPurStack[this.m.EL_RankLevel] + "点双攻和" + this.Const.EL_NPC.EL_NPCBuff.Factor.Revenge.DamageMultPurStack[this.m.EL_RankLevel] * 100 + "%伤害，可叠加，命中后重置。";
