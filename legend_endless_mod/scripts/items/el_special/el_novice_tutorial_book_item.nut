@@ -13,7 +13,7 @@ this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 		this.m.IsAllowedInBag = false;
 		this.m.IsUsable = true;
 		this.m.IconLarge = "";
-		this.m.Icon = "accessory/gladiator_necklace.png";
+		this.m.Icon =  "tutorial/book.png";
 		this.m.Value = 0;
 	}
 
@@ -70,7 +70,14 @@ this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 				this.World.Assets.getStash().add(page);
 			}
 		}
-		return false;
+		this.World.Assets.getStash().add(this.new("scripts/items/el_special/el_novice_tutorial_book_item"));
+		//this.World.Assets.getStash().sort();
+		return true;
+	}
+
+	function EL_isNoviceTutorial()
+	{
+		return true;
 	}
 
 });

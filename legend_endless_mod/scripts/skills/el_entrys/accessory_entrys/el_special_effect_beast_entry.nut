@@ -6,7 +6,7 @@ this.el_special_effect_beast_entry <- this.inherit("scripts/skills/el_entrys/el_
 	function create()
 	{
 		this.el_entry.create();
-		this.m.ID = this.Const.EL_Accessory.EL_Entry.Factor.EL_SpeciaEffectBeast.ID;
+		this.m.ID = this.Const.EL_Accessory.EL_Entry.Factor.EL_SpecialEffectBeast.ID;
 	}
 
 	function getTooltip( _id )
@@ -34,7 +34,7 @@ this.el_special_effect_beast_entry <- this.inherit("scripts/skills/el_entrys/el_
 	{
         for (local index = 0; index <= this.Const.EL_Item.Type.Legendary; ++index)
         {
-            if (this.m.EL_DamageMult <= this.Const.EL_Accessory.EL_Entry.Factor.EL_SpeciaEffectBeast.ColourRange[index])
+            if (this.m.EL_DamageMult <= this.Const.EL_Accessory.EL_Entry.Factor.EL_SpecialEffectBeast.ColourRange[index])
             {
                 return this.Const.EL_Item.Colour[index];
             }
@@ -44,40 +44,24 @@ this.el_special_effect_beast_entry <- this.inherit("scripts/skills/el_entrys/el_
 
 	function EL_createAddition()
 	{
-		local randomMin = this.Const.EL_Accessory.EL_Entry.Factor.EL_SpeciaEffectBeast.RandomMinDamageMult[this.getItem().m.EL_RankLevel];
-		local randomMax = this.Const.EL_Accessory.EL_Entry.Factor.EL_SpeciaEffectBeast.RandomMaxDamageMult[this.getItem().m.EL_RankLevel];
-		this.m.EL_DamageMult = this.Const.EL_Accessory.EL_Entry.Factor.EL_SpeciaEffectBeast.BaseDamageMult + this.Math.rand(randomMin, randomMax) * 0.01;
+		local randomMin = this.Const.EL_Accessory.EL_Entry.Factor.EL_SpecialEffectBeast.RandomMinDamageMult[this.getItem().m.EL_RankLevel];
+		local randomMax = this.Const.EL_Accessory.EL_Entry.Factor.EL_SpecialEffectBeast.RandomMaxDamageMult[this.getItem().m.EL_RankLevel];
+		this.m.EL_DamageMult = this.Const.EL_Accessory.EL_Entry.Factor.EL_SpecialEffectBeast.BaseDamageMult + this.Math.rand(randomMin, randomMax) * 0.01;
 		this.m.EL_ReduceDamageReceivedMult = this.m.EL_DamageMult;
 	}
 
 	function EL_strengthen()
 	{
-		this.m.EL_DamageMult = this.Const.EL_Accessory.EL_Entry.EntryStrengthenMult * this.Const.EL_Accessory.EL_Entry.Factor.EL_SpeciaEffectBeast.ColourRange[this.Const.EL_Item.Type.Legendary];
-		this.m.EL_ReduceDamageReceivedMult = (1.0 - this.Math.pow(1.0 - this.Const.EL_Accessory.EL_Entry.Factor.EL_SpeciaEffectBeast.ColourRange[this.Const.EL_Item.Type.Legendary] * 0.01, this.Const.EL_Accessory.EL_Entry.EntryStrengthenMult)) * 100;
+		this.m.EL_DamageMult = this.Const.EL_Accessory.EL_Entry.EntryStrengthenMult * this.Const.EL_Accessory.EL_Entry.Factor.EL_SpecialEffectBeast.ColourRange[this.Const.EL_Item.Type.Legendary];
+		this.m.EL_ReduceDamageReceivedMult = (1.0 - this.Math.pow(1.0 - this.Const.EL_Accessory.EL_Entry.Factor.EL_SpecialEffectBeast.ColourRange[this.Const.EL_Item.Type.Legendary] * 0.01, this.Const.EL_Accessory.EL_Entry.EntryStrengthenMult)) * 100;
 	}
 
 	function EL_onUpgradeRank()
 	{
 		if(EL_getEntryColour() != this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Legendary])
 		{
-			this.m.EL_DamageMult += this.Const.EL_Accessory.EL_Entry.Factor.EL_SpeciaEffectBeast.RandomMaxDamageMult[this.Const.EL_Item.Type.Normal] / 2 * 0.01;
-			this.m.EL_ReduceDamageReceivedMult += this.Const.EL_Accessory.EL_Entry.Factor.EL_SpeciaEffectBeast.RandomMaxDamageMult[this.Const.EL_Item.Type.Normal] / 2 * 0.01;
-		}
-	}
-
-	function onAnySkillUsed( _skill, _targetEntity, _properties )
-	{
-		if (!_skill.isAttack() || _targetEntity == null)
-		{
-			return;
-		}
-		foreach(valid_type in this.Const.EL_Accessory.EL_Entry.Factor.EL_SpecialAttackBeast.ValidEntity)
-		{
-			if(_targetEntity.getType() == valid_type)
-			{
-				_properties.DamageTotalMult *= 1.0 + this.m.EL_CurrentLevel * this.m.EL_DamageMult * 0.01;
-				return;
-			}
+			this.m.EL_DamageMult += this.Const.EL_Accessory.EL_Entry.Factor.EL_SpecialEffectBeast.RandomMaxDamageMult[this.Const.EL_Item.Type.Normal] / 2 * 0.01;
+			this.m.EL_ReduceDamageReceivedMult += this.Const.EL_Accessory.EL_Entry.Factor.EL_SpecialEffectBeast.RandomMaxDamageMult[this.Const.EL_Item.Type.Normal] / 2 * 0.01;
 		}
 	}
 
@@ -86,7 +70,7 @@ this.el_special_effect_beast_entry <- this.inherit("scripts/skills/el_entrys/el_
 		if(_attacker == null && _attacker.isAlive() && !_attacker.isAlliedWith(actor)) {
 			return;
 		}
-		foreach(valid_type in this.Const.EL_Accessory.EL_Entry.Factor.EL_SpecialDefenseBeast.ValidEntity)
+		foreach(valid_type in this.Const.EL_Accessory.EL_Entry.Factor.EL_SpecialEffectBeast.ValidEntity)
 		{
 			if(_attacker.getType() == valid_type)
 			{

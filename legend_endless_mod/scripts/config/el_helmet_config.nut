@@ -324,6 +324,34 @@ gt.Const.EL_Helmet <- {
 						if(_item.m.EL_RankLevel <= 1) { return false; }
 						return true;
 					}
+				},
+				{
+					Scripts = "scripts/skills/el_entrys/helmet_entrys/el_special_defense_beast_entry",
+					function EL_ifEligible(_item) { return true; }
+				},
+				{
+					Scripts = "scripts/skills/el_entrys/helmet_entrys/el_special_defense_greenskin_entry",
+					function EL_ifEligible(_item) { return true; }
+				},
+				{
+					Scripts = "scripts/skills/el_entrys/helmet_entrys/el_special_defense_northerner_entry",
+					function EL_ifEligible(_item) { return true; }
+				},
+				{
+					Scripts = "scripts/skills/el_entrys/helmet_entrys/el_special_defense_north_noble_entry",
+					function EL_ifEligible(_item) { return true; }
+				},
+				{
+					Scripts = "scripts/skills/el_entrys/helmet_entrys/el_special_defense_southerner_entry",
+					function EL_ifEligible(_item) { return true; }
+				},
+				{
+					Scripts = "scripts/skills/el_entrys/helmet_entrys/el_special_defense_south_noble_entry",
+					function EL_ifEligible(_item) { return true; }
+				},
+				{
+					Scripts = "scripts/skills/el_entrys/helmet_entrys/el_special_defense_undead_entry",
+					function EL_ifEligible(_item) { return true; }
 				}
 			],
 		},
@@ -752,6 +780,364 @@ gt.Const.EL_Helmet <- {
 			EL_Vision = {
 				ID = "el_helmet_entry.vision",
 				Vision = 2
+			},
+			EL_SpecialDefenseBeast = {
+				ID = "el_helmet_entry.special_defense_beast",
+				BaseDamageHeadReduction = 50,
+				RandomMinDamageHeadReduction = [
+					1,
+					1,
+					11,
+					21,
+					50
+				],
+				RandomMaxDamageHeadReduction = [
+					20,
+					30,
+					40,
+					50,
+					50
+				],
+				ColourRange = [
+					6,
+					7,
+					8,
+					9,
+					10
+				],
+				ValidEntity = [
+					this.Const.EntityType.Ghoul,
+					this.Const.EntityType.Wolf,
+					this.Const.EntityType.Wardog,
+					this.Const.EntityType.ArmoredWardog,
+					this.Const.EntityType.Direwolf,
+					this.Const.EntityType.Lindwurm,
+					this.Const.EntityType.Unhold,
+					this.Const.EntityType.UnholdFrost,
+					this.Const.EntityType.UnholdBog,
+					this.Const.EntityType.Spider,
+					this.Const.EntityType.SpiderEggs,
+					this.Const.EntityType.Alp,
+					this.Const.EntityType.Hexe,
+					this.Const.EntityType.Schrat,
+					this.Const.EntityType.SchratSmall,
+					this.Const.EntityType.Kraken,
+					this.Const.EntityType.KrakenTentacle,
+					this.Const.EntityType.AlpShadow,
+					this.Const.EntityType.BarbarianUnhold,
+					this.Const.EntityType.BarbarianUnholdFrost,
+					this.Const.EntityType.Warhound,
+					this.Const.EntityType.TricksterGod,
+					this.Const.EntityType.Serpent,
+					this.Const.EntityType.SandGolem,
+					this.Const.EntityType.Hyena,
+					this.Const.EntityType.LegendCat,
+					this.Const.EntityType.LegendWhiteDirewolf,
+					this.Const.EntityType.LegendSkinGhoul,
+					this.Const.EntityType.LegendStollwurm,
+					this.Const.EntityType.LegendRockUnhold,
+					this.Const.EntityType.LegendRedbackSpider,
+					this.Const.EntityType.LegendDemonAlp,
+					this.Const.EntityType.LegendHexeLeader,
+					this.Const.EntityType.LegendGreenwoodSchrat,
+					this.Const.EntityType.LegendGreenwoodSchratSmall,
+					this.Const.EntityType.LegendWhiteWarwolf,
+					this.Const.EntityType.LegendBear,
+					this.Const.EntityType.LegendHorse
+				]
+			},
+			EL_SpecialDefenseGreenskin = {
+				ID = "el_helmet_entry.special_defense_greenskin",
+				BaseDamageHeadReduction = 50,
+				RandomMinDamageHeadReduction = [
+					1,
+					1,
+					11,
+					21,
+					50
+				],
+				RandomMaxDamageHeadReduction = [
+					20,
+					30,
+					40,
+					50,
+					50
+				],
+				ColourRange = [
+					6,
+					7,
+					8,
+					9,
+					10
+				],
+				ValidEntity = [
+					this.Const.EntityType.OrcBerserker,
+					this.Const.EntityType.OrcYoung,
+					this.Const.EntityType.OrcWarrior,
+					this.Const.EntityType.OrcWarlord,
+					this.Const.EntityType.LegendOrcBehemoth,
+					this.Const.EntityType.LegendOrcElite,
+					this.Const.EntityType.GoblinFighter,
+					this.Const.EntityType.GoblinAmbusher,
+					this.Const.EntityType.GoblinLeader,
+					this.Const.EntityType.GoblinShaman,
+					this.Const.EntityType.GoblinWolfrider,
+					this.Const.EntityType.KoboldWolfrider,
+					this.Const.EntityType.KoboldFighter,
+					this.Const.EntityType.GreenskinCatapult
+				]
+			},
+			EL_SpecialDefenseNortherner = {
+				ID = "el_helmet_entry.special_defense_northerner",
+				BaseDamageHeadReduction = 50,
+				RandomMinDamageHeadReduction = [
+					1,
+					1,
+					11,
+					21,
+					50
+				],
+				RandomMaxDamageHeadReduction = [
+					20,
+					30,
+					40,
+					50,
+					50
+				],
+				ColourRange = [
+					6,
+					7,
+					8,
+					9,
+					10
+				],
+				ValidEntity = [
+					this.Const.EntityType.BanditThug,
+					this.Const.EntityType.BanditPoacher,
+					this.Const.EntityType.BanditMarksman,
+					this.Const.EntityType.BanditRaider,
+					this.Const.EntityType.BanditLeader,
+					this.Const.EntityType.Swordmaster,
+					this.Const.EntityType.HedgeKnight,
+					this.Const.EntityType.MasterArcher,
+					this.Const.EntityType.Cultist,
+					this.Const.EntityType.Wildman,
+					this.Const.EntityType.BarbarianThrall,
+					this.Const.EntityType.BarbarianMarauder,
+					this.Const.EntityType.BarbarianChampion,
+					this.Const.EntityType.BarbarianDrummer,
+					this.Const.EntityType.BarbarianBeastmaster,
+					this.Const.EntityType.BarbarianChosen,
+					this.Const.EntityType.BarbarianMadman,
+					this.Const.EntityType.BanditRabble,
+					this.Const.EntityType.BanditVeteran,
+					this.Const.EntityType.BanditWarlord,
+					this.Const.EntityType.BanditOutrider,
+					this.Const.EntityType.BanditRabblePoacher,
+					this.Const.EntityType.BanditVermes,
+					this.Const.EntityType.Oathbringer,
+				]
+			},
+			EL_SpecialDefenseNorthNoble = {
+				ID = "el_helmet_entry.special_defense_north_noble",
+				BaseDamageHeadReduction = 50,
+				RandomMinDamageHeadReduction = [
+					1,
+					1,
+					11,
+					21,
+					50
+				],
+				RandomMaxDamageHeadReduction = [
+					20,
+					30,
+					40,
+					50,
+					50
+				],
+				ColourRange = [
+					6,
+					7,
+					8,
+					9,
+					10
+				],
+				ValidEntity = [
+					this.Const.EntityType.Militia,
+					this.Const.EntityType.MilitiaRanged,
+					this.Const.EntityType.MilitiaVeteran,
+					this.Const.EntityType.MilitiaCaptain,
+					this.Const.EntityType.BountyHunter,
+					this.Const.EntityType.Peasant,
+					this.Const.EntityType.CaravanHand,
+					this.Const.EntityType.CaravanGuard,
+					this.Const.EntityType.Footman,
+					this.Const.EntityType.Greatsword,
+					this.Const.EntityType.Billman,
+					this.Const.EntityType.Arbalester,
+					this.Const.EntityType.StandardBearer,
+					this.Const.EntityType.Sergeant,
+					this.Const.EntityType.Knight,
+					this.Const.EntityType.Mercenary,
+					this.Const.EntityType.MercenaryRanged,
+					this.Const.EntityType.Swordmaster,
+					this.Const.EntityType.HedgeKnight,
+					this.Const.EntityType.MasterArcher,
+					this.Const.EntityType.LegendPeasantButcher,
+					this.Const.EntityType.LegendPeasantBlacksmith,
+					this.Const.EntityType.LegendPeasantMonk,
+					this.Const.EntityType.LegendPeasantFarmhand,
+					this.Const.EntityType.LegendPeasantMinstrel,
+					this.Const.EntityType.LegendPeasantPoacher,
+					this.Const.EntityType.LegendPeasantWoodsman,
+					this.Const.EntityType.LegendPeasantMiner,
+					this.Const.EntityType.LegendPeasantSquire,
+					this.Const.EntityType.LegendPeasantWitchHunter,
+					this.Const.EntityType.LegendHalberdier,
+					this.Const.EntityType.LegendSlinger,
+					this.Const.EntityType.LegendFencer,
+					this.Const.EntityType.LegendCatapult,
+					this.Const.EntityType.BanditRabblePoacher,
+					this.Const.EntityType.BanditVermes,
+					this.Const.EntityType.FreeCompanySpearman,
+					this.Const.EntityType.FreeCompanySlayer,
+					this.Const.EntityType.FreeCompanyFootman,
+					this.Const.EntityType.FreeCompanyArcher,
+					this.Const.EntityType.FreeCompanyCrossbow,
+					this.Const.EntityType.FreeCompanyLongbow,
+					this.Const.EntityType.FreeCompanyBillman,
+					this.Const.EntityType.FreeCompanyPikeman,
+					this.Const.EntityType.FreeCompanyInfantry,
+					this.Const.EntityType.FreeCompanyLeader,
+					this.Const.EntityType.FreeCompanyLeaderLow,
+				]
+			},
+			EL_SpecialDefenseSoutherner = {
+				ID = "el_helmet_entry.special_defense_southerner",
+				BaseDamageHeadReduction = 50,
+				RandomMinDamageHeadReduction = [
+					1,
+					1,
+					11,
+					21,
+					50
+				],
+				RandomMaxDamageHeadReduction = [
+					20,
+					30,
+					40,
+					50,
+					50
+				],
+				ColourRange = [
+					6,
+					7,
+					8,
+					9,
+					10
+				],
+				ValidEntity = [
+					this.Const.EntityType.SatoManhunter,
+					this.Const.EntityType.SatoManhunterVeteran,
+					this.Const.EntityType.DesertStalker,
+					this.Const.EntityType.Executioner,
+					this.Const.EntityType.DesertDevil
+				]
+			},
+			EL_SpecialDefenseSouthNoble = {
+				ID = "el_helmet_entry.special_defense_south_noble",
+				BaseDamageHeadReduction = 50,
+				RandomMinDamageHeadReduction = [
+					1,
+					1,
+					11,
+					21,
+					50
+				],
+				RandomMaxDamageHeadReduction = [
+					20,
+					30,
+					40,
+					50,
+					50
+				],
+				ColourRange = [
+					6,
+					7,
+					8,
+					9,
+					10
+				],
+				ValidEntity = [
+					this.Const.EntityType.Conscript,
+					this.Const.EntityType.Gunner,
+					this.Const.EntityType.Officer,
+					this.Const.EntityType.Engineer,
+					this.Const.EntityType.Assassin,
+					this.Const.EntityType.Gladiator,
+					this.Const.EntityType.PeasantSouthern,
+					this.Const.EntityType.Mortar,
+					this.Const.EntityType.Slave,
+					this.Const.EntityType.NomadCutthroat,
+					this.Const.EntityType.NomadOutlaw,
+					this.Const.EntityType.NomadSlinger,
+					this.Const.EntityType.NomadArcher,
+					this.Const.EntityType.NomadLeader,
+				]
+			},
+			EL_SpecialDefenseUndead = {
+				ID = "el_helmet_entry.special_defense_undead",
+				BaseDamageHeadReduction = 50,
+				RandomMinDamageHeadReduction = [
+					1,
+					1,
+					11,
+					21,
+					50
+				],
+				RandomMaxDamageHeadReduction = [
+					20,
+					30,
+					40,
+					50,
+					50
+				],
+				ColourRange = [
+					6,
+					7,
+					8,
+					9,
+					10
+				],
+				ValidEntity = [
+					this.Const.EntityType.Necromancer,
+					this.Const.EntityType.Zombie,
+					this.Const.EntityType.ZombieYeoman,
+					this.Const.EntityType.ZombieKnight,
+					this.Const.EntityType.ZombieBoss,
+					this.Const.EntityType.SkeletonLight,
+					this.Const.EntityType.SkeletonMedium,
+					this.Const.EntityType.SkeletonHeavy,
+					this.Const.EntityType.SkeletonPriest,
+					this.Const.EntityType.SkeletonBoss,
+					this.Const.EntityType.Vampire,
+					this.Const.EntityType.Ghost,
+					this.Const.EntityType.ZombieBetrayer,
+					this.Const.EntityType.SkeletonLich,
+					this.Const.EntityType.SkeletonLichMirrorImage,
+					this.Const.EntityType.SkeletonPhylactery,
+					this.Const.EntityType.ZombieTreasureHunter,
+					this.Const.EntityType.FlyingSkull,
+					this.Const.EntityType.LegendBanshee,
+					this.Const.EntityType.LegendDemonHound,
+					this.Const.EntityType.LegendVampireLord,
+					this.Const.EntityType.SkeletonGladiator,
+					this.Const.EntityType.LegendMummyLight,
+					this.Const.EntityType.LegendMummyMedium,
+					this.Const.EntityType.LegendMummyHeavy,
+					this.Const.EntityType.LegendMummyQueen,
+					this.Const.EntityType.LegendMummyPriest
+				]
 			}
 		}
 	},

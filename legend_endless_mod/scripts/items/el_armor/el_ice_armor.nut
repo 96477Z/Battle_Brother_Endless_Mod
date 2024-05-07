@@ -85,6 +85,13 @@ this.el_ice_armor <- this.inherit("scripts/items/armor/armor", {
 
     function EL_upgradeRank()
     {
+		for(local index = 0; index < this.m.EL_EntryList.len(); ++index)
+        {
+            if(this.m.EL_EntryList[index].getID() == "el_special_entry.repair_by_engrgy")
+            {
+                this.m.EL_EntryList.remove(index);
+            }
+        }
         this.armor.EL_upgradeRank();
         EL_addRepairEntry();
     }

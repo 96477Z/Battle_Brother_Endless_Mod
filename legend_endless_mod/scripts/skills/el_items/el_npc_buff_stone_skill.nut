@@ -36,12 +36,14 @@ this.el_npc_buff_stone_skill <- this.inherit("scripts/skills/skill", {
 
 	function onCombatFinished()
 	{
-		if(this.m.EL_RankLevel > this.getContainer().getActor().El_getRankLevel())
+		if(this.m.EL_RankLevel > this.getContainer().getActor().EL_getRankLevel())
 		{
-			--EL_DecreaseLevelCount;
-			if(EL_DecreaseLevelCount == 0)
+			--this.m.EL_DecreaseLevelCount;
+			--this.m.EL_RankLevel;
+			if(this.m.EL_DecreaseLevelCount == 0)
 			{
-				EL_DecreaseLevelCount = 3;
+				this.m.EL_DecreaseLevelCount = 3;
+				local skills = this.getContainer().getActor().getSkills().m.Skills;
 				foreach(skill in skills) {
 					if(skill.EL_isNPCBuff()) {
 						skill.EL_setRankLevel(skill.EL_getRankLevel() - 1);
@@ -80,7 +82,7 @@ this.el_npc_buff_stone_skill <- this.inherit("scripts/skills/skill", {
 				});
 			}
 		}
-		if(this.m.EL_RankLevel > this.getContainer().getActor().El_getRankLevel())
+		if(this.m.EL_RankLevel > this.getContainer().getActor().EL_getRankLevel())
 		{
 			ret.push({
 				id = 10,

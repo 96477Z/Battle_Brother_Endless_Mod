@@ -69,7 +69,7 @@ this.el_reduce_direct_damage_received_mult_entry <- this.inherit("scripts/skills
 			_properties.DamageReceivedDirectMult *= (1.0 - this.Math.round(this.Math.pow(1.0 - this.m.EL_CurrentLevel * this.m.EL_ReduceDirectDamageReceivedMult * 0.01, this.m.EL_StrengthLevel) * 100) * 0.01);
 		}
 	}
-
+	
 	function EL_refreshTotalEntry( _EL_totalEntry )
 	{
 		++_EL_totalEntry.m.EL_EntryNum;

@@ -319,30 +319,36 @@ gt.Const.EL_Accessory <- {
 					function EL_ifEligible(_item) { return true; }
                     function EL_ifNeedRemove(_entryLevel) { return false; }
 				},
-				// {
-				// 	Scripts = "scripts/skills/el_entrys/accessory_entrys/el_special_effect_greenskin_entry",
-				// 	function EL_ifEligible(_item) { return true; }
-				// },
-				// {
-				// 	Scripts = "scripts/skills/el_entrys/accessory_entrys/el_special_effect_northerner_entry",
-				// 	function EL_ifEligible(_item) { return true; }
-				// },
-				// {
-				// 	Scripts = "scripts/skills/el_entrys/accessory_entrys/el_special_effect_north_noble_entry",
-				// 	function EL_ifEligible(_item) { return true; }
-				// },
-				// {
-				// 	Scripts = "scripts/skills/el_entrys/accessory_entrys/el_special_effect_southerner_entry",
-				// 	function EL_ifEligible(_item) { return true; }
-				// },
-				// {
-				// 	Scripts = "scripts/skills/el_entrys/accessory_entrys/el_special_effect_south_noble_entry",
-				// 	function EL_ifEligible(_item) { return true; }
-				// },
-				// {
-				// 	Scripts = "scripts/skills/el_entrys/accessory_entrys/el_special_effect_undead_entry",
-				// 	function EL_ifEligible(_item) { return true; }
-				// }
+				{
+					Scripts = "scripts/skills/el_entrys/accessory_entrys/el_special_effect_greenskin_entry",
+					function EL_ifEligible(_item) { return true; }
+                    function EL_ifNeedRemove(_entryLevel) { return false; }
+				},
+				{
+					Scripts = "scripts/skills/el_entrys/accessory_entrys/el_special_effect_northerner_entry",
+					function EL_ifEligible(_item) { return true; }
+                    function EL_ifNeedRemove(_entryLevel) { return false; }
+				},
+				{
+					Scripts = "scripts/skills/el_entrys/accessory_entrys/el_special_effect_north_noble_entry",
+					function EL_ifEligible(_item) { return true; }
+                    function EL_ifNeedRemove(_entryLevel) { return false; }
+				},
+				{
+					Scripts = "scripts/skills/el_entrys/accessory_entrys/el_special_effect_southerner_entry",
+					function EL_ifEligible(_item) { return true; }
+                    function EL_ifNeedRemove(_entryLevel) { return false; }
+				},
+				{
+					Scripts = "scripts/skills/el_entrys/accessory_entrys/el_special_effect_south_noble_entry",
+					function EL_ifEligible(_item) { return true; }
+                    function EL_ifNeedRemove(_entryLevel) { return false; }
+				},
+				{
+					Scripts = "scripts/skills/el_entrys/accessory_entrys/el_special_effect_undead_entry",
+					function EL_ifEligible(_item) { return true; }
+                    function EL_ifNeedRemove(_entryLevel) { return false; }
+				}
 			],
 		},
 		RarityEntryChane = [
@@ -691,7 +697,7 @@ gt.Const.EL_Accessory <- {
 					50
 				]
 			},
-			EL_SpeciaEffectBeast = {
+			EL_SpecialEffectBeast = {
 				ID = "el_accessory_entry.special_effect_beast",
 				BaseDamageMult = 30,
 				RandomMinDamageMult = [
@@ -756,7 +762,7 @@ gt.Const.EL_Accessory <- {
 					this.Const.EntityType.LegendHorse
 				]
 			},
-			EL_SpeciaEffectGreenskin = {
+			EL_SpecialEffectGreenskin = {
 				ID = "el_accessory_entry.special_effect_greenskin",
 				BaseDamageMult = 30,
 				RandomMinDamageMult = [
@@ -797,7 +803,7 @@ gt.Const.EL_Accessory <- {
 					this.Const.EntityType.GreenskinCatapult
 				]
 			},
-			EL_SpeciaEffectNortherner = {
+			EL_SpecialEffectNortherner = {
 				ID = "el_accessory_entry.special_effect_northerner",
 				BaseDamageMult = 30,
 				RandomMinDamageMult = [
@@ -922,7 +928,7 @@ gt.Const.EL_Accessory <- {
 					this.Const.EntityType.FreeCompanyLeaderLow,
 				]
 			},
-			EL_SpeciaEffectSoutherner = {
+			EL_SpecialEffectSoutherner = {
 				ID = "el_accessory_entry.special_effect_southerner",
 				BaseDamageMult = 30,
 				RandomMinDamageMult = [
@@ -954,7 +960,7 @@ gt.Const.EL_Accessory <- {
 					this.Const.EntityType.DesertDevil
 				]
 			},
-			EL_SpeciaEffectSouthNoble = {
+			EL_SpecialEffectSouthNoble = {
 				ID = "el_accessory_entry.special_effect_south_noble",
 				BaseDamageMult = 30,
 				RandomMinDamageMult = [
@@ -995,7 +1001,7 @@ gt.Const.EL_Accessory <- {
 					this.Const.EntityType.NomadLeader,
 				]
 			},
-			EL_SpeciaEffectUndead = {
+			EL_SpecialEffectUndead = {
 				ID = "el_accessory_entry.special_effect_undead",
 				BaseDamageMult = 30,
 				RandomMinDamageMult = [

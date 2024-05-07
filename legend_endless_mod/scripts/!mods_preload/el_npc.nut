@@ -1288,9 +1288,13 @@ local gt = getroottable();
                         {
                             this.EL_addEquipmentEssence(i, result[i] * 3);
                         }
-                        else
+                        else if(i != 4)
                         {
                             this.EL_addEquipmentEssence(i + 1, result[i]);
+                        }
+                        else
+                        {
+                            this.logInfo("Script Error: item id:" + item.getID());
                         }
                     }
                     item.EL_setRankLevel(item.EL_getRankLevelMax());

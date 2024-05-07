@@ -66,6 +66,10 @@ this.el_npc_buff_stone_item <- this.inherit("scripts/items/trade/trading_good_it
 		foreach(skill in skills.m.Skills) {
 			if(skill.EL_isNPCBuff()) {
 				skills_to_remove.push(skill);
+				continue;
+			}
+			if(skill.getID() == "el_items.npc_buff_stone_skill") {
+				skills_to_remove.push(skill);
 			}
 		}
 		foreach(skill in skills_to_remove) {
