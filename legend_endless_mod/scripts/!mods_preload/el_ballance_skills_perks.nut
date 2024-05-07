@@ -1675,9 +1675,12 @@ gt.Const.EL_Config.EL_modStrings <- function()
         {
             ID = "perk.gifted",
             tooltip = "当你天生有天赋的时候，雇佣兵的生活就会变得轻松。这个角色立即获得两次以能掷骰出的最大点数给属性加点的机会，但没有天赋的加成。"
-        }
-
-		    ]
+        },
+		{
+			ID = "perk.legend_berserker_rage",
+			tooltip = "Gain rage stacks over the course of a battle. Each stack increases Damage by [color=" + this.Const.UI.Color.PositiveValue + "]1[/color], initiative by [color=" + this.Const.UI.Color.PositiveValue + "]1[/color], resolve by [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] and reduces damage received by [color=" + this.Const.UI.Color.PositiveValue + "]4%[/color]. Gain [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] stack each time you take damage, and [color=" + this.Const.UI.Color.PositiveValue + "]3[/color] stacks each time you kill. Lose [color=" + this.Const.UI.Color.NegativeValue + "]2[/color] rage stacks per turn.",
+		}
+	];
 
     foreach( i, perk in gt.Const.Perks.PerkDefObjects )
     {

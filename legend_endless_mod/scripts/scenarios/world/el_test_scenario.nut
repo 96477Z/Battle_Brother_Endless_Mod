@@ -95,9 +95,15 @@ this.el_test_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		// this.World.Assets.getStash().add(this.new("scripts/items/el_weapon/el_mummy_curse_cleaver"));
 		// this.World.Assets.getStash().add(this.new("scripts/items/el_weapon/el_skyfire_cannon"));
 		local npc_buffs = [];
-		local skill = this.new("scripts/skills/el_npc_buffs/el_lightning_speed_npc_buff");
+		local skill = this.new("scripts/skills/el_npc_buffs/el_growth_npc_buff");
 		skill.EL_setRankLevel(2);
 		npc_buffs.push(skill);
+		// local skill = this.new("scripts/skills/el_npc_buffs/el_growth_npc_buff");
+		// skill.EL_setRankLevel(2);
+		// npc_buffs.push(skill);
+		// local skill = this.new("scripts/skills/el_npc_buffs/el_growth_npc_buff");
+		// skill.EL_setRankLevel(2);
+		// npc_buffs.push(skill);
 		local magic_stone = this.new("scripts/items/el_misc/el_npc_buff_stone_item");
         magic_stone.EL_generateByNPCBuffs(npc_buffs);
 		this.World.Assets.getStash().add(magic_stone);
@@ -118,6 +124,9 @@ this.el_test_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		bros[0].m.Skills.add(this.new("scripts/skills/perks/perk_ptr_know_their_weakness"));
 		
 		bros[0].m.Skills.add(this.new("scripts/skills/perks/perk_legend_cascade"));
+		
+		bros[0].m.Skills.add(this.new("scripts/skills/effects/legend_berserker_rage_effect"));
+		
 	}
 
 	function onSpawnPlayer()
