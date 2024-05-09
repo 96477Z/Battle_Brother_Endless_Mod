@@ -41,7 +41,7 @@ this.el_landslide_cashing_entry <- this.inherit("scripts/skills/skill", {
 				id = 6,
                 type = "text",
                 icon = "ui/icons/special.png",
-				text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]当你攻击范围内的敌人被攻击时，你将对其进行一次免费的追击[/color]"
+				text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]当你攻击范围内的敌人被近战攻击时，你将对其进行一次免费的追击[/color]"
 			}
         ]
 		if (!EL_isUsable())

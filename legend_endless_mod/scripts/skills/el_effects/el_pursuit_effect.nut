@@ -34,7 +34,7 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 	
 	function EL_useFreeSkill( _skill, _targetEntity )
 	{
-        if (_targetEntity == null || !_targetEntity.isAlive() || _targetEntity.isDying() || !_skill.isAttack())
+        if (_targetEntity == null || !_targetEntity.isAlive() || _targetEntity.isDying() || !_skill.isAttack() || _skill.isRanged())
 		{
 			return;
 		}
