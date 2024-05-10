@@ -397,7 +397,7 @@ local gt = getroottable();
 				for( local i = 0; i != allInjuries.len(); i = i )
 				{
 					local inj = allInjuries[i];
-					if ( inj.getID() == "injury.missing_finger" || inj.getID() == "injury.missing_nose" || inj.getID() == "injury.missing_ear" )
+					if (inj.getID() == "injury.legend_scarred_injury" || inj.getID() == "injury.missing_finger" || inj.getID() == "injury.missing_nose" || inj.getID() == "injury.missing_ear" )
 					{
 						injuries.push({
 							id = inj.getID(),
@@ -464,7 +464,7 @@ local gt = getroottable();
 	//		injury.setTreated(true);
 	//		this.World.Assets.addMoney(-injury.getPrice());
 
-			if ( _data[1] == "injury.missing_finger" || _data[1] == "injury.missing_nose" || _data[1] == "injury.missing_ear" )
+			if (_data[1] == "injury.legend_scarred_injury" || _data[1] == "injury.missing_finger" || _data[1] == "injury.missing_nose" || _data[1] == "injury.missing_ear" )
 			{ this.World.Assets.addMoney(-this.Math.floor(500 * (1 + this.Const.EL_Player.EL_HealInjury.LevelMult * entity.getLevel()) * this.Const.EL_Player.EL_HealInjury.PermanentMult)); }
 			else if ( _data[1] == "injury.weakened_heart" || _data[1] == "injury.traumatized" || _data[1] == "injury.missing_hand" || _data[1] == "injury.missing_eye" || _data[1] == "injury.maimed_foot" || _data[1] == "injury.collapsed_lung_part" || _data[1] == "injury.broken_knee" || _data[1] == "injury.broken_elbow_joint" || _data[1] == "injury.brain_damage" )
 			{ this.World.Assets.addMoney(-this.Math.floor(1000 * (1 + this.Const.EL_Player.EL_HealInjury.LevelMult * entity.getLevel()) * this.Const.EL_Player.EL_HealInjury.PermanentMult)); }
