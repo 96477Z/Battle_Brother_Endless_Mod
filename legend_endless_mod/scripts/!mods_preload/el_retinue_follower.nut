@@ -3,6 +3,13 @@ local gt = getroottable();
 ::mods_registerMod("el_retinue_follower", 1, "el_retinue_follower");
 ::mods_queue(null, "el_player_npc", function ()
 {
+	::mods_hookNewObjectOnce("retinue/retinue_manager", function ( o )
+	{
+		o.hasFollowersToRemove = function()
+		{
+            return false;
+        }
+	});
 	::mods_hookExactClass("retinue/followers/agent_follower", function( o )
 	{
 		local create = o.create;

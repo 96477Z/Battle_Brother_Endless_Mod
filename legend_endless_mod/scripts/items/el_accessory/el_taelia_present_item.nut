@@ -99,6 +99,12 @@ this.el_taelia_present_item <- this.inherit("scripts/items/accessory/accessory",
 		}
 	}
 
+	function EL_upgradeLevel()
+	{
+		this.accessory.EL_upgradeLevel();
+		this.World.State.getPlayer().calculateStashModifier();
+	}
+
 	function EL_upgradeRank()
 	{
 		local has_rarity_entry = this.m.EL_RarityEntry != null;
@@ -107,6 +113,7 @@ this.el_taelia_present_item <- this.inherit("scripts/items/accessory/accessory",
 		{
 			this.EL_setRarityEntry(this.new("scripts/skills/el_entrys/rarity_entrys/el_vehemence_of_the_sky_entry"));
 		}
+		this.World.State.getPlayer().calculateStashModifier();
 	}
 
 	function onUpdateProperties( _properties )
