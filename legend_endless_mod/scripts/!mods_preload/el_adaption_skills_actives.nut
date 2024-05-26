@@ -643,12 +643,11 @@ local gt = getroottable();
 
             if (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer)
             {
-                this.onPerformAttack(tag);
-
                 if (!_user.isPlayerControlled() && _targetTile.getEntity().isPlayerControlled())
                 {
                     _user.getTile().addVisibilityForFaction(this.Const.Faction.Player);
                 }
+                this.onPerformAttack(tag);
             }
             else
             {

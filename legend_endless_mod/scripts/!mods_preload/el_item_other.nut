@@ -244,7 +244,10 @@ local gt = getroottable();
 					_item.onUnequip();
 					_item.setContainer(null);
 					_item.setCurrentSlotType(this.Const.ItemSlot.None);
-					this.m.Items[_item.getSlotType()][i] = null;
+					if(_item.getSlotType() != -1)
+					{
+						this.m.Items[_item.getSlotType()][i] = null;
+					}
 
 					if (_item.getBlockedSlotType() != null)
 					{
