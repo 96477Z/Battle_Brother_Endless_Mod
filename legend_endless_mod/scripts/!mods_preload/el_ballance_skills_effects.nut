@@ -599,7 +599,7 @@ local gt = getroottable();
 			};
             return result;
         }
-        
+
         o.onUpdate = function( _properties )
         {
             this.m.IsHidden = this.m.RageStacks == 0;
@@ -1501,7 +1501,7 @@ local gt = getroottable();
 				::Const.ItemSlot.Head
 			]);
             local extra_movement_fatigue_cost = this.Math.floor((armorFat / (1.0 + actor.getLevel() * 0.08)) * 0.05 - 1);
-            
+
             if(this.World.Flags.get("EL_HasArmorAmbitionRule"))
             {
                 extra_movement_fatigue_cost = 0;
@@ -1603,7 +1603,7 @@ local gt = getroottable();
                 ::Const.ItemSlot.Body,
                 ::Const.ItemSlot.Head
             ]);
-            
+
             if(!this.World.Flags.get("EL_HasArmorAmbitionRule"))
             {
                 local extra_movement_fatigue_cost = this.Math.floor((armorFat / (1.0 + actor.getLevel() * 0.08)) * 0.05 - 1);
@@ -2303,6 +2303,55 @@ local gt = getroottable();
                 actor.getSprite("status_stunned").Visible = true;
                 actor.setDirty(true);
             }
+        }
+
+	});
+
+	::mods_hookExactClass("skills/effects/zombie_poison_effect", function(o){
+
+        o.getTooltip = function()
+        {
+            local remaining = this.m.TurnsLeft;
+            return [
+                {
+                    id = 1,
+                    type = "title",
+                    text = this.getName()
+                },
+                {
+                    id = 2,
+                    type = "description",
+                    text = this.getDescription()
+                },
+                {
+                    id = 10,
+                    type = "text",
+                    icon = "ui/icons/action_points.png",
+                    text = "[color=" + this.Const.UI.Color.NegativeValue + "]-" + 1 * remaining + "[/color] Action Points"
+                },
+                {
+                    id = 11,
+                    type = "text",
+                    icon = "ui/icons/vision.png",
+                    text = "[color=" + this.Const.UI.Color.NegativeValue + "]-" + 1 * remaining + "[/color] Vision"
+                },
+                {
+                    id = 12,
+                    type = "text",
+                    icon = "ui/icons/initiative.png",
+                    text = "[color=" + this.Const.UI.Color.NegativeValue + "]-" + 10 * remaining + "[/color] Initiative"
+                }
+            ];
+        }
+
+        o.onUpdate = function( _properties )
+        {
+            local AP = this.Math.max(1, 1 * this.m.TurnsLeft);
+            local Init = this.Math.max(1, 10 * this.m.TurnsLeft);
+            local Vis = this.Math.max(1, 1 * this.m.TurnsLeft);
+            _properties.ActionPoints -= AP;
+            _properties.Initiative -= Init;
+            _properties.Vision -= Vis;
         }
 
 	});
