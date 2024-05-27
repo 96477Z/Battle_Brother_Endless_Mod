@@ -188,21 +188,24 @@ this.el_lichking_overhead_strike <- this.inherit("scripts/skills/skill", {
         }
         foreach (target in affect_targets)
         {
-            local properties = this.getContainer().buildPropertiesForUse(this, target);
-            properties.DamageTotalMult *= this.Const.EL_LichKing.Weapon.NormalSkill.AdditionDamagePersent[this.m.EL_RankLevel];
-            local info = {
-                Skill = this,
-                Container = this.getContainer(),
-                User = _user,
-                TargetEntity = target,
-                Properties = properties,
-                DistanceToTarget = _user.getTile().getDistanceTo(target.getTile())
-            };
-            this.onScheduledTargetHit(info);
-            local difficulty = _user.getBravery() * this.Const.EL_LichKing.Weapon.NormalSkill.MoraleCheck.AdditionMoraleCheckPersent[this.m.EL_RankLevel] + this.Const.EL_LichKing.Weapon.NormalSkill.MoraleCheck.BaseOffset
-                            this.Const.EL_LichKing.Weapon.NormalSkill.MoraleCheck.RankFactor * (target.EL_getRankLevel() - _user.EL_getRankLevel()) +
-                            this.Math.pow(this.Const.EL_LichKing.Weapon.NormalSkill.MoraleCheck.CombatLevelFactor, this.Math.abs(target.EL_getCombatLevel() - _user.EL_getCombatLevel())) * (target.EL_getCombatLevel() - _user.EL_getCombatLevel());
-            target.checkMorale(-1, difficulty);
+			if(target != null && !target.isDying() && target.isAlive())
+			{
+				local properties = this.getContainer().buildPropertiesForUse(this, target);
+				properties.DamageTotalMult *= this.Const.EL_LichKing.Weapon.NormalSkill.AdditionDamagePersent[this.m.EL_RankLevel];
+				local info = {
+					Skill = this,
+					Container = this.getContainer(),
+					User = _user,
+					TargetEntity = target,
+					Properties = properties,
+					DistanceToTarget = _user.getTile().getDistanceTo(target.getTile())
+				};
+				this.onScheduledTargetHit(info);
+				local difficulty = _user.getBravery() * this.Const.EL_LichKing.Weapon.NormalSkill.MoraleCheck.AdditionMoraleCheckPersent[this.m.EL_RankLevel] + this.Const.EL_LichKing.Weapon.NormalSkill.MoraleCheck.BaseOffset
+								this.Const.EL_LichKing.Weapon.NormalSkill.MoraleCheck.RankFactor * (target.EL_getRankLevel() - _user.EL_getRankLevel()) +
+								this.Math.pow(this.Const.EL_LichKing.Weapon.NormalSkill.MoraleCheck.CombatLevelFactor, this.Math.abs(target.EL_getCombatLevel() - _user.EL_getCombatLevel())) * (target.EL_getCombatLevel() - _user.EL_getCombatLevel());
+				target.checkMorale(-1, difficulty);
+			}
         }
 	}
 
