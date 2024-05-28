@@ -54,4 +54,30 @@ local gt = getroottable();
         }
 
 	});
+
+    ::mods_hookExactClass("skills/effects/shieldwall_effect", function(o){
+        local onUpdate = o.onUpdate;
+        o.onUpdate = function( _properties )
+        {
+            local item = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+            if (item != null && item.isItemType(this.Const.Items.ItemType.Shield) && item.getCondition() > 0)
+            {
+                local mult = 1.0;
+                local proficiencyBonus = 0;
+
+                if (this.getContainer().getActor().getCurrentProperties().IsSpecializedInShields)
+                {
+                    mult = mult * 1.25;
+                }
+
+                if (this.getContainer().getActor().getCurrentProperties().IsProficientWithShieldSkills)
+                {
+                    proficiencyBonus = 5;
+                }
+
+                _properties.MeleeDefense += this.Math.floor(item.getMeleeDefense() * mult) + proficiencyBonus;
+                _properties.RangedDefense += this.Math.floor(item.getRangedDefense() * mult) + proficiencyBonus;
+            }
+        }
+	});
 });

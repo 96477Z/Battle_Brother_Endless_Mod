@@ -17,7 +17,7 @@ this.el_special_defense_undead_entry <- this.inherit("scripts/skills/el_entrys/e
 			return {
 				id = _id,
 				type = "text",
-				text = "[color=" + colour + "]被兽人和哥布林攻击时额外 + " + this.Math.ceil(this.m.EL_CurrentLevel * this.m.EL_Bonus) + "身体血量固定减伤和身体护甲固定减伤[/color]"
+				text = "[color=" + colour + "]被亡灵攻击时额外 + " + this.Math.ceil(this.m.EL_CurrentLevel * this.m.EL_Bonus) + "身体血量固定减伤和身体护甲固定减伤[/color]"
 			};
 		}
 		else
@@ -25,7 +25,7 @@ this.el_special_defense_undead_entry <- this.inherit("scripts/skills/el_entrys/e
 			return {
 				id = _id,
 				type = "text",
-				text = "[color=" + colour + "]被兽人和哥布林攻击时额外 + " + this.Math.ceil(this.m.EL_Bonus) + "身体血量固定减伤和身体护甲固定减伤[/color]"
+				text = "[color=" + colour + "]被亡灵攻击时额外 + " + this.Math.ceil(this.m.EL_Bonus) + "身体血量固定减伤和身体护甲固定减伤[/color]"
 			};
 		}
 	}	
