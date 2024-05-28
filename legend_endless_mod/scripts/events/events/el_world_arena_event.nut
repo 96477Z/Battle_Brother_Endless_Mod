@@ -192,6 +192,16 @@ this.el_world_arena_event <- this.inherit("scripts/events/event", {
                 p.Players = [];
                 p.Entities = [];
 
+                local roster = this.World.getPlayerRoster().getAll();
+
+                foreach( bro in roster )
+                {
+                    if (bro.isInReserves() == false)
+                    {
+                        p.Players.push(bro);
+                    }
+                }
+
                 local party = this.new("scripts/entity/world/party");
                 local level = fight_enemy[r].level;
                 party.EL_setFaction(this.World.FactionManager.getFactionOfType(this.Const.FactionType.Arena).getID());
