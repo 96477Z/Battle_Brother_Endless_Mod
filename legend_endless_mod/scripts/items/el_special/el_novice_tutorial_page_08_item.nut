@@ -4,7 +4,7 @@ this.el_novice_tutorial_page_08_item <- this.inherit("scripts/items/el_special/e
 	function create()
 	{
 		this.m.page_num_str = "08";
-		this.m.page_title_str = "玩家单位修改";
+		this.m.page_title_str = "玩家修改";
 		this.m.page_info_str = "说明";
 		this.el_novice_tutorial_page_item.create();
 	}
