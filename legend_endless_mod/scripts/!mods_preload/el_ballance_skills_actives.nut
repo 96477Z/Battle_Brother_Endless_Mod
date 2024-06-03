@@ -192,7 +192,10 @@ local gt = getroottable();
             }
             return success;
         }
-        
+	});
+
+    ::mods_hookExactClass("skills/actives/legend_chain_lightning", function(o)
+    {
         o.isUsable = function()
         {
             local weapon = this.getContainer().getActor().getMainhandItem();
