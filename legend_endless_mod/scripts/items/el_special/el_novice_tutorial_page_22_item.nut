@@ -12,7 +12,8 @@ this.el_novice_tutorial_page_22_item <- this.inherit("scripts/items/el_special/e
 		+ "武器店和盔甲店会直接出售大量的精华。\n"
 		+ "可用于对装备的升级、升阶与重铸操作。\n"
 		+ "升级仅需使用灰色精华，升阶与重铸还会有额外的高阶精华消耗。\n"
-		+ "在消耗过程中，若低阶的不足，会自动将高阶精华以一定的比例进行拆分来继续装备操作。";
+		+ "在消耗过程中，若低阶的不足，会自动将高阶精华以一定的比例进行拆分来继续装备操作。\n"
+		+ "详情参考文档4.7。";
 		this.el_novice_tutorial_page_item.create();
 	}
 });
