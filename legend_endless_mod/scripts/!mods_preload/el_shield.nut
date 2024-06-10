@@ -66,6 +66,11 @@ local gt = getroottable();
 					text = "盾牌固定减伤: " + this.m.EL_DamageShieldReduction
 				});
 			}
+			result.insert(10, {
+				id = 25,
+				type = "text",
+				text = "装备者仅承受" + this.Math.round(1 / (1.0 + this.m.MeleeDefense * 0.01 + this.m.RangedDefense * 0.01) * 10000) * 0.01 + "%伤害"
+			});
 			if (this.m.EL_EntryList.len() != 0)
 			{
 				result.push({
@@ -149,6 +154,7 @@ local gt = getroottable();
 		{
 			onEquip();
 			this.addSkill(this.new("scripts/skills/el_items/el_item_level_check_skill"));
+			this.addSkill(this.new("scripts/skills/el_items/el_shield_reduce_damage_received_mult"));
             foreach(entry in this.m.EL_EntryList)
 			{
 				this.EL_addEntry(entry);
@@ -286,7 +292,6 @@ local gt = getroottable();
 		{
 			return this.Const.EL_Item.MaxRankLevel.Normal;
 		}
-
 
         o.EL_generateByRankAndLevel <- function( _EL_rankLevel, EL_level, EL_additionalRarityChance = 0 )
         {

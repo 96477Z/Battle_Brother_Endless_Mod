@@ -59,6 +59,21 @@ this.el_novice_tutorial_page_item <- this.inherit("scripts/items/item", {
 		return false;
 	}
 
+	function isAmountShown()
+	{
+		return true;
+	}
+
+	function getAmountString()
+	{
+		return this.m.page_title_str;
+	}
+
+	function getAmountColor()
+	{
+		return this.Const.Items.ConditionColor[4];
+	}
+
 	function EL_isNoviceTutorial()
 	{
 		return true;

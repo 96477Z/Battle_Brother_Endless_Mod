@@ -1949,6 +1949,16 @@ local gt = getroottable();
 
 					this.onScheduledTargetHit(info);
 				}
+				if (this.m.IsShieldRelevant && shield != null)
+				{
+					local info = {
+						Skill = this,
+						User = _user,
+						TargetEntity = _targetEntity,
+						Shield = shield
+					};
+					this.onShieldHit(info);
+				}
 
 				return true;
 			}

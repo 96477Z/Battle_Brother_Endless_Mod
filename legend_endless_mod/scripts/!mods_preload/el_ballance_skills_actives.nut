@@ -192,8 +192,71 @@ local gt = getroottable();
             }
             return success;
         }
+	});
 
+    ::mods_hookExactClass("skills/actives/legend_chain_lightning", function(o)
+    {
+        o.isUsable = function()
+        {
+            local weapon = this.getContainer().getActor().getMainhandItem();
+            if (!this.getContainer().getActor().isArmedWithMagicStaff() && (weapon == null || !weapon.isWeaponType(this.Const.Items.WeaponType.Staff)))
+            {
+                return false;
+            }
+            return !this.Tactical.isActive() || this.skill.isUsable() && !this.getContainer().getActor().getTile().hasZoneOfControlOtherThan(this.getContainer().getActor().getAlliedFactions());
+        }
+	});
 
+    ::mods_hookExactClass("skills/actives/legend_firefield_skill", function(o)
+    {
+        o.isUsable = function()
+        {
+            local weapon = this.getContainer().getActor().getMainhandItem();
+            if (!this.getContainer().getActor().isArmedWithMagicStaff() && (weapon == null || !weapon.isWeaponType(this.Const.Items.WeaponType.Staff)))
+            {
+                return false;
+            }
+            return !this.Tactical.isActive() || this.skill.isUsable() && !this.getContainer().getActor().getTile().hasZoneOfControlOtherThan(this.getContainer().getActor().getAlliedFactions());
+	    }
+	});
+
+    ::mods_hookExactClass("skills/actives/legend_magic_missile", function(o)
+    {
+        o.isUsable = function()
+        {
+            local weapon = this.getContainer().getActor().getMainhandItem();
+            if (!this.getContainer().getActor().isArmedWithMagicStaff() && (weapon == null || !weapon.isWeaponType(this.Const.Items.WeaponType.Staff)))
+            {
+                return false;
+            }
+            return !this.Tactical.isActive() || this.skill.isUsable() && !this.getContainer().getActor().getTile().hasZoneOfControlOtherThan(this.getContainer().getActor().getAlliedFactions());
+	    }
+	});
+
+    ::mods_hookExactClass("skills/actives/mage_legend_magic_burning_hands", function(o)
+    {
+        o.isUsable = function()
+        {
+            local weapon = this.getContainer().getActor().getMainhandItem();
+            if (!this.getContainer().getActor().isArmedWithMagicStaff() && (weapon == null || !weapon.isWeaponType(this.Const.Items.WeaponType.Staff)))
+            {
+                return false;
+            }
+            return !this.Tactical.isActive() || this.skill.isUsable();
+	    }
+	});
+
+    ::mods_hookExactClass("skills/actives/mage_legend_magic_skill", function(o)
+    {
+        o.isUsable = function()
+        {
+            local weapon = this.getContainer().getActor().getMainhandItem();
+            if (!this.getContainer().getActor().isArmedWithMagicStaff() && (weapon == null || !weapon.isWeaponType(this.Const.Items.WeaponType.Staff)))
+            {
+                return false;
+            }
+		    return this.skill.isUsable() && (!this.Tactical.isActive() || !this.getContainer().getActor().getTile().hasZoneOfControlOtherThan(this.getContainer().getActor().getAlliedFactions()));
+	    }
 	});
 
     ::mods_hookExactClass("skills/actives/quick_shot", function(o)
