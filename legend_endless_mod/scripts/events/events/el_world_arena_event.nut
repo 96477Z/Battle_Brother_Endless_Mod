@@ -182,7 +182,7 @@ this.el_world_arena_event <- this.inherit("scripts/events/event", {
                 p.Music = this.Const.Music.ArenaTracks;
                 p.PlayerDeploymentType = this.Const.Tactical.DeploymentType.Arena;
                 p.EnemyDeploymentType = this.Const.Tactical.DeploymentType.Arena;
-                p.IsUsingSetPlayers = false;
+                p.IsUsingSetPlayers = true;
                 p.IsFleeingProhibited = true;
                 p.IsLootingProhibited = false;
                 p.IsWithoutAmbience = true;
