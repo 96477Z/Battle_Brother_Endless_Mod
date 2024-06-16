@@ -126,7 +126,7 @@ this.el_npc_buff_stone_item <- this.inherit("scripts/items/trade/trading_good_it
 	{
 		local num = 0;
 		local max_num = this.Math.floor((this.World.Assets.EL_getWorldDifficultFactor() - 0.5) * 2);
-		local chance = ((this.World.Assets.EL_getWorldDifficultFactor() - 0.5) * 100) % 100;
+		local chance = (this.World.Assets.EL_getWorldDifficultFactor() * 200) % 100;
 		max_num += (this.Math.rand(1, 100) <= chance) ? 1 : 0;
 		while(_EL_npcBuffs.len() != 0 && num < this.Math.max(max_num, 1)) {
 			local r = this.Math.rand(0, _EL_npcBuffs.len() - 1);
