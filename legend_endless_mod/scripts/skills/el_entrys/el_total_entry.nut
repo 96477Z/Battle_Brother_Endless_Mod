@@ -25,6 +25,10 @@ this.el_total_entry <- this.inherit("scripts/skills/skill", {
 		EL_TargetAttractionMult = 1,
 		EL_MeleeRangeMax = 0,
 		EL_SaveAmmo = 0.0,
+		EL_SpellDamageMult = 1.0,
+		EL_ExtraSpellRange = 0,
+		EL_FatigueOnSpellUseMult = 1.0,
+		EL_ActionPointOnSkillUseDecrease = 0,
 		
 		EL_DamageMultForNortherner = 1.0,
 		EL_DamageReceivedMultForNortherner = 1.0,
@@ -110,6 +114,10 @@ this.el_total_entry <- this.inherit("scripts/skills/skill", {
 		this.m.EL_TargetAttractionMult = 1;
 		this.m.EL_MeleeRangeMax = 0;
 		this.m.EL_SaveAmmo = 0.0;		
+		this.m.EL_SpellDamageMult = 1.0;
+		this.m.EL_ExtraSpellRange = 0;
+		this.m.EL_FatigueOnSpellUseMult = 1.0;
+		this.m.EL_ActionPointOnSkillUseDecrease = 0;
 		
 		this.m.EL_DamageMultForNortherner = 1.0;
 		this.m.EL_DamageReceivedMultForNortherner = 1.0;
@@ -366,6 +374,38 @@ this.el_total_entry <- this.inherit("scripts/skills/skill", {
 				id = 10,
 				type = "text",
 				text = this.m.EL_SaveAmmo + "% 不消耗弹药"
+			});
+		}
+		if(this.m.EL_SpellDamageMult > 1.0)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				text = "法术伤害增加 " + (this.m.EL_SpellDamageMult - 1.0) * 100 + "%"
+			});
+		}
+		if(this.m.EL_ExtraSpellRange)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				text = "法术释放范围增加 " + this.m.EL_ExtraSpellRange
+			});
+		}
+		if(this.m.EL_FatigueOnSpellUseMult < 1.0)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				text = "释放法术疲劳消耗减少 " + (1.0 - this.m.EL_FatigueOnSpellUseMult) * 100 + "%"
+			});
+		}
+		if(this.m.EL_ActionPointOnSkillUseDecrease)
+		{
+			result.push({
+				id = 10,
+				type = "text",
+				text = "释放法术行动点消耗减少 " + this.m.EL_ActionPointOnSkillUseDecrease
 			});
 		}
 		if(this.m.EL_DamageMultForNortherner != 1)

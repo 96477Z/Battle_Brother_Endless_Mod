@@ -328,7 +328,7 @@ local gt = getroottable();
             this.m.XP += this.Const.EL_NPC.EL_Champion.XP.Offset[this.m.EL_RankLevel];
             this.m.XP *= this.Const.EL_NPC.EL_Champion.XP.Mult[this.m.EL_RankLevel];
 
-            this.m.XP *= this.Math.pow(this.Const.EL_NPC.EL_LevelUp.XPFactor, this.Math.min(level_ups, this.Const.EL_NPC.EL_LevelUp.MaxXPLevel));
+            this.m.XP *= this.Math.pow(this.Const.EL_NPC.EL_LevelUp.XPFactor, this.Math.min(level_ups, this.Const.EL_World.EL_WorldLevel.BaseStableLevel));
             this.m.XP = this.Math.floor(this.m.XP * this.World.Assets.EL_getHalfWorldDifficultFactor());
             this.getSkills().add(this.new("scripts/skills/el_racials/el_npc_ballance_racial"));
         }
