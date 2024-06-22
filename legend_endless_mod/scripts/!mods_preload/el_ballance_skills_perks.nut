@@ -1129,7 +1129,7 @@ local gt = getroottable();
 			_skill.onUse(this.getContainer().getActor(), this.m.Target.getTile());
 			this.m.Target = null;
 		}
-		
+
 
 		o.onTargetHit = function( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 		{
@@ -1245,7 +1245,7 @@ local gt = getroottable();
 		o.onUpdateLevel = function()
 		{
 			local actor = this.getContainer().getActor();
-			if(actor.getLevel() >= this.Math.min(100, this.World.Assets.m.EL_WorldLevel) && !this.m.IsSpent) {
+			if(actor.getLevel() >= this.Math.min(this.Const.EL_Player.EL_PlayerLevel.Max, this.World.Assets.m.EL_WorldLevel) && !this.m.IsSpent) {
 				this.m.IsSpent = true;
 				if(this.m.WillSucceed) {
 					local bg = actor.getBackground();
