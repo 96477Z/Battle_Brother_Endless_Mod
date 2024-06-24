@@ -142,7 +142,7 @@ gt.Const.EL_NPC <- {
         MinLevelOffset = -5,
         MaxLevelOffset = 0,
         BossTroopMinLeaders = 5,
-        BossChance = 1,
+        BossChance = 15,
         UnitGenerateMinCalculateResourse = 20,
         ExtraBuffRollMax = 50,
         ExtraBuffStrengthMultPurTime = 2,
