@@ -14,7 +14,7 @@ this.el_use_skill_fatigue_entry <- this.inherit("scripts/skills/el_entrys/el_ent
 		local result = {
 			id = _id,
 			type = "text",
-			text = "[color=" + colour + "]法术技能疲劳消耗 - " + this.Math.floor(this.m.EL_UseSkillfatigue) + "%(面板)[/color]"
+			text = "[color=" + colour + "]武器技能疲劳消耗 - " + this.Math.floor(this.m.EL_UseSkillfatigue) + "(面板)[/color]"
 		};
 		return result;
 	}
@@ -51,22 +51,9 @@ this.el_use_skill_fatigue_entry <- this.inherit("scripts/skills/el_entrys/el_ent
 		}
 	}
 
-	function onAfterUpdate( _properties )
+	function EL_onItemUpdate( _item )
 	{
-		local actor = this.getContainer().getActor();
-		local skills = actor.getSkills();
-		foreach( skill in skills.m.Skills ) {
-			if( skill.m.IsActive && !skill.m.IsWeaponSkill && skill.m.IsTargeted && skill.m.IsAttack && skill.m.IsRanged && skill.m.IsIgnoredAsAOO)
-			{
-				skill.m.FatigueCost  = this.Math.floor(skill.m.FatigueCost * (1.0 - this.m.EL_UseSkillfatigue * 0.01));
-			}
-		}
-	}
-
-	function EL_refreshTotalEntry( _EL_totalEntry )
-	{
-		++_EL_totalEntry.m.EL_EntryNum;
-		_EL_totalEntry.m.EL_FatigueOnSpellUseMult *= 1.0 - this.m.EL_UseSkillfatigue * 0.01;
+        _item.m.FatigueOnSkillUse = _item.m.EL_BaseWithRankFatigueOnSkillUse - this.Math.floor(this.m.EL_UseSkillfatigue);
 	}
     
     function onSerialize( _out )

@@ -15,8 +15,8 @@ this.el_ice_armor <- this.inherit("scripts/items/armor/armor", {
 		this.updateVariant();
 		this.m.ImpactSound = this.Const.Sound.ArmorHalfplateImpact;
 		this.m.InventorySound = this.Const.Sound.ArmorHalfplateImpact;
-		this.m.Condition = 600;
-		this.m.ConditionMax = 600;
+		this.m.Condition = 600 * 1.5;
+		this.m.ConditionMax = 600 * 1.5;
 		this.m.StaminaModifier = -45;
 		this.m.ItemType = this.m.ItemType | this.Const.Items.ItemType.Legendary;
 	}

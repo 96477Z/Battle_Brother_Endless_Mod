@@ -849,6 +849,20 @@ local gt = getroottable();
 				this.m.Condition = (this.m.Condition > this.m.ConditionMax) ? this.m.ConditionMax : this.m.Condition;
 			}
 		}
+		
+		o.EL_getRankLevel <- function()
+		{
+			local rank_level = 0;
+			foreach(upgrade in this.m.Upgrades)
+			{
+				if(upgrade != null)
+				{
+					rank_level = this.Math.max(upgrade.m.EL_RankLevel, rank_level)
+				}
+			}
+			rank_level = this.Math.max(this.m.EL_RankLevel, rank_level)
+			return rank_level;
+		}
 
 		o.EL_setRankLevel <- function( _EL_rankLevel )
 		{
