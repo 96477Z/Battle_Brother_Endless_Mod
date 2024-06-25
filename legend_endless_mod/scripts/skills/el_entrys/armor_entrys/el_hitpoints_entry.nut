@@ -16,7 +16,7 @@ this.el_hitpoints_entry <- this.inherit("scripts/skills/el_entrys/el_accessory_e
 			return {
 				id = _id,
 				type = "text",
-				text = "[color=" + colour + "]生命值 + " + this.Math.round(this.m.EL_CurrentLevel * this.m.EL_Hitpoints) + "% (" + this.m.EL_Hitpoints + "%)[/color]"
+				text = "[color=" + colour + "]生命值 + " + this.Math.round(this.m.EL_CurrentLevel * this.m.EL_Hitpoints) * this.m.EL_StrengthLevel + "% (" + this.m.EL_Hitpoints * this.m.EL_StrengthLevel + "%)[/color]"
 			};
 		}
 		else
@@ -24,7 +24,7 @@ this.el_hitpoints_entry <- this.inherit("scripts/skills/el_entrys/el_accessory_e
 			return {
 				id = _id,
 				type = "text",
-				text = "[color=" + colour + "]生命值 + " + this.m.EL_Hitpoints + "%[/color]"
+				text = "[color=" + colour + "]生命值 + " + this.m.EL_Hitpoints * this.m.EL_StrengthLevel + "%[/color]"
 			};
 		}
 	}
@@ -61,21 +61,25 @@ this.el_hitpoints_entry <- this.inherit("scripts/skills/el_entrys/el_accessory_e
 		}
 	}
 
+	// function onUpdate( _properties )
+	// {
+	// 	local container_scripts = this.IO.scriptFilenameByHash(this.getContainer().ClassNameHash);
+	// 	//this.logInfo("Container:" + this.IO.scriptFilenameByHash(container.ClassNameHash));
+	// 	if(container_scripts == "scripts/skills/skill_container")
+	// 	{
+	// 		_properties.Hitpoints += this.Math.floor(0.01 * this.m.EL_CurrentLevel * this.m.EL_Hitpoints * this.getContainer().getActor().getBaseProperties().Hitpoints);
+	// 	}
+	// }
+
 	function onUpdate( _properties )
 	{
-		local container_scripts = this.IO.scriptFilenameByHash(this.getContainer().ClassNameHash);
-		//this.logInfo("Container:" + this.IO.scriptFilenameByHash(container.ClassNameHash));
-		if(container_scripts == "scripts/skills/skill_container")
-		{
-			_properties.Hitpoints += this.Math.floor(0.01 * this.m.EL_CurrentLevel * this.m.EL_Hitpoints * this.getContainer().getActor().getBaseProperties().Hitpoints);
-		}
-		
+		_properties.Hitpoints += this.Math.floor(0.01 * this.m.EL_CurrentLevel * this.m.EL_Hitpoints * this.getContainer().getActor().getBaseProperties().Hitpoints * this.m.EL_StrengthLevel);
 	}
 
 	function EL_refreshTotalEntry( _EL_totalEntry )
 	{
 		++_EL_totalEntry.m.EL_EntryNum;
-		_EL_totalEntry.m.EL_Hitpoints += this.Math.round(this.m.EL_CurrentLevel * this.m.EL_Hitpoints);
+		_EL_totalEntry.m.EL_Hitpoints += this.Math.round(this.m.EL_CurrentLevel * this.m.EL_Hitpoints * this.m.EL_StrengthLevel);
 	}
 
     function onSerialize( _out )

@@ -1912,6 +1912,16 @@ local gt = getroottable();
 			if (isHit)
 			{
 				this.getContainer().setBusy(true);
+				// if (this.m.IsShieldRelevant && shield != null)
+				// {
+				// 	local info = {
+				// 		Skill = this,
+				// 		User = _user,
+				// 		TargetEntity = _targetEntity,
+				// 		Shield = shield
+				// 	};
+				// 	this.onShieldHit(info);
+				// }
 				local info = {
 					Skill = this,
 					Container = this.getContainer(),
@@ -1948,16 +1958,6 @@ local gt = getroottable();
 					}
 
 					this.onScheduledTargetHit(info);
-				}
-				if (this.m.IsShieldRelevant && shield != null)
-				{
-					local info = {
-						Skill = this,
-						User = _user,
-						TargetEntity = _targetEntity,
-						Shield = shield
-					};
-					this.onShieldHit(info);
 				}
 
 				return true;
@@ -2072,7 +2072,6 @@ local gt = getroottable();
 			{
 				this.Sound.play(_info.Skill.m.SoundOnHitShield[this.Math.rand(0, _info.Skill.m.SoundOnHitShield.len() - 1)], this.Const.Sound.Volume.Skill * this.m.SoundVolume, user.getPos());
 			}
-
 			shield.applyShieldDamage(damage, _info.Skill.m.SoundOnHitShield.len() == 0);
 
 			if (shield.getCondition() == 0)
