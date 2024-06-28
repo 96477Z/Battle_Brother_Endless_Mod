@@ -54,6 +54,7 @@ this.el_cart_ambition_0 <- this.inherit("scripts/ambitions/ambition", {
             icon = "ui/icons/special.png",
             text = "You gain " + this.m.EL_SlotGiven + " additional inventory slots"
         });
+        this.World.State.getPlayer().calculateStashModifier();
 	}
 
 	function onSerialize( _out )

@@ -179,6 +179,16 @@ local gt = getroottable();
 			EL_updateLevelProperties();
 		}
 
+		local onDamageDealt = o.onDamageDealt;
+		o.onDamageDealt = function ( _target, _skill, _hitInfo )
+		{
+			onDamageDealt(_target, _skill, _hitInfo);
+			if(this.EL_hasEntry("el_weapon_entry.beheaded") && _target.getHitpoints() <= 1)
+			{
+				_target.kill(this.getContainer().getActor(), _skill);
+			}
+		}
+
         local onSerialize = o.onSerialize;
 		o.onSerialize = function ( _out )
 		{

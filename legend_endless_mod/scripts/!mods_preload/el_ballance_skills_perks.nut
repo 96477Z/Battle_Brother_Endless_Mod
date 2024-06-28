@@ -1150,6 +1150,31 @@ local gt = getroottable();
 		}
 	});
 
+	::mods_hookExactClass("scripts/skills/perks/perk_nine_lives", function ( o )
+	{
+		o.setSpent = function( _f )
+		{
+			if (_f && !this.m.IsSpent)
+			{
+				this.m.IsHidden = true;
+				this.getContainer().getActor().m.Hitpoints = 1;
+				this.getContainer().getActor().setDirty(true);
+
+				foreach( skill in this.m.DamageOverTimeSkills )
+				{
+					skill.m.SkillType += ::Const.SkillType.DamageOverTime;
+				}
+
+				this.m.DamageOverTimeSkills.clear();
+				this.onProc();
+				this.getContainer().add(this.new("scripts/skills/effects/nine_lives_effect"));
+			}
+
+			this.m.IsSpent = _f;
+			this.m.LastFrameUsed = this.Time.getFrame();
+		}
+	});
+
 	::mods_hookExactClass("skills/perks/perk_ptr_bloodlust", function ( o )
 	{
 		o.onAnySkillExecuted = function( _skill, _targetTile, _targetEntity, _forFree )
@@ -1679,6 +1704,10 @@ gt.Const.EL_Config.EL_modStrings <- function()
 		{
 			ID = "perk.legend_berserker_rage",
 			tooltip = "Gain rage stacks over the course of a battle. Each stack increases Damage by [color=" + this.Const.UI.Color.PositiveValue + "]1[/color], initiative by [color=" + this.Const.UI.Color.PositiveValue + "]1[/color], resolve by [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] and reduces damage received by [color=" + this.Const.UI.Color.PositiveValue + "]4%[/color]. Gain [color=" + this.Const.UI.Color.PositiveValue + "]1[/color] stack each time you take damage, and [color=" + this.Const.UI.Color.PositiveValue + "]3[/color] stacks each time you kill. Lose [color=" + this.Const.UI.Color.NegativeValue + "]2[/color] rage stacks per turn.",
+		},
+		{
+			ID = "perk.nine_lives",
+			tooltip = "每场战斗一次，在受到致命伤害后，你可以幸存下来，只剩下1点生命值，并且治愈所有持续时间内的伤害（例如流血，中毒）。当然，下一次攻击很可能会永远杀死你，但是在你的下一个回合之前提高的防御属性会帮助你在那之前生存下来。",
 		}
 	];
 

@@ -76,7 +76,7 @@ this.el_special_attack_greenskin_entry <- this.inherit("scripts/skills/el_entrys
 	function EL_refreshTotalEntry( _EL_totalEntry )
 	{
 		++_EL_totalEntry.m.EL_EntryNum;
-		_EL_totalEntry.m.EL_DamageMultForGreenskin += this.m.EL_DamageMult;
+		_EL_totalEntry.m.EL_DamageMultForGreenskin *= 1.0 + this.m.EL_DamageMult * 0.01;
 		_EL_totalEntry.m.EL_AdditionalAccuracyForGreenskin += this.m.EL_AdditionalAccuracy;
 	}
     

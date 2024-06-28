@@ -20,7 +20,7 @@ el_soul_energy_state_effect <- this.inherit("scripts/skills/skill", {
             id = 11,
             type = "text",
             icon = "ui/tooltips/soul_energy.png",
-            text = "灵魂能量：" + this.World.Assets.EL_getSoulEnergy() + " / " + this.World.Assets.EL_getSoulEnergyMax()
+            text = "灵魂能量：" + this.World.Assets.EL_getSoulEnergy() + " / " + this.World.Assets.EL_getSoulEnergyMax() + "(每日自动恢复最大值的4%)"
 		});
         if(this.m.EL_Stack > 0)
         {
@@ -141,5 +141,10 @@ el_soul_energy_state_effect <- this.inherit("scripts/skills/skill", {
         
         this.World.Assets.m.EL_SoulEnergyGianMult = this.Math.max(1, 1 - this.m.EL_Stack * this.Const.EL_LichKing.SoulEnergyState.SoulEnergyGianMult);
 	}
+
+    function onNewDay()
+    {
+        this.World.Assets.EL_addSoulEnergy(this.Math.ceil(this.World.Assets.EL_getSoulEnergyMax() * 0.04));
+    }
 
 });

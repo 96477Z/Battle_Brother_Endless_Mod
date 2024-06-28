@@ -65,6 +65,7 @@ this.el_cart_ambition_4 <- this.inherit("scripts/ambitions/ambition", {
 			icon = "ui/items/" + item.getIcon(),
 			text = "You gain " + item.getName()
 		});
+        this.World.State.getPlayer().calculateStashModifier();
 	}
 
 	function onSerialize( _out )

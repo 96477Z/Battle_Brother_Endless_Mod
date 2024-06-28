@@ -49,7 +49,7 @@ this.el_arena_champion_axe <- this.inherit("scripts/items/weapons/weapon", {
 					id = 8,
 					type = "text",
 					icon = "ui/icons/special.png",
-					text = "结算伤害后若目标生命值低于20%或不高于2点生命值，则直接杀死敌人!"
+					text = "结算伤害后若目标生命值低于33%或不高于2点生命值，则直接杀死敌人!"
 				});
 				break;
 			}
@@ -64,7 +64,7 @@ this.el_arena_champion_axe <- this.inherit("scripts/items/weapons/weapon", {
 		{
 			return;
 		}
-        if(_target.getHitpoints() <= 2 || _target.getHitpoints() / (_target.getHitpointsMax() * 1.0) < 0.20)
+        if(_target.getHitpoints() <= 2 || _target.getHitpoints() / (_target.getHitpointsMax() * 1.0) < 0.33)
         {
             _target.kill(this.getContainer().getActor(), _skill);
         }
