@@ -604,7 +604,7 @@ local gt = getroottable();
             {
                 this.getContainer().getActor().getItems().equip(item);
             }
-            else if(this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand)!=null&&this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand)!=null)
+            else// if(this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand)!=null&&this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand)!=null)
             {
                 this.World.Assets.getStash().add(item);
             }

@@ -78,6 +78,12 @@ this.el_trade_ambition_item <- this.inherit("scripts/items/accessory/accessory",
 		this.accessory.onUpdateProperties(_properties);
 		_properties.DamageTotalMult *= 1.0 + 0.01 * this.EL_getBonus();
 	}
+	
+	function onEquip()
+	{
+		this.accessory.onEquip();
+		this.World.Flags.set("EL_HasTradeAmbitionRule", true);
+	}
 
 	function onAddedToStash( _stashID )
 	{

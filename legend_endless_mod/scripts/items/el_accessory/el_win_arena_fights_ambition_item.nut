@@ -81,6 +81,12 @@ this.el_win_arena_fights_ambition_item <- this.inherit("scripts/items/accessory/
 		_properties.MeleeDefense += this.EL_getBonus();
 		_properties.RangedDefense += this.EL_getBonus();
 	}
+	
+	function onEquip()
+	{
+		this.accessory.onEquip();
+		this.World.Flags.set("EL_HasWinArenaFightsAmbitionRule", true);
+	}
 
 	function onAddedToStash( _stashID )
 	{
