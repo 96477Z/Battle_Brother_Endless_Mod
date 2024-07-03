@@ -50,10 +50,6 @@ gt.Const.EL_Config <- {
             Script = "effects/lindwurm_acid_effect"
         },
         {
-            ID = "effects.legend_rat_poison",
-            Script = "effects/rat_poison_effect"
-        },
-        {
             ID = "effects.spider_poison",
             Script = "effects/spider_poison_effect"
         },

@@ -130,7 +130,7 @@ local gt = getroottable();
 		}
 
 
-		o.EL_addSoulEnergy <- function( _num )
+		o.EL_addSoulEnergy <- function( _num, _isKill = true )
 		{
 			local soul_energy_max = 100;
 			local bros = this.World.getPlayerRoster().getAll();
@@ -142,19 +142,19 @@ local gt = getroottable();
 					soul_energy_max += main_hand.EL_getRankLevel() * 100;
 				}
 			}
-			if(_num > 0)
+			if(_num > 0 && _isKill)
 			{
 				_num = this.Math.round(_num * this.EL_getSoulEnergyGianMult());
 				this.m.EL_SoulEnergyXP += _num;
-			}
-			while(this.m.EL_SoulEnergyXP > this.m.EL_SoulEnergyMax - this.Const.EL_World.EL_SoulEnergy.Min)
-			{
-				++this.m.EL_SoulEnergyMax;
-				this.m.EL_SoulEnergyXP -= this.m.EL_SoulEnergyMax - this.Const.EL_World.EL_SoulEnergy.Min;
-				if(this.m.EL_SoulEnergyMax >= soul_energy_max)
+				while(this.m.EL_SoulEnergyXP > this.m.EL_SoulEnergyMax - this.Const.EL_World.EL_SoulEnergy.Min)
 				{
-					this.m.EL_SoulEnergyMax = soul_energy_max;
-					this.m.EL_SoulEnergyXP = 0;
+					++this.m.EL_SoulEnergyMax;
+					this.m.EL_SoulEnergyXP -= this.m.EL_SoulEnergyMax - this.Const.EL_World.EL_SoulEnergy.Min;
+					if(this.m.EL_SoulEnergyMax >= soul_energy_max)
+					{
+						this.m.EL_SoulEnergyMax = soul_energy_max;
+						this.m.EL_SoulEnergyXP = 0;
+					}
 				}
 			}
 			this.m.EL_SoulEnergy += _num;

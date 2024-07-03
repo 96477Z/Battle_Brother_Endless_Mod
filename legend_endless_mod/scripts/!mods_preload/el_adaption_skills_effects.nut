@@ -80,4 +80,20 @@ local gt = getroottable();
             }
         }
 	});
+
+	for(local i = 0; i < this.Const.EL_Config.EL_PoisonEffectList.len(); ++i) {
+		::mods_hookExactClass("skills/" + this.Const.EL_Config.EL_PoisonEffectList[i].Script, function ( o )
+		{
+            local onAdded = o.onAdded;
+            o.onAdded = function()
+            {
+                if (this.getContainer().getActor().getCurrentProperties().IsImmuneToPoison)
+                {
+                    this.removeSelf();
+                    return;
+                }
+                onAdded();
+            }            
+		});
+	}
 });

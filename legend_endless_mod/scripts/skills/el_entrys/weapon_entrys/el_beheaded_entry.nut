@@ -12,7 +12,7 @@ this.el_beheaded_entry <- this.inherit("scripts/skills/el_entrys/el_entry", {
 		local result = {
 			id = _id,
 			type = "text",
-			text = "[color=" + colour + "]攻击结算后若敌人仅余1血，将之斩杀[/color]"
+			text = "[color=" + colour + "]攻击后若敌人仅余1血，将之斩杀[/color]"
 		};
 		return result;
 	}
