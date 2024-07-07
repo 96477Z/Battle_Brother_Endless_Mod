@@ -77,6 +77,7 @@ this.el_have_renown_ambition_item <- this.inherit("scripts/items/accessory/acces
 	{
 		this.accessory.onEquip();
 		this.addSkill(this.new("scripts/skills/el_effects/el_have_renown_ambition_item_effect"));
+		this.World.Flags.set("EL_HasRenownAmbitionRule", true);
 	}
 
 	function onAddedToStash( _stashID )

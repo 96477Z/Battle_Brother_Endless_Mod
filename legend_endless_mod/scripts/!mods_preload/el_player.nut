@@ -799,7 +799,9 @@ local gt = getroottable();
 				local s = this.Const.LegendMod.MaxResources[this.World.Assets.getEconomicDifficulty()].Stash;
 				s = s + this.World.Assets.getOrigin().getStashModifier();
 				s = s + this.World.Retinue.getInventoryUpgrades() * 27;
-
+				if(this.World.Flags.has("EL_ExtraStash")) {
+					s += this.World.Flags.get("EL_ExtraStash");
+				}
 				foreach( bro in this.World.getPlayerRoster().getAll())
 				{
 					s = s + bro.getStashModifier();

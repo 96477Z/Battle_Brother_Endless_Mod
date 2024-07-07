@@ -343,6 +343,14 @@ gt.Const.EL_Weapon <- {
 					Scripts = "scripts/skills/el_entrys/weapon_entrys/el_armor_damage_mult_entry",
 					function EL_ifEligible(_item) { return true; }
 				},
+				{
+					Scripts = "scripts/skills/el_entrys/weapon_entrys/el_beheaded_entry",
+					function EL_ifEligible(_item) {
+						if(_item.getID() == "el_weapon.arena_champion_axe") { return false; }
+						if(_item.m.EL_RankLevel <= 1) { return false; }
+						return true;
+					}
+				},
 				// {
 				// 	Scripts = "scripts/skills/el_entrys/weapon_entrys/el_bravery_entry",
 				// 	function EL_ifEligible(_item) { return true; }

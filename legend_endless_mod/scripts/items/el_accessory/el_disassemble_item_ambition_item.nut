@@ -78,6 +78,12 @@ this.el_disassemble_item_ambition_item <- this.inherit("scripts/items/accessory/
 		this.accessory.onUpdateProperties(_properties);
 		_properties.DamageArmorMult *= 1.0 + this.EL_getBonus() * 0.01;
 	}
+	
+	function onEquip()
+	{
+		this.accessory.onEquip();
+		this.World.Flags.set("EL_HasDisassembleItemAmbitionRule", true);
+	}
 
 	function onAddedToStash( _stashID )
 	{

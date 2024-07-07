@@ -1,4 +1,4 @@
-this.el_use_skill_fatigue_entry <- this.inherit("scripts/skills/el_entrys/el_entry", {
+this.el_use_skill_fatigue_entry1 <- this.inherit("scripts/skills/el_entrys/el_entry", {
 	m = {
         EL_UseSkillfatigue = 0.0
     },

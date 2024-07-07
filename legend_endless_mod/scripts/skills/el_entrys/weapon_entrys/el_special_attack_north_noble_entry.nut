@@ -76,7 +76,7 @@ this.el_special_attack_north_noble_entry <- this.inherit("scripts/skills/el_entr
 	function EL_refreshTotalEntry( _EL_totalEntry )
 	{
 		++_EL_totalEntry.m.EL_EntryNum;
-		_EL_totalEntry.m.EL_DamageMultForNorthNoble += this.m.EL_DamageMult;
+		_EL_totalEntry.m.EL_DamageMultForNorthNoble *= 1.0 + this.m.EL_DamageMult * 0.01;
 		_EL_totalEntry.m.EL_AdditionalAccuracyForNorthNoble += this.m.EL_AdditionalAccuracy;
 	}
     

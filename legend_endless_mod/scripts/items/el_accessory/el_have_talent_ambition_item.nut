@@ -85,6 +85,12 @@ this.el_have_talent_ambition_item <- this.inherit("scripts/items/accessory/acces
 		_properties.MeleeDefense += this.EL_getBonus();
 		_properties.RangedDefense += this.EL_getBonus();
 	}
+	
+	function onEquip()
+	{
+		this.accessory.onEquip();
+		this.World.Flags.set("EL_HasTalentAmbitionRule", true);
+	}
 
 	function onAddedToStash( _stashID )
 	{

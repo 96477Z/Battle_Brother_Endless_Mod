@@ -23,14 +23,23 @@ this.el_shield_reduce_damage_received_mult <- this.inherit("scripts/skills/skill
         {
             return;
         }
-		_properties.DamageReceivedTotalMult /= 1.0 + this.m.Item.getMeleeDefense() * 0.01 + this.m.Item.getRangedDefense() * 0.01;
-
-		local shield = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
-		if (shield != null)
+		local defense_sum = this.m.Item.getMeleeDefense() + this.m.Item.getRangedDefense();
+		if(this.getContainer().getActor().getSkills().hasSkill("effects.shieldwall"))
 		{
-			local damage = this.Math.max(1, this.Math.floor(this.Const.EL_PlayerNPC.EL_ShieldDamage.Base * (1 + onShieldHit.EL_getCombatLevel() * this.Const.EL_PlayerNPC.EL_ShieldDamage.MultPurCombatLevel)));
-			shield.applyShieldDamage(damage);
+			local mult = 2.0;
+			if (this.getContainer().getActor().getCurrentProperties().IsSpecializedInShields)
+			{
+				mult += 0.25;
+			}
+			defense_sum *= mult;
 		}
+		_properties.DamageReceivedTotalMult /= 1.0 + defense_sum * 0.01;
+		// local shield = this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+		// if (shield != null)
+		// {
+		// 	local damage = this.Math.max(1, this.Math.floor(this.Const.EL_PlayerNPC.EL_ShieldDamage.Base * (1 + _attacker.EL_getCombatLevel() * this.Const.EL_PlayerNPC.EL_ShieldDamage.MultPurCombatLevel)));
+		// 	shield.applyShieldDamage(damage);
+		// }
 	}
 });
 

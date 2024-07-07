@@ -30,7 +30,7 @@ this.el_test_background <- this.inherit("scripts/skills/backgrounds/character_ba
 		this.m.Modifiers.Ammo = 10;
 		this.m.Modifiers.ArmorParts = 11;
 		this.m.Modifiers.Meds = 12;
-		this.m.Modifiers.Stash = 999;
+		this.m.Modifiers.Stash = 50;
 		this.m.Modifiers.Hunting = 14;
 		this.m.Modifiers.Scout = 15;
 		this.m.Modifiers.Gathering = 16;

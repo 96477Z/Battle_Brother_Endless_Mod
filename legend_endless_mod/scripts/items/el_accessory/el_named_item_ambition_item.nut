@@ -79,6 +79,12 @@ this.el_named_item_ambition_item <- this.inherit("scripts/items/accessory/access
 		_properties.DamageTotalMult *= 1.0 + EL_getBonus() * 0.01;
 		_properties.DamageReceivedTotalMult *= 1.0 - EL_getBonus() * 0.01;
 	}
+	
+	function onEquip()
+	{
+		this.accessory.onEquip();
+		this.World.Flags.set("EL_HasNamedItemAmbitionRule", true);
+	}
 
 	function onAddedToStash( _stashID )
 	{

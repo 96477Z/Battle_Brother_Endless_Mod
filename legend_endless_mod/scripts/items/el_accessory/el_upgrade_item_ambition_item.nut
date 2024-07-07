@@ -78,6 +78,12 @@ this.el_upgrade_item_ambition_item <- this.inherit("scripts/items/accessory/acce
 		this.accessory.onUpdateProperties(_properties);
 		_properties.DamageReceivedArmorMult *= 1.0 - this.EL_getBonus() * 0.01;
 	}
+	
+	function onEquip()
+	{
+		this.accessory.onEquip();
+		this.World.Flags.set("EL_HasUpgradeItemAmbitionRule", true);
+	}
 
 	function onAddedToStash( _stashID )
 	{

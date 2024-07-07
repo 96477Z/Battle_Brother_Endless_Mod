@@ -2072,6 +2072,11 @@ local gt = getroottable();
 			{
 				this.Sound.play(_info.Skill.m.SoundOnHitShield[this.Math.rand(0, _info.Skill.m.SoundOnHitShield.len() - 1)], this.Const.Sound.Volume.Skill * this.m.SoundVolume, user.getPos());
 			}
+			
+			// local container_scripts = this.IO.scriptFilenameByHash(shield.ClassNameHash);
+			// this.logInfo("Container:" + container_scripts);
+			// if(container_scripts == "scripts/items/shields/")
+			// {
 			shield.applyShieldDamage(damage, _info.Skill.m.SoundOnHitShield.len() == 0);
 
 			if (shield.getCondition() == 0)
@@ -2097,6 +2102,7 @@ local gt = getroottable();
 			}
 
 			_info.TargetEntity.getItems().onShieldHit(_info.User, this);
+			//}
 		}
 
 		o.getHitchance = function( _targetEntity )

@@ -79,6 +79,12 @@ this.el_armor_ambition_item <- this.inherit("scripts/items/accessory/accessory",
 		_properties.ArmorMult[this.Const.BodyPart.Body] *= 1 + EL_getBonus() * 0.01;
 		_properties.ArmorMult[this.Const.BodyPart.Head] *= 1 + EL_getBonus() * 0.01;
 	}
+	
+	function onEquip()
+	{
+		this.accessory.onEquip();
+		this.World.Flags.set("EL_HasArmorAmbitionRule", true);
+	}
 
 	function onAddedToStash( _stashID )
 	{

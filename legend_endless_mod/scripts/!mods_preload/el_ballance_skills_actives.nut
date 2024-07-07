@@ -477,4 +477,234 @@ local gt = getroottable();
             }
         }
 	});
+
+	::mods_hookExactClass("skills/actives/penetration", function(o){
+        o.applyEffectToTargets = function( _tag )
+        {
+            local user = _tag.User;
+            local targets = _tag.Targets;
+            local attackSkill = user.getCurrentProperties().getRangedSkill();
+            local last;
+            foreach( t in targets )
+            {
+            if (t.IsOccupiedByActor&&t.getEntity().isAttackable())
+                {
+                    last = t;
+                
+                }
+            
+            }
+            foreach( t in targets )
+            {
+                
+                if (!t.IsOccupiedByActor || !t.getEntity().isAttackable())
+                {
+                    continue;
+                }
+                
+                local target = t.getEntity();
+                if(t == last)
+                {
+                this.m.ProjectileType = this.Const.ProjectileType.SpearofLonginus;
+                }
+                local success = this.attackEntity(user, target, false);
+            
+                if (success && target.isAlive() && !target.isDying() && t.IsVisibleForPlayer)
+                {
+                
+            
+                    if (user.getPos().X <= target.getPos().X)
+                    {
+                        for( local i = 0; i < this.Const.Tactical.ShrapnelLeftParticles.len(); i = i )
+                        {
+                            local effect = this.Const.Tactical.ShrapnelLeftParticles[i];
+                            this.Tactical.spawnParticleEffect(false, effect.Brushes, t, effect.Delay, effect.Quantity, effect.LifeTimeQuantity, effect.SpawnRate, effect.Stages, this.createVec(0, 0));
+                            i = ++i;
+                        }
+                    }
+                    else
+                    {
+                        for( local i = 0; i < this.Const.Tactical.ShrapnelRightParticles.len(); i = i )
+                        {
+                            local effect = this.Const.Tactical.ShrapnelRightParticles[i];
+                            this.Tactical.spawnParticleEffect(false, effect.Brushes, t, effect.Delay, effect.Quantity, effect.LifeTimeQuantity, effect.SpawnRate, effect.Stages, this.createVec(0, 0));
+                            i = ++i;
+                        }
+                    }
+                }
+            }
+		
+    //		this.Time.scheduleEvent(this.TimeUnit.Virtual, 500, function ( user )
+    //	    {
+			user.getSkills().add(this.new("scripts/skills/actives/call_back"));
+			local skill = user.getSkills().getSkillByID("actives.call_back");
+			skill.EL_serializeItem(user.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand));
+			user.getItems().unequip(user.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand));
+
+			//			}.bindenv(this), this);
+			
+		    this.m.ProjectileType = this.Const.ProjectileType.None;
+        }
+	});
+
+    ::mods_hookExactClass("skills/actives/call_back", function(o){
+        o.m.EL_EntryList <- [];
+        o.m.EL_StrengthenEntryNum <- 0;
+        o.m.EL_Level <- -1;
+        o.m.EL_CurrentLevel <- -1;
+        o.m.EL_RankLevel <- 0;
+        o.m.EL_RankPropertiesImproveIndex <- [];
+        o.m.EL_BaseNoRankConditionMax <- 0;
+        o.m.EL_BaseWithRankConditionMax <- 0;
+        o.m.EL_BaseNoRankValue <- 0;
+        o.m.EL_BaseWithRankValue <- 0;
+
+        o.m.EL_BaseNoRankShieldDamage <- 0;
+        o.m.EL_BaseNoRankRegularDamage <- 0;
+        o.m.EL_BaseNoRankRegularDamageMax <- 0;
+        o.m.EL_BaseNoRankStaminaModifier <- 0;
+
+        o.m.EL_BaseWithRankShieldDamage <- 0;
+        o.m.EL_BaseWithRankRegularDamage <- 0;
+        o.m.EL_BaseWithRankRegularDamageMax <- 0;
+        o.m.EL_BaseWithRankStaminaModifier <- 0.0;
+
+        o.m.EL_BaseNoRankAmmoMax <- 0;
+        o.m.EL_BaseNoRankArmorDamageMult <- 0.0;
+        o.m.EL_BaseNoRankDirectDamageAdd <- 0.0;
+        o.m.EL_BaseNoRankChanceToHitHead <- 0;
+        o.m.EL_BaseNoRankAdditionalAccuracy <- 0;
+        o.m.EL_BaseNoRankFatigueOnSkillUse <- 0;
+        o.m.EL_BaseNoRankRangeMax <- 0;
+
+        o.m.EL_BaseWithRankVision <- 0;
+        o.m.EL_BaseWithRankAmmoMax <- 0;
+        o.m.EL_BaseWithRankArmorDamageMult <- 0.0;
+        o.m.EL_BaseWithRankDirectDamageAdd <- 0.0;
+        o.m.EL_BaseWithRankChanceToHitHead <- 0;
+        o.m.EL_BaseWithRankAdditionalAccuracy <- 0;
+        o.m.EL_BaseWithRankFatigueOnSkillUse <- 0;
+        o.m.EL_BaseWithRankRangeMax <- 0;
+        o.m.EL_Condition <- 0;
+
+        o.onUse = function( _user, _targetTile )
+        {
+            local item = this.new("scripts/items/weapons/legendary/longinus_spear");
+            this.EL_deserializeItem(item);    
+            _user.m.Items.equip(item);               
+            this.getContainer().remove(this);
+            return true;
+        }
+
+        o.onCombatFinished = function()
+        {
+            local item = this.new("scripts/items/weapons/legendary/longinus_spear");
+            this.EL_deserializeItem(item);    
+            if(this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand)==null&&this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand)==null )
+            {
+                this.getContainer().getActor().getItems().equip(item);
+            }
+            else// if(this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand)!=null&&this.getContainer().getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand)!=null)
+            {
+                this.World.Assets.getStash().add(item);
+            }
+            this.removeSelf();
+        }
+
+        o.EL_serializeItem <- function( _item )
+        {
+            foreach(entry in _item.m.EL_EntryList)
+            {
+                this.m.EL_EntryList.push(entry);
+            }
+            this.m.EL_StrengthenEntryNum = _item.m.EL_StrengthenEntryNum;
+            this.m.EL_Level = _item.m.EL_Level;
+            this.m.EL_CurrentLevel = _item.m.EL_CurrentLevel;
+            this.m.EL_RankLevel = _item.m.EL_RankLevel;
+            foreach(index in _item.m.EL_RankPropertiesImproveIndex)
+            {
+                this.m.EL_RankPropertiesImproveIndex.push(index);
+            }
+            this.m.EL_BaseNoRankConditionMax = _item.m.EL_BaseNoRankConditionMax;
+            this.m.EL_BaseWithRankConditionMax = _item.m.EL_BaseWithRankConditionMax;
+            this.m.EL_BaseNoRankValue = _item.m.EL_BaseNoRankValue;
+            this.m.EL_BaseWithRankValue = _item.m.EL_BaseWithRankValue;
+            
+            this.m.EL_BaseNoRankShieldDamage = _item.m.EL_BaseNoRankShieldDamage;
+            this.m.EL_BaseNoRankRegularDamage = _item.m.EL_BaseNoRankRegularDamage;
+            this.m.EL_BaseNoRankRegularDamageMax = _item.m.EL_BaseNoRankRegularDamageMax;
+            this.m.EL_BaseNoRankStaminaModifier = _item.m.EL_BaseNoRankStaminaModifier;
+
+            this.m.EL_BaseWithRankShieldDamage = _item.m.EL_BaseWithRankShieldDamage;
+            this.m.EL_BaseWithRankRegularDamage = _item.m.EL_BaseWithRankRegularDamage;
+            this.m.EL_BaseWithRankRegularDamageMax = _item.m.EL_BaseWithRankRegularDamageMax;
+            this.m.EL_BaseWithRankStaminaModifier = _item.m.EL_BaseWithRankStaminaModifier;
+
+            this.m.EL_BaseNoRankAmmoMax = _item.m.EL_BaseNoRankAmmoMax;
+            this.m.EL_BaseNoRankArmorDamageMult = _item.m.EL_BaseNoRankArmorDamageMult;
+            this.m.EL_BaseNoRankDirectDamageAdd = _item.m.EL_BaseNoRankDirectDamageAdd;
+            this.m.EL_BaseNoRankChanceToHitHead = _item.m.EL_BaseNoRankChanceToHitHead;
+            this.m.EL_BaseNoRankAdditionalAccuracy = _item.m.EL_BaseNoRankAdditionalAccuracy;
+            this.m.EL_BaseNoRankFatigueOnSkillUse = _item.m.EL_BaseNoRankFatigueOnSkillUse;
+            this.m.EL_BaseNoRankRangeMax = _item.m.EL_BaseNoRankRangeMax;
+
+            this.m.EL_BaseWithRankVision = _item.m.EL_BaseWithRankVision;
+            this.m.EL_BaseWithRankAmmoMax = _item.m.EL_BaseWithRankAmmoMax;
+            this.m.EL_BaseWithRankArmorDamageMult = _item.m.EL_BaseWithRankArmorDamageMult;
+            this.m.EL_BaseWithRankDirectDamageAdd = _item.m.EL_BaseWithRankDirectDamageAdd;
+            this.m.EL_BaseWithRankChanceToHitHead = _item.m.EL_BaseWithRankChanceToHitHead;
+            this.m.EL_BaseWithRankAdditionalAccuracy = _item.m.EL_BaseWithRankAdditionalAccuracy;
+            this.m.EL_BaseWithRankFatigueOnSkillUse = _item.m.EL_BaseWithRankFatigueOnSkillUse;
+            this.m.EL_BaseWithRankRangeMax = _item.m.EL_BaseWithRankRangeMax;
+            this.m.EL_Condition = _item.m.Condition;    
+        }
+
+        EL_deserializeItem <- function( _item )
+        {
+            foreach(entry in this.m.EL_EntryList)
+            {
+                _item.m.EL_EntryList.push(entry);
+            }
+            _item.m.EL_StrengthenEntryNum = this.m.EL_StrengthenEntryNum;
+            _item.m.EL_Level = this.m.EL_Level;
+            _item.m.EL_CurrentLevel = this.m.EL_CurrentLevel;
+            _item.m.EL_RankLevel = this.m.EL_RankLevel;
+            foreach(index in this.m.EL_RankPropertiesImproveIndex)
+            {
+                _item.m.EL_RankPropertiesImproveIndex.push(index);
+            }
+            _item.m.EL_BaseNoRankConditionMax = this.m.EL_BaseNoRankConditionMax;
+            _item.m.EL_BaseWithRankConditionMax = this.m.EL_BaseWithRankConditionMax;
+            _item.m.EL_BaseNoRankValue = this.m.EL_BaseNoRankValue;
+            _item.m.EL_BaseWithRankValue = this.m.EL_BaseWithRankValue;
+            
+            _item.m.EL_BaseNoRankShieldDamage = this.m.EL_BaseNoRankShieldDamage;
+            _item.m.EL_BaseNoRankRegularDamage = this.m.EL_BaseNoRankRegularDamage;
+            _item.m.EL_BaseNoRankRegularDamageMax = this.m.EL_BaseNoRankRegularDamageMax;
+            _item.m.EL_BaseNoRankStaminaModifier = this.m.EL_BaseNoRankStaminaModifier;
+
+            _item.m.EL_BaseWithRankShieldDamage = this.m.EL_BaseWithRankShieldDamage;
+            _item.m.EL_BaseWithRankRegularDamage = this.m.EL_BaseWithRankRegularDamage;
+            _item.m.EL_BaseWithRankRegularDamageMax = this.m.EL_BaseWithRankRegularDamageMax;
+            _item.m.EL_BaseWithRankStaminaModifier = this.m.EL_BaseWithRankStaminaModifier;
+
+            _item.m.EL_BaseNoRankAmmoMax = this.m.EL_BaseNoRankAmmoMax;
+            _item.m.EL_BaseNoRankArmorDamageMult = this.m.EL_BaseNoRankArmorDamageMult;
+            _item.m.EL_BaseNoRankDirectDamageAdd = this.m.EL_BaseNoRankDirectDamageAdd;
+            _item.m.EL_BaseNoRankChanceToHitHead = this.m.EL_BaseNoRankChanceToHitHead;
+            _item.m.EL_BaseNoRankAdditionalAccuracy = this.m.EL_BaseNoRankAdditionalAccuracy;
+            _item.m.EL_BaseNoRankFatigueOnSkillUse = this.m.EL_BaseNoRankFatigueOnSkillUse;
+            _item.m.EL_BaseNoRankRangeMax = this.m.EL_BaseNoRankRangeMax;
+
+            _item.m.EL_BaseWithRankVision = this.m.EL_BaseWithRankVision;
+            _item.m.EL_BaseWithRankAmmoMax = this.m.EL_BaseWithRankAmmoMax;
+            _item.m.EL_BaseWithRankArmorDamageMult = this.m.EL_BaseWithRankArmorDamageMult;
+            _item.m.EL_BaseWithRankDirectDamageAdd = this.m.EL_BaseWithRankDirectDamageAdd;
+            _item.m.EL_BaseWithRankChanceToHitHead = this.m.EL_BaseWithRankChanceToHitHead;
+            _item.m.EL_BaseWithRankAdditionalAccuracy = this.m.EL_BaseWithRankAdditionalAccuracy;
+            _item.m.EL_BaseWithRankFatigueOnSkillUse = this.m.EL_BaseWithRankFatigueOnSkillUse;
+            _item.m.EL_BaseWithRankRangeMax = this.m.EL_BaseWithRankRangeMax;
+            _item.m.Condition = this.m.EL_Condition;    
+        }
+	});
 });

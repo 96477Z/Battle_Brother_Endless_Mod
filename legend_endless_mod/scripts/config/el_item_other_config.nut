@@ -106,7 +106,8 @@ gt.Const.EL_Item_Other <- {
 		"el_weapon/el_orc_berserker_axe",
 		"el_weapon/el_skyfire_cannon",
 		"el_weapon/el_undead_dagger",
-		"el_weapon/el_vampire_cleaver"
+		"el_weapon/el_vampire_cleaver",
+		"weapons/legendary/longinus_spear"
 	],	
 	EL_SpecialNamedItem = [
 		"legend_armor/chain/legend_armor_hauberk_full_named",

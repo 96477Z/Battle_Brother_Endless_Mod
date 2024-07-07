@@ -109,6 +109,9 @@ this.el_test_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		this.World.Assets.getStash().add(magic_stone);
 
 
+		local item = this.new("scripts/items/weapons/legendary/longinus_spear");
+		item.EL_generateByRankAndLevel(2,50);
+		this.World.Assets.getStash().add(item);
 		local item = this.new("scripts/items/accessory/orc_trophy_item");
 		item.EL_generateByRankAndLevel(2,100);
 		this.World.Assets.getStash().add(item);

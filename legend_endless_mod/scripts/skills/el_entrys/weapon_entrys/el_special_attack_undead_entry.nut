@@ -76,7 +76,7 @@ this.el_special_attack_undead_entry <- this.inherit("scripts/skills/el_entrys/el
 	function EL_refreshTotalEntry( _EL_totalEntry )
 	{
 		++_EL_totalEntry.m.EL_EntryNum;
-		_EL_totalEntry.m.EL_DamageMultForUndead += this.m.EL_DamageMult;
+		_EL_totalEntry.m.EL_DamageMultForUndead *= 1.0 + this.m.EL_DamageMult * 0.01;
 		_EL_totalEntry.m.EL_AdditionalAccuracyForUndead += this.m.EL_AdditionalAccuracy;
 	}
     

@@ -78,6 +78,12 @@ this.el_cart_ambition_item <- this.inherit("scripts/items/accessory/accessory", 
 		this.accessory.onUpdateProperties(_properties);
 		_properties.Stamina += this.EL_getBonus();
 	}
+	
+	function onEquip()
+	{
+		this.accessory.onEquip();
+		this.World.Flags.set("EL_HasCartAmbitionRule", true);
+	}
 
 	function onAddedToStash( _stashID )
 	{

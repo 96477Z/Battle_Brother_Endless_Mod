@@ -76,7 +76,7 @@ this.el_special_attack_south_noble_entry <- this.inherit("scripts/skills/el_entr
 	function EL_refreshTotalEntry( _EL_totalEntry )
 	{
 		++_EL_totalEntry.m.EL_EntryNum;
-		_EL_totalEntry.m.EL_DamageMultForSoutherner += this.m.EL_DamageMult;
+		_EL_totalEntry.m.EL_DamageMultForSoutherner *= 1.0 + this.m.EL_DamageMult * 0.01;
 		_EL_totalEntry.m.EL_AdditionalAccuracyForSoutherner += this.m.EL_AdditionalAccuracy;
 	}
     

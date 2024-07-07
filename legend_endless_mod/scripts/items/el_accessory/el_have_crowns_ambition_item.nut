@@ -78,6 +78,12 @@ this.el_have_crowns_ambition_item <- this.inherit("scripts/items/accessory/acces
 		this.accessory.onUpdateProperties(_properties);
 		_properties.Bravery += this.EL_getBonus();
 	}
+	
+	function onEquip()
+	{
+		this.accessory.onEquip();
+		this.World.Flags.set("EL_HasCrownsAmbitionRule", true);
+	}
 
 	function onAddedToStash( _stashID )
 	{

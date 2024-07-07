@@ -57,6 +57,11 @@ local gt = getroottable();
 					text = "等级: " + this.m.EL_Level
 				});
 			}
+			result.insert(9, {
+				id = 25,
+				type = "text",
+				text = "装备者仅承受" + this.Math.round(1 / (1.0 + this.m.MeleeDefense * 0.01 + this.m.RangedDefense * 0.01) * 10000) * 0.01 + "%伤害"
+			});
 			if(this.m.EL_DamageShieldReduction)
 			{
 				result.insert(9, {
@@ -66,11 +71,6 @@ local gt = getroottable();
 					text = "盾牌固定减伤: " + this.m.EL_DamageShieldReduction
 				});
 			}
-			result.insert(10, {
-				id = 25,
-				type = "text",
-				text = "装备者仅承受" + this.Math.round(1 / (1.0 + this.m.MeleeDefense * 0.01 + this.m.RangedDefense * 0.01) * 10000) * 0.01 + "%伤害"
-			});
 			if (this.m.EL_EntryList.len() != 0)
 			{
 				result.push({
@@ -285,8 +285,8 @@ local gt = getroottable();
         }
 		o.EL_getLevelAddtionStaminaModifier <- function()
 		{
-			local stamina_mult = this.getContainer().getActor().getSkills().hasSkill("perk.brawny") ? 0.7 : 1.0;
-			return this.m.StaminaModifier - this.m.EL_BaseWithRankStaminaModifier * stamina_mult;
+			//local stamina_mult = this.getContainer().getActor().getSkills().hasSkill("perk.brawny") ? 0.7 : 1.0;
+			return this.m.StaminaModifier - this.m.EL_BaseWithRankStaminaModifier;// * stamina_mult
 		}
 		o.EL_getRankLevelMax <- function()
 		{
