@@ -5,8 +5,8 @@ this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 	function create()
 	{
 		this.m.ID = "el_special_item.novice_tutorial_book";
-		this.m.Name = "新手引导书";
-		this.m.Description = "使用获得新增内容名词说明。";
+		this.m.Name = "新手引导书（已打开）";
+		this.m.Description = "使用移除所有说明页。";
 		this.m.SlotType = this.Const.ItemSlot.None;
 		this.m.ItemType = this.Const.Items.ItemType.Usable;
 		this.m.IsDroppedAsLoot = false;
@@ -46,8 +46,6 @@ this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 
 	function onUse( _actor, _item = null )
 	{
-		this.World.Flags.set("EL_TotorialBookExtraStash", this.m.PageNum);
-		this.World.State.getPlayer().calculateStashModifier();
 		for(local i = 0; i < this.m.PageNum; ++i)
 		{
 			local page_num_str = i >= 10 ? ("" + i) : ("0" + i)
@@ -59,18 +57,15 @@ this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 				{
 					if (item.getID() == "el_special_item.novice_tutorial_page_" + page_num_str)
 					{
-						has_page = true;
+						this.World.Assets.getStash().remove(item);
 						break;
 					}
 				}
 			}
-			if(has_page == false)
-			{
-				local page = this.new("scripts/items/el_special/el_novice_tutorial_page_" + page_num_str + "_item");
-				this.World.Assets.getStash().add(page);
-			}
 		}
-		this.World.Assets.getStash().add(this.new("scripts/items/el_special/el_novice_tutorial_book_item_opened"));
+		this.World.Flags.set("EL_TotorialBookExtraStash", 0);
+		this.World.State.getPlayer().calculateStashModifier();
+		this.World.Assets.getStash().add(this.new("scripts/items/el_special/el_novice_tutorial_book_item"));
 		//this.World.Assets.getStash().sort();
 		return true;
 	}
