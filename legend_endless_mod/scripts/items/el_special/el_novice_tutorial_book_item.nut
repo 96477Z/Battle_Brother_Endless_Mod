@@ -14,7 +14,7 @@ this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 		this.m.IsUsable = true;
 		this.m.IconLarge = "";
 		this.m.Icon =  "tutorial/book.png";
-		this.m.Value = 0;
+		this.m.Value = 1;
 	}
 
 	function getTooltip()

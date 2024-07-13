@@ -78,6 +78,12 @@ local gt = getroottable();
 
 
 	::mods_hookExactClass("skills/actives/slash_lightning", function(o){
+        local create = o.create;
+        o.create = function()
+        {
+            create();
+			this.m.Description = "一种快速的猛砍攻击，在击中时，会对目标释放闪电攻击。"
+        }
 
         o.getTooltip = function()
         {
@@ -87,7 +93,7 @@ local gt = getroottable();
                     id = 6,
                     type = "text",
                     icon = "ui/icons/special.png",
-                    text = "造成[color=" + this.Const.UI.Color.DamageValue + "] 5% [/color]目标当前生命值 + [color=" + this.Const.UI.Color.DamageValue + "]20[/color] 忽视护甲的伤害。闪电链不会击中同一个单位2次。"
+                    text = "额外造成[color=" + this.Const.UI.Color.DamageValue + "] 25% [/color]目标当前生命值 + [color=" + this.Const.UI.Color.DamageValue + "]100[/color] 忽视护甲的伤害。"
                 },
                 {
                     id = 7,
@@ -101,94 +107,44 @@ local gt = getroottable();
 
         o.applyEffect = function( _data, _delay )
         {
-            this.Time.scheduleEvent(this.TimeUnit.Virtual, _delay, function ( _data )
-            {
-                for( local i = 0; i < this.Const.Tactical.LightningParticles.len(); i = ++i )
-                {
-                    this.Tactical.spawnParticleEffect(true, this.Const.Tactical.LightningParticles[i].Brushes, _data.TargetTile, this.Const.Tactical.LightningParticles[i].Delay, this.Const.Tactical.LightningParticles[i].Quantity, this.Const.Tactical.LightningParticles[i].LifeTimeQuantity, this.Const.Tactical.LightningParticles[i].SpawnRate, this.Const.Tactical.LightningParticles[i].Stages);
-                }
-            }, _data);
+            // this.Time.scheduleEvent(this.TimeUnit.Virtual, _delay, function ( _data )
+            // {
+            //     for( local i = 0; i < this.Const.Tactical.LightningParticles.len(); i = ++i )
+            //     {
+            //         this.Tactical.spawnParticleEffect(true, this.Const.Tactical.LightningParticles[i].Brushes, _data.TargetTile, this.Const.Tactical.LightningParticles[i].Delay, this.Const.Tactical.LightningParticles[i].Quantity, this.Const.Tactical.LightningParticles[i].LifeTimeQuantity, this.Const.Tactical.LightningParticles[i].SpawnRate, this.Const.Tactical.LightningParticles[i].Stages);
+            //     }
+            // }, _data);
 
-            if (_data.Target == null || !_data.Target.isAlive() || _data.Target.isDying())
-            {
-                return;
-            }
+            // if (_data.Target == null || !_data.Target.isAlive() || _data.Target.isDying())
+            // {
+            //     return;
+            // }
 
-            this.Time.scheduleEvent(this.TimeUnit.Virtual, _delay + 200, function ( _data )
-            {
-                local hitInfo = clone this.Const.Tactical.HitInfo;
-                hitInfo.DamageRegular = this.Math.floor(_data.Target.getBaseProperties().Hitpoints * 0.05 + 10 * (1 + _data.User.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).EL_getCurrentLevel() * 0.08));
-                hitInfo.DamageDirect = 1.0;
-                hitInfo.BodyPart = this.Const.BodyPart.Body;
-                hitInfo.BodyDamageMult = 1.0;
-                hitInfo.FatalityChanceMult = 0.0;
-                _data.Target.onDamageReceived(_data.User, _data.Skill, hitInfo);
-            }, _data);
+            // this.Time.scheduleEvent(this.TimeUnit.Virtual, _delay + 200, function ( _data )
+            // {
+            //     local hitInfo = clone this.Const.Tactical.HitInfo;
+            //     hitInfo.DamageRegular = this.Math.floor(_data.Target.getBaseProperties().Hitpoints * 0.05 + 10 * (1 + _data.User.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand).EL_getCurrentLevel() * 0.08));
+            //     hitInfo.DamageDirect = 1.0;
+            //     hitInfo.BodyPart = this.Const.BodyPart.Body;
+            //     hitInfo.BodyDamageMult = 1.0;
+            //     hitInfo.FatalityChanceMult = 0.0;
+            //     _data.Target.onDamageReceived(_data.User, _data.Skill, hitInfo);
+            // }, _data);
         }
 
         o.onUse = function( _user, _targetTile )
         {
             this.spawnAttackEffect(_targetTile, this.Const.Tactical.AttackEffectSlash);
+            local target_entity = _targetTile.getEntity();
+            local damage = (target_entity.getHitpointsMax() - target_entity.getHitpoints()) * 0.25 + 100;
             local success = this.attackEntity(_user, _targetTile.getEntity());
-            local myTile = _user.getTile();
             if (success && _user.isAlive())
             {
-                local selectedTargets = [];
-                local potentialTargets = [];
-                local potentialTiles = [];
-                local target;
-                local have_next_target = true;
-                local delay_time = 100;
-                local targetTile = _targetTile;
-
-                if (this.m.SoundOnLightning.len() != 0)
-                {
-                    this.Sound.play(this.m.SoundOnLightning[this.Math.rand(0, this.m.SoundOnLightning.len() - 1)], this.Const.Sound.Volume.Skill * 2.0, _user.getPos());
-                }
-
-                if (!targetTile.IsEmpty && targetTile.getEntity().isAlive() && !targetTile.getEntity().isDying())
-                {
-                    target = targetTile.getEntity();
-                    selectedTargets.push(target.getID());
-                }
-                else {
-                    target = null;
-                }
-
-                while(have_next_target) {
-
-                    local data = {
-                        Skill = this,
-                        User = _user,
-                        TargetTile = targetTile,
-                        Target = target
-                    };
-                    this.applyEffect(data, delay_time);
-                    delay_time += 50;
-                    potentialTargets = [];
-                    potentialTiles = [];
-                    for( local i = 0; i < 6; i = ++i )
-                    {
-                        if (targetTile.hasNextTile(i))
-                        {
-                            local tile = targetTile.getNextTile(i);
-                            if (tile.IsOccupiedByActor && tile.getEntity().isAttackable() && !tile.getEntity().isAlliedWith(_user) && selectedTargets.find(tile.getEntity().getID()) == null)
-                            {
-                                potentialTargets.push(tile);
-                            }
-                        }
-                    }
-                    if (potentialTargets.len() != 0)
-                    {
-                        target = potentialTargets[this.Math.rand(0, potentialTargets.len() - 1)].getEntity();
-                        selectedTargets.push(target.getID());
-                        targetTile = target.getTile();
-                    }
-                    else
-                    {
-                        have_next_target = false;
-                    }
-                }
+                local hit_info = clone this.Const.Tactical.HitInfo;
+                hit_info.DamageArmor = 0;
+                hit_info.DamageRegular = damage;
+                hit_info.DamageDirect = 1.0;
+                target_entity.onDamageReceived(this.getContainer().getActor(), this, hit_info);
             }
             return success;
         }

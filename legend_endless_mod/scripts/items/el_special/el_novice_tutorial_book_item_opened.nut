@@ -1,10 +1,10 @@
-this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
+this.el_novice_tutorial_book_item_opened <- this.inherit("scripts/items/item", {
 	m = {
         PageNum = 33
     },
 	function create()
 	{
-		this.m.ID = "el_special_item.novice_tutorial_book";
+		this.m.ID = "el_special_item.novice_tutorial_book_opened";
 		this.m.Name = "新手引导书（已打开）";
 		this.m.Description = "使用移除所有说明页。";
 		this.m.SlotType = this.Const.ItemSlot.None;
@@ -14,7 +14,7 @@ this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 		this.m.IsUsable = true;
 		this.m.IconLarge = "";
 		this.m.Icon =  "tutorial/book.png";
-		this.m.Value = 0;
+		this.m.Value = 1;
 	}
 
 	function getTooltip()
@@ -58,7 +58,6 @@ this.el_novice_tutorial_book_item <- this.inherit("scripts/items/item", {
 					if (item.getID() == "el_special_item.novice_tutorial_page_" + page_num_str)
 					{
 						this.World.Assets.getStash().remove(item);
-						break;
 					}
 				}
 			}
