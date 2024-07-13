@@ -5,7 +5,7 @@ this.el_have_renown_ambition_0 <- this.inherit("scripts/ambitions/ambition", {
 	function create()
 	{
 		this.ambition.create();
-		this.m.ID = "ambition.el_have_renown_0";
+		this.m.ID = "ambition.make_nobles_aware";
 		this.m.Duration = 99999.0 * this.World.getTime().SecondsPerDay;
 		this.m.ButtonText = "Already we are known in some parts of the land, yet we are still far from being\na legendary company. We shall increase our renown further!";
 		this.m.UIText = "拥有 " + this.m.EL_ReputationNeed + " 声望。";
