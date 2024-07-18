@@ -57,8 +57,7 @@ this.el_concentrate_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc
         _properties.RangedSkill += this.Const.EL_NPC.EL_NPCBuff.Factor.Concentrate.RangedSkillOffsetPurStack[this.m.EL_RankLevel] * this.m.EL_Stack;
 	}
 	
-    function onAfterUpdate( _properties ) {
-		this.el_npc_buff.onAfterUpdate(_properties);
+    function EL_updateDescription() {
 		this.m.Description = "攻击同一个目标时，增加" + this.Const.EL_NPC.EL_NPCBuff.Factor.Concentrate.MeleeSkillOffsetPurStack[this.m.EL_RankLevel] + "点双攻，增加" + this.Const.EL_NPC.EL_NPCBuff.Factor.Concentrate.DamageMultPurStack[this.m.EL_RankLevel] * 100 + "%伤害，切换目标时清除。";
     }
 

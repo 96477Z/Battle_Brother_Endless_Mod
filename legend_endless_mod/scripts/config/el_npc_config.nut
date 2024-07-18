@@ -929,7 +929,7 @@ gt.Const.EL_NPC <- {
                 DamageRate = [0.2, 0.4, 1]
             },
             Veteran = {
-                CombatLevelOffset = [1, 2, 5]
+                CombatLevelOffset = [2, 4, 10]
             },
             WeaponMaster = {
                 MeleeSkillOffset = [20, 40, 100],

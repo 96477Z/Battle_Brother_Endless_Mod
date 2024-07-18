@@ -30,9 +30,9 @@ gt.Const.EL_PlayerNPC <- {
     ]
 
     EL_CombatLevel = {
-        HitChanceMult = 2,
-        HitChangeFactor = 1.08,
-        DamageFactor = 1.08
+        HitChanceMult = 1,
+        HitChangeFactor = 1.04,
+        DamageFactor = 1.04
     }
 
     EL_Morale = {

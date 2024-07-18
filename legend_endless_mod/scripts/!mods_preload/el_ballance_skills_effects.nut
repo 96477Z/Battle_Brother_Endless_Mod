@@ -1420,6 +1420,11 @@ local gt = getroottable();
 
         o.onUpdate = function( _properties )
         {
+            if(_properties.IsImmuneToOverwhelm)
+            {
+                this.removeSelf();
+                return;
+            }
             _properties.MeleeSkill -= 5 * this.m.Count;
             _properties.RangedSkill -= 5 * this.m.Count;
         }

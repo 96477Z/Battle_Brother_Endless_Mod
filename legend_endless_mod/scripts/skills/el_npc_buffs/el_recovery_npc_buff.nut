@@ -53,8 +53,7 @@ this.el_recovery_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_bu
 		this.Tactical.EventLog.log(this.Const.UI.getColorizedEntityName(actor) + " 恢复了!");
 	}
 	
-    function onAfterUpdate( _properties ) {
-		this.el_npc_buff.onAfterUpdate(_properties);
+    function EL_updateDescription() {
 		this.m.Description = "每回合恢复" + this.Const.EL_NPC.EL_NPCBuff.Factor.Recovery.HitpointsRecoveryRate[this.m.EL_RankLevel] * 100 + "%的最大生命，装备耐久和" + this.Const.EL_NPC.EL_NPCBuff.Factor.Recovery.FatigueRecoveryRate[this.m.EL_RankLevel] + "的疲劳。";
     }
 
