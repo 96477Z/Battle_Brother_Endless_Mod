@@ -23,6 +23,8 @@ local gt = getroottable();
         {
             create();
 			this.m.Value = 0;
+		this.m.RegularDamage = 1;
+		this.m.RegularDamageMax = 5;
             this.EL_generateByRankAndLevel(this.Const.EL_Item.Type.Legendary, 0);
         }
 
@@ -37,7 +39,7 @@ local gt = getroottable();
 						id = 6,
 						type = "text",
 						icon = "ui/icons/special.png",
-                        text = "造成[color=" + this.Const.UI.Color.DamageValue + "] 5% [/color]目标当前生命值 + [color=" + this.Const.UI.Color.DamageValue + "]20[/color] 忽视护甲的伤害。闪电链不会击中同一个单位2次。"
+                        text = "额外造成[color=" + this.Const.UI.Color.DamageValue + "] 25% [/color]目标当前生命值 + [color=" + this.Const.UI.Color.DamageValue + "]100[/color] 忽视护甲的伤害。"
 					});
 					break;
 				}

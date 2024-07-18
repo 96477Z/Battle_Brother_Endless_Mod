@@ -317,11 +317,11 @@ local gt = getroottable();
 			}
 			else if (_item1.EL_isNoviceTutorial() && _item2.EL_isNoviceTutorial())
 			{
-				if(_item2.getID() == "el_special_item.novice_tutorial_book")
+				if(_item2.getID() == "el_special_item.novice_tutorial_book" || _item2.getID() == "el_special_item.novice_tutorial_book_opened")
 				{
 					return 1;
 				}
-				else if(_item1.getID() == "el_special_item.novice_tutorial_book")
+				else if(_item1.getID() == "el_special_item.novice_tutorial_book" || _item1.getID() == "el_special_item.novice_tutorial_book_opened")
 				{
 					return -1;
 				}
