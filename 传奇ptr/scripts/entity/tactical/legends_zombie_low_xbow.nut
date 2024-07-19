@@ -6,7 +6,7 @@ this.legends_zombie_low_xbow <- this.inherit("scripts/entity/tactical/legend_zom
 		this.legend_zombie.onInit();
 		this.m.Skills.add(this.new("scripts/skills/perks/perk_battle_forged"));
 		this.m.Skills.add(this.new("scripts/skills/actives/zombie_bite"));
-		this.m.Skills.add(this.new("scripts/skills/injury_permanent/legend_rotten_flesh"));
+		this.m.Skills.add(this.new("scripts/skills/traits/legend_rotten_flesh_trait"));
 
 		if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
 		{

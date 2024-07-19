@@ -332,7 +332,7 @@ this.healer_building <- this.inherit("scripts/entity/world/camp/camp_building", 
 			return "";
 		}
 
-		local ret = "Injuries Treated ... " + healedTotal + " of " + injTotal;
+		local ret = "已治疗伤病 ... " + healedTotal + "/" + injTotal;
 
 		if (injTotal == healedTotal && injTotal > 0)
 		{
@@ -341,12 +341,12 @@ this.healer_building <- this.inherit("scripts/entity/world/camp/camp_building", 
 
 		if (this.World.Assets.getMedicine() <= 0)
 		{
-			return "No injuries being treated (Out of medicine!)";
+			return "没有伤病得到治疗(缺乏药物！)";
 		}
 
 		local injPercent = this.Math.floor(this.m.Queue[this.m.InjuriesHealed.len()].Injury.getTreatedPercentage() * 10000) / 100.0;
 		local injName = this.m.Queue[this.m.InjuriesHealed.len()].Injury.getName();
-		ret = ret + ("\n" + injPercent + "% of " + injName + " healed");
+		ret = ret + ("\n" + injName + " 已治愈 "+ injPercent + "%");
 		return ret;
 	}
 
@@ -357,10 +357,10 @@ this.healer_building <- this.inherit("scripts/entity/world/camp/camp_building", 
 
 		if (percent >= 100)
 		{
-			return "Health points ... 100%";
+			return "已恢复生命值 ... 100%";
 		}
 
-		return "Health points ... " + percent + "%";
+		return "已恢复生命值 ... " + percent + "%";
 	}
 
 	function update()

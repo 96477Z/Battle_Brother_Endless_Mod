@@ -55,6 +55,22 @@ this.legend_daze <- this.inherit("scripts/skills/skill", {
 		return ret;
 	}
 
+	//add by bigmap
+	function onVerifyTarget( _originTile, _targetTile )
+	{
+		if (!this.skill.onVerifyTarget(_originTile, _targetTile))
+		{
+			return false;
+		}
+
+		if (_originTile.getEntity().isAlliedWith(_targetTile.getEntity()))
+		{
+			return false;
+		}
+		
+		return true;
+	}
+	
 	function onUse( _user, _targetTile )
 	{
 		local targetEntity = _targetTile.getEntity();

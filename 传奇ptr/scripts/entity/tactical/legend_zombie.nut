@@ -47,7 +47,9 @@ this.legend_zombie <- this.inherit("scripts/entity/tactical/enemies/zombie", {
 		tattoo_body.setHorizontalFlipping(true);
 		tattoo_body.Saturation = 0.9;
 		tattoo_body.setBrightness(0.75);
-		local body_injury = this.addSprite("body_injury");
+//		local body_injury = this.addSprite("body_injury");
+		local body_injury = this.addSprite("injury_body");
+		
 		body_injury.Visible = true;
 		body_injury.setBrightness(0.75);
 		body_injury.setBrush("zombify_body_01");

@@ -93,8 +93,19 @@ this.ai_miasma <- this.inherit("scripts/ai/tactical/behavior", {
 
 		foreach( o in opponents )
 		{
+			if(o == null || o.Actor == null || o.Actor.m == null || o.Actor.m.Hitpoints <= 0)
+			{
+				this.logDebug("------ai_misasma selectBestTarget o is null NAME: "+ o.Actor.m.Name);
+				continue;
+			}
 			local opponentTile = o.Actor.getTile();
-
+//add by bigmap
+			if(_myTile.isSameTileAs(opponentTile) || _myTile == opponentTile)
+			{
+				this.logDebug("------ai_misasma selectBestTarget _myTile is same opponentTile");
+				continue;
+			}
+			
 			if (_myTile.getDistanceTo(opponentTile) > _skill.getMaxRange() + 1)
 			{
 				continue;

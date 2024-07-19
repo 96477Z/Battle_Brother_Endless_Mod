@@ -523,6 +523,7 @@ this.anatomists_scenario <- this.inherit("scripts/scenarios/world/starting_scena
 				this.World.Statistics.getFlags().set(buff.acquiredFlagName, true);
 				this.World.Statistics.getFlags().set(buff.discoveredFlagName, true);
 				_combatLoot.add(this.new("scripts/items/misc/anatomist/" + buff.itemName));
+				this.World.Assets.getStash().add(this.new("scripts/items/misc/anatomist/" + buff.itemName));
 			}
 		}
 	}

@@ -83,6 +83,7 @@ this.legend_scroll_item <- this.inherit("scripts/items/item", {
 		}
 		else
 		{
+
 			switch(this.m.Selection)
 			{
 			case 1:
@@ -145,7 +146,7 @@ this.legend_scroll_item <- this.inherit("scripts/items/item", {
 
 				for( local i = 0; i < 100; i = i )
 				{
-					if (!_actor.getBackground().addPerk(t.getRandomPerk()))
+				if (!_actor.getBackground().addPerk(t.getRandomPerk()))
 					{
 					}
 					else
@@ -177,6 +178,7 @@ this.legend_scroll_item <- this.inherit("scripts/items/item", {
 					_actor.getSkills().add(this.new("scripts/skills/effects_world/legend_irritable_effect"));
 				}
 			}
+			
 		}
 
 		if (effect != null)

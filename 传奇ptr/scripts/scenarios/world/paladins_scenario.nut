@@ -20,12 +20,11 @@ this.paladins_scenario <- this.inherit("scripts/scenarios/world/starting_scenari
 		local roster = this.World.getPlayerRoster();
 		local names = [];
 
-		for( local i = 0; i < 2; i = i )
+		for( local i = 0; i < 2; i = ++i )
 		{
 			local bro;
 			bro = roster.create("scripts/entity/tactical/player");
 			bro.m.HireTime = this.Time.getVirtualTimeF();
-			i = ++i;
 		}
 
 		local bros = roster.getAll();
@@ -91,14 +90,14 @@ this.paladins_scenario <- this.inherit("scripts/scenarios/world/starting_scenari
 		this.World.Assets.m.Money = this.World.Assets.m.Money - 1000;
 		this.World.Assets.m.ArmorParts = this.World.Assets.m.ArmorParts / 2;
 		this.World.Assets.m.Medicine = this.World.Assets.m.Medicine / 2;
-		this.World.Assets.m.Ammo = this.World.Assets.m.Medicine / 2;
+		this.World.Assets.m.Ammo = this.World.Assets.m.Ammo / 2;
 	}
 
 	function onSpawnPlayer()
 	{
 		local randomVillage;
 
-		for( local i = 0; i != this.World.EntityManager.getSettlements().len(); i = i )
+		for( local i = 0; i != this.World.EntityManager.getSettlements().len(); i = ++i )
 		{
 			randomVillage = this.World.EntityManager.getSettlements()[i];
 
@@ -107,7 +106,6 @@ this.paladins_scenario <- this.inherit("scripts/scenarios/world/starting_scenari
 				break;
 			}
 
-			i = ++i;
 		}
 
 		local randomVillageTile = randomVillage.getTile();

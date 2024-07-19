@@ -5,7 +5,7 @@ this.glorious_endurance_trait <- this.inherit("scripts/skills/traits/character_t
 	function create()
 	{
 		this.character_trait.create();
-		this.m.ID = "trait.glorious";
+		this.m.ID = "trait.glorious_endurance";
 		this.m.Name = "Glorious Endurance";
 		this.m.Icon = "ui/traits/trait_icon_70.png";
 		this.m.Order = this.Const.SkillOrder.Trait - 1;

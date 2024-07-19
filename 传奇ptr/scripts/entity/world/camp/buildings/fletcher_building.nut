@@ -182,12 +182,12 @@ this.fletcher_building <- this.inherit("scripts/entity/world/camp/camp_building"
 
 		if (this.World.Assets.getAmmo() + this.m.AmmoAdded >= this.World.Assets.getMaxAmmo())
 		{
-			return "Fletched ... " + this.Math.floor(this.m.AmmoAdded) + " ammo";
+			return "已制作 ... " + this.Math.floor(this.m.AmmoAdded) + " 弹药";
 		}
 
 		local points = this.Math.floor(this.m.Craft * this.m.Camp.getElapsedHours());
 		this.m.AmmoAdded = this.Math.min(this.World.Assets.getMaxAmmo(), points / 2.0);
-		return "Fletched ... " + this.Math.floor(this.m.AmmoAdded) + " ammo";
+		return "已制作 ... " + this.Math.floor(this.m.AmmoAdded) + " 弹药";
 	}
 
 	function completed()

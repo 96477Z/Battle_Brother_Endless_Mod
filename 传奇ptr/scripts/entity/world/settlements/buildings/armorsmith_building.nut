@@ -358,16 +358,20 @@ this.armorsmith_building <- this.inherit("scripts/entity/world/settlements/build
 			P = 1.0,
 			S = "helmets/legend_enclave_vanilla_kettle_sallet_01"
 		});
+//add by bigmap
+/*		
 		list.push({
 			R = 80,
 			P = 1.0,
 			S = "helmets/wallace_sallet"
 		});
+
 		list.push({
 			R = 80,
 			P = 1.0,
 			S = "helmets/deep_sallet"
 		});
+
 		list.push({
 			R = 80,
 			P = 1.0,
@@ -378,7 +382,7 @@ this.armorsmith_building <- this.inherit("scripts/entity/world/settlements/build
 			P = 1.0,
 			S = "helmets/rondel_helm"
 		});
-
+*/
 		if (::Legends.Mod.ModSettings.getSetting("UnlayeredArmor").getValue())
 		{
 			list.push({

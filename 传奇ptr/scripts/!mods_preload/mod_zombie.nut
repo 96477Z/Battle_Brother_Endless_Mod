@@ -20,7 +20,7 @@ this.getroottable().Const.LegendMod.hookGhoul <- function ()
 			this.Tactical.addEntityToMap(e, _tile.Coords.X, _tile.Coords.Y);
 			e.getFlags().set("Devoured", false);
 
-			if (e.getFlags().has("IsSummoned"))
+			if (e.getFlags().has("IsSummoned") || e.isSummoned())
 			{
 				return;
 			}

@@ -339,21 +339,21 @@ this.workshop_building <- this.inherit("scripts/entity/world/camp/camp_building"
 	{
 		if (this.m.PointsNeeded == 0)
 		{
-			return "No salvage queued";
+			return "无回收序列";
 		}
 
 		local percent = this.Math.floor(this.m.PointsSalvaged / this.m.PointsNeeded * 10000) / 100.0;
 
 		if (percent >= 100)
 		{
-			return "Salvaged ... 100%";
+			return "已回收 ... 100%";
 		}
 
-		local text = "Salvaged ... " + percent + "%";
+		local text = "已回收 ... " + percent + "%";
 
 		if (this.World.Assets.getArmorPartsF() == this.World.Assets.getMaxArmorParts())
 		{
-			return text + " (At max tools!)";
+			return text + " (工具已最大数量!)";
 		}
 
 		return text;

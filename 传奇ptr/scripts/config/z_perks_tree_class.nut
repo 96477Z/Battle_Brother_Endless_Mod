@@ -545,14 +545,16 @@ gt.Const.Perks.ClassTrees <- {
 
 		foreach( i, t in this.Tree )
 		{
-			if (_exclude != null && _exclude.find(t.ID))
+			if(_exclude != null && _exclude.find(t.ID))
 			{
 				continue;
 			}
-
 			L.push(i);
 		}
-
+		if(L.len() == 0)
+		{
+			return null;
+		}
 		local r = this.Math.rand(0, L.len() - 1);
 		return this.Tree[L[r]];
 	}
@@ -561,7 +563,10 @@ gt.Const.Perks.ClassTrees <- {
 	{
 		local tree = this.getRandom(null);
 		local L = [];
-
+		if(tree == null)
+		{
+			return null;
+		}
 		foreach( row in tree.Tree )
 		{
 			foreach( p in row )
@@ -569,7 +574,10 @@ gt.Const.Perks.ClassTrees <- {
 				L.push(p);
 			}
 		}
-
+		if(L.len() == 0)
+		{
+			return null;
+		}
 		local r = this.Math.rand(0, L.len() - 1);
 		return L[r];
 	}

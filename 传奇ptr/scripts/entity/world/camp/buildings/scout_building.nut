@@ -280,10 +280,10 @@ this.scout_building <- this.inherit("scripts/entity/world/camp/camp_building", {
 	{
 		if (this.m.NumBros == 0)
 		{
-			return "No one on patrol!";
+			return "无人巡逻!";
 		}
 
-		return "Patrol radius ... " + this.m.Radius;
+		return "已巡逻半径 ... " + this.m.Radius;
 	}
 
 	function updateTick( _hours )

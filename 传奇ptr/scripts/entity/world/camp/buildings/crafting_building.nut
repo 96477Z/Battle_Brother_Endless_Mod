@@ -251,7 +251,7 @@ this.crafting_building <- this.inherit("scripts/entity/world/camp/camp_building"
 
 		if (this.m.NumBros == 0)
 		{
-			return "No one assigned to craft";
+			return "没有人被分配到制作帐篷";
 		}
 
 		local craftableQueue = this.getCraftableQueue();
@@ -261,10 +261,10 @@ this.crafting_building <- this.inherit("scripts/entity/world/camp/camp_building"
 
 		if (craftableQueue.len() == 0)
 		{
-			return "Crafted ..." + crafted + " / " + crafted;
+			return "已制作 ..." + crafted + " / " + crafted;
 		}
 
-		return "Crafted ... " + crafted + "/" + numToCraft + " ... " + progress + "% of " + this.m.CurrentCraft;
+		return "已制作 ... " + crafted + "/" + numToCraft + " ... " + this.m.CurrentCraft + progress + "%" ;
 	}
 
 	function getCraftableQueue()

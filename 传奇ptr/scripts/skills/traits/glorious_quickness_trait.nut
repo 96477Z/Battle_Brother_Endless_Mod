@@ -3,7 +3,7 @@ this.glorious_quickness_trait <- this.inherit("scripts/skills/traits/character_t
 	function create()
 	{
 		this.character_trait.create();
-		this.m.ID = "trait.glorious";
+		this.m.ID = "trait.glorious_quickness";
 		this.m.Name = "Glorious Quickness";
 		this.m.Icon = "ui/traits/trait_icon_71.png";
 		this.m.Description = "Forged in the arenas of the south, this character has fought many a battle, and is an expert in dispatching multiple opponents in a row. This fabulous lifestyle demands high pay, but they\'ll never desert you  and can\'t be dismissed. If all three original members should die, your campaign ends.";

@@ -1160,6 +1160,9 @@ local gt = getroottable();
                 return false;
             }
             _attackinfo.Container.setBusy(false);
+            if(_attackinfo.User == null ||  _attackinfo.TargetTile.getEntity() == null) {
+                return false;
+            }
 
             if (_attackinfo.User.isAlive() && _attackinfo.TargetTile.getEntity().isAlive())
             {
