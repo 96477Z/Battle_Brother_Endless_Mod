@@ -59,8 +59,7 @@ this.el_intimidate_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_
 		_properties.Bravery += this.Const.EL_NPC.EL_NPCBuff.Factor.Intimidate.BraveryOffset[this.m.EL_RankLevel];
 	}
 	
-    function onAfterUpdate( _properties ) {
-		this.el_npc_buff.onAfterUpdate(_properties);
+    function EL_updateDescription() {
 		this.m.Description = "决心增加" + this.Const.EL_NPC.EL_NPCBuff.Factor.Intimidate.BraveryOffset[this.m.EL_RankLevel] + "点。每次攻击有" + this.Const.EL_NPC.EL_NPCBuff.Factor.Intimidate.MoraleCheckChance[this.m.EL_RankLevel] + "%的概率对周围敌人进行1次负面的决心判定，受自身决心影响。";
     }
 

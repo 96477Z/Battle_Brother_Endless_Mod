@@ -37,6 +37,7 @@ this.el_npc_buff_stone_item <- this.inherit("scripts/items/trade/trading_good_it
 			text = this.getValueString()
 		});
 		foreach(skill in this.m.EL_NPCBuffs) {
+			skill.EL_updateDescription();
 			local names = this.split(skill.getName(), "(");
 			local name = names[0];
 			result.push({
@@ -44,6 +45,11 @@ this.el_npc_buff_stone_item <- this.inherit("scripts/items/trade/trading_good_it
 				type = "text",
 				icon = "ui/el_icons/magic_stone_rank_" + skill.EL_getRankLevel() + ".png",
 				text = name
+			});
+			result.push({
+				id = 10,
+				type = "text",
+				text = skill.getDescription()
 			});
 		}
 		result.push({
