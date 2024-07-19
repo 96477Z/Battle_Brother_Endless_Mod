@@ -343,14 +343,15 @@ this.getroottable().Const.LegendMod.loadTacticalTooltip <- function ()
 
 				if (name && name.len() > 1)
 				{
-					texts = texts + ("[color=" + this.Const.UI.Color.NegativeValue + "]" + name.slice(0, 1) + "[/color]" + name.slice(1) + ", ");
+//					texts = texts + ("[color=" + this.Const.UI.Color.NegativeValue + "]" + name.slice(0, 1) + "[/color]" + name.slice(1) + ", ");
+					texts = texts + " " + name;
 				}
 			}
 
-			if (texts.len() > 2)
-			{
-				texts = texts.slice(0, -2);
-			}
+//			if (texts.len() > 2)
+//			{
+//				texts = texts.slice(0, -2);
+//			}
 
 			tooltip.push({
 				id = 301,

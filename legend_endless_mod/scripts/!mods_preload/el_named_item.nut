@@ -196,23 +196,6 @@ local gt = getroottable();
 		{
 		}
 
-		o.onSerialize = function ( _out )
-		{
-			_out.writeString(this.m.Name);
-			this.legend_armor.onSerialize(_out);
-		}
-
-		o.onDeserialize = function ( _in )
-		{
-			this.m.Name = _in.readString();
-			this.legend_armor.onDeserialize(_in);
-
-			if (this.isRuned())
-			{
-				this.updateRuneSigil();
-			}
-		}
-
 		o.EL_getRankLevelMax <- function()
 		{
 			return this.Const.EL_Item.MaxRankLevel.Named;
@@ -250,6 +233,25 @@ local gt = getroottable();
 		{
 			o.randomizeValues = function ()
 			{
+			}
+		});
+	}
+
+	for(local i = 0; i < this.Const.EL_Item_Other.EL_ExtraNamedItem.len(); ++i) {
+		::mods_hookExactClass("items/" + this.Const.EL_Item_Other.EL_ExtraNamedItem[i], function ( o )
+		{
+			o.m.EL_RankLevel <- 1;
+			
+			local create = o.create;
+			o.create = function ()
+			{
+				create();
+				this.addItemType(this.Const.Items.ItemType.Named);
+			};
+
+			o.EL_getRankLevelMax <- function()
+			{
+				return this.Const.EL_Item.MaxRankLevel.Named;
 			}
 		});
 	}

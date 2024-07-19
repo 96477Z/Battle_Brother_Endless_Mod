@@ -362,7 +362,7 @@ this.enchanter_building <- this.inherit("scripts/entity/world/camp/camp_building
 
 		if (this.m.NumBros == 0)
 		{
-			return "No one assigned to enchant";
+			return "没有人分配到铭刻帐篷";
 		}
 
 		local crafted = this.m.ItemsCrafted.len();
@@ -371,10 +371,10 @@ this.enchanter_building <- this.inherit("scripts/entity/world/camp/camp_building
 
 		if (crafted == numToCraft)
 		{
-			return "Crafted ..." + crafted + " / " + crafted;
+			return "已铭刻 ..." + crafted + " / " + crafted;
 		}
 
-		return "Enchanted ... " + crafted + "/" + numToCraft + " ... " + progress + "% of " + this.m.CurrentCraft;
+		return "已铭刻 ... " + crafted + "/" + numToCraft + " ... " + this.m.CurrentCraft + progress + "%";
 	}
 
 	function update()

@@ -122,7 +122,13 @@ this.legend_entice <- this.inherit("scripts/skills/skill", {
 		{
 			return false;
 		}
-
+//add by bigmap
+		if (_originTile.getEntity().isAlliedWith(_targetTile.getEntity()))
+		{
+			return false;
+		}
+		
+		
 		local pulledTo = this.getPulledToTile(_originTile, _targetTile);
 
 		if (pulledTo == null)

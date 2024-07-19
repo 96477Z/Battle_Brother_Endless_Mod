@@ -357,7 +357,9 @@ this.bandit_rabble <- this.inherit("scripts/entity/tactical/human", {
 			"legend_named_sickle"
 		];
 		this.m.Items.unequip(this.m.Items.getItemAtSlot(this.Const.ItemSlot.Mainhand));
-		this.m.Items.equip(this.new("scripts/items/named/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
+//add by bigmap
+		this.m.Items.equip(this.new("scripts/items/weapons/named/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
+//		this.m.Items.equip(this.new("scripts/items/named/" + weapons[this.Math.rand(0, weapons.len() - 1)]));
 	}
 
 });

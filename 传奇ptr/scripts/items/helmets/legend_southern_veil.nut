@@ -39,7 +39,9 @@ this.legend_southern_veil <- this.inherit("scripts/items/helmets/helmet", {
 		this.m.SpriteDamaged = "southern_veil_" + variant + "_damaged";
 		this.m.SpriteCorpse = "southern_veil_" + variant + "_dead";
 		this.m.IconLarge = "";
-		this.m.Icon = "helmets/icon_southern_veil_" + variant + ".png";
+//		this.m.Icon = "helmets/icon_southern_veil_" + variant + ".png";
+		this.m.Icon = "helmets/inventory_southern_veil_" + variant + ".png";
+
 	}
 
 });

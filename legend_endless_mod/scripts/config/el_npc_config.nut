@@ -863,7 +863,7 @@ gt.Const.EL_NPC <- {
             },
             LifeDrain = {
                 HitpointsPurActionPoint = [2, 4, 10],
-                HitpointsMultPurCombatLevel = 0.04,
+                HitpointsMultPurCombatLevel = 0.08,
                 RecoverMult = 10,
             }
             LightningSpeed = {
@@ -895,14 +895,14 @@ gt.Const.EL_NPC <- {
             },
             SelfDestruct = {
                 DamageBase = 200,
-                DamageMultPurCombatLevel = 0.04,
+                DamageMultPurCombatLevel = 0.08,
                 DamageRate = [0.2, 0.4, 1],
                 DamageDecayRatePurTile = 0.5,
                 MaxDistance = 4
             },
             Stamp = {
                 DamageBase = 100,
-                DamageMultPurWorldLevel = 0.04,
+                DamageMultPurWorldLevel = 0.08,
                 StackPurHit = [1, 2, 5],
                 ExplodeStackNum = 5,
                 ExplodeStackGain = 1,
@@ -924,8 +924,8 @@ gt.Const.EL_NPC <- {
                 DamageReceivedMult = [0.4, 0.8, 2.0]
             },
             Thron = {
-                DamageBase = 20,
-                DamageMultPurCombatLevel = 0.04,
+                DamageBase = 50,
+                DamageMultPurCombatLevel = 0.08,
                 DamageRate = [0.2, 0.4, 1]
             },
             Veteran = {
@@ -936,8 +936,8 @@ gt.Const.EL_NPC <- {
                 RangedSkillOffset = [20, 40, 100]
             },
             Wither = {
-                DamageBase = 20,
-                DamageMultPurCombatLevel = 0.04,
+                DamageBase = 50,
+                DamageMultPurCombatLevel = 0.08,
                 DamageRate = [0.2, 0.4, 1],
                 DamageDecayRatePurTile = 0.5,
                 MaxDistance = 4

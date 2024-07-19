@@ -72,7 +72,6 @@ gt.Const.EL_Item_Other <- {
 		"legend_armor/legendary/legend_armor_of_davkul",
 		"legend_armor/legendary/legend_emperors_armor",
 		"legend_armor/legendary/legend_ijirok_armor",
-		"weapons/legend_staff_vala"
 		"weapons/legendary/legend_mage_swordstaff",
 		"weapons/legendary/lightbringer_sword",
 		"weapons/legendary/obsidian_dagger",
@@ -149,6 +148,21 @@ gt.Const.EL_Item_Other <- {
 		"legend_helmets/hop/legend_helmet_golden_mask",
 		"legend_helmets/hop/legend_helmet_wallace_sallet_visor_named",
 		"legend_helmets/hop/legend_helmet_warlock_skull",
+	],	
+	EL_ExtraNamedItem = [
+		"weapons/legend_redback_dagger",
+		"shields/special/craftable_kraken_shield",
+		"legend_helmets/vanity/legend_helmet_mountain_helm",
+		"legend_helmets/vanity/legend_helmet_nach_helm",
+		"legend_helmets/vanity/legend_helmet_redback_helm",
+		"legend_helmets/vanity/legend_helmet_lindwurm_helm",
+		"legend_helmets/vanity/legend_helmet_white_wolf_helm",
+		"legend_helmets/vanity/legend_helmet_demon_alp_helm",
+		"legend_armor/cloak/legend_hexen_leader_cloak",
+		"legend_armor/cloak/legend_redback_cloak",
+		"legend_armor/cloak/legend_stollwurm_scales_cloak",
+		"legend_armor/armor_upgrades/legend_armor_white_wolf_pelt_upgrade",
+		"weapons/legend_staff_vala"
 	],
 
 	EL_InvalidItem = [

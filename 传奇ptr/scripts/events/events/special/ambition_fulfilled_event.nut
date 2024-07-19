@@ -106,7 +106,7 @@ this.ambition_fulfilled_event <- this.inherit("scripts/events/event", {
 		local highest_hiretime_bro;
 		local highest_bravery = 0;
 		local highest_bravery_bro;
-		local lowest_hitpoints = 9999;
+		local lowest_hitpoints = 19999;
 		local lowest_hitpoints_bro;
 
 		foreach( bro in brothers )
@@ -128,10 +128,11 @@ this.ambition_fulfilled_event <- this.inherit("scripts/events/event", {
 				highest_bravery = bro.getCurrentProperties().getBravery();
 				highest_bravery_bro = bro;
 			}
-
-			if (bro.getHitpoints() < lowest_hitpoints)
+//add by bigmap
+			if (bro.getHitpoints() <= lowest_hitpoints)
 			{
-				lowest_hitpoints = bro.getHireTime();
+				lowest_hitpoints = bro.getHitpoints();
+//				lowest_hitpoints = bro.getHireTime();
 				lowest_hitpoints_bro = bro;
 			}
 		}

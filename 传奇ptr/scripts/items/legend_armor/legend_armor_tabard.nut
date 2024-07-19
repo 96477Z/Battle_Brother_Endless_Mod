@@ -39,10 +39,13 @@ this.legend_armor_tabard <- this.inherit("scripts/items/legend_armor/legend_armo
 		this.m.SpriteBack = "legend_tabard_" + variant;
 		this.m.SpriteDamagedBack = "legend_tabard_" + variant + "_damaged";
 		this.m.SpriteCorpseBack = "legend_tabard_" + variant + "_dead";
-		this.m.Icon = "legend_armor/tabard/tabard_" + variant + ".png";
+//		this.m.Icon = "legend_armor/tabard/tabard_" + variant + ".png";
+		this.m.Icon = "legend_armor/icon_legend_tabard_" + variant + ".png";
 		this.m.IconLarge = this.m.Icon;
-		this.m.OverlayIcon = "legend_armor/tabard/icon_tabard_" + variant + ".png";
-		this.m.OverlayIconLarge = "legend_armor/tabard/inventory_tabard_" + variant + ".png";
+//		this.m.OverlayIcon = "legend_armor/tabard/icon_tabard_" + variant + ".png";
+		this.m.OverlayIcon = "legend_armor/icon_legend_tabard_" + variant + ".png";
+//		this.m.OverlayIconLarge = "legend_armor/tabard/inventory_tabard_" + variant + ".png";
+		this.m.OverlayIconLarge = "legend_armor/inventory_legend_tabard_" + variant + ".png";
 	}
 
 	function getResolveModifier()

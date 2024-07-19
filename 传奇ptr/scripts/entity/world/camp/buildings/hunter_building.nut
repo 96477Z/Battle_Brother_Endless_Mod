@@ -211,11 +211,11 @@ this.hunter_building <- this.inherit("scripts/entity/world/camp/camp_building", 
 			return null;
 		}
 
-		local text = "Hunted ... " + this.m.FoodAmount + " food and gained " + this.m.Items.len() + " items";
+		local text = "已狩猎 ... " + this.m.FoodAmount + " 食物和收获 " + this.m.Items.len() + " 物品";
 
 		if (this.Stash.getNumberOfEmptySlots() == 0)
 		{
-			return text + " (Inventory is full!)";
+			return text + " (库存已满!)";
 		}
 
 		return text;

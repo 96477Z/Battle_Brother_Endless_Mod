@@ -319,21 +319,21 @@ this.repair_building <- this.inherit("scripts/entity/world/camp/camp_building", 
 	{
 		if (this.m.PointsNeeded == 0)
 		{
-			return "No repairs queued";
+			return "无修理序列";
 		}
 
 		local percent = this.Math.floor(this.m.PointsRepaired / this.m.PointsNeeded * 10000) / 100.0;
 
 		if (percent >= 100)
 		{
-			return "Repaired ... 100%";
+			return "已修理 ... 100%";
 		}
 
-		local text = "Repaired ... " + percent + "%";
+		local text = "已修理 ... " + percent + "%";
 
 		if (this.World.Assets.getArmorParts() == 0)
 		{
-			return text + " (No tools left!)";
+			return text + " (没有工具!)";
 		}
 
 		return text;

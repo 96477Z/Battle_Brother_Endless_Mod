@@ -77,7 +77,9 @@ this.cultist <- this.inherit("scripts/entity/tactical/human", {
 		this.m.Items.equip(this.Const.World.Common.pickArmor([
 			[
 				1,
-				"cultist_leather_armor"
+//add by bigmap
+//				"cultist_leather_armor"
+				"cultist_leather_robe"
 			],
 			[
 				1,

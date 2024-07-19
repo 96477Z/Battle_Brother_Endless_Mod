@@ -346,8 +346,9 @@ this.legend_ai_protect_target <- this.inherit("scripts/ai/tactical/behavior", {
 						j = ++j;
 					}
 
-					if (tile.Properties.Effect != null && !tile.Properties.Effect.IsPositive && tile.Properties.Effect.Applicable(_entity))
-					{
+//add by bigmap for 15.0.13
+//					if (tile.Properties.Effect != null && !tile.Properties.Effect.IsPositive && tile.Properties.Effect.Applicable(_entity))
+					if (this.hasNegativeTileEffect(tile, _entity))					{
 						immediateBonus = immediateBonus - this.Const.AI.Behavior.ProtectAllyTileEffectPenalty + 4;
 					}
 

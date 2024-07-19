@@ -9,7 +9,8 @@ this.legend_oms_paw_item <- this.inherit("scripts/items/accessory/accessory", {
 		this.m.SlotType = this.Const.ItemSlot.Accessory;
 		this.m.IsDroppedAsLoot = true;
 		this.m.IconLarge = "";
-		this.m.Icon = "inventory/werehand.png";
+//add by bigmap		
+		this.m.Icon = "misc/inventory_werehand.png";
 		this.m.Value = 2345;
 	}
 

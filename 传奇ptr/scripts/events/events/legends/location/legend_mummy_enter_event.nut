@@ -8,13 +8,13 @@ this.legend_mummy_enter_event <- this.inherit("scripts/events/event", {
 		this.m.IsSpecial = true;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/event_173.png[/img]{As the sand swallows your feet you scramble to the zenith of the next sand dune, the crest gives way to more of the same — the sands part between the hypnotising peaks between the valleys, occasionally sprinkled with columns, collapsed entrances and skeletons human and animal alike. Further afield you see the apex of a more rigid structure, the faded motifs strike you first, a small smatter of colour in an otherwise desolate landscape.\n\n As you wade closer the colours become more vivid; teals, maroons and jaundiced yellows all wax and wane in stripes, seemingly telling a tale nobody living can still recant. The air is warm, but stale — time seems to have affected this place differently than anywhere else you have seen so far. \n\n Small pots and urns make mickles around the entryways and columns, this place is a shining beacon for graverobbers but remains untouched and orderly.}",
+			Text = "@@[img]gfx/ui/events/event_173.png[/img]{当沙子吞没你的脚时，你爬到了下一个沙丘的顶点，山顶让位给了更多相同的地方——山谷之间令人昏昏欲睡的山峰之间的沙子部分，偶尔会撒上柱子、坍塌的入口和人类和动物的骨骼。在更远的地方，你可以看到一个更为僵硬的结构的顶点，褪色的图案首先映入你的眼帘，在一个原本荒凉的风景中，有一点点色彩。\n\n 当你涉水越近，颜色就越鲜艳；蓝绿色、栗色和黄疸黄色都呈条纹状增减，似乎讲述了一个没有人能够改变的故事。空气很暖和，但陈腐的时间似乎对这个地方的影响与你目前看到的其他地方不同。 \n\n 入口和柱子周围的小罐子和米克尔，这个地方是掘墓人的闪光灯塔，但仍然保持原样和有序。}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "More treasure for us then!",
+					Text = "那就给我们更多的宝藏!",
 					function getResult( _event )
 					{
 						return "B";
@@ -22,7 +22,7 @@ this.legend_mummy_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Let\'s not disturb what rests here.",
+					Text = "让我们不要打扰这里的安宁。",
 					function getResult( _event )
 					{
 						if (this.World.State.getLastLocation() != null)
@@ -42,13 +42,13 @@ this.legend_mummy_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "B",
-			Text = "[img]gfx/ui/events/event_89.png[/img]{As you slowly pace inside the main monolith the temperature dramatically drops to a more comfortable level. The shade makes your skin writhe with comfort from the heat outside. \n\n The room is mostly blank, the only distinguishing feature aside from the inscribed walls are stone caskets of varying quality — some depict great battles, a figure whipping servants and others who are partaking in a form of ritual that has been purposely defaced with a weapon or chisel. Others remain blank — either not important enough to be worth more time of the craftsmen or simply unfinished. }",
+			Text = "@@[img]gfx/ui/events/event_89.png[/img]{当你在主整体内缓慢踱步时，温度会急剧下降到更舒适的水平。遮荫使你的皮肤因外面的炎热而感到舒适。 \n\n 房间大部分是空白的，除了刻有文字的墙壁外，唯一的特色是不同质量的石棺——一些描绘了伟大的战斗，一个鞭打仆人的人物，还有一些参加了一种仪式，被武器或凿子故意破坏。其他的仍然是空白的——要么不够重要，不值得工匠花费更多的时间，要么只是未完成。 }",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "What was that noise?",
+					Text = "那是什么声音？",
 					function getResult( _event )
 					{
 						return "C";
@@ -63,13 +63,13 @@ this.legend_mummy_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "C",
-			Text = "[img]gfx/ui/events/event_89.png[/img]{As you inch closer you begin to realise that fingers have smudged and flailed against the inside enclosure of the sarcophagus, some caskets have been opened from inside, while others had outside assistance. \n\n However, all of them are empty. \n\n The air begins to feel warm again suddenly, there is more in this chamber than you suspected. A figure of a man catches your eye, it opens its mouth as it plods from the darkness. \n\n Words do not come, only a trickle of sand and skin.}",
+			Text = "@@[img]gfx/ui/events/event_89.png[/img]{当你慢慢靠近时，你开始意识到手指已经沾污并拍打着石棺的内部外壳，一些棺材已经从内部打开，而其他棺材则需要外部的帮助。 \n\n 然而，它们都是空的。 \n\n 空气突然又开始感到温暖，这个房间里的空气比你想象的要多。一个男人的身影吸引了你的目光，当它从黑暗中缓慢前行时，它张开了嘴。 \n\n 言语无法表达，只有细流的沙子和皮肤。}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "The dead are upon us",
+					Text = "亡灵来了",
 					function getResult( _event )
 					{
 						if (this.World.State.getLastLocation() != null)
@@ -279,13 +279,13 @@ this.legend_mummy_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "Victory",
-			Text = "[img]gfx/ui/events/event_89.png[/img]{The ancient queen crumbles to ash before you, leaving nothing left in the chamber but sand.}",
+			Text = "@@[img]gfx/ui/events/event_89.png[/img]{远古亡灵女王在你面前化成灰烬，房间里除了沙子什么也没有留下。}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "What was that?",
+					Text = "那是什么？",
 					function getResult( _event )
 					{
 						return 0;
@@ -316,13 +316,13 @@ this.legend_mummy_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "Defeat",
-			Text = "[img]gfx/ui/events/event_173.png[/img]The mercenaries run out into the blazing sun again.%SPEECH_ON%Perhaps another time?%SPEECH_OFF%One sellsword says. %randombrother% nods.%SPEECH_ON%Another time, aye. Maybe a time far away from now, when I\'m out retired and farkin\' whoors, then y\'all can dip down into the darkness and go gallivanting with dead wizards. Does that time work for y\'all?%SPEECH_OFF%",
+			Text = "@@[img]gfx/ui/events/event_173.png[/img]雇佣军再次冲向烈日。%SPEECH_ON%也许下次吧？%SPEECH_OFF%一个雇佣兵说。%randombrother%点头。%SPEECH_ON%下次吧，是的。也许离现在很远的时候，当我退休了，和其他人在一起的时候，你们都可以潜入黑暗中，和死去的巫师闲逛。这段时间对你们都有用吗？%SPEECH_OFF%",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Perhaps one day...",
+					Text = "也许有一天...",
 					function getResult( _event )
 					{
 						return 0;

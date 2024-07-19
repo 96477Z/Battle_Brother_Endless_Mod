@@ -12,13 +12,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		this.m.IsSpecial = true;
 		this.m.Screens.push({
 			ID = "A",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{ You approach a large metal door set into a huge defensive wall. There is clearly only one way in. A guard calls down from the battlements %SPEECH_ON%Here for the tournament? Never heard of you. Prove yourselves in the southern arena before you tread these hallowed grounds.%SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{ 你走近了一扇巨大的金属门，门上有一道巨大的防御墙。显然只有一条路可以进去。一名卫兵从城垛上喊道%SPEECH_ON%来这里参加比赛？从没听说过你。在踏上这些神圣的土地之前，请在南方舞台上证明自己。%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "We must head to the arena.",
+					Text = "我们必须前往竞技场。",
 					function getResult( _event )
 					{
 						return 0;
@@ -33,13 +33,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "B",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{ You approach a large metal door set into a huge defensive wall. There is clearly only one way in. A guard calls down from the battlements gesturing towards your arena veteran %SPEECH_ON%Hail %veteran%! I heard of your performance in the arena, but who are these welps with you? Your party will need at least three veterans before we can let you in to the grand tournament. Teach them your ways and come back, we look forward to seeing you in the tourney. %SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{ 你走近了一扇巨大的金属门，门上有一道巨大的防御墙。显然只有一条路可以进去。一名卫兵从城垛上喊道，向你的竞技场老兵示意 %SPEECH_ON%Hail %veteran%! 我听说了你在竞技场的表现，但这些人是谁？你的派对至少需要三名退伍军人才能让你参加盛大的锦标赛。教他们你的方法，然后回来，我们期待着在比赛中见到你。 %SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "We must return to the arena.",
+					Text = "我们必须回到竞技场。",
 					function getResult( _event )
 					{
 						return 0;
@@ -54,13 +54,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "C",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{ You approach the huge defensive wall, the metal door opens without a guard in sight. As you pass through the gates a round of trumpets call out, and a voice echoes. %SPEECH_ON%Welcome %companyname% to the grand tournament!%SPEECH_OFF% A scattered round of applause follows the announcement and you head into the entrance hall.}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{ 你走近巨大的防御墙，金属门打开，看不到警卫。当你穿过大门时，一轮号角响起，一个声音回响。 %SPEECH_ON%欢迎%companyname%参加盛大锦标赛！%SPEECH_OFF% 宣布后，一片掌声响起，你走进了门厅。}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "The welcome we deserve.",
+					Text = "我们应该受到的欢迎。",
 					function getResult( _event )
 					{
 						return "D";
@@ -75,13 +75,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "D",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{On the other side of the hall a door opens and a confident woman strides up to you. The trumpets sound again and a voice announces Artemisia, marshal of the grand tournament. She carries herself with the bearing of a fighter, wearing a gambeson, a full scabbard and a welcoming smile. %SPEECH_ON%Good to see the renowned %companyname%, I am glad to see you have joined us among the ranks of the greatest fighters. Have you come for bragging rights, or coin? No matter, you shall find both here%SPEECH_OFF% She leads you to a window that looks down on a large grassy arena where rich patrons watch on as warriors are sparring with one another. %SPEECH_ON%We have three events to compete in today, a Show Match against a specific foe of your choosing, The Gauntlet against endless waves of humans, or The Grand Melee against a mix of all foes. Would you like to compete today? %SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{在大厅的另一边，一扇门打开了，一个自信的女人大步走向你。喇叭再次响起，阿特米西亚-盛大比赛的元帅。她带着一副斗士的姿态，身穿斗篷，剑鞘丰满，面带欢迎的微笑。%SPEECH_ON%很高兴见到著名的%companyname%，我很高兴看到你加入我们最伟大的战士行列。你来这里是为了炫耀权利还是为了硬币？没关系，你在这里都能找到%SPEECH_OFF% 她把你带到一扇窗户前，俯瞰着一个大的草地竞技场，在那里，有钱的顾客们看着武士们在互相格斗。 %SPEECH_ON%今天我们有三个比赛项目要参加，一场对抗你选择的特定敌人的表演赛，一场针对人类无尽浪潮的挑战赛，或者一场针对所有敌人的混战赛。你今天想参加比赛吗？ %SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Tell me of the Grand Melee.",
+					Text = "告诉我混战赛的情况。",
 					function getResult( _event )
 					{
 						return "E";
@@ -89,7 +89,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Tell me of the Gauntlet.",
+					Text = "告诉我挑战赛的情况。",
 					function getResult( _event )
 					{
 						return "H";
@@ -97,7 +97,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "I\'m interested in a Show Match.",
+					Text = "我对表演赛感兴趣。",
 					function getResult( _event )
 					{
 						return "I";
@@ -105,7 +105,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Actually, I\'m not....",
+					Text = "事实上，我不是...",
 					function getResult( _event )
 					{
 						return 0;
@@ -120,13 +120,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "D2",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{You return to the main hall and find Artemesia talking with a ground of foreign fighters while they watch a bout of the Grand Melee through the viewing windows.  She sees you return, asks her leave from the fighters and greets you with a smile. %SPEECH_ON% So the %companyname% is not satisfied with mere Show Matches. I thought I saw a spark of something more in you. Which will it be, the Grand Melee or the Gauntlet?%SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{你回到主厅，发现阿特梅西娅正在和一群外国拳手交谈，而他们正通过观景窗观看一场混战赛。她看到你回来，向战士们告别，并微笑着问候你。 %SPEECH_ON% 因此，%companyname%不满足于表演赛。我想我在你身上看到了更多的火花。是混战赛还是挑战赛？%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Tell me of the Grand Melee.",
+					Text = "告诉我混战赛的情况。",
 					function getResult( _event )
 					{
 						return "E";
@@ -134,7 +134,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Tell me of the Gauntlet.",
+					Text = "告诉我挑战赛的情况。",
 					function getResult( _event )
 					{
 						return "H";
@@ -142,7 +142,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Sorry, I am looking for the way out.",
+					Text = "对不起，我在找出去的路。",
 					function getResult( _event )
 					{
 						return 0;
@@ -157,13 +157,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "E",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{Artemisia smiles and excitedly recites the rules of the Grand Melee %SPEECH_ON%These are the mandated rules of the Grand Melee, \n\n 1. Your company will fight round after round, against both humans and beasts of all kinds, without combat rules.  \n\n 2. The prize begins at 1000 crowns. With each battle, the difficulty will increase and the prize will double. \n\n 3. You may keep any loot you find after the battle.%SPEECH_OFF%She smiles again, with genuine interest. %SPEECH_ON%This is the most glorious of the tournament events and I am delighted to personally watch your performance.%SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{阿特米西亚微笑着，兴奋地讲述着混战赛的规则%SPEECH_ON%这些是混战赛的强制规则， \n\n 1.你的战队会一轮又一轮地战斗，对抗各种人和动物，没有战斗规则。  \n\n 2.奖金从1000克朗开始。每次战斗，难度都会增加，奖品也会加倍。 \n\n 3.你可以保留战斗后找到的任何战利品。%SPEECH_OFF%她又兴味盎然的笑了。 %SPEECH_ON%这是最荣耀的比赛，我很高兴亲自观看你的表现。%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "The Grand Melee is for us, let\'s begin at once",
+					Text = "混战赛是为我们准备的，让我们马上开始",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.GrandMelee, false);
@@ -174,7 +174,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Tell me of the Gauntlet instead",
+					Text = "告诉我挑战赛吧",
 					function getResult( _event )
 					{
 						return "H";
@@ -182,7 +182,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "What can you tell me of the Show Matches",
+					Text = "你能告诉我关于表演赛的情况吗？",
 					function getResult( _event )
 					{
 						return "J";
@@ -190,7 +190,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Actually, I\'m not...",
+					Text = "事实上，我不...",
 					function getResult( _event )
 					{
 						return 0;
@@ -205,13 +205,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "F",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{After the battle you fall back to a private antechamber off the main tourney grounds. Artemisia congratulates you on a round well fought and offers you a choice to keep going with the Melee or take your prize.}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{战斗结束后，你会回到主赛场外的私人前厅。 阿特米西亚祝贺你打出了一轮精彩的比赛，并为你提供了一个选择，让你继续混战赛或获得奖品。}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Another round",
+					Text = "下一轮",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.GrandMelee, false);
@@ -222,7 +222,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "That is enough",
+					Text = "足够了",
 					function getResult( _event )
 					{
 						return "G";
@@ -237,13 +237,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "F2",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{After the battle you are led to the warrior hall where you are congratulated by the other warriors. A tournament official congratulates you on a round well fought and offers you a choice to keep going with the Gauntlet or take your prize}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{战斗结束后，你被带到武士大厅，其他武士在那里向你道贺。比赛官员祝贺你打出了一轮精彩的比赛，并为你提供继续挑战或夺取奖品的选择}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Another round",
+					Text = "下一轮",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.GrandGauntlet, true);
@@ -254,7 +254,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "That is enough",
+					Text = "足够了",
 					function getResult( _event )
 					{
 						return "G2";
@@ -269,13 +269,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "G",
-			Text = "[img]gfx/ui/events/event_04.png[/img]{Having completed the Melee you are led as champions from the field. Artemisia personally brings you a chest full of your rewards and walks you out to the door. %SPEECH_ON%What an excellent performance, I do hope we see you again soon! Take your rest well weary warrior, you have earned your place in these halls.%SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/event_04.png[/img]{完成混战赛后，你将成为场上的冠军。阿特米西亚亲自给你带来一个装满奖赏的箱子，然后带你出门。 %SPEECH_ON%真是一场精彩的演出，我真的希望很快能再次见到你！好好休息吧，疲惫不堪的战士，你在这些大厅里赢得了一席之地。%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Fare well",
+					Text = "走运",
 					function getResult( _event )
 					{
 						return 0;
@@ -307,13 +307,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "G2",
-			Text = "[img]gfx/ui/events/event_04.png[/img]{Having completed the Gauntlet you are led through the main hall. Artemisia throws you a bag of coins. %SPEECH_ON%Well fought! I hope we see you in the tournament again, though I imagine you need some rest after that performance. %SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/event_04.png[/img]{完成挑战后，您将被引导穿过主大厅。阿特米西亚扔给你一袋硬币。 %SPEECH_ON%打得好！我希望我们能在比赛中再次见到你，尽管我想你在那场比赛后需要休息。 %SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Fare well",
+					Text = "走运",
 					function getResult( _event )
 					{
 						return 0;
@@ -345,13 +345,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "G3",
-			Text = "[img]gfx/ui/events/event_04.png[/img]{The attendant guides you to a tournament official who checks a large ledger of fight results.  %SPEECH_ON% Ah yes, here you are. The %companyname%, took part in a small Show Match. Here is your reward.%SPEECH_OFF% The official hands a pouch to you, and the attendant leads you back out through the main door of the tournament.}",
+			Text = "@@[img]gfx/ui/events/event_04.png[/img]{侍者把你带到一位比赛官员那里，他会检查一大本比赛成绩记录。  %SPEECH_ON% 啊，是的，给你。%companyname%参加了一场小型比赛。这是你的奖赏。%SPEECH_OFF% 官员递给你一个袋子，侍者带你从骑士比武的大门出去。}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Fare well",
+					Text = "走运",
 					function getResult( _event )
 					{
 						return 0;
@@ -383,13 +383,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "H",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{Artemisia sighs a little before repeating a speech she has clearly given many times %SPEECH_ON%The rules of the Gauntlet are simple, \n\n One — fight as many battles in a row as you can. \n\n Two — you will fight a mix of human competitors from across the lands without combat rules. \n\n Three — the prize begins at 250 crowns, each battle the difficulty will increase and the prize will double.%SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{阿特米西亚在重复她多次明确发表的演讲之前，稍微叹了口气%SPEECH_ON%挑战赛的规则很简单， \n\n 一、尽可能多地连续作战。 \n\n 二、你将在没有战斗规则的情况下与来自世界各地的人类竞争对手进行战斗。 \n\n 三、奖金起价为250克朗，每次战斗难度会增加，奖金会加倍。%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Lets begin the Gauntlet",
+					Text = "让我们开始挑战",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.GrandGauntlet, true);
@@ -400,7 +400,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Tell me of the Grand Melee instead.",
+					Text = "告诉我关于混战赛的事。",
 					function getResult( _event )
 					{
 						return "E";
@@ -408,7 +408,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Perhaps just a Show Match.",
+					Text = "也许只是一场表演赛。",
 					function getResult( _event )
 					{
 						return "I";
@@ -416,7 +416,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Actually, I\'m not...",
+					Text = "事实上，我不...",
 					function getResult( _event )
 					{
 						return 0;
@@ -431,13 +431,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "I",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{Artemisia nods at your choice, though you detect some disapointment. %SPEECH_ON%Show Matches are our most basic format, \n\n 1. Fight as many battles in a row as you can.  \n\n  2. Each round you choose what kind of enemy you\'ll fight against \n\n 3. The prize begins at 100 crowns, each battle the difficulty will increase and the prize will double. \n\n 4. No looting.%SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{阿特米西亚对你的选择点头，尽管你察觉到了一些不满。 %SPEECH_ON%表演赛是我们最基础赛事， \n\n 1. 尽可能多地连续战斗。  \n\n  2. 每一轮你都要选择你要对抗的敌人 \n\n 3. 奖品从100克朗开始，每次战斗难度会增加，奖品会加倍。 \n\n 4. 禁止获得战利品。%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Sounds easy, I\'m in",
+					Text = "听起来很简单，我参加",
 					function getResult( _event )
 					{
 						return "J";
@@ -445,7 +445,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Sounds too predictable, tell me of the Gauntlet instead.",
+					Text = "听起来太容易了，告诉我挑战赛的事吧。",
 					function getResult( _event )
 					{
 						return "H";
@@ -453,7 +453,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Sounds far too boring, tell me of the Grand Melee instead.",
+					Text = "听起来太无聊了，不如告诉我混战赛的事吧。",
 					function getResult( _event )
 					{
 						return "E";
@@ -461,7 +461,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "I think we might need to leave and prepare.",
+					Text = "我想我们可能需要离开并做好准备。",
 					function getResult( _event )
 					{
 						return 0;
@@ -476,13 +476,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "J",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{Artemisia leads you to one of the smaller tournament fields, she seems distracted or perhaps a little bored.%SPEECH_ON%Good luck with your show, I must return to the Grand Melee, I will leave you in the capable hands of an attendent.%SPEECH_OFF% She turns quickly and heads back to the grand hall towards the cheering crowds. An attendant had been standing so still by the wall you had not noticed them, they step forward with the neutral expression of one long wearied by a repeatitive task and asks very matter of factly.%SPEECH_ON%Which enemy would you like to fight?%SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{ 阿特米西亚带你去了一个较小的比赛场地，她看起来心烦意乱，或者可能有点无聊。%SPEECH_ON%祝你演出好运，我必须回到混战赛现场，我将把你交给一位能干的观众。%SPEECH_OFF% 她迅速转过身，朝着欢呼的人群走回大厅。一位侍者一直静静地站在墙边，你根本没有注意到他们，他们走上前去，带着一种中立的表情，一种长期厌倦重复任务的表情，并实事求是地问道。%SPEECH_ON%你想和哪个敌人战斗？%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Let me pick.",
+					Text = "让我挑选。",
 					function getResult( _event )
 					{
 						return "J2";
@@ -490,7 +490,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Just choose for me.",
+					Text = "只为我而选择",
 					function getResult( _event )
 					{
 						local SpawnGroups = [
@@ -532,7 +532,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "I\'d prefer to return to Artemisia.",
+					Text = "我更愿意回到阿特米西亚身边。",
 					function getResult( _event )
 					{
 						return "D2";
@@ -547,13 +547,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "J2",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{The attendant is unphased by your decision and merely repeats %SPEECH_ON%Which enemy would you like to fight?%SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{侍者对你的决定不屑一顾，只是重复 %SPEECH_ON%你想和哪个敌人战斗？%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Greenskins",
+					Text = "绿皮",
 					function getResult( _event )
 					{
 						return "K";
@@ -561,7 +561,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "The Undead",
+					Text = "亡灵",
 					function getResult( _event )
 					{
 						return "L";
@@ -569,7 +569,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Beasts",
+					Text = "野兽",
 					function getResult( _event )
 					{
 						return "M";
@@ -577,7 +577,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Humans",
+					Text = "人类",
 					function getResult( _event )
 					{
 						return "N";
@@ -585,7 +585,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "I\'d prefer to return to Artemisia",
+					Text = "我更愿意回到阿特米西亚身边。",
 					function getResult( _event )
 					{
 						return "D2";
@@ -600,13 +600,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "J3",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{After the match you are led back to a small room, the attendant asks if you\'d like another Show Match or receive your reward.}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{比赛结束后，你被带回到一个小房间，侍者问你是否想要另一场比赛或是领取奖励。}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Let me pick",
+					Text = "让我挑选。",
 					function getResult( _event )
 					{
 						return "K";
@@ -614,7 +614,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Just choose for me",
+					Text = "只为我而选择",
 					function getResult( _event )
 					{
 						local SpawnGroups = [
@@ -656,7 +656,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "We\'re done here",
+					Text = "我们到此为止",
 					function getResult( _event )
 					{
 						return "G2";
@@ -671,13 +671,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "K",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{The attendant appears unmoved by your choice. %SPEECH_ON%Very good, any preference to the kind of Greenskins?%SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{侍者似乎对您的选择无动于衷。 %SPEECH_ON%很好，你喜欢那种绿皮？%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Goblins",
+					Text = "哥布林",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.GoblinBoss, true);
@@ -688,7 +688,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Berserkers",
+					Text = "狂战士",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.BerserkersOnly, true);
@@ -699,7 +699,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Warriors",
+					Text = "兽人战士",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.OrcBoss, true);
@@ -710,7 +710,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "You decide, any will do",
+					Text = "你决定，任何人都可以",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.GreenskinHorde, true);
@@ -721,7 +721,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "On second thought, perhaps not Greenskins",
+					Text = "再想一想，也许不是绿皮",
 					function getResult( _event )
 					{
 						return "J2";
@@ -736,13 +736,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "L",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{The attendant does not react to your ghoulish request. %SPEECH_ON%Very good, any preference to the kind of abomination?%SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{侍者对您的残忍请求没有反应。 %SPEECH_ON%很好，你喜欢那种亡灵呢？%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Ancient Legions",
+					Text = "古代亡灵",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.UndeadArmy, true);
@@ -753,7 +753,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Wiedergangers",
+					Text = "僵尸",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.Necromancer, true);
@@ -764,7 +764,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "The Embalmed",
+					Text = "木乃伊",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.Mummies, true);
@@ -775,7 +775,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "You decide, any will do",
+					Text = "你决定，任何人都可以",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.UndeadScourge, true);
@@ -786,7 +786,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Perhaps not the undead",
+					Text = "也许不是亡灵",
 					function getResult( _event )
 					{
 						return "J2";
@@ -801,13 +801,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "M",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{The attendant does not skip a beat. %SPEECH_ON%Very well, what kind of of beast?%SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{侍者表情平淡。 %SPEECH_ON%很好，什么样的野兽？%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "An unhold",
+					Text = "巨魔",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.LegendRockUnhold, true);
@@ -818,7 +818,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "A spider",
+					Text = "蜘蛛",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.LegendRedbackSpider, true);
@@ -829,7 +829,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "A wolf",
+					Text = "野狼",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.LegendWhiteDirewolf, true);
@@ -840,7 +840,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "A wyrm",
+					Text = "林德虫",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.LegendStollwurm, true);
@@ -851,7 +851,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "You decide, any will do",
+					Text = "你决定，任何人都可以",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.LegendHexeLeader, true);
@@ -862,7 +862,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Perhaps not a beast",
+					Text = "也许不是野兽",
 					function getResult( _event )
 					{
 						return "J2";
@@ -877,13 +877,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "N",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{The attendant barely moves. %SPEECH_ON%Not a problem, any preference to which humans you fight?%SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{侍者几乎一动不动。 %SPEECH_ON%没问题，你喜欢和哪些人战斗？%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "Civilised folk",
+					Text = "文明人",
 					function getResult( _event )
 					{
 						return "O";
@@ -891,7 +891,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Outlaws",
+					Text = "暴徒",
 					function getResult( _event )
 					{
 						return "P";
@@ -899,7 +899,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "You decide",
+					Text = "你决定",
 					function getResult( _event )
 					{
 						local SpawnGroups = [
@@ -917,7 +917,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "On second thought, perhaps something else",
+					Text = "再想一想，也许是别的什么",
 					function getResult( _event )
 					{
 						return "J2";
@@ -932,13 +932,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "O",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{The attendant barely moves %SPEECH_ON%Not a problem, any preference to which humans you fight?%SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{侍者几乎一动不动 %SPEECH_ON%没问题，你喜欢和哪类人战斗？%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "A Noble House",
+					Text = "贵族",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.Noble, true);
@@ -949,7 +949,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "A City State",
+					Text = "城邦",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.Southern, true);
@@ -960,7 +960,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Mercenaries",
+					Text = "雇佣军",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.Mercenaries, true);
@@ -971,7 +971,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Just choose for me",
+					Text = "只为我而选择",
 					function getResult( _event )
 					{
 						local SpawnGroups = [
@@ -992,7 +992,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "On second thought, perhaps something else",
+					Text = "再想一想，也许是别的什么",
 					function getResult( _event )
 					{
 						return "J2";
@@ -1007,13 +1007,13 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 		});
 		this.m.Screens.push({
 			ID = "P",
-			Text = "[img]gfx/ui/events/legend_tournament.png[/img]{The attendant shifts slightly but says nothing. %SPEECH_ON%Not a problem, any preference to the kind of Outlaw?%SPEECH_OFF%}",
+			Text = "@@[img]gfx/ui/events/legend_tournament.png[/img]{侍者稍稍移动了一下，但什么也没说。%SPEECH_ON%没问题，你喜欢什么样的暴徒？%SPEECH_OFF%}",
 			Image = "",
 			List = [],
 			Characters = [],
 			Options = [
 				{
-					Text = "A Bandit Gang",
+					Text = "匪帮",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.BanditBoss, true);
@@ -1024,7 +1024,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "A Barbarian Tribe",
+					Text = "野蛮部落",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.Barbarians, true);
@@ -1035,7 +1035,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "A Nomad Tribe",
+					Text = "游牧部落",
 					function getResult( _event )
 					{
 						local p = _event.selectFight(_event.getReputationToDifficultyLightMult(), this.Const.World.Spawn.NomadDefenders, true);
@@ -1046,7 +1046,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "Just choose for me",
+					Text = "只为我而选择",
 					function getResult( _event )
 					{
 						local SpawnGroups = [
@@ -1062,7 +1062,7 @@ this.legend_tournament_enter_event <- this.inherit("scripts/events/event", {
 
 				},
 				{
-					Text = "On second thought, perhaps something else",
+					Text = "再想一想，也许是别的什么",
 					function getResult( _event )
 					{
 						return "J2";

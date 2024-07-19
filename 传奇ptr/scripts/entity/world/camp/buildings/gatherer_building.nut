@@ -154,12 +154,12 @@ this.gatherer_building <- this.inherit("scripts/entity/world/camp/camp_building"
 	{
 		if (this.World.Assets.getMedicine() + this.m.MedsAdded >= this.World.Assets.getMaxMedicine())
 		{
-			return "Gathered ... " + this.Math.floor(this.m.MedsAdded) + " meds and " + this.m.Items.len() + " items";
+			return "已采集 ... " + this.Math.floor(this.m.MedsAdded) + " 药物 和 " + this.m.Items.len() + " 物品";
 		}
 
 		local points = this.Math.floor(this.m.Craft * this.m.Camp.getElapsedHours());
 		this.m.MedsAdded = this.Math.min(this.World.Assets.getMaxMedicine(), points / 3.0);
-		return "Gathered ... " + this.Math.floor(this.m.MedsAdded) + " meds and " + this.m.Items.len() + " items";
+		return "已采集 ... " + this.Math.floor(this.m.MedsAdded) + " 药物 和 " + this.m.Items.len() + " 物品";
 	}
 
 	function update()

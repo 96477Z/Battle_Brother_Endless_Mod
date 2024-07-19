@@ -119,7 +119,7 @@ this.legend_ancient_scroll_item <- this.inherit("scripts/items/item", {
 
 				for( local i = 0; i < 100; i = i )
 				{
-					if (!_actor.getBackground().addPerk(t.getRandomPerk()))
+				if (!_actor.getBackground().addPerk(t.getRandomPerk()))
 					{
 					}
 					else

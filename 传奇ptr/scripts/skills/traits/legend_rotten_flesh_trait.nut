@@ -89,6 +89,8 @@ this.legend_rotten_flesh_trait <- this.inherit("scripts/skills/traits/character_
 		{
 			local injury = this.getSprite("injury");
 			local injury_body = this.getSprite("injury_body");
+//			local injury_body = this.getSprite("body_injury");
+
 			local p = this.m.Hitpoints / this.getHitpointsMax();
 
 			if (p > 0.5)
@@ -121,6 +123,8 @@ this.legend_rotten_flesh_trait <- this.inherit("scripts/skills/traits/character_
 		{
 			sw_onFactionChanged();
 			local flip = !this.isAlliedWithPlayer();
+
+//			this.getSprite("body_injury").setHorizontalFlipping(!flip);
 			this.getSprite("injury_body").setHorizontalFlipping(!flip);
 			this.getSprite("status_rage").setHorizontalFlipping(flip);
 		};

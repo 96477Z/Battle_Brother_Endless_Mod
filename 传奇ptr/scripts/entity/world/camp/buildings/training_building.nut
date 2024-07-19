@@ -455,10 +455,10 @@ this.training_building <- this.inherit("scripts/entity/world/camp/camp_building"
 
 		if (this.getUpgraded())
 		{
-			return "Training ... " + this.m.NumBros + " brothers";
+			return "正在训练 ... " + this.m.NumBros + " 队友";
 		}
 
-		return "Training ... " + this.m.UnTrained + " / " + this.m.NumBros + " brothers";
+		return "正在训练 ... " + this.m.UnTrained + " / " + this.m.NumBros + " 队友";
 	}
 
 	function completed()
