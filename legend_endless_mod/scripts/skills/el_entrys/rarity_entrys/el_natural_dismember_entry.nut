@@ -64,6 +64,10 @@ this.el_natural_dismember_entry <- this.inherit("scripts/skills/skill", {
 		}
 		if (EL_isUsable())
 		{
+			if(_targetEntity.getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && _targetEntity.getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+			{
+				return;
+			}
 			local injury_num = 1.0 * _damageInflictedHitpoints / _targetEntity.getHitpointsMax() / this.Const.EL_Rarity_Entry.Factor.EL_NaturalDismember.SlightInjuryPercent;
 			local injury_num_left = this.Const.EL_Config.EL_addSlightInjurysToActor(_targetEntity, injury_num, [
 				this.Const.Injury.CuttingBody,

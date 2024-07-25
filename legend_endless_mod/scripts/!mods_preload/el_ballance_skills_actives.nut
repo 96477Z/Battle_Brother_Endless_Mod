@@ -138,7 +138,7 @@ local gt = getroottable();
             local target_entity = _targetTile.getEntity();
             local damage = (target_entity.getHitpointsMax() - target_entity.getHitpoints()) * 0.25 + 100;
             local success = this.attackEntity(_user, _targetTile.getEntity());
-            if (success && _user.isAlive())
+            if (success && target_entity.isAlive())
             {
                 local hit_info = clone this.Const.Tactical.HitInfo;
                 hit_info.DamageArmor = 0;

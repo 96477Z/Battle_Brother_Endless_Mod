@@ -101,6 +101,10 @@ this.el_devastate_entry <- this.inherit("scripts/skills/skill", {
             {
                 ++injury_num;
             }
+			if(_targetEntity.getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && _targetEntity.getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+			{
+				return;
+			}
             local injury_num_left = this.Const.EL_Config.EL_addSlightInjurysToActor(_targetEntity, injury_num, [
 				this.Const.Injury.BluntBody,
 				this.Const.Injury.BluntHead

@@ -107,6 +107,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
             _properties.Bravery += 25;
             _properties.MeleeSkill -= 25;
             _properties.RangedSkill -= 25;
@@ -146,6 +151,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
             _properties.Stamina -= 40;
         }
 	});
@@ -209,6 +219,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
             _properties.Bravery -= 10;
             _properties.MeleeSkill -= 10;
             _properties.RangedSkill -= 10;
@@ -277,6 +292,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
             _properties.Bravery -= 15;
             _properties.MeleeSkill -= 15;
             _properties.RangedSkill -= 15;
@@ -345,6 +365,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
             _properties.Bravery -= 15;
             _properties.MeleeSkill -= 15;
             _properties.RangedSkill -= 15;
@@ -413,6 +438,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
             _properties.Hitpoints += this.Math.floor(0.05 * this.getContainer().getActor().getBaseProperties().Hitpoints);
             _properties.Bravery += 5;
             _properties.Stamina += 3;

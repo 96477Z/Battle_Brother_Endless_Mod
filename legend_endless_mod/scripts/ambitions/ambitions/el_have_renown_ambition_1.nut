@@ -21,7 +21,7 @@ this.el_have_renown_ambition_1 <- this.inherit("scripts/ambitions/ambition", {
 
 	function onUpdateScore()
 	{
-		if (!this.World.Ambitions.getAmbition("ambition.make_nobles_aware").isDone())
+		if (!this.World.Ambitions.getAmbition("ambition.el_have_renown_0").isDone())
 		{
 			return;
 		}

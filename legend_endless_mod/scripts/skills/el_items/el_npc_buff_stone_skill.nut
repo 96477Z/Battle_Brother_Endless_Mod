@@ -80,6 +80,11 @@ this.el_npc_buff_stone_skill <- this.inherit("scripts/skills/skill", {
 					icon = "ui/el_icons/magic_stone_rank_" + skill.EL_getRankLevel() + ".png",
 					text = name
 				});
+				ret.push({
+					id = 10,
+					type = "text",
+					text = skill.getDescription()
+				});
 			}
 		}
 		if(this.m.EL_RankLevel > this.getContainer().getActor().EL_getRankLevel())

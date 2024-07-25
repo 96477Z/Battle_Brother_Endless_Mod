@@ -14,6 +14,10 @@ this.el_cripple_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buf
 		if (_targetEntity == null || _targetEntity.isAlliedWith(user) || _targetEntity.isDying() || !_targetEntity.isAlive() || _skill.isRanged()) {
 			return;
 		}
+        if(_targetEntity.getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && _targetEntity.getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+        {
+            return;
+        }
         if(this.Math.rand(1, 100) <= this.Const.EL_NPC.EL_NPCBuff.Factor.Cripple.Chance[this.m.EL_RankLevel]) {
             if(_damageInflictedHitpoints > 0) {
                 local injury_num_left = this.Const.EL_Config.EL_addSlightInjurysToActor(_targetEntity, this.Const.EL_NPC.EL_NPCBuff.Factor.Cripple.InjuryNum[this.m.EL_RankLevel], [

@@ -5,7 +5,7 @@ this.el_have_renown_ambition_0 <- this.inherit("scripts/ambitions/ambition", {
 	function create()
 	{
 		this.ambition.create();
-		this.m.ID = "ambition.make_nobles_aware";
+		this.m.ID = "ambition.el_have_renown_0";
 		this.m.Duration = 99999.0 * this.World.getTime().SecondsPerDay;
 		this.m.ButtonText = "Already we are known in some parts of the land, yet we are still far from being\na legendary company. We shall increase our renown further!";
 		this.m.UIText = "拥有 " + this.m.EL_ReputationNeed + " 声望。";
@@ -32,33 +32,6 @@ this.el_have_renown_ambition_0 <- this.inherit("scripts/ambitions/ambition", {
 		}
 
 		return false;
-	}
-
-	function onReward()
-	{
-		this.m.SuccessList.push({
-			id = 10,
-			icon = "ui/icons/special.png",
-			text = "Nobles will now give you contracts"
-		});
-
-		if (!this.World.Assets.getOrigin().isFixedLook())
-		{
-			if (this.World.Assets.getOrigin().getID() == "scenario.southern_quickstart")
-			{
-				this.World.Assets.updateLook(14);
-			}
-			else
-			{
-				this.World.Assets.updateLook(2);
-			}
-
-			this.m.SuccessList.push({
-				id = 10,
-				icon = "ui/icons/special.png",
-				text = "Your look on the worldmap has been updated"
-			});
-		}
 	}
 
 	function onSerialize( _out )

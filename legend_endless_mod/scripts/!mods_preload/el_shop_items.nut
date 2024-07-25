@@ -62,6 +62,11 @@ local gt = getroottable();
                         S = "accessory/sergeant_badge_item"
                     },
                     {
+                        R = 95,
+                        P = 1.0,
+                        S = "legend_armor/plate/legend_armor_plate_chest"
+                    },
+                    {
                         R = 10,
                         P = 1.0,
                         S = "el_supplies/el_equipment_essence_rank_0_item"
@@ -161,6 +166,31 @@ local gt = getroottable();
             if ( _id == "building.armorsmith_oriental")
             {
 				_list.extend([
+					{
+                        R = 80,
+                        P = 1.0,
+                        S = "accessory/alp_trophy_item"
+                    },
+                    {
+                        R = 85,
+                        P = 1.0,
+                        S = "accessory/hexen_trophy_item"
+                    },
+                    {
+                        R = 80,
+                        P = 1.0,
+                        S = "accessory/ghoul_trophy_item"
+                    },
+                    {
+                        R = 95,
+                        P = 3.0,
+                        S = "accessory/sergeant_badge_item"
+                    },
+                    {
+                        R = 95,
+                        P = 1.0,
+                        S = "legend_armor/plate/legend_armor_plate_chest"
+                    },
 					{
                         R = 10,
                         P = 1.0,
