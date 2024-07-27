@@ -4,14 +4,145 @@ local gt = getroottable();
 ::mods_queue(null, "el_player_npc", function ()
 {
 
-	::mods_hookExactClass("skills/effects/battle_standard_effect", function(o){
+	::mods_hookExactClass("skills/effects/acid_effect", function(o){
 
         local create = o.create;
         o.create = function ()
         {
             create();
-		    this.m.IsWeaponSkill = false;
+		    this.m.IsStacking = false;
         };
+
+        local getTooltip = o.getTooltip;
+        o.getTooltip = function ()
+        {
+            local ret = [
+                {
+                    id = 1,
+                    type = "title",
+                    text = this.getName()
+                },
+                {
+                    id = 2,
+                    type = "description",
+                    text = this.getDescription()
+                }
+            ];
+
+            if (!this.getContainer().getActor().getFlags().has("head_immune_to_acid"))
+            {
+                ret.push({
+                    id = 10,
+                    type = "text",
+                    icon = "ui/icons/armor_head.png",
+                    text = "[color=" + this.Const.UI.Color.NegativeValue + "]" + (10 * this.m.TurnsLeft) + "%[/color] of head armor is lost each turn"
+                });
+            }
+
+            if (!this.getContainer().getActor().getFlags().has("body_immune_to_acid"))
+            {
+                ret.push({
+                    id = 10,
+                    type = "text",
+                    icon = "ui/icons/armor_body.png",
+                    text = "[color=" + this.Const.UI.Color.NegativeValue + "]" + (10 * this.m.TurnsLeft) + "%[/color] of body armor is lost each turn"
+                });
+            }
+
+            return ret;
+        }
+
+        local applyDamage = o.applyDamage;
+        o.applyDamage = function ()
+        {
+            if (this.m.LastRoundApplied != this.Time.getRound())
+            {
+                this.m.LastRoundApplied = this.Time.getRound();
+                local actor = this.getContainer().getActor();
+                local head_affected = !actor.getFlags().has("head_immune_to_acid");
+                local body_affected = !actor.getFlags().has("body_immune_to_acid");
+                local damage_applied = false;
+                this.spawnIcon("status_effect_78", actor.getTile());
+
+                if (head_affected)
+                {
+                    local damage = actor.getArmor(this.Const.BodyPart.Head) * 0.1 * this.m.TurnsLeft;
+
+                    if (this.isKindOf(actor.get(), "kraken"))
+                    {
+                        damage = damage * 0.5;
+                    }
+
+                    local hitInfo = clone this.Const.Tactical.HitInfo;
+                    hitInfo.DamageRegular = 0.0;
+                    hitInfo.DamageArmor = damage;
+                    hitInfo.DamageDirect = 0.0;
+                    hitInfo.BodyPart = this.Const.BodyPart.Head;
+                    hitInfo.BodyDamageMult = 1.0;
+                    hitInfo.FatalityChanceMult = 0.0;
+
+                    if (hitInfo.DamageArmor > 0)
+                    {
+                        damage_applied = true;
+                    }
+
+                    this.getContainer().getActor().onDamageReceived(this.getContainer().getActor(), this, hitInfo);
+                }
+
+                if (body_affected)
+                {
+                    local damage = actor.getArmor(this.Const.BodyPart.Body) * 0.1 * this.m.TurnsLeft;
+
+                    if (this.isKindOf(actor.get(), "kraken"))
+                    {
+                        damage = damage * 0.5;
+                    }
+
+                    local hitInfo = clone this.Const.Tactical.HitInfo;
+                    hitInfo.DamageRegular = 0.0;
+                    hitInfo.DamageArmor = damage;
+                    hitInfo.DamageDirect = 0.0;
+                    hitInfo.BodyPart = this.Const.BodyPart.Body;
+                    hitInfo.BodyDamageMult = 1.0;
+                    hitInfo.FatalityChanceMult = 0.0;
+
+                    if (hitInfo.DamageArmor > 0)
+                    {
+                        damage_applied = true;
+                    }
+
+                    this.getContainer().getActor().onDamageReceived(this.getContainer().getActor(), this, hitInfo);
+                }
+
+                if (damage_applied && !actor.isHiddenToPlayer())
+                {
+                    if (this.m.SoundOnUse.len() != 0)
+                    {
+                        this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], this.Const.Sound.Volume.RacialEffect * 1.2, actor.getPos());
+                    }
+
+                    for( local i = 0; i < this.Const.Tactical.AcidParticles.len(); i = ++i )
+                    {
+                        this.Tactical.spawnParticleEffect(true, this.Const.Tactical.AcidParticles[i].Brushes, this.getContainer().getActor().getTile(), this.Const.Tactical.AcidParticles[i].Delay, this.Const.Tactical.AcidParticles[i].Quantity, this.Const.Tactical.AcidParticles[i].LifeTimeQuantity, this.Const.Tactical.AcidParticles[i].SpawnRate, this.Const.Tactical.AcidParticles[i].Stages);
+                    }
+                }
+
+                if (--this.m.TurnsLeft <= 0)
+                {
+                    this.removeSelf();
+                }
+            }
+        };
+
+        o.resetTime = function()
+        {
+            this.m.TurnsLeft += this.Math.max(1, 3 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+        }
+
+        o.onRefresh <- function()
+        {
+            this.m.TurnsLeft += this.Math.max(1, 3 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+        }
 	});
 
 
@@ -308,6 +439,26 @@ local gt = getroottable();
             ];
         }
 
+	});
+
+	::mods_hookExactClass("skills/effects/goblin_poison_effect", function(o){
+
+        local create = o.create;
+        o.create = function ()
+        {
+            create();
+		    this.m.IsStacking = false;
+        };
+
+        o.resetTime = function()
+        {
+            this.m.TurnsLeft += this.Math.max(1, 3 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+        }
+
+        o.onRefresh <- function()
+        {
+            this.m.TurnsLeft += this.Math.max(1, 3 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+        }
 	});
 
 	::mods_hookExactClass("skills/effects/gruesome_feast_effect", function(o){
@@ -902,6 +1053,14 @@ local gt = getroottable();
 
 	::mods_hookExactClass("skills/effects/legend_redback_spider_poison_effect", function(o){
 
+        local create = o.create;
+        o.create = function ()
+        {
+            create();
+		    this.m.IsStacking = false;
+        };
+
+
         o.getDescription = function()
         {
             local timeDamage = this.m.Damage * this.m.TurnsLeft;
@@ -944,7 +1103,15 @@ local gt = getroottable();
             }
         }
 
+        o.resetTime = function()
+        {
+            this.m.TurnsLeft += this.Math.max(1, 10 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+        }
 
+        o.onRefresh <- function()
+        {
+            this.m.TurnsLeft += this.Math.max(1, 10 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+        }
 
 	});
 
@@ -1257,6 +1424,129 @@ local gt = getroottable();
         }
 
 	});
+
+	::mods_hookExactClass("skills/effects/lindwurm_acid_effect", function(o){
+
+        local create = o.create;
+        o.create = function ()
+        {
+            create();
+		    this.m.IsStacking = false;
+        };
+
+        local getTooltip = o.getTooltip;
+        o.getTooltip = function ()
+        {
+            local ret = [
+                {
+                    id = 1,
+                    type = "title",
+                    text = this.getName()
+                },
+                {
+                    id = 2,
+                    type = "description",
+                    text = this.getDescription()
+                }
+            ];
+
+            if (!this.getContainer().getActor().getFlags().has("head_immune_to_acid"))
+            {
+                ret.push({
+                    id = 10,
+                    type = "text",
+                    icon = "ui/icons/armor_head.png",
+                    text = "[color=" + this.Const.UI.Color.NegativeValue + "]" + (5 * this.m.TurnsLeft) + "%[/color] of head armor is lost each turn"
+                });
+            }
+
+            if (!this.getContainer().getActor().getFlags().has("body_immune_to_acid"))
+            {
+                ret.push({
+                    id = 10,
+                    type = "text",
+                    icon = "ui/icons/armor_body.png",
+                    text = "[color=" + this.Const.UI.Color.NegativeValue + "]" + (5 * this.m.TurnsLeft) + "%[/color] of body armor is lost each turn"
+                });
+            }
+
+            return ret;
+        }
+
+        local applyDamage = o.applyDamage;
+        o.applyDamage = function ()
+        {
+            if (this.m.LastRoundApplied != this.Time.getRound())
+            {
+                this.m.LastRoundApplied = this.Time.getRound();
+                local actor = this.getContainer().getActor();
+                local head_affected = !actor.getFlags().has("head_immune_to_acid");
+                local body_affected = !actor.getFlags().has("body_immune_to_acid");
+                local damage_applied = false;
+                this.spawnIcon("status_effect_78", actor.getTile());
+
+                if (head_affected)
+                {
+                    local hitInfo = clone this.Const.Tactical.HitInfo;
+                    hitInfo.DamageRegular = 0.0;
+                    hitInfo.DamageArmor = actor.getArmor(this.Const.BodyPart.Head) * 0.05 * this.m.TurnsLeft;
+                    hitInfo.DamageDirect = 0.0;
+                    hitInfo.BodyPart = this.Const.BodyPart.Head;
+                    hitInfo.BodyDamageMult = 1.0;
+                    hitInfo.FatalityChanceMult = 0.0;
+
+                    if (hitInfo.DamageArmor > 0)
+                    {
+                        damage_applied = true;
+                    }
+
+                    this.getContainer().getActor().onDamageReceived(this.getContainer().getActor(), this, hitInfo);
+                }
+
+                if (body_affected)
+                {
+                    local hitInfo = clone this.Const.Tactical.HitInfo;
+                    hitInfo.DamageRegular = 0.0;
+                    hitInfo.DamageArmor = actor.getArmor(this.Const.BodyPart.Body) * 0.05 * this.m.TurnsLeft;
+                    hitInfo.DamageDirect = 0.0;
+                    hitInfo.BodyPart = this.Const.BodyPart.Body;
+                    hitInfo.BodyDamageMult = 1.0;
+                    hitInfo.FatalityChanceMult = 0.0;
+
+                    if (hitInfo.DamageArmor > 0)
+                    {
+                        damage_applied = true;
+                    }
+
+                    this.getContainer().getActor().onDamageReceived(this.getContainer().getActor(), this, hitInfo);
+                }
+
+                if (damage_applied && !actor.isHiddenToPlayer())
+                {
+                    if (this.m.SoundOnUse.len() != 0)
+                    {
+                        this.Sound.play(this.m.SoundOnUse[this.Math.rand(0, this.m.SoundOnUse.len() - 1)], this.Const.Sound.Volume.RacialEffect * 1.2, actor.getPos());
+                    }
+
+                    for( local i = 0; i < this.Const.Tactical.AcidParticles.len(); i = ++i )
+                    {
+                        this.Tactical.spawnParticleEffect(true, this.Const.Tactical.AcidParticles[i].Brushes, this.getContainer().getActor().getTile(), this.Const.Tactical.AcidParticles[i].Delay, this.Const.Tactical.AcidParticles[i].Quantity, this.Const.Tactical.AcidParticles[i].LifeTimeQuantity, this.Const.Tactical.AcidParticles[i].SpawnRate, this.Const.Tactical.AcidParticles[i].Stages);
+                    }
+                }
+
+                if (--this.m.TurnsLeft <= 0)
+                {
+                    this.removeSelf();
+                }
+            }
+        };
+
+        o.onRefresh <- function()
+        {
+            this.m.TurnsLeft += this.Math.max(1, 3 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+        }
+	});
+
 
 	::mods_hookExactClass("skills/effects/lone_wolf_effect", function(o){
 
@@ -1974,14 +2264,22 @@ local gt = getroottable();
 
 	::mods_hookExactClass("skills/effects/spider_poison_effect", function(o){
 
+        local create = o.create;
+        o.create = function ()
+        {
+            create();
+		    this.m.IsStacking = false;
+        };
+
+
         o.getDescription = function()
         {
             if (("Assets" in this.World) && this.World.Assets != null && this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
             {
-                return "This character has a vicious poison running through his veins and will lose [color=" + this.Const.UI.Color.NegativeValue + "]" + 2 * this.m.Damage + "[/color] hitpoints each turn for [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s).";
+                return "This character has a vicious poison running through his veins and will lose [color=" + this.Const.UI.Color.NegativeValue + "]" + 2 * this.m.Damage * this.m.TurnsLeft + "%[/color] hitpoints each turn for [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s).";
             }
 
-            return "This character has a vicious poison running through his veins and will lose [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.Damage + "[/color] hitpoints each turn for [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s).";
+            return "This character has a vicious poison running through his veins and will lose [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.Damage * this.m.TurnsLeft + "%[/color] hitpoints each turn for [color=" + this.Const.UI.Color.NegativeValue + "]" + this.m.TurnsLeft + "[/color] more turn(s).";
             }
 
         o.applyDamage = function()
@@ -2002,7 +2300,7 @@ local gt = getroottable();
                 {
                     hitInfo.DamageRegular = 2 * this.m.Damage;
                 }
-                hitInfo.DamageRegular = this.Math.ceil(hitInfo.DamageRegular * this.getContainer().getActor().getBaseProperties().Hitpoints * 0.01);
+                hitInfo.DamageRegular = this.Math.ceil(hitInfo.DamageRegular * this.getContainer().getActor().getBaseProperties().Hitpoints * 0.01) * this.m.TurnsLeft;
                 hitInfo.DamageDirect = 1.0;
                 hitInfo.BodyPart = this.Const.BodyPart.Body;
                 hitInfo.BodyDamageMult = 1.0;
@@ -2011,9 +2309,15 @@ local gt = getroottable();
             }
         }
 
+        o.resetTime = function()
+        {
+            this.m.TurnsLeft += this.Math.max(1, 3 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+        }
 
-
-
+        o.onRefresh <- function()
+        {
+            this.m.TurnsLeft += this.Math.max(1, 3 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+        }
 
 	});
 
@@ -2328,6 +2632,13 @@ local gt = getroottable();
 
 	::mods_hookExactClass("skills/effects/zombie_poison_effect", function(o){
 
+        local create = o.create;
+        o.create = function ()
+        {
+            create();
+		    this.m.IsStacking = false;
+        };
+
         o.getTooltip = function()
         {
             local remaining = this.m.TurnsLeft;
@@ -2371,6 +2682,16 @@ local gt = getroottable();
             _properties.ActionPoints -= AP;
             _properties.Initiative -= Init;
             _properties.Vision -= Vis;
+        }
+
+        o.resetTime = function()
+        {
+            this.m.TurnsLeft += this.Math.max(1, 10 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
+        }
+
+        o.onRefresh <- function()
+        {
+            this.m.TurnsLeft += this.Math.max(1, 10 + this.getContainer().getActor().getCurrentProperties().NegativeStatusEffectDuration);
         }
 
 	});
