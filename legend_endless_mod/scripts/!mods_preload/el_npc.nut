@@ -509,16 +509,18 @@ local gt = getroottable();
             local champions = [];
             local entityTypes = [
                 [],
+                [],
                 []
             ];
             entityTypes[0].resize(this.Const.EntityType.len(), 0);
             entityTypes[1].resize(this.Const.EntityType.len(), 0);
+            entityTypes[2].resize(this.Const.EntityType.len(), 0);
 
             foreach( t in this.m.Troops )
             {
                 if (t.Script.len() != "")
                 {
-                    if (t.EL_RankLevel == 2)
+                    if (t.EL_IsBossUnit)
                     {
                         champions.push(t);
                     }
@@ -1609,10 +1611,12 @@ local gt = getroottable();
             local champions = [];
             local entityTypes = [
                 [],
+                [],
                 []
             ];
             entityTypes[0].resize(this.Const.EntityType.len(), 0);
             entityTypes[1].resize(this.Const.EntityType.len(), 0);
+            entityTypes[2].resize(this.Const.EntityType.len(), 0);
 
             if (_properties != null)
             {
@@ -1707,6 +1711,7 @@ local gt = getroottable();
                     {
                         entityTypes[0].resize(this.Const.EntityType.len(), 0);
                         entityTypes[1].resize(this.Const.EntityType.len(), 0);
+                        entityTypes[2].resize(this.Const.EntityType.len(), 0);
                         break;
                     }
 
@@ -1717,7 +1722,7 @@ local gt = getroottable();
                     {
                         if (t.Script.len() != "")
                         {
-                            if (t.EL_RankLevel == 2)
+                            if (t.EL_IsBossUnit)
                             {
                                 champions.push(t);
                             }
