@@ -57,6 +57,16 @@ this.el_npc_buff_stone_skill <- this.inherit("scripts/skills/skill", {
 
 	function getTooltip()
 	{
+		local name = this.getName();
+		if(skill.EL_getRankLevel() == 0) {
+			name = name + " - 普通";
+		}
+		else if(skill.EL_getRankLevel() == 1) {
+			name = name + " - 精英";
+		}
+		else if(skill.EL_getRankLevel() == 2) {
+			name = name + " - 首领";
+		}
 		local ret = [
 			{
 				id = 1,

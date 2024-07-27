@@ -19,11 +19,21 @@ this.el_npc_buff_stone_item <- this.inherit("scripts/items/trade/trading_good_it
 
 	function getTooltip()
 	{
+		local name = this.getName();
+		if(skill.EL_getRankLevel() == 0) {
+			name = name + " - 普通";
+		}
+		else if(skill.EL_getRankLevel() == 1) {
+			name = name + " - 精英";
+		}
+		else if(skill.EL_getRankLevel() == 2) {
+			name = name + " - 首领";
+		}
 		local result = [
 			{
 				id = 1,
 				type = "title",
-				text = this.getName()
+				text = name
 			},
 			{
 				id = 2,

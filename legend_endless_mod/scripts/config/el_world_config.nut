@@ -27,6 +27,13 @@ gt.Const.EL_World <- {
         Min = 10
     },
 
+    EL_CombatDifficultFactor = [
+        0,
+        1,
+        2,
+        3
+    ],
+
     EL_WorldStrength = {
         Min = 40,
         Factor = {
@@ -75,7 +82,7 @@ gt.Const.EL_World <- {
         OptionNumPurPage = 4,
         RewardTimesPurLevel = 1,
         DefaultOption = 3,
-        //DefaultOption = 15,
+        DifficultyMinOption = [0, 1, 2, 3],
         DifficultyMult = [
             0.5,
             0.6,
@@ -90,19 +97,20 @@ gt.Const.EL_World <- {
             2.5,
             3
         ],
+        WorldLevelMinOption = [0, 1, 2, 3],
         WorldLevelOffset = [
+            -3,
+            -2,
             -1,
             0,
             1,
             2,
-            3,
+            3,  //1
             4,
-            5,  //1
+            5,
             6,
             7,
-            8,
-            9,
-            10
+            8
         ]
     }
 

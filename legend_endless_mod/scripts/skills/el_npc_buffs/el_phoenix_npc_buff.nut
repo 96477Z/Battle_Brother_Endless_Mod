@@ -34,6 +34,10 @@ this.el_phoenix_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buf
 	function onCombatFinished()
 	{
         local actor = this.getContainer().getActor();
+        if (actor == null || actor.isDying() || !actor.isAlive())
+        {
+            return;
+        }
         actor.setIsAbleToDie(true);
         if(this.m.EL_MoraleState != this.Const.MoraleState.Ignore) {
             actor.setMoraleState(this.Const.MoraleState.Steady);

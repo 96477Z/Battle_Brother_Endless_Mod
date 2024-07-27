@@ -428,7 +428,7 @@ local gt = getroottable();
 
                     for( local i = 0; i < n; i = i )
                     {
-                        
+
 					if (this.Const.DLC.Unhold)
 					{
 						local r = this.Math.rand(1, 100);

@@ -195,7 +195,7 @@ local gt = getroottable();
 		o.randomizeValues = function ()
 		{
 		}
-		
+
 		o.onSerialize = function ( _out )
 		{
 			_out.writeString(this.m.Name);
@@ -258,7 +258,7 @@ local gt = getroottable();
 		::mods_hookExactClass("items/" + this.Const.EL_Item_Other.EL_ExtraNamedItem[i], function ( o )
 		{
 			o.m.EL_RankLevel <- 1;
-			
+
 			local create = o.create;
 			o.create = function ()
 			{
@@ -314,7 +314,7 @@ local gt = getroottable();
 							++num;
 						}
 						item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
-						if (item != null && item.EL_getRankLevel() == this.Const.EL_Item.Type.Legendary)	
+						if (item != null && item.EL_getRankLevel() == this.Const.EL_Item.Type.Legendary)
 						{
 							++num;
 						}
@@ -344,6 +344,7 @@ local gt = getroottable();
 					if(num > this.World.Flags.get("EL_LegendaryItemMaxNum"))
 					{
 						this.World.Flags.set("EL_LegendaryItemMaxNum", num);
+						this.World.Assets.EL_UpdateWorldStrengthAndLevel();
 					}
 					this.World.Flags.set("EL_LegendaryItemNum", num);
 				}

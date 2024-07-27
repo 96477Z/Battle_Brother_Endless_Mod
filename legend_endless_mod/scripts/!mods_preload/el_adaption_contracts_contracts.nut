@@ -129,7 +129,6 @@ local gt = getroottable();
             }
             else
             {
-                this.World.Assets.m.EL_LastArenaDay = day;
                 if(this.World.Assets.m.EL_ArenaMaxLevel > 0)
                 {
                     this.World.Assets.m.EL_ArenaLevel = this.World.Assets.m.EL_ArenaMaxLevel - 1;
@@ -258,6 +257,7 @@ local gt = getroottable();
                             }
                         }
                         this.Flags.set("IsVictory", true);
+                        this.World.Assets.m.EL_LastArenaDay = day;
                     }
                 }
 

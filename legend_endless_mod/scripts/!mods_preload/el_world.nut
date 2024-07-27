@@ -189,7 +189,13 @@ local gt = getroottable();
 			return this.m.EL_SoulEnergyGianMult;
 		}
 
-
+		o.EL_UpdateWorldMinDifficulty <- function() {
+			local min_index = this.Const.EL_World.EL_WorldChangeEvent.DifficultyMinOption[this.World.Assets.getCombatDifficulty()] + this.World.Flags.get("EL_LegendaryItemMaxNum");
+			if(min_index > this.World.Flags.get("EL_WorldDifficultyChangeEvent")) {
+				this.World.Flags.set("EL_WorldDifficultyChangeEvent", min_index);
+				this.World.Assets.EL_UpdateWorldStrengthAndLevel();
+			}
+		}
 		o.EL_UpdateWorldStrengthAndLevel <- function() {
 			local day = this.World.getTime().Days;
 			this.m.EL_CurrentUpdateDay = day;

@@ -8,7 +8,6 @@ if (!("EL_NPC" in gt.Const))
 gt.Const.EL_NPC <- {
 
     EL_DifficultBallance = {
-
         DamageTotalMult = 1,
         DamageReceivedTotalDiv = 1.0,
         Attributes = {
@@ -142,14 +141,14 @@ gt.Const.EL_NPC <- {
         MinLevelOffset = -5,
         MaxLevelOffset = 0,
         BossTroopMinLeaders = 5,
-        BossChance = 15,
         UnitGenerateMinCalculateResourse = 20,
         ExtraBuffRollMax = 50,
         ExtraBuffStrengthMultPurTime = 2,
         EliteUnitEliteChanceMult = 2
 
         EquipmentEssence = {
-            BossDropLengendaryNum = 1,
+            BossDropLengendaryNum = [1,1,1,3],
+            LeaderDropLengendaryChance = 15,
             DropBaseNum = 10,
             DropPurExtraCombatLevelNegative = 1,
             DropPurExtraCombatLevelPositive = 10,
@@ -340,8 +339,8 @@ gt.Const.EL_NPC <- {
             Factor = {
                 Offset = [
                     0,
-                    -10,
-                    30
+                    -5,
+                    35
                 ],
                 Mult = [
                     0,
@@ -349,7 +348,7 @@ gt.Const.EL_NPC <- {
                     0
                 ],
                 Range = [
-                    10,
+                    5,
                     40
                 ]
             }
@@ -359,6 +358,50 @@ gt.Const.EL_NPC <- {
             }
         },
         RandomLeaderChance = {
+            Factor = {
+                Offset = [
+                    0,
+                    -10,
+                    15
+                ],
+                Mult = [
+                    0,
+                    1,
+                    0
+                ],
+                Range = [
+                    10,
+                    25
+                ]
+            }
+            Table = []
+            function EL_getChance(_EL_Index) {
+                return this.Const.EL_Config.EL_chanceTableReadAXB(_EL_Index, this.Const.EL_NPC.EL_NormalTeam.RandomLeaderChance);
+            }
+        }
+        StrongestLeaderChance = {
+            Factor = {
+                Offset = [
+                    0,
+                    -15,
+                    15
+                ],
+                Mult = [
+                    0,
+                    1,
+                    0
+                ],
+                Range = [
+                    15,
+                    30
+                ]
+            }
+            Table = []
+            function EL_getChance(_EL_Index) {
+                return this.Const.EL_Config.EL_chanceTableReadAXB(_EL_Index, this.Const.EL_NPC.EL_NormalTeam.StrongestLeaderChance);
+            }
+        }
+        LeaderBossChance = {
             Factor = {
                 Offset = [
                     0,
@@ -377,29 +420,7 @@ gt.Const.EL_NPC <- {
             }
             Table = []
             function EL_getChance(_EL_Index) {
-                return this.Const.EL_Config.EL_chanceTableReadAXB(_EL_Index, this.Const.EL_NPC.EL_NormalTeam.RandomLeaderChance);
-            }
-        }
-        StrongestLeaderChance = {
-            Factor = {
-                Offset = [
-                    0,
-                    -25,
-                    15
-                ],
-                Mult = [
-                    0,
-                    1,
-                    0
-                ],
-                Range = [
-                    25,
-                    40
-                ]
-            }
-            Table = []
-            function EL_getChance(_EL_Index) {
-                return this.Const.EL_Config.EL_chanceTableReadAXB(_EL_Index, this.Const.EL_NPC.EL_NormalTeam.StrongestLeaderChance);
+                return this.Const.EL_Config.EL_chanceTableReadAXB(_EL_Index, this.Const.EL_NPC.EL_NormalTeam.LeaderBossChance);
             }
         }
     },
@@ -409,16 +430,16 @@ gt.Const.EL_NPC <- {
             Factor = {
                 Offset = [
                     0,
-                    -25,
+                    -5,
                     15
                 ],
                 Mult = [
                     0,
-                    1,
+                    0.5,
                     0
                 ],
                 Range = [
-                    25,
+                    10,
                     40
                 ]
             }
@@ -431,7 +452,7 @@ gt.Const.EL_NPC <- {
             Factor = {
                 Offset = [
                     0,
-                    -30,
+                    -10,
                     15
                 ],
                 Mult = [
@@ -440,8 +461,8 @@ gt.Const.EL_NPC <- {
                     0
                 ],
                 Range = [
-                    30,
-                    45
+                    10,
+                    25
                 ]
             }
             Table = []
@@ -453,25 +474,44 @@ gt.Const.EL_NPC <- {
             Factor = {
                 Offset = [
                     0,
-                    -20,
-                    -45,
+                    -15,
                     15
                 ],
                 Mult = [
                     0,
-                    0.5,
                     1,
                     0
                 ],
                 Range = [
-                    40,
-                    50,
-                    60
+                    15,
+                    30
                 ]
             }
             Table = []
             function EL_getChance(_EL_Index) {
                 return this.Const.EL_Config.EL_chanceTableReadAXB(_EL_Index, this.Const.EL_NPC.EL_EliteTeam.StrongestLeaderChance);
+            }
+        }
+        LeaderBossChance = {
+            Factor = {
+                Offset = [
+                    0,
+                    -20,
+                    15
+                ],
+                Mult = [
+                    0,
+                    1,
+                    0
+                ],
+                Range = [
+                    20,
+                    35
+                ]
+            }
+            Table = []
+            function EL_getChance(_EL_Index) {
+                return this.Const.EL_Config.EL_chanceTableReadAXB(_EL_Index, this.Const.EL_NPC.EL_EliteTeam.LeaderBossChance);
             }
         }
     }
