@@ -195,6 +195,23 @@ local gt = getroottable();
 		o.randomizeValues = function ()
 		{
 		}
+		
+		o.onSerialize = function ( _out )
+		{
+			_out.writeString(this.m.Name);
+			this.legend_armor.onSerialize(_out);
+		}
+
+		o.onDeserialize = function ( _in )
+		{
+			this.m.Name = _in.readString();
+			this.legend_armor.onDeserialize(_in);
+
+			if (this.isRuned())
+			{
+				this.updateRuneSigil();
+			}
+		}
 
 		o.EL_getRankLevelMax <- function()
 		{
@@ -272,6 +289,64 @@ local gt = getroottable();
 			o.EL_getDisassembleEquipmentEssenceNum <- function()
 			{
 				return [0, 0, 0, 0, 0];
+			}
+
+			o.onAddedToStash <- function(_stashID)
+			{
+				if (_stashID == "player")
+				{
+					local num = 0;
+					local items = this.World.Assets.getStash().getItems();
+					foreach( item in items )
+					{
+						if (item != null && item.EL_getRankLevel() == this.Const.EL_Item.Type.Legendary)
+						{
+							++num;
+						}
+					}
+
+					local roster = this.World.getPlayerRoster().getAll();
+					foreach( bro in roster )
+					{
+						local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
+						if (item != null && item.EL_getRankLevel() == this.Const.EL_Item.Type.Legendary)
+						{
+							++num;
+						}
+						item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
+						if (item != null && item.EL_getRankLevel() == this.Const.EL_Item.Type.Legendary)	
+						{
+							++num;
+						}
+						item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Head);
+						if (item != null && item.EL_getRankLevel() == this.Const.EL_Item.Type.Legendary)
+						{
+							++num;
+						}
+						item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Body);
+						if (item != null && item.EL_getRankLevel() == this.Const.EL_Item.Type.Legendary)
+						{
+							++num;
+						}
+						for( local i = 0; i < bro.getItems().getUnlockedBagSlots(); i = ++i )
+						{
+							local item = bro.getItems().getItemAtBagSlot(i);
+							if (item != null && item.EL_getRankLevel() == this.Const.EL_Item.Type.Legendary)
+							{
+								++num;
+							}
+						}
+					}
+					if(!this.World.Flags.has("EL_LegendaryItemMaxNum")) {
+						this.World.Flags.set("EL_LegendaryItemMaxNum", 0);
+						this.World.Flags.set("EL_LegendaryItemNum", 0);
+					}
+					if(num > this.World.Flags.get("EL_LegendaryItemMaxNum"))
+					{
+						this.World.Flags.set("EL_LegendaryItemMaxNum", num);
+					}
+					this.World.Flags.set("EL_LegendaryItemNum", num);
+				}
 			}
 		});
 	}

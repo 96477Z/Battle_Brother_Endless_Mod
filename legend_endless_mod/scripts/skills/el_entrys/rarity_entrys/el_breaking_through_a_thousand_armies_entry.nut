@@ -181,7 +181,9 @@ this.el_breaking_through_a_thousand_armies_entry <- this.inherit("scripts/skills
 	{
 		if (EL_isUsable())
 		{
-            this.m.EL_Stack = this.Math.floor(( 1 - this.getContainer().getActor().getHitpointsPct()) / this.Const.EL_Rarity_Entry.Factor.EL_BreakingThroughThousandArmies.StackPercent);
+			this.m.EL_Stack = this.Math.floor((1.0 - (_properties.Armor[this.Const.BodyPart.Body] * _properties.ArmorMult[this.Const.BodyPart.Body] + _properties.Armor[this.Const.BodyPart.Head] * _properties.ArmorMult[this.Const.BodyPart.Head] + this.getContainer().getActor().getHitpoints())
+				/ (_properties.ArmorMax[this.Const.BodyPart.Body] * _properties.ArmorMult[this.Const.BodyPart.Body] + _properties.ArmorMax[this.Const.BodyPart.Head] * _properties.ArmorMult[this.Const.BodyPart.Head] + this.getContainer().getActor().getHitpointsMax()))
+				/ this.Const.EL_Rarity_Entry.Factor.EL_BreakingThroughThousandArmies.StackPercent);
 
             _properties.Bravery += this.m.EL_Stack * this.Const.EL_Rarity_Entry.Factor.EL_BreakingThroughThousandArmies.BraveryOffset;
 			_properties.Initiative += this.m.EL_Stack * this.Const.EL_Rarity_Entry.Factor.EL_BreakingThroughThousandArmies.InitiativeOffset;

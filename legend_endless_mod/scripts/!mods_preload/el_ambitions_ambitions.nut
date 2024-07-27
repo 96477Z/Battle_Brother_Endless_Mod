@@ -207,13 +207,13 @@ local gt = getroottable();
 
     });
 
-    ::mods_hookExactClass("ambitions/ambitions/make_nobles_aware_ambition", function(o)
-    {
-        o.onUpdateScore = function ()
-        {
-            return;
-        }
+    // ::mods_hookExactClass("ambitions/ambitions/make_nobles_aware_ambition", function(o)
+    // {
+    //     o.onUpdateScore = function ()
+    //     {
+    //         return;
+    //     }
 
-    });
+    // });
 
 });

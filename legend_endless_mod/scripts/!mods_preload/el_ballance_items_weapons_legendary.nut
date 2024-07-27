@@ -23,8 +23,6 @@ local gt = getroottable();
         {
             create();
 			this.m.Value = 0;
-		this.m.RegularDamage = 1;
-		this.m.RegularDamageMax = 5;
             this.EL_generateByRankAndLevel(this.Const.EL_Item.Type.Legendary, 0);
         }
 

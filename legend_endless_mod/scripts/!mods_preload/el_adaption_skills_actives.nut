@@ -3,7 +3,23 @@ local gt = getroottable();
 ::mods_registerMod("el_adaption_skills_actives", 1, "el_adaption_skills_actives");
 ::mods_queue(null, "el_player_npc", function ()
 {
+    ::mods_hookExactClass("skills/actives/legend_choke", function(o){
+        local create = o.create;
+        o.create = function ()
+        {
+            create();
+		    this.m.IsWeaponSkill = false;
+        };
+	});
 
+    ::mods_hookExactClass("skills/actives/legend_grapple", function(o){
+        local create = o.create;
+        o.create = function ()
+        {
+            create();
+		    this.m.IsWeaponSkill = false;
+        };
+	});
 
 	::mods_hookExactClass("skills/actives/legend_field_repairs", function(o){
 

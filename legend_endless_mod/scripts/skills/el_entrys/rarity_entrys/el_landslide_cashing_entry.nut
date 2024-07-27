@@ -71,14 +71,18 @@ this.el_landslide_cashing_entry <- this.inherit("scripts/skills/skill", {
             {
                 ++injury_num; 
             }
-            local injury_num_left = this.Const.EL_Config.EL_addSlightInjurysToActor(_targetEntity, injury_num, [
-				this.Const.Injury.BluntBody,
-				this.Const.Injury.BluntHead
-			]);
-			this.Const.EL_Config.EL_addSeriousInjurysToActor(_targetEntity, injury_num_left, [
-				this.Const.Injury.BluntBody,
-				this.Const.Injury.BluntHead
-			]);
+			if(!_targetEntity.getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") || !_targetEntity.getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+			{
+				local injury_num_left = this.Const.EL_Config.EL_addSlightInjurysToActor(_targetEntity, injury_num, [
+					this.Const.Injury.BluntBody,
+					this.Const.Injury.BluntHead
+				]);
+				this.Const.EL_Config.EL_addSeriousInjurysToActor(_targetEntity, injury_num_left, [
+					this.Const.Injury.BluntBody,
+					this.Const.Injury.BluntHead
+				]);
+			}
+            
             local hit_info = clone this.Const.Tactical.HitInfo;
             hit_info.DamageRegular = _damageInflictedArmor * this.Const.EL_Rarity_Entry.Factor.EL_LandslideCashing.HealthDamageMult;
             hit_info.DamageDirect = 1.0;

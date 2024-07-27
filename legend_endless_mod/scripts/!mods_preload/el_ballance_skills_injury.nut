@@ -46,6 +46,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -95,6 +100,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -137,6 +147,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -183,6 +198,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -248,6 +268,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -298,6 +323,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -345,6 +375,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -393,6 +428,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -440,6 +480,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -487,6 +532,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -535,6 +585,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -582,6 +637,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -629,6 +689,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -694,6 +759,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -765,6 +835,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -809,6 +884,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -855,6 +935,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -896,6 +981,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -967,6 +1057,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -1018,6 +1113,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -1066,6 +1166,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (this.m.IsShownOutOfCombat)
             {
@@ -1111,6 +1216,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -1159,6 +1269,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -1206,6 +1321,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -1248,6 +1368,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -1295,6 +1420,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -1344,6 +1474,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -1385,6 +1520,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -1425,6 +1565,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -1465,6 +1610,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -1535,6 +1685,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -1628,6 +1783,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
             _properties.HitpointsMult *= 0.75;
             _properties.Bravery -= 25;
             _properties.Initiative -= 25;
@@ -1677,6 +1837,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -1724,6 +1889,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -1771,6 +1941,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {
@@ -1818,6 +1993,11 @@ local gt = getroottable();
         o.onUpdate = function( _properties )
         {
             this.injury.onUpdate(_properties);
+            if (this.getContainer().getActor().getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") && this.getContainer().getActor().getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+            {
+                this.removeSelf();
+                return;
+            }
 
             if (!_properties.IsAffectedByInjuries || this.m.IsFresh && !_properties.IsAffectedByFreshInjuries)
             {

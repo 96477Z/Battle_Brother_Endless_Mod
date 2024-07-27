@@ -62,26 +62,30 @@ this.el_charge_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buff
 		}
         if(this.Math.rand(1, 100) <= this.Const.EL_NPC.EL_NPCBuff.Factor.Charge.Chance[this.m.EL_RankLevel]) {
             _targetEntity.getSkills().add(this.new(this.Const.EL_NPC.EL_NPCBuff.Factor.Charge.DazeEffect[this.m.EL_RankLevel]));
-            if(_damageInflictedHitpoints > 0) {
-                if(_skill.isRanged()) {
-                    local injury_num_left = this.Const.EL_Config.EL_addSlightInjurysToActor(_targetEntity, this.Const.EL_NPC.EL_NPCBuff.Factor.Charge.InjuryNum[this.m.EL_RankLevel], [
-                        this.Const.Injury.PiercingBody,
-                        this.Const.Injury.PiercingHead
-                    ]);
-                    this.Const.EL_Config.EL_addSeriousInjurysToActor(_targetEntity, injury_num_left, [
-                        this.Const.Injury.PiercingBody,
-                        this.Const.Injury.PiercingHead
-                    ]);
-                }
-                else {
-                    local injury_num_left = this.Const.EL_Config.EL_addSlightInjurysToActor(_targetEntity, this.Const.EL_NPC.EL_NPCBuff.Factor.Charge.InjuryNum[this.m.EL_RankLevel], [
-                        this.Const.Injury.BluntBody,
-                        this.Const.Injury.BluntHead
-                    ]);
-                    this.Const.EL_Config.EL_addSeriousInjurysToActor(_targetEntity, injury_num_left, [
-                        this.Const.Injury.BluntBody,
-                        this.Const.Injury.BluntHead
-                    ]);
+            
+			if(!_targetEntity.getSkills().hasSkill("el_rarity_entry.breaking_through_a_thousand_armies") || !_targetEntity.getSkills().getSkillByID("el_rarity_entry.breaking_through_a_thousand_armies").EL_isUsable())
+			{
+                if(_damageInflictedHitpoints > 0) {
+                    if(_skill.isRanged()) {
+                        local injury_num_left = this.Const.EL_Config.EL_addSlightInjurysToActor(_targetEntity, this.Const.EL_NPC.EL_NPCBuff.Factor.Charge.InjuryNum[this.m.EL_RankLevel], [
+                            this.Const.Injury.PiercingBody,
+                            this.Const.Injury.PiercingHead
+                        ]);
+                        this.Const.EL_Config.EL_addSeriousInjurysToActor(_targetEntity, injury_num_left, [
+                            this.Const.Injury.PiercingBody,
+                            this.Const.Injury.PiercingHead
+                        ]);
+                    }
+                    else {
+                        local injury_num_left = this.Const.EL_Config.EL_addSlightInjurysToActor(_targetEntity, this.Const.EL_NPC.EL_NPCBuff.Factor.Charge.InjuryNum[this.m.EL_RankLevel], [
+                            this.Const.Injury.BluntBody,
+                            this.Const.Injury.BluntHead
+                        ]);
+                        this.Const.EL_Config.EL_addSeriousInjurysToActor(_targetEntity, injury_num_left, [
+                            this.Const.Injury.BluntBody,
+                            this.Const.Injury.BluntHead
+                        ]);
+                    }
                 }
             }
 

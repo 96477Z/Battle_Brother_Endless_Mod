@@ -97,7 +97,6 @@ this.el_have_talent_ambition_item <- this.inherit("scripts/items/accessory/acces
 		if (_stashID == "player")
 		{
 			this.World.Flags.set("EL_HasTalentAmbitionRule", true);
-			this.logInfo("true");
 		}
 	}
 
@@ -106,7 +105,6 @@ this.el_have_talent_ambition_item <- this.inherit("scripts/items/accessory/acces
 		if (_stashID == "player")
 		{
 			this.World.Flags.set("EL_HasTalentAmbitionRule", false);
-			this.logInfo("false");
 		}
 	}
 
