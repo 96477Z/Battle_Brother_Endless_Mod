@@ -3,7 +3,7 @@ this.el_strong_and_heavy_vehemence_skill <- this.inherit("scripts/skills/skill",
 	m = {},
 	function create()
 	{
-		this.m.ID = "el_rarity_actives.strong_and_heavy_vehemence_skill";
+		this.m.ID = "actives.bash";
 		this.m.Name = "巨力打击";
 		this.m.Description = "A slow overhead strike performed with full force to cudgel a target to pulp. Anyone hit with a blow like this will be dazed and gasping for air, unable to put full force behind their blows for two turns.";
 		this.m.KilledString = "Cudgeled to death";
@@ -118,5 +118,10 @@ this.el_strong_and_heavy_vehemence_skill <- this.inherit("scripts/skills/skill",
 			_properties.FatigueDealtPerHitMult += 4.0;
 		}
 	}
+
+    function EL_isRaritySkill()
+    {
+        return true;
+    }
 });
 

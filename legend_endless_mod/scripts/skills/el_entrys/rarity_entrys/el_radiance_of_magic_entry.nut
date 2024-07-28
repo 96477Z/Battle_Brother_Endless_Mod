@@ -78,6 +78,11 @@ this.el_radiance_of_magic_entry <- this.inherit("scripts/skills/skill", {
 		this.getContainer().removeByID("el_actives.infuse_magic_form");
 		this.getContainer().removeByID("el_actives.stagnant_spirit_form");
 	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

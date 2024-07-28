@@ -82,6 +82,11 @@ this.el_eye_of_death_entry <- this.inherit("scripts/skills/skill", {
 			this.getContainer().removeByID("actives.reload_bolt");
 		}
 	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

@@ -603,6 +603,10 @@ gt.Const.EL_Weapon <- {
 					10
 				]
 			},
+			EL_Beheaded = {
+				ID = "el_weapon_entry.beheaded",
+				Duration = 1
+			},
             EL_Bravery = {
 				ID = "el_weapon_entry.bravery",
 				BaseBravery = 15,

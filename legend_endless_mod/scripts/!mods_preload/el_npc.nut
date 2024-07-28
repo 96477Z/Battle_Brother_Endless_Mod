@@ -347,6 +347,10 @@ local gt = getroottable();
             }
             if(this.EL_isBossUnit()) {
                 this.m.EL_EquipmentEssenceDrop[4] = this.Const.EL_NPC.EL_Troop.EquipmentEssence.BossDropLengendaryNum[this.World.Assets.getCombatDifficulty()];
+                if(this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
+                {
+
+                }
             }
             else if(rank == 2) {
                 local r = this.Math.rand(1, 100);
@@ -373,6 +377,12 @@ local gt = getroottable();
 
         o.EL_afterEntityBuild <- function() {
             this.EL_buildEquipmentEssenceDrop();
+            if(this.EL_isBossUnit()) {
+                if(this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
+                {
+                    this.getSkills().add(this.new("scripts/skills/el_entrys/rarity_entrys/el_boss_entry"));
+                }
+            }
         }
 
 		o.getName = function()

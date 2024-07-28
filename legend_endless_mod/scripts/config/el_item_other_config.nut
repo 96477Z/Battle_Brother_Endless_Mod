@@ -336,6 +336,8 @@ gt.Const.EL_Item_Other <- {
 						item.EL_addRankLevel();
 					}
 				}
+				item.onUnequip();
+				item.onEquip();
 			}
 		}
 	},

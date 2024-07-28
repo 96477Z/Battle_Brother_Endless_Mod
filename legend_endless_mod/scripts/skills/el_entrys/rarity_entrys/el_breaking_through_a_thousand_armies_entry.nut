@@ -46,7 +46,7 @@ this.el_breaking_through_a_thousand_armies_entry <- this.inherit("scripts/skills
 				id = 5,
                 type = "text",
                 icon = "ui/icons/special.png",
-                text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]根据血量损失获得加成[/color]"
+                text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]根据状态损失（血甲总和）百分比获得加成[/color]"
 			},
 			{
 				id = 6,
@@ -165,16 +165,16 @@ this.el_breaking_through_a_thousand_armies_entry <- this.inherit("scripts/skills
 		else
 		{
 			this.m.EL_replacedSkills.clear();
-			this.getContainer().removeByID("el_rarity_actives.strengthen_split_man_skill");
-			this.getContainer().removeByID("el_rarity_actives.round_swing");
+			this.getContainer().removeByID("actives.split_man");
+			this.getContainer().removeByID("actives.round_swing");
 		}
 	}
 
 	function onRemoved()
 	{
 		this.Const.EL_Rarity_Entry.EL_ReturnSkill(this.getContainer().getActor(), this.m.EL_replacedSkills);
-		this.getContainer().removeByID("el_rarity_actives.strengthen_split_man_skill");
-		this.getContainer().removeByID("el_rarity_actives.round_swing");
+		this.getContainer().removeByID("actives.split_man");
+		this.getContainer().removeByID("actives.round_swing");
 	}
 
 	function onUpdate( _properties )
@@ -197,6 +197,11 @@ this.el_breaking_through_a_thousand_armies_entry <- this.inherit("scripts/skills
 			_properties.DamageTotalMult *= 1.0 + this.m.EL_Stack * this.Const.EL_Rarity_Entry.Factor.EL_BreakingThroughThousandArmies.DamageTotalMult;
 			_properties.DamageReceivedTotalMult *= 1.0 - this.m.EL_Stack * this.Const.EL_Rarity_Entry.Factor.EL_BreakingThroughThousandArmies.DamageReceivedTotalMult;
 		}
+	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
 	}
 
 	function EL_isUsable()

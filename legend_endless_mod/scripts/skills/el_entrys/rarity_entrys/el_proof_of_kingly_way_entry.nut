@@ -79,6 +79,11 @@ this.el_proof_of_kingly_way_entry <- this.inherit("scripts/skills/skill", {
 			}
 		}
 	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

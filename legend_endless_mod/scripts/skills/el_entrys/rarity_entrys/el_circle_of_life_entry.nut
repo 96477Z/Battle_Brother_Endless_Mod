@@ -243,6 +243,11 @@ this.el_circle_of_life_entry <- this.inherit("scripts/skills/skill", {
 		_targetEntity.onDamageReceived(user, this, hit_info);
 		user.setHitpoints(this.Math.min(user.getHitpointsMax(), user.getHitpoints() + hitpoints_drain));
     }
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

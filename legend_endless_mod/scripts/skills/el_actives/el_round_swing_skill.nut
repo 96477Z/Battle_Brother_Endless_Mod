@@ -2,7 +2,7 @@ this.el_round_swing_skill <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()
 	{
-		this.m.ID = "el_rarity_actives.round_swing";
+		this.m.ID = "actives.round_swing";
 		this.m.Name = "Round Swing";
 		this.m.Description = "Mow down all the targets around you, foe and friend alike, with a reckless round swing. Not hard to evade because it is not aimed at anything, but can be devastating if it connects. Be careful around your own men unless you want to relieve your payroll!";
 		this.m.KilledString = "Carved up";
@@ -170,6 +170,11 @@ this.el_round_swing_skill <- this.inherit("scripts/skills/skill", {
 			}
 		}
 	}
+
+    function EL_isRaritySkill()
+    {
+        return true;
+    }
 
 });
 

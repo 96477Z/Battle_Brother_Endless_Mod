@@ -123,14 +123,19 @@ this.el_into_the_breach_entry <- this.inherit("scripts/skills/skill", {
 		else
 		{
 			this.m.EL_replacedSkills.clear();
-			this.getContainer().removeByID("el_rarity_actives.into_the_breach_skill");
+			this.getContainer().removeByID("actives.spearwall");
 		}
 	}
 
 	function onRemoved()
 	{
 		this.Const.EL_Rarity_Entry.EL_ReturnSkill(this.getContainer().getActor(), this.m.EL_replacedSkills);
-		this.getContainer().removeByID("el_rarity_actives.into_the_breach_skill");
+		this.getContainer().removeByID("actives.spearwall");
+	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
 	}
 
 	function EL_isUsable()

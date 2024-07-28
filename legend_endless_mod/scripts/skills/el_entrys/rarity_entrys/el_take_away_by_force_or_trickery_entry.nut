@@ -87,14 +87,14 @@ this.el_take_away_by_force_or_trickery_entry <- this.inherit("scripts/skills/ski
 		else
 		{
 			this.m.EL_replacedSkills.clear();
-			this.getContainer().removeByID("el_rarity_actives.take_away_by_force_or_trickery_skill");
+			this.getContainer().removeByID("actives.whip");
 		}
 	}
 
 	function onRemoved()
 	{
 		this.Const.EL_Rarity_Entry.EL_ReturnSkill(this.getContainer().getActor(), this.m.EL_replacedSkills);
-		this.getContainer().removeByID("el_rarity_actives.take_away_by_force_or_trickery_skill");
+		this.getContainer().removeByID("actives.whip");
 	}
 
 	function EL_attackAllEnemies(_skill, _targetEntity)
@@ -124,6 +124,11 @@ this.el_take_away_by_force_or_trickery_entry <- this.inherit("scripts/skills/ski
             }
             this.m.EL_IsExtraAttack = false;
         }
+	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
 	}
 
 	function EL_isUsable()

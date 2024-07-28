@@ -94,7 +94,11 @@ this.el_vehemence_of_the_sky_entry <- this.inherit("scripts/skills/skill", {
 				item.EL_addEntryToList(this.new("scripts/skills/el_entrys/rarity_entrys/el_vehemence_of_the_sky_subsidiary_entry"));
 			}
 		}
+	}function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
 	}
+
 	function EL_isUsable()
 	{
 		local item = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);

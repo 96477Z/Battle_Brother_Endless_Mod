@@ -105,20 +105,25 @@ this.el_strong_and_heavy_vehemence_entry <- this.inherit("scripts/skills/skill",
 		else
 		{
 			this.m.EL_replacedSkills.clear();
-			this.getContainer().removeByID("el_rarity_actives.strong_and_heavy_vehemence_skill");
+			this.getContainer().removeByID("actives.bash");
 		}
 	}
 
 	function onRemoved()
 	{
 		this.Const.EL_Rarity_Entry.EL_ReturnSkill(this.getContainer().getActor(), this.m.EL_replacedSkills);
-		this.getContainer().removeByID("el_rarity_actives.strong_and_heavy_vehemence_skill");
+		this.getContainer().removeByID("actives.bash");
 	}
 
 	function EL_getFatigueDamage()
 	{
 		local weapon = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
 		return this.Math.floor((weapon.EL_getBaseNoRankRegularDamage() + weapon.EL_getBaseNoRankRegularDamageMax()) / 2 * this.Const.EL_Rarity_Entry.Factor.EL_StrongAndHeavyVehemence.FatigueDamageMult);
+	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
 	}
 
 	function EL_isUsable()

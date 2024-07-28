@@ -5,11 +5,36 @@ this.el_world_difficulty_change_event <- this.inherit("scripts/events/event", {
 		this.m.ID = "event.el_world_difficulty_change";
 		this.m.Title = "世界难度选择";
 		this.m.Cooldown = this.Const.EL_World.EL_WorldChangeEvent.DifficultyCooldown * this.World.getTime().SecondsPerDay;
+	}
+
+	function onUpdateScore()
+	{
+		if (this.World.getTime().Days < this.Const.EL_World.EL_WorldChangeEvent.DifficultyCooldown)
+		{
+			this.m.Score = 0;
+			return;
+		}
+		if(this.Time.getVirtualTimeF() < this.m.CooldownUntil)
+		{
+			this.m.Score = 0;
+			return;
+		}
+		this.m.Score = 9999;
+	}
+
+
+
+	function onPrepare()
+	{
 		local option_start_index = this.Const.EL_World.EL_WorldChangeEvent.DifficultyMinOption[this.World.Assets.getCombatDifficulty()];
 		if(this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary) {
 			option_start_index += this.World.Flags.set("EL_LegendaryItemMaxNum", 0);
 		}
-		local select_screen_num = ((this.Const.EL_World.EL_WorldChangeEvent.OptionNum - option_start_index) / this.Const.EL_World.EL_WorldChangeEvent.OptionNumPurPage);
+		if(option_start_index >= this.Const.EL_World.EL_WorldChangeEvent.OptionNum) {
+			option_start_index = this.Const.EL_World.EL_WorldChangeEvent.OptionNum - 1;
+		}
+		local total_option_num = this.Const.EL_World.EL_WorldChangeEvent.OptionNum - option_start_index;
+		local select_screen_num = (total_option_num / this.Const.EL_World.EL_WorldChangeEvent.OptionNumPurPage);
 		for(local page = 0; page < select_screen_num; ++page) {
 			local screen = {
 				ID = "el_world_difficulty_change_event_select_page_" + page,
@@ -23,8 +48,8 @@ this.el_world_difficulty_change_event <- this.inherit("scripts/events/event", {
 				}
 			}
 			local current_page_option_num = this.Const.EL_World.EL_WorldChangeEvent.OptionNumPurPage;
-			if((page + 1) * this.Const.EL_World.EL_WorldChangeEvent.OptionNumPurPage > this.Const.EL_World.EL_WorldChangeEvent.OptionNum) {
-				current_page_option_num = this.Const.EL_World.EL_WorldChangeEvent.OptionNum % this.Const.EL_World.EL_WorldChangeEvent.OptionNumPurPage;
+			if((page + 1) * this.Const.EL_World.EL_WorldChangeEvent.OptionNumPurPage > total_option_num) {
+				current_page_option_num = total_option_num % this.Const.EL_World.EL_WorldChangeEvent.OptionNumPurPage;
 			}
 			for(local option_num = 0; option_num < current_page_option_num; ++option_num) {
 				local option_index = page * this.Const.EL_World.EL_WorldChangeEvent.OptionNumPurPage + option_num + option_start_index;
@@ -179,27 +204,6 @@ this.el_world_difficulty_change_event <- this.inherit("scripts/events/event", {
 			}
 			this.m.Screens.push(screen);
 		}
-	}
-
-	function onUpdateScore()
-	{
-		if (this.World.getTime().Days < this.Const.EL_World.EL_WorldChangeEvent.DifficultyCooldown)
-		{
-			this.m.Score = 0;
-			return;
-		}
-		if(this.Time.getVirtualTimeF() < this.m.CooldownUntil)
-		{
-			this.m.Score = 0;
-			return;
-		}
-		this.m.Score = 9999;
-	}
-
-
-
-	function onPrepare()
-	{
 	}
 
 	function onDetermineStartScreen()

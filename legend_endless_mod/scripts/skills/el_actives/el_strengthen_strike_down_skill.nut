@@ -4,7 +4,7 @@ this.el_strengthen_strike_down_skill <- this.inherit("scripts/skills/skill", {
 	},
 	function create()
 	{
-		this.m.ID = "el_actives.strike_down";
+		this.m.ID = "actives.strike_down";
 		this.m.Name = "Strike Down";
 		this.m.Description = "Strike a heavy blow intended to incapacitate and stun your target for two turns, but not to do the most damage. Stunned targets can not keep up their Shieldwall, Spearwall or similar defensive skills.";
 		this.m.KilledString = "Cudgeled to death";

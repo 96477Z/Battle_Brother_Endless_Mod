@@ -339,6 +339,8 @@ local gt = getroottable();
 					}
 					if(!this.World.Flags.has("EL_LegendaryItemMaxNum")) {
 						this.World.Flags.set("EL_LegendaryItemMaxNum", 0);
+					}
+					if(!this.World.Flags.has("EL_LegendaryItemNum")) {
 						this.World.Flags.set("EL_LegendaryItemNum", 0);
 					}
 					if(num > this.World.Flags.get("EL_LegendaryItemMaxNum"))

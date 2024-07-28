@@ -126,14 +126,19 @@ this.el_brutal_cashing_entry <- this.inherit("scripts/skills/skill", {
 		else
 		{
 			this.m.EL_replacedSkills.clear();
-			this.getContainer().removeByID("el_rarity_actives.brutal_cashing_skill");
+			this.getContainer().removeByID("actives.strike");
 		}
 	}
 
 	function onRemoved()
 	{
 		this.Const.EL_Rarity_Entry.EL_ReturnSkill(this.getContainer().getActor(), this.m.EL_replacedSkills);
-		this.getContainer().removeByID("el_rarity_actives.brutal_cashing_skill");
+		this.getContainer().removeByID("actives.strike");
+	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
 	}
 
 	function EL_isUsable()

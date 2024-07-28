@@ -60,6 +60,9 @@ this.el_test_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		this.World.Assets.getStash().add(this.new("scripts/items/el_accessory/el_trade_ambition_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/el_accessory/el_upgrade_item_ambition_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/el_accessory/el_win_arena_fights_ambition_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/weapons/legend_sling"));
+		this.World.Assets.getStash().add(this.new("scripts/items/weapons/legend_slingshot"));
+		this.World.Assets.getStash().add(this.new("scripts/items/weapons/staff_sling"));
 		// this.World.Assets.getStash().add(this.new("scripts/items/legend_armor/armor/legend_armor_hexe_leader_cloak_upgrade"));
 		// this.World.Assets.getStash().add(this.new("scripts/items/helmets/legendary/ijirok_helmet"));
 		// this.World.Assets.getStash().add(this.new("scripts/items/legend_armor/legendary/legend_armor_mountain_named"));
@@ -93,7 +96,7 @@ this.el_test_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		// this.World.Assets.getStash().add(this.new("scripts/items/el_weapon/el_bone_spear"));
 		// this.World.Assets.getStash().add(this.new("scripts/items/el_weapon/el_hexe_staff"));
 		// this.World.Assets.getStash().add(this.new("scripts/items/el_weapon/el_mummy_curse_cleaver"));
-		// this.World.Assets.getStash().add(this.new("scripts/items/el_weapon/el_skyfire_cannon"));
+		this.World.Assets.getStash().add(this.new("scripts/items/el_weapon/el_skyfire_cannon"));
 		local npc_buffs = [];
 		local skill = this.new("scripts/skills/el_npc_buffs/el_stamp_npc_buff");
 		skill.EL_setRankLevel(1);
@@ -109,9 +112,9 @@ this.el_test_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		this.World.Assets.getStash().add(magic_stone);
 
 
-		local item = this.new("scripts/items/weapons/legendary/longinus_spear");
-		item.EL_generateByRankAndLevel(2,50);
-		this.World.Assets.getStash().add(item);
+		// local item = this.new("scripts/items/weapons/legendary/longinus_spear");
+		// item.EL_generateByRankAndLevel(2,50);
+		// this.World.Assets.getStash().add(item);
 		local item = this.new("scripts/items/accessory/orc_trophy_item");
 		item.EL_generateByRankAndLevel(2,100);
 		this.World.Assets.getStash().add(item);

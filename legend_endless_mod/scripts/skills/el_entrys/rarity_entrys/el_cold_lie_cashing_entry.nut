@@ -116,6 +116,11 @@ this.el_cold_lie_cashing_entry <- this.inherit("scripts/skills/skill", {
 			}
 		}
 	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{
