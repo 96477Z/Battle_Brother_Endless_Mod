@@ -148,5 +148,10 @@ this.el_into_the_breach_skill <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
+    function EL_isRaritySkill()
+    {
+        return true;
+    }
+
 });
 

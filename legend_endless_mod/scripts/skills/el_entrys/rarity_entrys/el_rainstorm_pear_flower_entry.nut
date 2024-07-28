@@ -5,7 +5,7 @@ this.el_rainstorm_pear_flower_entry <- this.inherit("scripts/skills/skill", {
 	},
 	function create()
 	{
-		this.m.Order = this.Const.SkillOrder.Last;
+		this.m.Order = this.Const.SkillOrder.VeryLast;
 		this.m.ID = "el_rarity_entry.rainstorm_pear_flower";
 		this.m.Name = "暴雨梨花(投石索)";
 		this.m.Description = "暴雨倾盆，无处可藏";
@@ -38,7 +38,7 @@ this.el_rainstorm_pear_flower_entry <- this.inherit("scripts/skills/skill", {
 				id = 4,
                 type = "text",
                 icon = "ui/icons/special.png",
-                text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "每次攻击会随机进行10~25次[/color]"
+                text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]每次攻击会随机进行10~25次[/color]"
 			}
         ]
 		if (!EL_isUsable())
@@ -58,7 +58,9 @@ this.el_rainstorm_pear_flower_entry <- this.inherit("scripts/skills/skill", {
 		if (EL_isUsable())
 		{
 			this.Const.EL_Rarity_Entry.EL_ReplaceSkill(this.getContainer().getActor(), this.m.EL_replacedSkills, this.Const.EL_Rarity_Entry.Factor.RainstormPearFlower.ReplaceSkillList);
-			this.getContainer().add(this.new("scripts/skills/el_actives/el_sling_stone_skill"));
+            local skill = this.new("scripts/skills/el_actives/el_sling_stone_skill");
+            skill.setItem(this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand));
+			this.getContainer().add(skill);
 		}
 		else
 		{

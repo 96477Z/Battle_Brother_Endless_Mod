@@ -118,5 +118,10 @@ this.el_strong_and_heavy_vehemence_skill <- this.inherit("scripts/skills/skill",
 			_properties.FatigueDealtPerHitMult += 4.0;
 		}
 	}
+
+    function EL_isRaritySkill()
+    {
+        return true;
+    }
 });
 

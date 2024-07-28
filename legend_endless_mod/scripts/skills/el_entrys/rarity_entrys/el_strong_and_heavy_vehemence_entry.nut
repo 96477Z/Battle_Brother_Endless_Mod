@@ -105,14 +105,14 @@ this.el_strong_and_heavy_vehemence_entry <- this.inherit("scripts/skills/skill",
 		else
 		{
 			this.m.EL_replacedSkills.clear();
-			this.getContainer().removeByID("el_rarity_actives.strong_and_heavy_vehemence_skill");
+			this.getContainer().removeByID("actives.bash");
 		}
 	}
 
 	function onRemoved()
 	{
 		this.Const.EL_Rarity_Entry.EL_ReturnSkill(this.getContainer().getActor(), this.m.EL_replacedSkills);
-		this.getContainer().removeByID("el_rarity_actives.strong_and_heavy_vehemence_skill");
+		this.getContainer().removeByID("actives.bash");
 	}
 
 	function EL_getFatigueDamage()

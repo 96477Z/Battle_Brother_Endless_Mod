@@ -42,7 +42,7 @@ this.el_skyfire_cannon <- this.inherit("scripts/items/weapons/weapon", {
 		this.m.ArmamentIcon = "icon_handgonne_01_loaded";
 		this.m.Value = 0;
 		this.m.RangeMin = 3;
-		this.m.RangeMax = 15;
+		this.m.RangeMax = 12;
 		this.m.RangeIdeal = 2;
 		this.m.RangeMaxBonus = 1;
 		this.m.StaminaModifier = -14;

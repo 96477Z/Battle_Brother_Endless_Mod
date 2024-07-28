@@ -165,16 +165,16 @@ this.el_breaking_through_a_thousand_armies_entry <- this.inherit("scripts/skills
 		else
 		{
 			this.m.EL_replacedSkills.clear();
-			this.getContainer().removeByID("el_rarity_actives.strengthen_split_man_skill");
-			this.getContainer().removeByID("el_rarity_actives.round_swing");
+			this.getContainer().removeByID("actives.split_man");
+			this.getContainer().removeByID("actives.round_swing");
 		}
 	}
 
 	function onRemoved()
 	{
 		this.Const.EL_Rarity_Entry.EL_ReturnSkill(this.getContainer().getActor(), this.m.EL_replacedSkills);
-		this.getContainer().removeByID("el_rarity_actives.strengthen_split_man_skill");
-		this.getContainer().removeByID("el_rarity_actives.round_swing");
+		this.getContainer().removeByID("actives.split_man");
+		this.getContainer().removeByID("actives.round_swing");
 	}
 
 	function onUpdate( _properties )

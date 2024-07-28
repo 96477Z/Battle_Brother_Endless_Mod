@@ -124,5 +124,10 @@ this.el_brutal_cashing_skill <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
+    function EL_isRaritySkill()
+    {
+        return true;
+    }
+
 });
 

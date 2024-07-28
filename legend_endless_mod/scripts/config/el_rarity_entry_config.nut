@@ -273,11 +273,8 @@ gt.Const.EL_Rarity_Entry <- {
 		},
 		RainstormPearFlower = {
 			ReplaceSkillList = [
-				"actives.whip",
-				"actives.disarm",
-				"actives.legend_flaggelate",
-				"actives.legend_ninetails_disarm",
-				"actives.legend_flogging"
+				"actives.sling_stone",
+				"actives.legend_slingstaff_bash"
 			],
 		},
 		EL_StrongAndHeavyVehemence = {
@@ -363,6 +360,7 @@ gt.Const.EL_Rarity_Entry <- {
 	
 	function EL_ReplaceSkill( _actor, _EL_replacedSkills, _EL_replaceSkillList )
 	{
+		
 		local skills = _actor.getSkills();
 		foreach( skill in skills.m.Skills ) 
 		{			
@@ -370,9 +368,13 @@ gt.Const.EL_Rarity_Entry <- {
 			{
 				if(skill.getID() == skill_id)
 				{
-					_EL_replacedSkills.push(skill);
-					_actor.getSkills().remove(skill);
-					continue;
+					if(!skill.EL_isRaritySkill())
+					{
+						_EL_replacedSkills.push(skill);
+						_actor.getSkills().remove(skill);
+						continue;
+					}
+					
 				}
 			}
 		}

@@ -139,16 +139,16 @@ this.el_devastate_entry <- this.inherit("scripts/skills/skill", {
 		else
 		{
 			this.m.EL_replacedSkills.clear();
-			this.getContainer().removeByID("el_rarity_actives.devastate_skill");
-			this.getContainer().removeByID("el_rarity_actives.devastate_aoe_skill");
+			this.getContainer().removeByID("actives.smite");
+			this.getContainer().removeByID("actives.shatter");
 		}
 	}
 
 	function onRemoved()
 	{
 		this.Const.EL_Rarity_Entry.EL_ReturnSkill(this.getContainer().getActor(), this.m.EL_replacedSkills);
-		this.getContainer().removeByID("el_rarity_actives.devastate_skill");
-        this.getContainer().removeByID("el_rarity_actives.devastate_aoe_skill");
+		this.getContainer().removeByID("actives.smite");
+		this.getContainer().removeByID("actives.shatter");
 	}
 	
 	function isHidden()

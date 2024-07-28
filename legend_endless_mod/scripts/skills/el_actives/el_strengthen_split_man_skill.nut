@@ -108,5 +108,10 @@ this.el_strengthen_split_man_skill <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
+    function EL_isRaritySkill()
+    {
+        return true;
+    }
+
 });
 

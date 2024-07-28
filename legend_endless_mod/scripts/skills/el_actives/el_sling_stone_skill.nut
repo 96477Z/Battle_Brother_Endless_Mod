@@ -52,6 +52,7 @@ this.el_sling_stone_skill <- this.inherit("scripts/skills/skill", {
 		this.m.IsShowingProjectile = true;
 		this.m.IsWeaponSkill = true;
 		this.m.IsDoingForwardMove = false;
+		this.m.IsTargetingActor = false;
 		this.m.InjuriesOnBody = this.Const.Injury.BluntBody;
 		this.m.InjuriesOnHead = this.Const.Injury.BluntHead;
 		this.m.DirectDamageMult = 0.35;
@@ -71,12 +72,6 @@ this.el_sling_stone_skill <- this.inherit("scripts/skills/skill", {
 	function getTooltip()
 	{
 		local ret = this.getRangedTooltip(this.getDefaultTooltip());
-		ret.push({
-			id = 7,
-			type = "text",
-			icon = "ui/icons/special.png",
-			text = "Can hit up to 6 targets"
-		});
 		ret.push({
 			id = 7,
 			type = "text",
@@ -121,106 +116,103 @@ this.el_sling_stone_skill <- this.inherit("scripts/skills/skill", {
 
 	function onUse( _user, _targetTile )
 	{
-		if (!_user.isHiddenToPlayer() || _targetTile.IsVisibleForPlayer)
-		{
-			this.getContainer().setBusy(true);
-			local tag = {
-				Skill = this,
-				User = _user,
-				TargetTile = _targetTile
-			};
-			this.Time.scheduleEvent(this.TimeUnit.Virtual, this.m.Delay, this.onPerformAttack, tag);
-			local affectedTiles = this.getAffectedTiles(targetTile);
-			local tag = {
-				Skill = _tag.Skill,
-				User = user,
-				Targets = affectedTiles
-			};
-			this.Time.scheduleEvent(this.TimeUnit.Virtual, 200, this.applyEffectToTargets.bindenv(this), tag);
+		this.getContainer().setBusy(true);
 
-			if (!_user.isPlayerControlled() && _targetTile.getEntity().isPlayerControlled())
+		local affectedTiles = this.getAffectedTiles(_targetTile);
+		local attack_time = this.Math.rand(10, 25);
+		local attack_tile = [];
+		while(attack_time)
+		{
+			local r = this.Math.rand(0, affectedTiles.len() - 1);
+			attack_tile.push(affectedTiles[r]);
+			--attack_time;
+		}
+		foreach(tile in attack_tile)
+		{
+			this.attackEntity(_user, tile.getEntity());
+		}
+
+		this.getContainer().setBusy(false);
+
+		if (!_user.isPlayerControlled() && _targetTile.getEntity().isPlayerControlled())
+		{
+			_user.getTile().addVisibilityForFaction(this.Const.Faction.Player);
+		}
+		return true;
+	}	
+	
+
+	function getAffectedTiles( _targetTile )
+	{
+		local ret = [
+			_targetTile
+		];
+		local ownTile = this.m.Container.getActor().getTile();
+		local dir = 0;
+		for(local direction = 0; direction < 6; ++direction)
+		{
+			if (_targetTile.hasNextTile(direction))
 			{
-				_user.getTile().addVisibilityForFaction(this.Const.Faction.Player);
+				local forwardTile = _targetTile.getNextTile(direction);
+				if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+				{
+					ret.push(forwardTile);
+				}
 			}
-
-			return true;
 		}
-		else
+		local temp_ret = clone ret;
+		foreach(tile in temp_ret)
 		{
-			return this.attackEntity(_user, _targetTile.getEntity());
+			local distance = tile.getDistanceTo(_targetTile);
+			if(distance < 2)
+			{
+				continue;
+			}
+			local dir = tile.getDirectionTo(_targetTile);
+			local left = dir + 1 > 5 ? 0 : dir + 1;
+			local right = dir - 1 < 0 ? 5 : dir - 1;
+			local forwardTile;
+			if(tile.hasNextTile(left))
+			{
+				forwardTile = tile.getNextTile(left);
+				if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+				{
+					EL_addTile(forwardTile, ret);
+				}
+			}
+			for(local index = 2; index < distance; ++index)
+			{
+				if(forwardTile.hasNextTile(left))
+				{
+					local forwardTile = forwardTile.getNextTile(left);
+					if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+					{
+						EL_addTile(forwardTile, ret);
+					}
+				}
+			}
+			if(tile.hasNextTile(right))
+			{
+				forwardTile = tile.getNextTile(right);
+				if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+				{
+					EL_addTile(forwardTile, ret);
+				}
+			}
+			for(local index = 2; index < distance; ++index)
+			{
+				if(forwardTile.hasNextTile(right))
+				{
+					local forwardTile = forwardTile.getNextTile(right);
+					if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
+					{
+						EL_addTile(forwardTile, ret);
+					}
+				}
+			}
 		}
+		return ret;
 	}
-		function getAffectedTiles( _targetTile )
-		{
-			local ret = [
-				_targetTile
-			];
-			local ownTile = this.m.Container.getActor().getTile();
-			local dir = 0;
-			for(local direction = 0; direction < 6; ++direction)
-			{
-				if (_targetTile.hasNextTile(direction))
-				{
-					local forwardTile = _targetTile.getNextTile(direction);
-					if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
-					{
-						ret.push(forwardTile);
-					}
-				}
-			}
-			local temp_ret = clone ret;
-			foreach(tile in temp_ret)
-			{
-				local distance = tile.getDistanceTo(_targetTile);
-				if(distance < 2)
-				{
-					continue;
-				}
-				local dir = tile.getDirectionTo(_targetTile);
-				local left = dir + 1 > 5 ? 0 : dir + 1;
-				local right = dir - 1 < 0 ? 5 : dir - 1;
-				local forwardTile;
-				if(tile.hasNextTile(left))
-				{
-					forwardTile = tile.getNextTile(left);
-					if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
-					{
-						EL_addTile(forwardTile, ret);
-					}
-				}
-				for(local index = 2; index < distance; ++index)
-				{
-					if(forwardTile.hasNextTile(left))
-					{
-						local forwardTile = forwardTile.getNextTile(left);
-						if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
-						{
-							EL_addTile(forwardTile, ret);
-						}
-					}
-				}
-				if(tile.hasNextTile(right))
-				{
-					forwardTile = tile.getNextTile(right);
-					if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
-					{
-						EL_addTile(forwardTile, ret);
-					}
-				}
-				for(local index = 2; index < distance; ++index)
-				{
-					if(forwardTile.hasNextTile(right))
-					{
-						local forwardTile = forwardTile.getNextTile(right);
-						if (this.Math.abs(forwardTile.Level - ownTile.Level) <= this.m.MaxLevelDifference)
-						{
-							EL_addTile(forwardTile, ret);
-						}
-					}
-				}
-			}
-			return ret;
-		}
 
 	function onPerformAttack( _tag )
 	{
@@ -256,5 +248,9 @@ this.el_sling_stone_skill <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
-});
+    function EL_isRaritySkill()
+    {
+        return true;
+    }
 
+});

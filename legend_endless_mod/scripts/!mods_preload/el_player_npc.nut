@@ -1371,6 +1371,11 @@ local gt = getroottable();
 
 		o.EL_reset <- function() {}
 
+		o.EL_isRaritySkill <- function()
+		{
+			return false;
+		}
+
         o.EL_onOtherSkillUesd <- function ( _skill, _targetEntity ) {}
 
 		o.onScheduledTargetHit = function( _info )

@@ -64,17 +64,17 @@ this.el_heart_triumphs_over_things_entry <- this.inherit("scripts/skills/skill",
 			result.push({
                 id = 8,
                 type = "text",
-                text = "当前额外攻击 " + EL_getExtraAttackTime() + "次[/color]"
+                text = "当前额外攻击 " + EL_getExtraAttackTime() + "次"
             });
 			result.push({
                 id = 8,
                 type = "text",
-                text = "当前额外攻击距离： " + EL_getExtraAttackRange() + "[/color]"
+                text = "当前额外攻击距离： " + EL_getExtraAttackRange()
             });
 			result.push({
                 id = 8,
                 type = "text",
-                text = "每点疲劳可减免 " + EL_getBraveryConvertMult() + "点伤害[/color]"
+                text = "每点疲劳可减免 " + EL_getBraveryConvertMult() + "点伤害"
             });
 		}
 		return result;
@@ -136,9 +136,9 @@ this.el_heart_triumphs_over_things_entry <- this.inherit("scripts/skills/skill",
 			damage = damage * _hitInfo.BodyDamageMult;
 			damage = this.Math.max(0, this.Math.max(this.Math.round(damage), this.Math.min(this.Math.round(_hitInfo.DamageMinimum), this.Math.round(_hitInfo.DamageMinimum * _properties.DamageReceivedTotalMult))));
 			local fatigue_cost = (damage + armorDamage) * (1.0 - this.Const.EL_Rarity_Entry.Factor.EL_HeartTriumphsOverThings.ReceivedDamageMult) / EL_getBraveryConvertMult();
-			if(fatigue_cost > this.getContainer().getActor().getFatigueMax() - this.getContainer().getActor().getFatigue())
+			if(fatigue_cost <= this.getContainer().getActor().getFatigueMax() - this.getContainer().getActor().getFatigue())
 			{
-				actor.m.Fatigue += fatigue_cost;
+				this.getContainer().getActor().m.Fatigue += fatigue_cost;
             	_properties.DamageReceivedTotalMult = this.Const.EL_Rarity_Entry.Factor.EL_HeartTriumphsOverThings.ReceivedDamageMult;
 			}
         }

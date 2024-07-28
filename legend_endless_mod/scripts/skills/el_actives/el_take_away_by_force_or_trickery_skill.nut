@@ -157,4 +157,9 @@ this.el_take_away_by_force_or_trickery_skill <- this.inherit("scripts/skills/ski
 		return success;
 	}
 
+	function EL_isRaritySkill()
+	{
+		return true;
+	}
+
 });

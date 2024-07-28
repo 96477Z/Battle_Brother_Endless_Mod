@@ -115,14 +115,14 @@ this.el_stun_cashing_entry <- this.inherit("scripts/skills/skill", {
 		else
 		{
 			this.m.EL_replacedSkills.clear();
-			this.getContainer().removeByID("el_rarity_actives.stun_cashing_skill");
+			this.getContainer().removeByID("actives.crumble");
 		}
 	}
 
 	function onRemoved()
 	{
 		this.Const.EL_Rarity_Entry.EL_ReturnSkill(this.getContainer().getActor(), this.m.EL_replacedSkills);
-		this.getContainer().removeByID("el_rarity_actives.stun_cashing_skill");
+		this.getContainer().removeByID("actives.crumble");
 	}
 
 	function EL_getFatigueDamage()

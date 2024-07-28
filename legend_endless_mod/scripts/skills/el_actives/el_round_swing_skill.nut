@@ -171,5 +171,10 @@ this.el_round_swing_skill <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
+    function EL_isRaritySkill()
+    {
+        return true;
+    }
+
 });
 

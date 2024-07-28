@@ -296,6 +296,11 @@ this.el_devastate_aoe_skill <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
+    function EL_isRaritySkill()
+    {
+        return true;
+    }
+
 });
 
 

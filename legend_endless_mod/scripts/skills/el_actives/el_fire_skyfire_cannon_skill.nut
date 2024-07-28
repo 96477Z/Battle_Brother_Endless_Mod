@@ -53,7 +53,7 @@ this.el_fire_skyfire_cannon_skill <- this.inherit("scripts/skills/skill", {
 		this.m.ActionPointCost = 3;
 		this.m.FatigueCost = 5;
 		this.m.MinRange = 3;
-		this.m.MaxRange = 15;
+		this.m.MaxRange = 12;
 		this.m.MaxRangeBonus = 1;
 		this.m.MaxLevelDifference = 4;
 	}
@@ -193,7 +193,7 @@ this.el_fire_skyfire_cannon_skill <- this.inherit("scripts/skills/skill", {
         {
             explosion_range *= this.Const.EL_Rarity_Entry.Factor.EL_GunfireLicksTheHeavens.ExplosionRangeMult;
         }
-        explosion_range += this.getItem().m.EL_AdditionalExplosionRange;
+        explosion_range += this.getItem().m.EL_AdditionalExplosionRange / 2;
         for(local direction = 0; direction < 6; ++direction)
         {
             if (_targetTile.hasNextTile(direction))
