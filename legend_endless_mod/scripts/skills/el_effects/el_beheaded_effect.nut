@@ -15,13 +15,15 @@ this.el_beheaded_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Type = this.Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
+		this.m.Order = this.Const.SkillOrder.VeryLast;
 	}
 
-	function onUpdate( _properties )
+	function onAfterUpdate( _properties )
 	{
 		local actor = this.getContainer().getActor();
         if(actor.getHitpoints() == 1)
         {
+			actor.setHitpoints(2);
             actor.kill(this.m.Killer, this.m.Skill);
         }
 	}
