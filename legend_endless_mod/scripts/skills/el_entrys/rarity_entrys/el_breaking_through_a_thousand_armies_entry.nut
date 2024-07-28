@@ -46,7 +46,7 @@ this.el_breaking_through_a_thousand_armies_entry <- this.inherit("scripts/skills
 				id = 5,
                 type = "text",
                 icon = "ui/icons/special.png",
-                text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]根据血量损失获得加成[/color]"
+                text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]根据状态损失（血甲总和）百分比获得加成[/color]"
 			},
 			{
 				id = 6,
@@ -197,6 +197,11 @@ this.el_breaking_through_a_thousand_armies_entry <- this.inherit("scripts/skills
 			_properties.DamageTotalMult *= 1.0 + this.m.EL_Stack * this.Const.EL_Rarity_Entry.Factor.EL_BreakingThroughThousandArmies.DamageTotalMult;
 			_properties.DamageReceivedTotalMult *= 1.0 - this.m.EL_Stack * this.Const.EL_Rarity_Entry.Factor.EL_BreakingThroughThousandArmies.DamageReceivedTotalMult;
 		}
+	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
 	}
 
 	function EL_isUsable()

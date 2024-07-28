@@ -99,6 +99,11 @@ this.el_fight_and_win_entry <- this.inherit("scripts/skills/skill", {
 		}
 		return false;
 	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

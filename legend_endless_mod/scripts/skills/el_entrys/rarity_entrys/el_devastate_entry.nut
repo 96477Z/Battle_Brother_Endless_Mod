@@ -150,6 +150,11 @@ this.el_devastate_entry <- this.inherit("scripts/skills/skill", {
 		this.getContainer().removeByID("el_rarity_actives.devastate_skill");
         this.getContainer().removeByID("el_rarity_actives.devastate_aoe_skill");
 	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

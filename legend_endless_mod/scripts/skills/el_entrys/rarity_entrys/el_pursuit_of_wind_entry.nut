@@ -145,6 +145,11 @@ this.el_pursuit_of_wind_entry <- this.inherit("scripts/skills/skill", {
 			this.m.EL_ExtraAttackTimes = 3;
 		}
 	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

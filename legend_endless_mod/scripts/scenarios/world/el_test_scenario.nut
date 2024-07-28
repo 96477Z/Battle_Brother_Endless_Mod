@@ -60,6 +60,9 @@ this.el_test_scenario <- this.inherit("scripts/scenarios/world/starting_scenario
 		this.World.Assets.getStash().add(this.new("scripts/items/el_accessory/el_trade_ambition_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/el_accessory/el_upgrade_item_ambition_item"));
 		this.World.Assets.getStash().add(this.new("scripts/items/el_accessory/el_win_arena_fights_ambition_item"));
+		this.World.Assets.getStash().add(this.new("scripts/items/weapons/legend_sling"));
+		this.World.Assets.getStash().add(this.new("scripts/items/weapons/legend_slingshot"));
+		this.World.Assets.getStash().add(this.new("scripts/items/weapons/staff_sling"));
 		// this.World.Assets.getStash().add(this.new("scripts/items/legend_armor/armor/legend_armor_hexe_leader_cloak_upgrade"));
 		// this.World.Assets.getStash().add(this.new("scripts/items/helmets/legendary/ijirok_helmet"));
 		// this.World.Assets.getStash().add(this.new("scripts/items/legend_armor/legendary/legend_armor_mountain_named"));

@@ -97,6 +97,11 @@ this.el_toxic_blade_thrust_entry <- this.inherit("scripts/skills/skill", {
         }
         return number;
     }
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

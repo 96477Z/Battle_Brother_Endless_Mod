@@ -4,7 +4,7 @@ this.el_strengthen_split_man_skill <- this.inherit("scripts/skills/skill", {
 	},
 	function create()
 	{
-		this.m.ID = "el_rarity_actives.strengthen_split_man_skill";
+		this.m.ID = "actives.split_man";
 		this.m.Name = "强化分裂人";
 		this.m.Description = "A slow overhead attack performed with full force to split a target in two from top to bottom. Has enough force that it always hits both head and body for additional damage.";
 		this.m.KilledString = "Split in two";

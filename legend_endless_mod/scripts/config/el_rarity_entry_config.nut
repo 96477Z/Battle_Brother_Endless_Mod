@@ -8,90 +8,96 @@ if (!("EL_Rarity_Entry" in gt.Const))
 gt.Const.EL_Rarity_Entry <- {
 	Pool = {
 		Entrys = [
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_bloody_cutting_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_bloody_knock_entry"
-			// },
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_bloody_cutting_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_bloody_knock_entry"
+			},
 			{
 				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_breaking_through_a_thousand_armies_entry"
 			},
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_brutal_cashing_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_circle_of_life_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_cold_lie_cashing_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_curling_immortal_sound_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_devastate_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_eye_of_death_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_faith_of_the_rock_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_fight_and_win_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_gunfire_licks_the_heavens_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_infinite_penetration_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_into_the_breach_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_landslide_cashing_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_massacre_desire_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_master_feat_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_natural_dismember_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_proof_of_kingly_way_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_pursuit_of_wind_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_radiance_of_magic_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_strong_and_heavy_vehemence_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_stun_cashing_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_take_away_by_force_or_trickery_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_the_power_of_unity_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_toxic_blade_thrust_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_unbreakable_entry"
-			// },
-			// {
-			// 	Scripts = "scripts/skills/el_entrys/rarity_entrys/el_vehemence_of_the_sky_entry"
-			// }
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_brutal_cashing_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_circle_of_life_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_cold_lie_cashing_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_curling_immortal_sound_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_devastate_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_eye_of_death_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_faith_of_the_rock_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_fight_and_win_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_gunfire_licks_the_heavens_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_heart_triumphs_over_things_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_infinite_penetration_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_into_the_breach_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_landslide_cashing_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_massacre_desire_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_master_feat_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_natural_dismember_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_proof_of_kingly_way_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_pursuit_of_wind_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_radiance_of_magic_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_rainstorm_pear_flower_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_strong_and_heavy_vehemence_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_stun_cashing_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_take_away_by_force_or_trickery_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_the_power_of_unity_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_toxic_blade_thrust_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_unbreakable_entry"
+			},
+			{
+				Scripts = "scripts/skills/el_entrys/rarity_entrys/el_vehemence_of_the_sky_entry"
+			}
 		]
 	},
 	Factor = {
@@ -196,6 +202,14 @@ gt.Const.EL_Rarity_Entry <- {
 			ExplosionRangeMult = 3,
 			CheckMoraleOffset = 0
 		},
+		EL_HeartTriumphsOverThings = {
+			ExtraDamageHitpointsCiv = 1.0,
+			ExtraAttackTimeInitiative = 100,
+			ExtraAttackRangeBraveryoffset = 50,
+			ExtraAttackRangeBraveryNeed = 10,
+			ReceivedDamageMult = 0.0,
+			ReceivedDamageBraveryMult = 10
+		},
 		EL_InfinitePenetration = {
 			PenetrateNum = 20,
 			RegularDamageMult = 2.0
@@ -256,7 +270,16 @@ gt.Const.EL_Rarity_Entry <- {
 					"scripts/skills/effects/legend_dazed_effect"
 				]
 			}
-		}
+		},
+		RainstormPearFlower = {
+			ReplaceSkillList = [
+				"actives.whip",
+				"actives.disarm",
+				"actives.legend_flaggelate",
+				"actives.legend_ninetails_disarm",
+				"actives.legend_flogging"
+			],
+		},
 		EL_StrongAndHeavyVehemence = {
 			FatigueDamageMult = 2,
 			ReplaceSkillList = [

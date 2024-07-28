@@ -76,6 +76,11 @@ this.el_gunfire_licks_the_heavens_entry <- this.inherit("scripts/skills/skill", 
 			this.getContainer().removeByID("actives.reload_handgonne");
 		}
 	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

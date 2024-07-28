@@ -113,6 +113,11 @@ this.el_infinite_penetration_entry <- this.inherit("scripts/skills/skill", {
 		}
 		this.m.EL_IsPenetrateAttack = false;
 	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

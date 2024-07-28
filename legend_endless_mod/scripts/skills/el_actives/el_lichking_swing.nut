@@ -252,11 +252,21 @@ this.el_lichking_swing <- this.inherit("scripts/skills/skill", {
 					Properties = properties,
 					DistanceToTarget = _user.getTile().getDistanceTo(target.getTile())
 				};
-				this.onScheduledTargetHit(info);
-				local difficulty = _user.getBravery() * this.Const.EL_LichKing.Weapon.NormalSkill.MoraleCheck.AdditionMoraleCheckPersent[this.m.EL_RankLevel] + this.Const.EL_LichKing.Weapon.NormalSkill.MoraleCheck.BaseOffset
-								this.Const.EL_LichKing.Weapon.NormalSkill.MoraleCheck.RankFactor * (target.EL_getRankLevel() - _user.EL_getRankLevel()) +
-								this.Math.pow(this.Const.EL_LichKing.Weapon.NormalSkill.MoraleCheck.CombatLevelFactor, this.Math.abs(target.EL_getCombatLevel() - _user.EL_getCombatLevel())) * (target.EL_getCombatLevel() - _user.EL_getCombatLevel());
-				target.checkMorale(-1, difficulty);
+				if(target.getMoraleState() == this.Const.MoraleState.Fleeing)
+				{
+					local is_able_to_die = target.m.IsAbleToDie;
+					target.m.IsAbleToDie = false;
+					this.onScheduledTargetHit(info);
+					target.m.IsAbleToDie = is_able_to_die;
+				}
+				else
+				{
+					this.onScheduledTargetHit(info);
+					local difficulty = _user.getBravery() * this.Const.EL_LichKing.Weapon.NormalSkill.MoraleCheck.AdditionMoraleCheckPersent[this.m.EL_RankLevel] + this.Const.EL_LichKing.Weapon.NormalSkill.MoraleCheck.BaseOffset
+									this.Const.EL_LichKing.Weapon.NormalSkill.MoraleCheck.RankFactor * (target.EL_getRankLevel() - _user.EL_getRankLevel()) +
+									this.Math.pow(this.Const.EL_LichKing.Weapon.NormalSkill.MoraleCheck.CombatLevelFactor, this.Math.abs(target.EL_getCombatLevel() - _user.EL_getCombatLevel())) * (target.EL_getCombatLevel() - _user.EL_getCombatLevel());
+					target.checkMorale(-1, difficulty);
+				}
 			}
         }
 	}

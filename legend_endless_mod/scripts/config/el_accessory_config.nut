@@ -1099,8 +1099,15 @@ gt.Const.EL_Accessory <- {
 		if(r <= this.Const.EL_Accessory.EL_Entry.RarityEntryChane[_item.m.EL_RankLevel])
 		{
 			this.logInfo("!!!RarityEntry!!!" + r);
-			local r = this.Math.rand(0, this.Const.EL_Rarity_Entry.Pool.Entrys.len() - 1);
-			_item.EL_setRarityEntry(this.new(this.Const.EL_Rarity_Entry.Pool.Entrys[r].Scripts));
+			if(_item.getID() == "el_accessory.core")
+			{
+				_item.EL_setRarityEntry(this.new("scripts/skills/el_entrys/rarity_entrys/el_legendary_prestige_entry"));
+			}
+			else
+			{
+				local r = this.Math.rand(0, this.Const.EL_Rarity_Entry.Pool.Entrys.len() - 1);
+				_item.EL_setRarityEntry(this.new(this.Const.EL_Rarity_Entry.Pool.Entrys[r].Scripts));
+			}
 		}
 	}
 };

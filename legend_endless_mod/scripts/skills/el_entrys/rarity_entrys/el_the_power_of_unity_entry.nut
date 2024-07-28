@@ -116,6 +116,11 @@ this.el_the_power_of_unity_entry <- this.inherit("scripts/skills/skill", {
 		}
 		this.m.EL_IsExtraAttack = false;
 	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

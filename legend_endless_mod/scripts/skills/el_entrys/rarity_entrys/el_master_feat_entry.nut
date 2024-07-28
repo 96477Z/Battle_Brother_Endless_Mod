@@ -194,6 +194,11 @@ this.el_master_feat_entry <- this.inherit("scripts/skills/skill", {
 		}
 		return bonus;
 	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

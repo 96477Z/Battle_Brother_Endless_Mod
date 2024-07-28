@@ -16,7 +16,7 @@ local gt = getroottable();
 			{
 				this.EL_addEntry(entry);
 			}
-			if(this.m.EL_RarityEntry != null && this.getContainer().getActor().getFaction() == this.Const.Faction.Player)
+			if(this.m.EL_RarityEntry != null)// && this.getContainer().getActor().getFaction() == this.Const.Faction.Player)
 			{
 				this.logInfo("Rarity entry is equip:" + this.m.EL_RarityEntry.getID());
 				this.addSkill(this.m.EL_RarityEntry);

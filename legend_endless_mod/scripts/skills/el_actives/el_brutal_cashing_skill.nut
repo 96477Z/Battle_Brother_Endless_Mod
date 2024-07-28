@@ -5,7 +5,7 @@ this.el_brutal_cashing_skill <- this.inherit("scripts/skills/skill", {
 
 	function create()
 	{
-		this.m.ID = "el_rarity_actives.brutal_cashing_skill";
+		this.m.ID = "actives.strike";//"el_rarity_actives.brutal_cashing_skill";
 		this.m.Name = "残暴劈砍";
 		this.m.Description = "A slow overhead strike performed with full force to smash a target to bits.";
 		this.m.Icon = "skills/active_66.png";

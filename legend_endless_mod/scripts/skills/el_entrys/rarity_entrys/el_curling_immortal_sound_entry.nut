@@ -91,6 +91,11 @@ this.el_curling_immortal_sound_entry <- this.inherit("scripts/skills/skill", {
 			this.getContainer().removeByID(this.Const.EL_Rarity_Entry.Factor.EL_CurlingImmortalSound.SkillIDList[i]);
 		}
 	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

@@ -2,7 +2,7 @@ this.el_stun_cashing_skill <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()
 	{
-		this.m.ID = "el_rarity_actives.stun_cashing_skill";
+		this.m.ID = "actives.crumble";
 		this.m.Name = "眩晕打击";
 		this.m.Description = "A heavy strike to make the enemy formation crumble.";
 		this.m.KilledString = "Smashed";

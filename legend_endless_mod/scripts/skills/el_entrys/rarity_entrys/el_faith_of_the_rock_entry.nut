@@ -92,6 +92,11 @@ this.el_faith_of_the_rock_entry <- this.inherit("scripts/skills/skill", {
 			this.m.Container.add(this.new("scripts/skills/effects/shieldwall_effect"));
 		}
 	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

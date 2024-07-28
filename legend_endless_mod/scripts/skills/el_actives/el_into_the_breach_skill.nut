@@ -2,7 +2,7 @@ this.el_into_the_breach_skill <- this.inherit("scripts/skills/skill", {
 	m = {},
 	function create()
 	{
-		this.m.ID = "el_rarity_actives.into_the_breach_skill";
+		this.m.ID = "actives.spearwall";
 		this.m.Name = "陷阵之志！";
 		this.m.Icon = "el_skills/into_the_breach_skill.png";
 		this.m.IconDisabled = "el_skills/into_the_breach_skill_sw.png";

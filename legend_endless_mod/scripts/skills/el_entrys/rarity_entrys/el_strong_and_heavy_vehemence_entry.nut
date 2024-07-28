@@ -120,6 +120,11 @@ this.el_strong_and_heavy_vehemence_entry <- this.inherit("scripts/skills/skill",
 		local weapon = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
 		return this.Math.floor((weapon.EL_getBaseNoRankRegularDamage() + weapon.EL_getBaseNoRankRegularDamageMax()) / 2 * this.Const.EL_Rarity_Entry.Factor.EL_StrongAndHeavyVehemence.FatigueDamageMult);
 	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

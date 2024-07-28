@@ -125,6 +125,11 @@ this.el_take_away_by_force_or_trickery_entry <- this.inherit("scripts/skills/ski
             this.m.EL_IsExtraAttack = false;
         }
 	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

@@ -88,6 +88,11 @@ this.el_bloody_cutting_entry <- this.inherit("scripts/skills/skill", {
 			_targetEntity.m.IsAbleToDie = is_able_to_die;
 		}
 	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
+	}
 
 	function EL_isUsable()
 	{

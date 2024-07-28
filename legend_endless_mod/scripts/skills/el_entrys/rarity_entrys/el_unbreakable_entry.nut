@@ -8,7 +8,7 @@ this.el_unbreakable_entry <- this.inherit("scripts/skills/skill", {
 	},
 	function create()
 	{
-		this.m.Order = this.Const.SkillOrder.First;
+		this.m.Order = this.Const.SkillOrder.VeryLast;
 		this.m.ID = "el_rarity_entry.unbreakable";
 		this.m.Name = "不可撼动(单手锤)";
 		this.m.Description = "身如铁塔，屹立不倒";//Like an iron tower, standing still.
@@ -81,11 +81,11 @@ this.el_unbreakable_entry <- this.inherit("scripts/skills/skill", {
 				if(damage + armorDamage > this.m.EL_MaxTotalDamage)
 				{
 					this.m.EL_MaxDamageHitInfo = clone _hitInfo;
-					this.logInfo("copy_hitInfo.s DamageArmor:" + this.m.EL_MaxDamageHitInfo.DamageArmor);
-					this.logInfo("copy_hitInfo.s DamageRegular:" + this.m.EL_MaxDamageHitInfo.DamageRegular);
+					//this.logInfo("copy_hitInfo.s DamageArmor:" + this.m.EL_MaxDamageHitInfo.DamageArmor);
+					//this.logInfo("copy_hitInfo.s DamageRegular:" + this.m.EL_MaxDamageHitInfo.DamageRegular);
 					this.m.EL_Attacker = _attacker;
 					this.m.EL_AttackSkill = _skill;
-					this.logInfo("this.m.EL_Attacker" + this.m.EL_Attacker.getName());
+					//this.logInfo("this.m.EL_Attacker" + this.m.EL_Attacker.getName());
 					this.m.EL_MaxTotalDamage = damage + armorDamage;
 				}
 				this.logInfo("this.m.EL_MaxTotalDamage:"+this.m.EL_MaxTotalDamage);
@@ -102,8 +102,8 @@ this.el_unbreakable_entry <- this.inherit("scripts/skills/skill", {
 			this.m.EL_IsReceiveDamage = true;
 			if(this.m.EL_Attacker != null)
 			{
-				this.logInfo("HitInfo.s DamageArmor:" + this.m.EL_MaxDamageHitInfo.DamageArmor);
-				this.logInfo("HitInfo.s DamageRegular:" + this.m.EL_MaxDamageHitInfo.DamageRegular);
+				//this.logInfo("HitInfo.s DamageArmor:" + this.m.EL_MaxDamageHitInfo.DamageArmor);
+				//this.logInfo("HitInfo.s DamageRegular:" + this.m.EL_MaxDamageHitInfo.DamageRegular);
                 this.getContainer().getActor().onDamageReceived(this.m.EL_Attacker, this.m.EL_AttackSkill, this.m.EL_MaxDamageHitInfo);
 			}
 			this.m.EL_IsReceiveDamage = false;
@@ -112,6 +112,11 @@ this.el_unbreakable_entry <- this.inherit("scripts/skills/skill", {
 			this.m.EL_MaxTotalDamage = 0.0;
 			this.m.EL_MaxDamageHitInfo = clone this.Const.Tactical.HitInfo;
 		}
+	}
+	
+	function isHidden()
+	{
+		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
 	}
 
 	function EL_isUsable()

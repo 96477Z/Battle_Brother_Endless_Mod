@@ -58,6 +58,10 @@ this.el_rarity_entry_stone_item <- this.inherit("scripts/items/item", {
 		local accessory = _actor.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
 		if(accessory != null && accessory.EL_isValid())
 		{
+			if(accessory.m.EL_RarityEntry != null)
+			{
+				_actor.getSkills().removeByID(accessory.m.EL_RarityEntry.getID());
+			}
 			accessory.EL_setRarityEntry(this.m.EL_RarityEntry);
 			accessory.addSkill(this.m.EL_RarityEntry);
 			this.Sound.play("sounds/ambience/buildings/blacksmith_hammering_0" + this.Math.rand(0, 6) + ".wav",  this.Const.Sound.Volume.Inventory);
