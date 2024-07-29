@@ -257,7 +257,7 @@ local gt = getroottable();
                             }
                         }
                         this.Flags.set("IsVictory", true);
-                        this.World.Assets.m.EL_LastArenaDay = day;
+                        this.World.Assets.m.EL_LastArenaDay = this.World.getTime().Days;
                     }
                 }
 
