@@ -198,7 +198,7 @@ gt.Const.EL_Player <- {
         Factor = {
             Mult = [
                 0,
-                1,
+                2,
                 0
             ],
             Offset = [
@@ -207,8 +207,8 @@ gt.Const.EL_Player <- {
                 30
             ],
             Range = [
-                10,
-                40
+                5,
+                20
             ],
         },
         Table = []
@@ -222,7 +222,7 @@ gt.Const.EL_Player <- {
         Factor = {
             Mult = [
                 0,
-                0.5,
+                1,
                 0
             ],
             Offset = [
@@ -231,8 +231,8 @@ gt.Const.EL_Player <- {
                 10,
             ],
             Range = [
-                20,
-                40
+                10,
+                20
             ]
         },
         Table = []
