@@ -1027,7 +1027,7 @@ local gt = getroottable();
                 }
                 _EL_troop.EL_ExtraCombatLevel = troop_info.EL_ExtraCombatLevel;
                 //Build names
-                if(_EL_troop.EL_RankLevel == 2) {
+                if(_EL_troop.EL_IsBossUnit) {
                     _EL_troop.Name = this.Const.EL_NPC.EL_Troop.NamePrefix[_EL_troop.EL_RankLevel];
                     _EL_troop.Name += this.Const.EL_NPC.EL_Troop.Name[this.Math.rand(0, this.Const.EL_NPC.EL_Troop.Name.len() - 1)];
                     _EL_troop.Name += this.Const.EL_NPC.EL_Troop.NameSuffix[_EL_troop.EL_RankLevel];
@@ -1250,7 +1250,7 @@ local gt = getroottable();
                 }
                 // //Build names
                 for(local i = 0; i < this.m.Troops.len(); ++i) {
-                    if(this.m.Troops[i].EL_RankLevel == 2) {
+                    if(this.m.Troops[i].EL_IsBossUnit) {
                         this.m.Troops[i].Name = this.Const.EL_NPC.EL_Troop.NamePrefix[this.m.Troops[i].EL_RankLevel];
                         this.m.Troops[i].Name += this.Const.EL_NPC.EL_Troop.Name[this.Math.rand(0, this.Const.EL_NPC.EL_Troop.Name.len() - 1)];
                         this.m.Troops[i].Name += this.Const.EL_NPC.EL_Troop.NameSuffix[this.m.Troops[i].EL_RankLevel];
