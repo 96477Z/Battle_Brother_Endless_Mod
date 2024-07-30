@@ -1,5 +1,7 @@
 this.el_landslide_cashing_entry <- this.inherit("scripts/skills/skill", {
-	m = {},
+	m = {
+		EL_chainEntity = []
+	},
 	function create()
 	{
 		this.m.Order = this.Const.SkillOrder.Last;
@@ -120,6 +122,24 @@ this.el_landslide_cashing_entry <- this.inherit("scripts/skills/skill", {
 					local effect = this.new("scripts/skills/el_effects/el_pursuit_effect");
 					effect.EL_setSourceActorAndAttackSkill(user, pursuit_skill);
 					actor.getSkills().add(effect);
+					this.m.EL_chainEntity.push(actor);
+				}
+			}
+		}
+	}
+
+	function onDeath( _fatalityType )
+	{
+		local pursuit_skill = this.Const.EL_Rarity_Entry.EL_getAttackSkill(user);
+		foreach(actor in this.m.EL_chainEntity)
+		{
+			local skills = actor.getSkills().getAllSkillsByID("el_rarity_effects.pursuit");
+			foreach(skill in skills)
+			{
+				if(skill.EL_getPursuitSkill() == pursuit_skill && skill.EL_getSourceActor() == user)
+				{
+					actor.getSkills().remove(skill);
+					break;
 				}
 			}
 		}

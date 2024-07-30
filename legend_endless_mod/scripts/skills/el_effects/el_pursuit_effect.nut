@@ -9,7 +9,7 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "el_rarity_effects.pursuit";
-		this.m.Type = this.Const.SkillType.Racial;
+		this.m.Type = this.Const.SkillType.Special;
 		this.m.IsActive = false;
 		this.m.IsStacking = true;
 		this.m.IsRemovedAfterBattle = true;
@@ -30,6 +30,22 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 	function onTargetMissed( _skill, _targetEntity )
 	{
 		EL_useFreeSkill(_skill, _targetEntity);
+	}
+
+	function onDeath( _fatalityType )
+	{
+		if(this.m.EL_SourceActor != null && this.m.EL_SourceActor.isAlive() && !this.m.EL_SourceActor.isDying())
+		{
+			local user = this.getContainer().getActor();
+			foreach(actor in this.m.EL_SourceActor.m.EL_chainEntity)
+			{
+				if(user == actor)
+				{
+					this.m.EL_SourceActor.m.EL_chainEntity.remove(user);
+					return;
+				}
+			}
+		}
 	}
 	
 	function EL_useFreeSkill( _skill, _targetEntity )
