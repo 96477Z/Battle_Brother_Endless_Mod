@@ -37,7 +37,7 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 		if(this.m.EL_SourceActor != null && this.m.EL_SourceActor.isAlive() && !this.m.EL_SourceActor.isDying())
 		{
 			local user = this.getContainer().getActor();
-			local skills = actor.getSkills().getAllSkillsByID("el_rarity_effects.pursuit");
+			local skills = this.m.EL_SourceActor.getSkills().getAllSkillsByID("el_rarity_effects.pursuit");
 			foreach(skill in skills)
 			{
 				if(skill.EL_getSourceActor() == this.m.EL_SourceActor)
