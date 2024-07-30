@@ -347,12 +347,8 @@ local gt = getroottable();
             }
             if(this.EL_isBossUnit()) {
                 this.m.EL_EquipmentEssenceDrop[4] = this.Const.EL_NPC.EL_Troop.EquipmentEssence.BossDropLengendaryNum[this.World.Assets.getCombatDifficulty()];
-                if(this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary)
-                {
-
-                }
             }
-            else if(rank == 2) {
+            else if(this.EL_getRankLevel() == 2) {
                 local r = this.Math.rand(1, 100);
                 local chance = this.Const.EL_NPC.EL_Troop.EquipmentEssence.LeaderDropLengendaryChance * this.World.Assets.EL_getWorldDifficultFactor() * this.World.Assets.EL_getWorldDifficultFactor();
                 if(r <= chance) {

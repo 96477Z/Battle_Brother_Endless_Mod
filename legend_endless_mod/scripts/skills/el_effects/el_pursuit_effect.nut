@@ -9,7 +9,7 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 	function create()
 	{
 		this.m.ID = "el_rarity_effects.pursuit";
-		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.Type = this.Const.SkillType.Racial;
 		this.m.IsActive = false;
 		this.m.IsStacking = true;
 		this.m.IsRemovedAfterBattle = true;
