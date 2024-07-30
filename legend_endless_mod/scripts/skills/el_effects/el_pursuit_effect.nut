@@ -37,12 +37,19 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 		if(this.m.EL_SourceActor != null && this.m.EL_SourceActor.isAlive() && !this.m.EL_SourceActor.isDying())
 		{
 			local user = this.getContainer().getActor();
-			foreach(actor in this.m.EL_SourceActor.m.EL_chainEntity)
+			local skills = actor.getSkills().getAllSkillsByID("el_rarity_effects.pursuit");
+			foreach(skill in skills)
 			{
-				if(user == actor)
+				if(skill.EL_getSourceActor() == this.m.EL_SourceActor)
 				{
-					this.m.EL_SourceActor.m.EL_chainEntity.remove(user);
-					return;
+					foreach(actor in skill.m.EL_chainEntity)
+					{
+						if(user == actor)
+						{
+							skill.m.EL_chainEntity.remove(user);
+							return;
+						}
+					}
 				}
 			}
 		}
