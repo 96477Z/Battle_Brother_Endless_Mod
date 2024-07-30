@@ -86,6 +86,11 @@ this.el_heart_triumphs_over_things_entry <- this.inherit("scripts/skills/skill",
 		{
 			return;
 		}
+		if (skill.getID() != "actives.hand_to_hand" && skill.getID() != "actives.legend_choke" && skill.getID() != "actives.legend_unarmed_lunge"
+		 && skill.getID() != "actives.legend_grapple" && skill.getID() != "actives.legend_kick")
+		{
+			return;
+		}
 		if (EL_isUsable())
 		{
 			local hit_info = clone this.Const.Tactical.HitInfo;
@@ -148,7 +153,6 @@ this.el_heart_triumphs_over_things_entry <- this.inherit("scripts/skills/skill",
 	{
 		if (EL_isUsable())
 		{
-			//_properties.Vision = 10000;
 			local extra_attack_range = EL_getExtraAttackRange();
 			local skills = this.getContainer().getActor().getSkills().m.Skills;
             foreach( skill in skills )
@@ -207,6 +211,11 @@ this.el_heart_triumphs_over_things_entry <- this.inherit("scripts/skills/skill",
 
 	function EL_isUsable()
 	{
+		local item = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
+		if (item != null && item.getID() == "el_accessory.core")
+		{
+			return false;
+		}
 		local item1 = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
 		local item2 = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
 		if (item1 == null && item2 == null)

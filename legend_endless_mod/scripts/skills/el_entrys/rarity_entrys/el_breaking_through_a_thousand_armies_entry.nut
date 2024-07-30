@@ -206,6 +206,11 @@ this.el_breaking_through_a_thousand_armies_entry <- this.inherit("scripts/skills
 
 	function EL_isUsable()
 	{
+		local item = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
+		if (item != null && item.getID() == "el_accessory.core")
+		{
+			return false;
+		}
 		local item = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
 		if (item != null && item.isItemType(this.Const.Items.ItemType.TwoHanded) && item.isWeaponType(this.Const.Items.WeaponType.Axe) && item.getRangeMax() == 1)
 		{

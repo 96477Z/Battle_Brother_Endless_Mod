@@ -105,6 +105,11 @@ this.el_bloody_knock_entry <- this.inherit("scripts/skills/skill", {
 
 	function EL_isUsable()
 	{
+		local item = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
+		if (item != null && item.getID() == "el_accessory.core")
+		{
+			return false;
+		}
 		local item = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
 		if (item != null && item.isItemType(this.Const.Items.ItemType.TwoHanded) && item.isWeaponType(this.Const.Items.WeaponType.Flail))
 		{

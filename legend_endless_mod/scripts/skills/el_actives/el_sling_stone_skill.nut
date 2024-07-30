@@ -117,7 +117,7 @@ this.el_sling_stone_skill <- this.inherit("scripts/skills/skill", {
 	function onUse( _user, _targetTile )
 	{
 		this.getContainer().setBusy(true);
-
+		local condition = this.m.Item.getCondition();
 		local affectedTiles = this.getAffectedTiles(_targetTile);
 		local attack_time = this.Math.rand(10, 25);
 		local attack_tile = [];
@@ -131,7 +131,8 @@ this.el_sling_stone_skill <- this.inherit("scripts/skills/skill", {
 		{
 			this.attackEntity(_user, tile.getEntity());
 		}
-
+		this.m.Item.setCondition(condition);
+		this.m.Item.lowerCondition();
 		this.getContainer().setBusy(false);
 
 		if (!_user.isPlayerControlled() && _targetTile.getEntity().isPlayerControlled())
@@ -235,6 +236,7 @@ this.el_sling_stone_skill <- this.inherit("scripts/skills/skill", {
 		{
 			local targetTile = _targetEntity.getTile();
 			local user = this.getContainer().getActor();
+			
 
 			if (_bodyPart == this.Const.BodyPart.Head && !_targetEntity.getCurrentProperties().IsImmuneToDaze)
 			{

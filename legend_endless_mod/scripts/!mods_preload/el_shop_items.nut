@@ -160,6 +160,11 @@ local gt = getroottable();
                         R = 50,
                         P = 1.0,
                         S = "el_supplies/el_equipment_essence_rank_0_item"
+                    },
+                    {
+                        R = 99,
+                        P = 2.0,
+                        S = "el_weapon/el_named_staff_sling"
                     }
 				]);
 			}
@@ -285,6 +290,11 @@ local gt = getroottable();
                         R = 50,
                         P = 1.0,
                         S = "el_supplies/el_equipment_essence_rank_0_item"
+                    },
+                    {
+                        R = 99,
+                        P = 2.0,
+                        S = "el_weapon/el_named_staff_sling"
                     }
 				]);
 			}

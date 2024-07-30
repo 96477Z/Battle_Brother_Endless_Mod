@@ -87,6 +87,11 @@ this.el_proof_of_kingly_way_entry <- this.inherit("scripts/skills/skill", {
 
 	function EL_isUsable()
 	{
+		local item = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
+		if (item != null && item.getID() == "el_accessory.core")
+		{
+			return false;
+		}
 		local item = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
 		if (item != null && item.getID() == "weapon.player_banner")
 		{
