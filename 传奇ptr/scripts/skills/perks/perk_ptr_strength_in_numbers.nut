@@ -102,7 +102,7 @@ this.perk_ptr_strength_in_numbers <- this.inherit("scripts/skills/skill", {
 			_properties.MeleeSkill += this.getBonus();
 			_properties.RangedSkill += this.getBonus();
 			_properties.MeleeDefense += this.getBonus();
-			_properties.RangedDefense += this.getBonus();			
+			_properties.RangedDefense += this.getBonus();
 		}
 
 		_properties.Bravery += this.getResolveBonus();

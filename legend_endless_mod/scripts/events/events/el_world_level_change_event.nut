@@ -214,7 +214,7 @@ this.el_world_level_change_event <- this.inherit("scripts/events/event", {
 	function onDetermineStartScreen()
 	{
 		local page_index = 0;
-		return "el_world_level_change_event_result_page_" + page_index;
+		return "el_world_level_change_event_select_page_" + page_index;
 	}
 
 });

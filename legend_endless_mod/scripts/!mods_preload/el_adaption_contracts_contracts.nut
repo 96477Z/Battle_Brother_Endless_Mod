@@ -908,6 +908,7 @@ local gt = getroottable();
                             }
                             //4
                             if(temp_level > 0) {
+                                local troops = party.getTroops();
                                 for(local i = 0, j = 0; j < 2 && i < troops.len(); ++i) {
                                     troops[i].EL_ExtraBuffNum[troop.EL_RankLevel] += 1;
                                     if(i == 0) {
@@ -919,11 +920,12 @@ local gt = getroottable();
                             }
                             //5
                             if(temp_level > 0) {
+                                local troops = party.getTroops();
                                 local extra_combat_level = temp_level;
                                 local extra_buff_num = temp_level;
                                 local extra_leader_num = this.Math.floor(temp_level / 2);
                                 local extra_boss_num = this.Math.floor(temp_level / 4);
-                                foreach(troop in party.getTroops()) {
+                                foreach(troop in troops) {
                                     troop.EL_ExtraCombatLevel += extra_combat_level;
                                     troop.EL_ExtraBuffNum[troop.EL_RankLevel] += extra_buff_num;
                                     if(troop.EL_RankLevel == 1 && extra_leader_num != 0)

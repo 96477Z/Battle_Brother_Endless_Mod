@@ -1301,7 +1301,6 @@ local gt = getroottable();
 
 	::mods_hookExactClass("skills/perks/perk_ptr_strength_in_numbers", function ( o )
 	{
-
 		o.getBonus = function()
 		{
 			local actor = this.getContainer().getActor();
@@ -1318,12 +1317,26 @@ local gt = getroottable();
 				if(o == null || o.isDying() || !o.isAlive() || o == actor) {
 					continue;
 				}
-				if (o.isAlliedWith(actor) && actor.getTile().getDistanceTo(o.getTile()) <= 1)
+				if (o.isAlliedWith(actor))
 				{
 					count++;
 				}
 			}
-			return count * this.m.BonusPerAdjacentAlly;
+			return count / 3;
+		}
+
+		o.onUpdate = function(_properties)
+		{
+			local bonus = this.Math.floor(this.getBonus());
+			if (bonus > 0)
+			{
+				_properties.MeleeSkill += bonus;
+				_properties.RangedSkill += bonus;
+				_properties.MeleeDefense += bonus;
+				_properties.RangedDefense += bonus;
+			}
+
+			_properties.Bravery += this.getResolveBonus();
 		}
 	});
 
@@ -1708,6 +1721,10 @@ gt.Const.EL_Config.EL_modStrings <- function()
 		{
 			ID = "perk.nine_lives",
 			tooltip = "每场战斗一次，在受到致命伤害后，你可以幸存下来，只剩下1点生命值，并且治愈所有持续时间内的伤害（例如流血，中毒）。当然，下一次攻击很可能会永远杀死你，但是在你的下一个回合之前提高的防御属性会帮助你在那之前生存下来。",
+		},
+		{
+			ID = "perk.ptr_strength_in_numbers",
+			tooltip = "人数就是正义，能群殴何必单挑!\'\n\n[color=" + this.Const.UI.Color.Passive + "][u]Passive:[/u][/color]\n• 每有3个友军，获得 [color=" + this.Const.UI.Color.PositiveValue + "]+1[/color] 双攻双防.\n• Gain [color=" + this.Const.UI.Color.PositiveValue + "]+1[/color] Resolve for each ally on the battlefield, up to a maximum of [color=" + this.Const.UI.Color.PositiveValue + "]+20[/color]."
 		}
 	];
 
