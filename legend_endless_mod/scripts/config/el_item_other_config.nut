@@ -247,15 +247,6 @@ gt.Const.EL_Item_Other <- {
 			}
 
 			local items = [];
-			for( local i = 0; i < _actor.getItems().getUnlockedBagSlots(); i = i )
-			{
-				local bag_item = _actor.getItems().getItemAtBagSlot(i);
-				if (bag_item != null)
-				{
-					items.push(bag_item);
-				}
-				i = ++i;
-			}
 			if(main_hand != null)
 			{
 				items.push(main_hand);
@@ -338,6 +329,40 @@ gt.Const.EL_Item_Other <- {
 				}
 				item.onUnequip();
 				item.onEquip();
+			}
+			for( local i = 0; i < _actor.getItems().getUnlockedBagSlots(); i = i )
+			{
+				local item = _actor.getItems().getItemAtBagSlot(i);
+				if (item != null)
+				{
+					item.EL_generateByRankAndLevel(this.Const.EL_Item.Type.Normal, _actor.EL_getLevel());
+					if(_isNpc)
+					{
+						if(rank_level == 0)
+						{
+							if(this.Math.rand(1, 100000) <= this.Const.EL_Item_Other.EL_NormalNPCEquipmentRankUpChance.EL_getChance(this.World.Assets.m.EL_WorldLevel) * this.World.Assets.EL_getWorldDifficultFactor())
+							{
+								item.EL_addRankLevel();
+							}
+						}
+						else
+						{
+							if(this.Math.rand(1, 100000) <= this.Const.EL_Item_Other.EL_SeniorNPCEquipmentRankUpChance.EL_getChance(this.World.Assets.m.EL_WorldLevel) * this.World.Assets.EL_getWorldDifficultFactor())
+							{
+								item.EL_addRankLevel();
+							}
+						}
+						if(rank_level == 2)
+						{
+							item.EL_addRankLevel();
+						}
+						if(_actor.m.WorldTroop != null && _actor.m.WorldTroop.EL_IsBossUnit && !item.isItemType(this.Const.Items.ItemType.Named))
+						{
+							item.EL_addRankLevel();
+						}
+					}
+				}
+				i = ++i;
 			}
 		}
 	},

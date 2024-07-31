@@ -910,7 +910,7 @@ local gt = getroottable();
                             if(temp_level > 0) {
                                 local troops = party.getTroops();
                                 for(local i = 0, j = 0; j < 2 && i < troops.len(); ++i) {
-                                    troops[i].EL_ExtraBuffNum[troop.EL_RankLevel] += 1;
+                                    troops[i].EL_ExtraBuffNum[troops.EL_RankLevel] += 1;
                                     if(i == 0) {
                                         troops[i].EL_IsBossUnit = true;
                                     }

@@ -22,6 +22,8 @@ local gt = getroottable();
 		o.m.EL_ArenaLevel <- 0;
 		o.m.EL_ArenaMaxLevel <- 0;
 
+		o.m.EL_PursuitList <- [];
+
 		o.m.EL_DropParty <- null;
 
 		o.getSellPriceMult = function ()
@@ -187,6 +189,37 @@ local gt = getroottable();
 		o.EL_getSoulEnergyGianMult <- function()
 		{
 			return this.m.EL_SoulEnergyGianMult;
+		}
+
+		o.EL_addToPursuitList <- function( _actor, _skill )
+		{
+			for(local i = 0; i < this.m.EL_PursuitList.len(); ++i)
+			{
+				if(this.m.EL_PursuitList[i].actor = _actor)
+				{
+			this.logInfo("add pursuit success, len:" + this.m.EL_PursuitList.len());
+					return;
+				}
+			}
+			this.m.EL_PursuitList.push({
+				actor = _actor,
+				skill = _skill
+			});
+			this.logInfo("add pursuit, len:" + this.m.EL_PursuitList.len());
+		}
+
+		o.EL_removeByPursuitList <- function( _actor )
+		{
+			for(local i = 0; i < this.m.EL_PursuitList.len(); ++i)
+			{
+				if(this.m.EL_PursuitList[i].actor = _actor)
+				{
+					this.m.EL_PursuitList.remove(i);
+			this.logInfo("remove pursuit success, len:" + this.m.EL_PursuitList.len());
+					return;
+				}
+			}
+			this.logInfo("remove pursuit, len:" + this.m.EL_PursuitList.len());
 		}
 
 		o.EL_UpdateWorldMinDifficulty <- function() {

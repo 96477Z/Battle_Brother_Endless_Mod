@@ -33,8 +33,8 @@ this.el_life_drain_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_
 		user.setHitpoints(this.Math.max(user.getHitpointsMax(), user.getHitpoints() + hitpoints_drain * this.Const.EL_NPC.EL_NPCBuff.Factor.LifeDrain.RecoverMult));
 	}
 	
-    function EL_updateDescription() {
-		this.m.Description = "命中目标时会对目标造成额外伤害（与buff等阶和技能消耗ap有关），并回复10倍造成伤害的血量。";
+    function getDescription() {
+		return "命中目标时会对目标造成额外伤害（与buff等阶和技能消耗ap有关），并回复10倍造成伤害的血量。";
     }
 
 });

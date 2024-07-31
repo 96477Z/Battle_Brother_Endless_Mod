@@ -179,8 +179,8 @@ this.el_gravitation_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc
 		}
 	}
 	
-    function EL_updateDescription() {
-		this.m.Description = "回合结束时吸引周围" + this.Const.EL_NPC.EL_NPCBuff.Factor.Gravitation.MaxDistance[this.m.EL_RankLevel] + "格范围内的敌方单位" + this.Const.EL_NPC.EL_NPCBuff.Factor.Gravitation.MaxMoveTime[this.m.EL_RankLevel] + "次,仅1射程的近战单位有效";
+    function getDescription() {
+		return "回合结束时吸引周围" + this.Const.EL_NPC.EL_NPCBuff.Factor.Gravitation.MaxDistance[this.m.EL_RankLevel] + "格范围内的敌方单位" + this.Const.EL_NPC.EL_NPCBuff.Factor.Gravitation.MaxMoveTime[this.m.EL_RankLevel] + "次,仅1射程的近战单位有效";
     }
 
 });

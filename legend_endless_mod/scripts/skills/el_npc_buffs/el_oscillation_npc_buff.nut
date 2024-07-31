@@ -174,8 +174,8 @@ this.el_oscillation_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc
 		}
 	}
 	
-    function EL_updateDescription() {
-		this.m.Description = "回合开始时击退周围" + this.Const.EL_NPC.EL_NPCBuff.Factor.Oscillation.MaxDistance[this.m.EL_RankLevel] + "格范围内的敌方单位" + this.Const.EL_NPC.EL_NPCBuff.Factor.Oscillation.MaxDistance[this.m.EL_RankLevel] + "次，仅远程单位生效。";
+    function getDescription() {
+		return "回合开始时击退周围" + this.Const.EL_NPC.EL_NPCBuff.Factor.Oscillation.MaxDistance[this.m.EL_RankLevel] + "格范围内的敌方单位" + this.Const.EL_NPC.EL_NPCBuff.Factor.Oscillation.MaxDistance[this.m.EL_RankLevel] + "次，仅远程单位生效。";
     }
 
 });
