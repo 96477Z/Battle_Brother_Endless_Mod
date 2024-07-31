@@ -116,7 +116,7 @@ this.el_legendary_prestige_entry <- this.inherit("scripts/skills/skill", {
 			_properties.RangedSkill += 100;
 			_properties.MeleeDefense += 100;
 			_properties.RangedDefense += 100;
-			_properties.ActionPoint += 3;
+			_properties.ActionPoints += 3;
 			_properties.EL_CombatLevel += 10;
 			_properties.Hitpoints += 2 * this.getContainer().getActor().getBaseProperties().Hitpoints;
 
