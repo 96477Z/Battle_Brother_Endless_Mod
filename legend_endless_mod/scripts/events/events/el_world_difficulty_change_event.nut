@@ -208,7 +208,14 @@ this.el_world_difficulty_change_event <- this.inherit("scripts/events/event", {
 
 	function onDetermineStartScreen()
 	{
-		local page_index = this.Math.floor(this.World.Flags.get("EL_WorldDifficultyChangeEvent") / this.Const.EL_World.EL_WorldChangeEvent.OptionNumPurPage);
+		local option_start_index = this.Const.EL_World.EL_WorldChangeEvent.DifficultyMinOption[this.World.Assets.getCombatDifficulty()];
+		if(this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary) {
+			option_start_index += this.World.Flags.get("EL_LegendaryItemMaxNum");
+		}
+		if(option_start_index >= this.Const.EL_World.EL_WorldChangeEvent.OptionNum) {
+			option_start_index = this.Const.EL_World.EL_WorldChangeEvent.OptionNum - 1;
+		}
+		local page_index = this.Math.floor((this.World.Flags.get("EL_WorldDifficultyChangeEvent") - option_start_index) / this.Const.EL_World.EL_WorldChangeEvent.OptionNumPurPage);
 		return "el_world_difficulty_change_event_select_page_" + page_index;
 	}
 
