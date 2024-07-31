@@ -96,7 +96,7 @@ this.el_brutal_cashing_entry <- this.inherit("scripts/skills/skill", {
 				continue;
 			}
 			if (actor.getFaction() == user.getFaction())
-			{   
+			{
 				local skills = actor.getSkills().getAllSkillsByID("el_rarity_effects.pursuit");
 				local is_add = true;
 				foreach(skill in skills)
@@ -120,6 +120,7 @@ this.el_brutal_cashing_entry <- this.inherit("scripts/skills/skill", {
 
 	function onDeath( _fatalityType )
 	{
+		local user = this.getContainer().getActor();
 		local pursuit_skill = this.Const.EL_Rarity_Entry.EL_getAttackSkill(user);
 		foreach(actor in this.m.EL_chainEntity)
 		{
@@ -154,7 +155,7 @@ this.el_brutal_cashing_entry <- this.inherit("scripts/skills/skill", {
 		this.Const.EL_Rarity_Entry.EL_ReturnSkill(this.getContainer().getActor(), this.m.EL_replacedSkills);
 		this.getContainer().removeByID("actives.strike");
 	}
-	
+
 	function isHidden()
 	{
 		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
