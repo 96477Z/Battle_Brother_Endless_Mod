@@ -21,8 +21,8 @@ this.el_energy_drain_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_np
 		user.setFatigue(this.Math.max(0, user.getFatigue() - fatigue_drain));
 	}
 	
-    function EL_updateDescription() {
-		this.m.Description = "命中目标时会对目标造成疲劳伤害（与buff等阶和技能消耗ap有关），并回复等额的疲劳。";
+    function getDescription() {
+		return "命中目标时会对目标造成疲劳伤害（与buff等阶和技能消耗ap有关），并回复等额的疲劳。";
     }
 
 });

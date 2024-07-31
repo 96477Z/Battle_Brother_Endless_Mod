@@ -57,8 +57,8 @@ this.el_revenge_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buf
 		this.m.EL_Stack = 0;
 	}
 
-    function EL_updateDescription() {
-		this.m.Description = "每次受到伤害增加" + this.Const.EL_NPC.EL_NPCBuff.Factor.Revenge.MeleeSkillOffsetPurStack[this.m.EL_RankLevel] + "点双攻和" + this.Const.EL_NPC.EL_NPCBuff.Factor.Revenge.DamageMultPurStack[this.m.EL_RankLevel] * 100 + "%伤害，可叠加，命中后重置。";
+    function getDescription() {
+		return "每次受到伤害增加" + this.Const.EL_NPC.EL_NPCBuff.Factor.Revenge.MeleeSkillOffsetPurStack[this.m.EL_RankLevel] + "点双攻和" + this.Const.EL_NPC.EL_NPCBuff.Factor.Revenge.DamageMultPurStack[this.m.EL_RankLevel] * 100 + "%伤害，可叠加，命中后重置。";
     }
 
 });

@@ -76,8 +76,8 @@ this.el_multiple_attacks_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/e
         }
 	}
 	
-    function EL_updateDescription() {
-		this.m.Description = "攻击时会同时攻击范围内的所有敌方单位，对其他目标造成" + this.Const.EL_NPC.EL_NPCBuff.Factor.MultipleAttacks.DamageTotalMult[this.m.EL_RankLevel] * 100 + "%的伤害。仅近战单位生效。";
+    function getDescription() {
+		return "攻击时会同时攻击范围内的所有敌方单位，对其他目标造成" + this.Const.EL_NPC.EL_NPCBuff.Factor.MultipleAttacks.DamageTotalMult[this.m.EL_RankLevel] * 100 + "%的伤害。仅近战单位生效。";
     }
 
 });

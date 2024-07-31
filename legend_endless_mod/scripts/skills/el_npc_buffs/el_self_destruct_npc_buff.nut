@@ -79,8 +79,8 @@ this.el_self_destruct_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_n
         }
 	}
 	
-    function EL_updateDescription() {
-		this.m.Description = "死亡时对周围4格范围内所有单位造成伤害，分别对头部和身体各造成一段伤害，每远离1格伤害衰减百分之50%";
+    function getDescription() {
+		return "死亡时对周围4格范围内所有单位造成伤害，分别对头部和身体各造成一段伤害，每远离1格伤害衰减百分之50%";
     }
 
 });

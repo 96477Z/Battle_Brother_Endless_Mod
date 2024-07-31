@@ -46,8 +46,8 @@ this.el_encourage_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_b
 		_properties.Bravery += this.Const.EL_NPC.EL_NPCBuff.Factor.Encourage.BraveryOffset[this.m.EL_RankLevel];
 	}
 	
-    function EL_updateDescription() {
-		this.m.Description = "决心增加" + this.Const.EL_NPC.EL_NPCBuff.Factor.Encourage.BraveryOffset[this.m.EL_RankLevel] + "点。回合开始时，" + this.Const.EL_NPC.EL_NPCBuff.Factor.Encourage.MoraleCheckChance[this.m.EL_RankLevel] + "%的概率激励自身和周围的队友，每次激励进行" + this.Const.EL_NPC.EL_NPCBuff.Factor.Encourage.MoraleCheckTimes[this.m.EL_RankLevel] + "次正面的决心判定，受自身决心影响。";
+    function getDescription() {
+		return "决心增加" + this.Const.EL_NPC.EL_NPCBuff.Factor.Encourage.BraveryOffset[this.m.EL_RankLevel] + "点。回合开始时，" + this.Const.EL_NPC.EL_NPCBuff.Factor.Encourage.MoraleCheckChance[this.m.EL_RankLevel] + "%的概率激励自身和周围的队友，每次激励进行" + this.Const.EL_NPC.EL_NPCBuff.Factor.Encourage.MoraleCheckTimes[this.m.EL_RankLevel] + "次正面的决心判定，受自身决心影响。";
     }
 
 });

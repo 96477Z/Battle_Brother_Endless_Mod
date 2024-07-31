@@ -49,8 +49,8 @@ this.el_energy_shield_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_n
 		this.m.EL_Stack = 0;
 	}
 	
-    function EL_updateDescription() {
-		this.m.Description = "拥有" + this.Const.EL_NPC.EL_NPCBuff.Factor.EnergyShield.MaxStack[this.m.EL_RankLevel] + "层充能上限，每回合充能25%层，每层能抵挡1段伤害。";
+    function getDescription() {
+		return "拥有" + this.Const.EL_NPC.EL_NPCBuff.Factor.EnergyShield.MaxStack[this.m.EL_RankLevel] + "层充能上限，每回合充能25%层，每层能抵挡1段伤害。";
     }
 });
 
