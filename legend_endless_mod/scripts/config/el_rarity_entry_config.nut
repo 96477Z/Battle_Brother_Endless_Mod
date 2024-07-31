@@ -139,7 +139,11 @@ gt.Const.EL_Rarity_Entry <- {
 			HitpointsDrainPercent = 0.30,
 		},
 		EL_ColdLieCashing = {
-			DamageMultFactor = 0.15
+			DamageMultFactor = 0.15,
+			ReplaceSkillList = [
+				"actives.thrust",
+				"actives.prong"
+			]
 		},
 		EL_CurlingImmortalSound = {
 			SkillRange = 5,
@@ -225,7 +229,10 @@ gt.Const.EL_Rarity_Entry <- {
 		}
 		EL_LandslideCashing = {
 			InjuryNum = 1,
-			HealthDamageMult = 1
+			HealthDamageMult = 1,
+			ReplaceSkillList = [
+				"actives.batter"
+			]
 		},
 		EL_MassacreDesire = {
 			TempDamageMult = 0.15

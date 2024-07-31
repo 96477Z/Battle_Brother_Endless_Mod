@@ -1,7 +1,6 @@
 this.el_stun_cashing_entry <- this.inherit("scripts/skills/skill", {
 	m = {
-		EL_replacedSkills = [],
-		EL_chainEntity = []
+		EL_replacedSkills = []
 	},
 	function create()
 	{
@@ -70,28 +69,6 @@ this.el_stun_cashing_entry <- this.inherit("scripts/skills/skill", {
 			local fatigue_damage = EL_getFatigueDamage();
 			this.applyFatigueDamage(_targetEntity, fatigue_damage);
 		}
-	}
-
-	function onAfterUpdate( _properties )
-	{
-		if (EL_isUsable())
-		{
-			this.World.Assets.EL_addToPursuitList(this.getContainer().getActor(), this.Const.EL_Rarity_Entry.EL_getAttackSkill(this.getContainer().getActor()));
-		}
-		else
-		{
-			this.World.Assets.EL_removeByPursuitList(this.getContainer().getActor());
-		}
-	}
-
-	function onRemoved()
-	{
-		this.World.Assets.EL_removeByPursuitList(this.getContainer().getActor());
-	}
-
-	function onDeath()
-	{
-		this.World.Assets.EL_removeByPursuitList(this.getContainer().getActor());
 	}
 
 	function onAfterUpdate( _properties )
