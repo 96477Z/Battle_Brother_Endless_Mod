@@ -85,56 +85,26 @@ this.el_cold_lie_cashing_entry <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
-	function onNewRound()
+	function onAfterUpdate( _properties )
 	{
-		local user = this.getContainer().getActor();
-		local actors = this.Tactical.Entities.getInstancesOfFaction(user.getFaction());
-		local pursuit_skill = this.Const.EL_Rarity_Entry.EL_getAttackSkill(user);
-
-		foreach( actor in actors )
+		if (EL_isUsable())
 		{
-			if (actor.getID() == user.getID())
-			{
-				continue;
-			}
-			if (actor.getFaction() == user.getFaction())
-			{   
-				local skills = actor.getSkills().getAllSkillsByID("el_rarity_effects.pursuit");
-				local is_add = true;
-				foreach(skill in skills)
-				{
-					if(skill.EL_getPursuitSkill() == pursuit_skill && skill.EL_getSourceActor() == user)
-					{
-						is_add = false;
-						break;
-					}
-				}
-				if(is_add)
-				{
-					local effect = this.new("scripts/skills/el_effects/el_pursuit_effect");
-					effect.EL_setSourceActorAndAttackSkill(user, pursuit_skill);
-					actor.getSkills().add(effect);
-					this.m.EL_chainEntity.push(actor);
-				}
-			}
+			this.World.Assets.EL_addToPursuitList(this.getContainer().getActor(), this.Const.EL_Rarity_Entry.EL_getAttackSkill(this.getContainer().getActor()));
+		}
+		else
+		{
+			this.World.Assets.EL_removeByPursuitList(this.getContainer().getActor());
 		}
 	}
 
-	function onDeath( _fatalityType )
+	function onRemoved()
 	{
-		local pursuit_skill = this.Const.EL_Rarity_Entry.EL_getAttackSkill(user);
-		foreach(actor in this.m.EL_chainEntity)
-		{
-			local skills = actor.getSkills().getAllSkillsByID("el_rarity_effects.pursuit");
-			foreach(skill in skills)
-			{
-				if(skill.EL_getPursuitSkill() == pursuit_skill && skill.EL_getSourceActor() == user)
-				{
-					actor.getSkills().remove(skill);
-					break;
-				}
-			}
-		}
+		this.World.Assets.EL_removeByPursuitList(this.getContainer().getActor());
+	}
+
+	function onDeath()
+	{
+		this.World.Assets.EL_removeByPursuitList(this.getContainer().getActor());
 	}
 	
 	function isHidden()

@@ -1327,6 +1327,10 @@ local gt = getroottable();
 
 		o.onUpdate = function(_properties)
 		{
+			if (!this.getContainer().getActor().isPlacedOnMap())
+			{
+				return;
+			}
 			local bonus = this.Math.floor(this.getBonus());
 			if (bonus > 0)
 			{

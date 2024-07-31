@@ -43,6 +43,7 @@ local gt = getroottable();
 			{
 				this.setMoraleState(this.Const.MoraleState.Confident);
 			}
+			this.World.Assets.m.EL_PursuitList = [];
 			onCombatStart();
 		}
 

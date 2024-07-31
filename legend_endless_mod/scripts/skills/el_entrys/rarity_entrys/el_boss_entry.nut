@@ -4,7 +4,7 @@ this.el_boss_entry <- this.inherit("scripts/skills/skill", {
 	{
 		this.m.Order = this.Const.SkillOrder.Last;
 		this.m.ID = "el_rarity_entry.boss";
-		this.m.Name = "极尽升华（全稀有）";
+		this.m.Name = "极尽升华(全稀有)";
 		this.m.Description = ""
 		this.m.Icon = "el_skills/champion_rank_2.png";
 		this.m.IconMini = "champion_rank_2_mini";

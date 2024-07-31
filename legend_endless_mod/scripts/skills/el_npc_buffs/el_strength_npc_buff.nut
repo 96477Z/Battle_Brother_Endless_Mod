@@ -14,7 +14,7 @@ this.el_strength_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_bu
 	}
 	
     function EL_updateDescription() {
-		this.m.Description = "伤害增加" + (this.Const.EL_NPC.EL_NPCBuff.Factor.Strength.DamageTotalMult[this.m.EL_RankLevel] - 1) * 100 + "%";
+		this.m.Description = "伤害增加" + (this.Const.EL_NPC.EL_NPCBuff.Factor.Strength.DamageTotalMult[this.m.EL_RankLevel]) * 100 + "%";
     }
 
 });
