@@ -995,20 +995,30 @@ local gt = getroottable();
             else {
                 max_troop_num = this.Math.min(this.Const.EL_NPC.EL_Troop.MaxTroopNum, this.Const.EL_NPC.EL_Troop.BaseMaxTroopNum + this.World.Assets.m.EL_WorldLevel * this.Const.EL_NPC.EL_Troop.MaxTroopNumAddPurWorldLevel);
             }
+            if(_EL_troop.EL_RankLevelMin == 3) {
+                _EL_troop.EL_IsBossUnit = true;
+                _EL_troop.EL_RankLevelMin = 2;
+            }
             if(this.m.EL_FinishGenerate) {
                 local troop_info = this.Const.EL_NPC.EL_Troop.EL_getTroopInfo(_EL_troop);
                 //Calculate ranks, level, combat level.
                 if(_EL_troop.EL_RankLevel != 0) {
                 }
                 else if(troop_info.EL_IsBossUnit) {
-                    _EL_troop.EL_RankLevel = this.Math.max(2, _EL_troop.EL_RankLevelMin);
+                    _EL_troop.EL_RankLevel = 2;
                     _EL_troop.EL_IsBossUnit = true;
                 }
                 else if(troop_info.EL_IsWeakUnit) {
                     _EL_troop.EL_RankLevel = this.Math.max(0, _EL_troop.EL_RankLevelMin);
                 }
                 else {
-                    if(this.m.EL_IsBossParty || this.m.EL_IsEliteParty) {
+                    if(this.m.EL_IsBossParty) {
+                        _EL_troop.EL_RankLevel = this.Math.max(1, _EL_troop.EL_RankLevelMin);
+                        if(_EL_troop.EL_RankLevel == 2) {
+                            _EL_troop.EL_IsBossUnit = true;
+                        }
+                    }
+                    else if(this.m.EL_IsEliteParty) {
                         _EL_troop.EL_RankLevel = this.Math.max(1, _EL_troop.EL_RankLevelMin);
                     }
                     else {

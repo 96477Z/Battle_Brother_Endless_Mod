@@ -213,7 +213,7 @@ this.el_world_arena_event <- this.inherit("scripts/events/event", {
                 party.EL_setIsBossParty(false);
                 p.Parties.push(party);
 
-                fight_enemy[r].func(party);
+                fight_enemy[r].func(party, level);
 
                 _event.el_strengthenUnitByLevel(party, level);
 
@@ -421,280 +421,280 @@ this.el_world_arena_event <- this.inherit("scripts/events/event", {
         }
     }
 
-    function el_generateNorthHumanParty(_party) {
+    function el_generateNorthHumanParty( _party, _level ) {
         for( local i = 0; i < 5; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.Swordmaster
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 5; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.MasterArcher
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 15; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.HedgeKnight
-            }, false, 0, i < 3 ? 2 : 1);
+            }, false, 0, i < 3 ? 3 : 1);
         }
     }
 
-    function el_generateOrcParty(_party) {
+    function el_generateOrcParty( _party, _level ) {
         for( local i = 0; i < 5; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.LegendOrcBehemoth
-            }, false, 0, i < 5 ? 2 : 1);
+            }, false, 0, i < 5 ? 3 : 1);
         }
         for( local i = 0; i < 20; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.LegendOrcElite
-            }, false, 0, i < 0 ? 2 : 1);
+            }, false, 0, i < 0 ? 3 : 1);
         }
     }
 
-    function el_generateGoblinParty(_party) {
+    function el_generateGoblinParty( _party, _level ) {
         for( local i = 0; i < 3; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.GoblinShaman
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 3; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.GoblinOverseer
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 5; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.GoblinAmbusher
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 5; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.GoblinSkirmisher
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 5; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.GoblinWolfrider
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
     }
 
-    function el_generateZombieParty(_party) {
+    function el_generateZombieParty( _party, _level ) {
         for( local i = 0; i < 3; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.ZombieBoss
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 3; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.Ghost
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 3; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.Necromancer
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 3; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.LegendBanshee
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 6; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.LegendDemonHound
-            }, false, 0, i < 0 ? 2 : 1);
+            }, false, 0, i < 0 ? 3 : 1);
         }
         for( local i = 0; i < 6; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.ZombieBodyguard
-            }, false, 0, i < 0 ? 2 : 1);
+            }, false, 0, i < 0 ? 3 : 1);
         }
         for( local i = 0; i < 6; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.ZombieKnight
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
     }
 
-    function el_generateBarbarionParty(_party) {
+    function el_generateBarbarionParty( _party, _level ) {
         for( local i = 0; i < 4; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.BarbarianDrummer
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 4; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.BarbarianBeastmaster
-            }, false, 0, i < 0 ? 2 : 1);
+            }, false, 0, i < 0 ? 3 : 1);
         }
         for( local i = 0; i < 4; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.BarbarianUnholdFrost
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 4; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.BarbarianChosen
-            }, false, 0, i < 3 ? 2 : 1);
+            }, false, 0, i < 3 ? 3 : 1);
         }
         for( local i = 0; i < 8; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.BarbarianChampion
-            }, false, 0, i < 0 ? 2 : 1);
+            }, false, 0, i < 0 ? 3 : 1);
         }
     }
 
-    function el_generateVampireParty(_party) {
+    function el_generateVampireParty( _party, _level ) {
         for( local i = 0; i < 25; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.LegendVampireLord
-            }, false, 0, i < 5 ? 2 : 1);
+            }, false, 0, i < 5 ? 3 : 1);
         }
     }
 
-    function el_generateSkeletonParty(_party) {
+    function el_generateSkeletonParty( _party, _level ) {
         for( local i = 0; i < 3; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.SkeletonBoss
-            }, false, 0, i < 3 ? 2 : 1);
+            }, false, 0, i < 3 ? 3 : 1);
         }
         for( local i = 0; i < 5; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.SkeletonPriest
-            }, false, 0, i < 2 ? 2 : 1);
+            }, false, 0, i < 2 ? 3 : 1);
         }
         for( local i = 0; i < 8; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.SkeletonHeavyBodyguard
-            }, false, 0, i < 0 ? 2 : 1);
+            }, false, 0, i < 0 ? 3 : 1);
         }
         for( local i = 0; i < 10; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.SkeletonHeavy
-            }, false, 0, i < 0 ? 2 : 1);
+            }, false, 0, i < 0 ? 3 : 1);
         }
     }
     //TODO(Johnasd4): change the party.
-    function el_generateSouthHumanParty(_party) {
+    function el_generateSouthHumanParty( _party, _level ) {
         for( local i = 0; i < 4; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.Assassin
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 4; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.Gladiator
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 4; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.Executioner
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 6; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.Gunner
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
 
         for( local i = 0; i < 6; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.Officer
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
     }
 
-    function el_generateMummyParty(_party) {
+    function el_generateMummyParty( _party, _level ) {
         for( local i = 0; i < 5; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.LegendMummyPriest
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 3; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.LegendMummyQueen
-            }, false, 0, i < 3 ? 2 : 1);
+            }, false, 0, i < 3 ? 3 : 1);
         }
         for( local i = 0; i < 15; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.LegendMummyHeavy
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
     }
 
-    function el_generateWitchParty(_party) {
+    function el_generateWitchParty( _party, _level ) {
         for( local i = 0; i < 3; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.LegendHexeLeader
-            }, false, 0, i < 3 ? 2 : 1);
+            }, false, 0, i < 3 ? 3 : 1);
         }
         for( local i = 0; i < 3; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.LegendRockUnhold
-            }, false, 0, i < 0 ? 2 : 1);
+            }, false, 0, i < 0 ? 3 : 1);
         }
         for( local i = 0; i < 3; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.LegendStollwurm
-            }, false, 0, i < 0 ? 2 : 1);
+            }, false, 0, i < 0 ? 3 : 1);
         }
         for( local i = 0; i < 6; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.LegendRedbackSpider
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 6; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.LegendWhiteDirewolf
-            }, false, 0, i < 1 ? 2 : 1);
+            }, false, 0, i < 1 ? 3 : 1);
         }
         for( local i = 0; i < 3; ++i )
         {
             this.Const.World.Common.addTroop(_party, {
                 Type = this.Const.World.Spawn.Troops.LegendGreenwoodSchrat
-            }, false, 0, i < 0 ? 2 : 1);
+            }, false, 0, i < 0 ? 3 : 1);
         }
     }
 

@@ -908,25 +908,37 @@ local gt = getroottable();
                             }
                             //4
                             if(temp_level > 0) {
-                                foreach(troop in party.getTroops()) {
-                                    if(troop.EL_RankLevel == 1)
-                                    {
-                                        troop.EL_ExtraBuffNum[1] += 2;
-                                    }
-                                    else
-                                    {
-                                        troop.EL_IsBossUnit = true;
+                                for(local i = 0, j = 0; j < 2 && i < troops.len(); ++i) {
+                                    troops[i].EL_ExtraBuffNum[troop.EL_RankLevel] += 1;
+                                    if(i == 0) {
+                                        troops[i].EL_IsBossUnit = true;
                                     }
                                 }
+
                                 --temp_level;
                             }
                             //5
-                            while(temp_level > 0) {
+                            if(temp_level > 0) {
+                                local extra_combat_level = temp_level;
+                                local extra_buff_num = temp_level;
+                                local extra_leader_num = this.Math.floor(temp_level / 2);
+                                local extra_boss_num = this.Math.floor(temp_level / 4);
                                 foreach(troop in party.getTroops()) {
-                                    troop.EL_ExtraCombatLevel += 2;
-                                    troop.EL_ExtraBuffNum[troop.EL_RankLevel] += 1;
+                                    troop.EL_ExtraCombatLevel += extra_combat_level;
+                                    troop.EL_ExtraBuffNum[troop.EL_RankLevel] += extra_buff_num;
+                                    if(troop.EL_RankLevel == 1 && extra_leader_num != 0)
+                                    {
+                                        troop.EL_RankLevel = 2;
+                                        troop.EL_ExtraBuffNum[2] += troop.EL_ExtraBuffNum[1];
+                                        troop.EL_ExtraBuffNum[1] = 0;
+                                        --extra_leader_num;
+                                    }
+                                    if(troop.EL_RankLevel == 2 && troop.EL_IsBossUnit == false && extra_boss_num != 0)
+                                    {
+                                        troop.EL_IsBossUnit = true;
+                                        --extra_boss_num;
+                                    }
                                 }
-                                --temp_level;
                             }
 
 
