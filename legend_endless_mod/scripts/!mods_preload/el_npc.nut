@@ -1249,9 +1249,12 @@ local gt = getroottable();
                         unit_population += troops_info[i].EL_BasePopulation * this.Const.EL_NPC.EL_Troop.RankPopulationMult[this.m.Troops[i].EL_RankLevel];
                         local boss_chance = this.Const.EL_NPC.EL_NormalTeam.LeaderBossChance.EL_getChance(this.World.Assets.m.EL_WorldLevel) * this.World.Assets.EL_getWorldDifficultFactor();
                         local follower_exist = this.World.Retinue.hasFollower("follower.bounty_hunter");
+                        this.logInfo("boss_chance " + boss_chance);
                         if(follower_exist) {
                             boss_chance = boss_chance * 2 + 20;
                         }
+                        local r = this.Math.rand(1, 100);
+                        this.logInfo("boss_chance " + boss_chance + " r " + r);
                         if(boss_chance >= this.Math.rand(1, 100)) {
                             this.m.Troops[i].EL_IsBossUnit = true;
                             this.logInfo("make boss 10");
