@@ -347,7 +347,7 @@ gt.Const.EL_Rarity_Entry <- {
 		}
 		return false;
 	}
-	
+
 	function EL_useFreeSplitShield( _actor, _targetEntity )
 	{
 		local split_shield = _actor.getSkills().getSkillByID("actives.split_shield");
@@ -357,13 +357,13 @@ gt.Const.EL_Rarity_Entry <- {
 			split_shield.useForFree(_targetEntity.getTile());
 		}
 	}
-	
+
 	function EL_ReplaceSkill( _actor, _EL_replacedSkills, _EL_replaceSkillList )
 	{
-		
+
 		local skills = _actor.getSkills();
-		foreach( skill in skills.m.Skills ) 
-		{			
+		foreach( skill in skills.m.Skills )
+		{
 			foreach(skill_id in _EL_replaceSkillList)
 			{
 				if(skill.getID() == skill_id)
@@ -374,23 +374,23 @@ gt.Const.EL_Rarity_Entry <- {
 						_actor.getSkills().remove(skill);
 						continue;
 					}
-					
+
 				}
 			}
 		}
 	}
-	
+
 	function EL_ReturnSkill( _actor, _EL_replacedSkills )
 	{
-		foreach(skill in _EL_replacedSkills) 
+		foreach(skill in _EL_replacedSkills)
 		{
 			skill.m.IsGarbage = false;
 			_actor.getSkills().add(skill);
 		}
 		_EL_replacedSkills.clear();
 	}
-	
-	function EL_addPursuitEffect( _targetEntity, _EL_sourceEntity, _EL_attackSkill ) 
+
+	function EL_addPursuitEffect( _targetEntity, _EL_sourceEntity, _EL_attackSkill )
 	{
 		local skill = this.new("scripts/skills/el_effects/el_pursuit_effect");
 		skill.EL_setSourceActorAndAttackSkill(_EL_sourceEntity, _EL_attackSkill);

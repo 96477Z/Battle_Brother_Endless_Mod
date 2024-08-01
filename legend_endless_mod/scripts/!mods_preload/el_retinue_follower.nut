@@ -83,7 +83,7 @@ local gt = getroottable();
 		{
             create();
             this.m.Effects = [
-                "显著提升遇到首领的机会",
+                "显著提升遇到首领和boss的机会",
                 "为每个击杀的首领支付大量的克朗"
             ];
 		}
@@ -97,8 +97,16 @@ local gt = getroottable();
         o.onChampionKilled = function( _champion )
         {
             local base_reward = 0;
-            if(_champion.EL_getRankLevel() == 2) {
-                base_reward = 5000;
+            if(_champion.EL_isBossUnit()) {
+                if(this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary) {
+                    base_reward = 20000;
+                }
+                else {
+                    base_reward = 10000;
+                }
+            }
+            else if(_champion.EL_getRankLevel() == 2) {
+                base_reward = 4000;
             }
             if (this.Tactical.State.getStrategicProperties() == null || !this.Tactical.State.getStrategicProperties().IsArenaMode)
             {

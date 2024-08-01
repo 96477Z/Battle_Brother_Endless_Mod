@@ -1132,6 +1132,10 @@ local gt = getroottable();
                         unit_strength += this.Math.max(this.Const.EL_NPC.EL_Troop.UnitGenerateMinCalculateResourse, this.m.Troops[i].Strength * this.Const.EL_NPC.EL_Troop.RankResouseMult[this.m.Troops[i].EL_RankLevel]);
                         unit_population += troops_info[i].EL_BasePopulation * this.Const.EL_NPC.EL_Troop.RankPopulationMult[this.m.Troops[i].EL_RankLevel];
                         local boss_chance = this.Const.EL_NPC.EL_EliteTeam.LeaderBossChance.EL_getChance(this.World.Assets.m.EL_WorldLevel) * this.World.Assets.EL_getWorldDifficultFactor();
+                        local follower_exist = this.World.Retinue.hasFollower("follower.bounty_hunter");
+                        if(follower_exist) {
+                            boss_chance = boss_chance * 2 + 20;
+                        }
                         if(boss_chance >= this.Math.rand(1, 100)) {
                             this.m.Troops[i].EL_IsBossUnit = true;
                         }
@@ -1169,6 +1173,10 @@ local gt = getroottable();
                         unit_population -= troops_info[random_leader_index].EL_BasePopulation * this.Const.EL_NPC.EL_Troop.RankPopulationMult[this.m.Troops[random_leader_index].EL_RankLevel];
                         this.m.Troops[random_leader_index].EL_RankLevel = this.Math.max(2, this.m.Troops[random_leader_index].EL_RankLevelMin);
                         local boss_chance = this.Const.EL_NPC.EL_EliteTeam.LeaderBossChance.EL_getChance(this.World.Assets.m.EL_WorldLevel) * this.World.Assets.EL_getWorldDifficultFactor();
+                        local follower_exist = this.World.Retinue.hasFollower("follower.bounty_hunter");
+                        if(follower_exist) {
+                            boss_chance = boss_chance * 2 + 20;
+                        }
                         if(boss_chance >= this.Math.rand(1, 100)) {
                             this.m.Troops[random_leader_index].EL_IsBossUnit = true;
                         }
@@ -1201,6 +1209,10 @@ local gt = getroottable();
                         unit_strength += this.Math.min(this.Const.EL_NPC.EL_Troop.UnitGenerateMinCalculateResourse, this.m.Troops[i].Strength * this.Const.EL_NPC.EL_Troop.RankResouseMult[this.m.Troops[i].EL_RankLevel]);
                         unit_population += troops_info[i].EL_BasePopulation * this.Const.EL_NPC.EL_Troop.RankPopulationMult[this.m.Troops[i].EL_RankLevel];
                         local boss_chance = this.Const.EL_NPC.EL_NormalTeam.LeaderBossChance.EL_getChance(this.World.Assets.m.EL_WorldLevel) * this.World.Assets.EL_getWorldDifficultFactor();
+                        local follower_exist = this.World.Retinue.hasFollower("follower.bounty_hunter");
+                        if(follower_exist) {
+                            boss_chance = boss_chance * 2 + 20;
+                        }
                         if(boss_chance >= this.Math.rand(1, 100)) {
                             this.m.Troops[i].EL_IsBossUnit = true;
                         }
@@ -1241,6 +1253,10 @@ local gt = getroottable();
                         unit_population -= troops_info[random_leader_index].EL_BasePopulation * this.Const.EL_NPC.EL_Troop.RankPopulationMult[this.m.Troops[random_leader_index].EL_RankLevel];
                         this.m.Troops[random_leader_index].EL_RankLevel = this.Math.max(2, this.m.Troops[random_leader_index].EL_RankLevelMin);
                         local boss_chance = this.Const.EL_NPC.EL_NormalTeam.LeaderBossChance.EL_getChance(this.World.Assets.m.EL_WorldLevel) * this.World.Assets.EL_getWorldDifficultFactor();
+                        local follower_exist = this.World.Retinue.hasFollower("follower.bounty_hunter");
+                        if(follower_exist) {
+                            boss_chance = boss_chance * 2 + 20;
+                        }
                         if(boss_chance >= this.Math.rand(1, 100)) {
                             this.m.Troops[random_leader_index].EL_IsBossUnit = true;
                         }
