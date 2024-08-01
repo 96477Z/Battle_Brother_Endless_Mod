@@ -880,6 +880,8 @@ local gt = getroottable();
 				this.spawnBloodDecals(this.getTile());
 			}
 
+
+
 			if (this.m.Hitpoints <= 0)
 			{
 				this.logInfo("this.getTile() == null ? " + (this.getTile() == null));
@@ -890,6 +892,7 @@ local gt = getroottable();
 			}
 			else
 			{
+				this.setDirty(true);
 				if (damage >= this.Const.Combat.SpawnBloodEffectMinDamage)
 				{
 					local mult = this.Math.maxf(0.75, this.Math.minf(2.0, damage / this.getHitpointsMax() * 3.0));
@@ -1013,8 +1016,6 @@ local gt = getroottable();
 					this.Tactical.getShaker().cancel(this);
 					this.Tactical.getShaker().shake(this, _attacker.getTile(), this.m.IsShakingOnHit ? 2 : 3, this.Const.Combat.ShakeEffectHitpointsHitColor, this.Const.Combat.ShakeEffectHitpointsHitHighlight, this.Const.Combat.ShakeEffectHitpointsHitFactor, this.Const.Combat.ShakeEffectHitpointsSaturation, layers, recoverMult);
 				}
-
-				this.setDirty(true);
 			}
 
 			return damage;
@@ -2079,7 +2080,7 @@ local gt = getroottable();
 			{
 				this.Sound.play(_info.Skill.m.SoundOnHitShield[this.Math.rand(0, _info.Skill.m.SoundOnHitShield.len() - 1)], this.Const.Sound.Volume.Skill * this.m.SoundVolume, user.getPos());
 			}
-			
+
 			// local container_scripts = this.IO.scriptFilenameByHash(shield.ClassNameHash);
 			// this.logInfo("Container:" + container_scripts);
 			// if(container_scripts == "scripts/items/shields/")
