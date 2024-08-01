@@ -1808,7 +1808,7 @@ local gt = getroottable();
                     {
                         hasOpponents = true;
                     }
-                    if (t.EL_RankLevel == 2)
+                    if (t.EL_IsBossUnit)
                     {
                         champions.push(t);
                     }
@@ -1826,6 +1826,19 @@ local gt = getroottable();
                     Icon = this.Const.EntityIcon[c.ID],
                     Overlay = "el_icons/miniboss_rank2.png"
                 });
+            }
+            for( local i = 0; i < entityTypes[2].len(); i = i )
+            {
+                if (entityTypes[2][i] > 0)
+                {
+                    entities.push({
+                        Name = this.removeFromBeginningOfText("The ", this.Const.Strings.EntityName[i]) + " X " + entityTypes[2][i],
+                        Icon = this.Const.EntityIcon[i],
+                        Overlay = "el_icons/miniboss_rank1.png"
+                    });
+                }
+
+                i = ++i;
             }
             for( local i = 0; i < entityTypes[1].len(); i = i )
             {
