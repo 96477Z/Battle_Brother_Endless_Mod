@@ -50,8 +50,8 @@ this.el_thron_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buff"
         }
 	}
 	
-    function EL_updateDescription() {
-		this.m.Description = "收到伤害时对攻击者对应部位造成一段伤害。";
+    function getDescription() {
+		return "收到伤害时对攻击者对应部位造成一段伤害。";
     }
 
 });

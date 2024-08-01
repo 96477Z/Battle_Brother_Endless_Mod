@@ -1,6 +1,6 @@
 this.el_cold_lie_cashing_entry <- this.inherit("scripts/skills/skill", {
 	m = {
-		EL_chainEntity = []
+		EL_replacedSkills = []
 	},
 	function create()
 	{
@@ -85,56 +85,24 @@ this.el_cold_lie_cashing_entry <- this.inherit("scripts/skills/skill", {
 		}
 	}
 
-	function onNewRound()
+	function onAfterUpdate( _properties )
 	{
-		local user = this.getContainer().getActor();
-		local actors = this.Tactical.Entities.getInstancesOfFaction(user.getFaction());
-		local pursuit_skill = this.Const.EL_Rarity_Entry.EL_getAttackSkill(user);
-
-		foreach( actor in actors )
+		if (EL_isUsable())
 		{
-			if (actor.getID() == user.getID())
-			{
-				continue;
-			}
-			if (actor.getFaction() == user.getFaction())
-			{   
-				local skills = actor.getSkills().getAllSkillsByID("el_rarity_effects.pursuit");
-				local is_add = true;
-				foreach(skill in skills)
-				{
-					if(skill.EL_getPursuitSkill() == pursuit_skill && skill.EL_getSourceActor() == user)
-					{
-						is_add = false;
-						break;
-					}
-				}
-				if(is_add)
-				{
-					local effect = this.new("scripts/skills/el_effects/el_pursuit_effect");
-					effect.EL_setSourceActorAndAttackSkill(user, pursuit_skill);
-					actor.getSkills().add(effect);
-					this.m.EL_chainEntity.push(actor);
-				}
-			}
+			this.Const.EL_Rarity_Entry.EL_ReplaceSkill(this.getContainer().getActor(), this.m.EL_replacedSkills, this.Const.EL_Rarity_Entry.Factor.EL_ColdLieCashing.ReplaceSkillList);
+			this.getContainer().add(this.new("scripts/skills/el_actives/el_cold_lie_cashing_skill"));
+		}
+		else
+		{
+			this.m.EL_replacedSkills.clear();
+			this.getContainer().removeByID("actives.prong");
 		}
 	}
 
-	function onDeath( _fatalityType )
+	function onRemoved()
 	{
-		local pursuit_skill = this.Const.EL_Rarity_Entry.EL_getAttackSkill(user);
-		foreach(actor in this.m.EL_chainEntity)
-		{
-			local skills = actor.getSkills().getAllSkillsByID("el_rarity_effects.pursuit");
-			foreach(skill in skills)
-			{
-				if(skill.EL_getPursuitSkill() == pursuit_skill && skill.EL_getSourceActor() == user)
-				{
-					actor.getSkills().remove(skill);
-					break;
-				}
-			}
-		}
+		this.Const.EL_Rarity_Entry.EL_ReturnSkill(this.getContainer().getActor(), this.m.EL_replacedSkills);
+		this.getContainer().removeByID("actives.prong");
 	}
 	
 	function isHidden()

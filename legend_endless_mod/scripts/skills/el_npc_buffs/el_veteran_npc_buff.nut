@@ -13,8 +13,8 @@ this.el_veteran_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buf
 		_properties.EL_CombatLevel += this.Const.EL_NPC.EL_NPCBuff.Factor.Veteran.CombatLevelOffset[this.m.EL_RankLevel];
 	}
 	
-    function EL_updateDescription() {
-		this.m.Description = "战斗等级+ " + this.Const.EL_NPC.EL_NPCBuff.Factor.Veteran.CombatLevelOffset[this.m.EL_RankLevel] + "。";
+    function getDescription() {
+		return "战斗等级+ " + this.Const.EL_NPC.EL_NPCBuff.Factor.Veteran.CombatLevelOffset[this.m.EL_RankLevel] + "。";
     }
 
 });

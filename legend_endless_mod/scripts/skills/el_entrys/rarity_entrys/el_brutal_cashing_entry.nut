@@ -1,7 +1,6 @@
 this.el_brutal_cashing_entry <- this.inherit("scripts/skills/skill", {
 	m = {
-		EL_replacedSkills = [],
-		EL_chainEntity = []
+		EL_replacedSkills = []
 	},
 	function create()
 	{
@@ -80,59 +79,6 @@ this.el_brutal_cashing_entry <- this.inherit("scripts/skills/skill", {
 		if (EL_isUsable())
 		{
 			this.Const.EL_Rarity_Entry.EL_useFreeSplitShield(this.getContainer().getActor(), _targetEntity);
-		}
-	}
-
-	function onNewRound()
-	{
-		local user = this.getContainer().getActor();
-		local actors = this.Tactical.Entities.getInstancesOfFaction(user.getFaction());
-		local pursuit_skill = this.Const.EL_Rarity_Entry.EL_getAttackSkill(user);
-
-		foreach( actor in actors )
-		{
-			if (actor.getID() == user.getID())
-			{
-				continue;
-			}
-			if (actor.getFaction() == user.getFaction())
-			{
-				local skills = actor.getSkills().getAllSkillsByID("el_rarity_effects.pursuit");
-				local is_add = true;
-				foreach(skill in skills)
-				{
-					if(skill.EL_getPursuitSkill() == pursuit_skill && skill.EL_getSourceActor() == user)
-					{
-						is_add = false;
-						break;
-					}
-				}
-				if(is_add)
-				{
-					local effect = this.new("scripts/skills/el_effects/el_pursuit_effect");
-					effect.EL_setSourceActorAndAttackSkill(user, pursuit_skill);
-					actor.getSkills().add(effect);
-					this.m.EL_chainEntity.push(actor);
-				}
-			}
-		}
-	}
-
-	function onDeath( _fatalityType )
-	{
-		local user = this.getContainer().getActor();
-		local pursuit_skill = this.Const.EL_Rarity_Entry.EL_getAttackSkill(user);
-		foreach(actor in this.m.EL_chainEntity)
-		{
-			local skills = actor.getSkills().getAllSkillsByID("el_rarity_effects.pursuit");
-			foreach(skill in skills)
-			{
-				if(skill.EL_getPursuitSkill() == pursuit_skill && skill.EL_getSourceActor() == user)
-				{
-					actor.getSkills().remove(skill);
-					break;
-				}
-			}
 		}
 	}
 

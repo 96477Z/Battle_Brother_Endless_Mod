@@ -36,8 +36,8 @@ this.el_berserker_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_b
         _properties.RangedSkill += this.Const.EL_NPC.EL_NPCBuff.Factor.Berserker.RangedSkillOffsetPurStack[this.m.EL_RankLevel] * stack;
 	}
 
-	function EL_updateDescription() {
-		this.m.Description = "计算时护甲值视为生命值，每少10%的生命值，增加" +  this.Const.EL_NPC.EL_NPCBuff.Factor.Berserker.MeleeSkillOffsetPurStack[this.m.EL_RankLevel] + "点双攻以及" + this.Const.EL_NPC.EL_NPCBuff.Factor.Berserker.DamageMultPurStack[this.m.EL_RankLevel] * 100 + "%的伤害。";
+	function getDescription() {
+		return "计算时护甲值视为生命值，每少10%的生命值，增加" +  this.Const.EL_NPC.EL_NPCBuff.Factor.Berserker.MeleeSkillOffsetPurStack[this.m.EL_RankLevel] + "点双攻以及" + this.Const.EL_NPC.EL_NPCBuff.Factor.Berserker.DamageMultPurStack[this.m.EL_RankLevel] * 100 + "%的伤害。";
 	}
 
 	// function getTooltip()

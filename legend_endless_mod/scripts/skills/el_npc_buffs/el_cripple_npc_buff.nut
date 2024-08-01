@@ -44,8 +44,8 @@ this.el_cripple_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buf
         }
 	}
 	
-    function EL_updateDescription() {
-		this.m.Description = "攻击命中时" + this.Const.EL_NPC.EL_NPCBuff.Factor.Cripple.Chance[this.m.EL_RankLevel] + "%概率造成" + this.Const.EL_NPC.EL_NPCBuff.Factor.Cripple.InjuryNum[this.m.EL_RankLevel] + "个损伤（优先轻伤）。";
+    function getDescription() {
+		return "攻击命中时" + this.Const.EL_NPC.EL_NPCBuff.Factor.Cripple.Chance[this.m.EL_RankLevel] + "%概率造成" + this.Const.EL_NPC.EL_NPCBuff.Factor.Cripple.InjuryNum[this.m.EL_RankLevel] + "个损伤（优先轻伤）。";
     }
 });
 

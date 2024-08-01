@@ -274,6 +274,7 @@ local gt = getroottable();
             this.getSkills().add(this.new("scripts/skills/effects/wms_mastery_effect"));
 			this.getSkills().add(this.new("scripts/skills/el_entrys/el_total_entry"));
             this.getSkills().add(this.new("scripts/skills/el_effects/el_lichking_halo_effect"));
+            this.getSkills().add(this.new("scripts/skills/el_effects/el_pursuit_effect"));
 			local flags = this.getFlags();
 			if (flags.has("undead") && !flags.has("ghost") && !flags.has("ghoul") && !flags.has("vampire"))
 			{
@@ -295,6 +296,7 @@ local gt = getroottable();
 			}
 			this.m.Skills.add(this.new("scripts/skills/el_entrys/el_total_entry"));
             this.getSkills().add(this.new("scripts/skills/el_effects/el_lichking_halo_effect"));
+            this.getSkills().add(this.new("scripts/skills/el_effects/el_pursuit_effect"));
 			return;
 		}
 
