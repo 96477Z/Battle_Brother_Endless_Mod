@@ -1255,6 +1255,7 @@ local gt = getroottable();
                         }
                         local r = this.Math.rand(1, 100);
                         this.logInfo("boss_chance " + boss_chance + " r " + r);
+                        this.logInfo("" + this.m.Troops[i].EL_IsBossUnit);
                         if(boss_chance >= this.Math.rand(1, 100)) {
                             this.m.Troops[i].EL_IsBossUnit = true;
                             this.logInfo("make boss 10");
