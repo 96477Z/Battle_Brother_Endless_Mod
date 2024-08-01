@@ -360,9 +360,9 @@ gt.Const.EL_NPC <- {
         RandomLeaderChance = {
             Factor = {
                 Offset = [
-                    100,
-                    100,
-                    100
+                    0,
+                    -10,
+                    15
                 ],
                 Mult = [
                     0,
@@ -382,9 +382,9 @@ gt.Const.EL_NPC <- {
         StrongestLeaderChance = {
             Factor = {
                 Offset = [
-                    100,
-                    100,
-                    100
+                    0,
+                    -15,
+                    15
                 ],
                 Mult = [
                     0,
@@ -404,7 +404,7 @@ gt.Const.EL_NPC <- {
         LeaderBossChance = {
             Factor = {
                 Offset = [
-                    10,
+                    0,
                     -20,
                     15
                 ],
@@ -451,9 +451,9 @@ gt.Const.EL_NPC <- {
         RandomLeaderChance = {
             Factor = {
                 Offset = [
-                    100,
-                    100,
-                    100
+                    0,
+                    -10,
+                    15
                 ],
                 Mult = [
                     0,
@@ -473,9 +473,9 @@ gt.Const.EL_NPC <- {
         StrongestLeaderChance = {
             Factor = {
                 Offset = [
-                    100,
-                    100,
-                    100
+                    0,
+                    -15,
+                    15
                 ],
                 Mult = [
                     0,
@@ -495,7 +495,7 @@ gt.Const.EL_NPC <- {
         LeaderBossChance = {
             Factor = {
                 Offset = [
-                    10,
+                    0,
                     -20,
                     15
                 ],
