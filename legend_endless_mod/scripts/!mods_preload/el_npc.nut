@@ -1166,6 +1166,7 @@ local gt = getroottable();
                         if(troops_info[i].EL_IsBossUnit) {
                             this.m.Troops[i].EL_RankLevel = this.Math.max(2, this.m.Troops[i].EL_RankLevelMin);
                             this.m.Troops[i].EL_IsBossUnit = true;
+                            this.logInfo("make boss 15");
                         }
                         else if(troops_info[i].EL_IsWeakUnit) {
                             this.m.Troops[i].EL_RankLevel = this.Math.max(0, this.m.Troops[i].EL_RankLevelMin);
@@ -1254,7 +1255,7 @@ local gt = getroottable();
                             boss_chance = boss_chance * 2 + 20;
                         }
                         local r = this.Math.rand(1, 100);
-                        this.logInfo("boss_chance " + boss_chance + " r " + r);
+                        this.logInfo("boss_chance " + boss_chance + " r " + r + " i " + i);
                         this.logInfo("" + this.m.Troops[i].EL_IsBossUnit);
                         if(boss_chance >= this.Math.rand(1, 100)) {
                             this.m.Troops[i].EL_IsBossUnit = true;
@@ -1324,6 +1325,7 @@ local gt = getroottable();
                 // //Build names
                 for(local i = 0; i < this.m.Troops.len(); ++i) {
                     if(this.m.Troops[i].EL_IsBossUnit) {
+                        this.logInfo("boss name " + i);
                         this.m.Troops[i].Name = this.Const.EL_NPC.EL_Troop.NamePrefix[this.m.Troops[i].EL_RankLevel];
                         this.m.Troops[i].Name += this.Const.EL_NPC.EL_Troop.Name[this.Math.rand(0, this.Const.EL_NPC.EL_Troop.Name.len() - 1)];
                         this.m.Troops[i].Name += this.Const.EL_NPC.EL_Troop.NameSuffix[this.m.Troops[i].EL_RankLevel];
