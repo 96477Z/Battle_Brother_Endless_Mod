@@ -67,9 +67,9 @@ this.el_circle_of_life_entry <- this.inherit("scripts/skills/skill", {
 		return result;
 	}
 
-	function onNewRound()
+	function onAfterUpdate( _properties )
 	{
-		if (EL_isUsable())
+		if (EL_isUsable() && this.m.EL_RiseTimesLeft > 0)
 		{
 			this.getContainer().getActor().setIsAbleToDie(false);
 		}
@@ -243,19 +243,13 @@ this.el_circle_of_life_entry <- this.inherit("scripts/skills/skill", {
 		_targetEntity.onDamageReceived(user, this, hit_info);
 		user.setHitpoints(this.Math.min(user.getHitpointsMax(), user.getHitpoints() + hitpoints_drain));
     }
-	
-	function isHidden()
+function isHidden()
 	{
 		return this.getContainer().getActor().getFaction() != this.Const.Faction.Player && !EL_isUsable();
 	}
 
 	function EL_isUsable()
 	{
-		local item = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
-		if (item != null && item.getID() == "el_accessory.core")
-		{
-			return false;
-		}
 		local item = this.m.Container.getActor().getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
 		if (item != null && item.isItemType(this.Const.Items.ItemType.OneHanded) && item.isWeaponType(this.Const.Items.WeaponType.Mace))
 		{

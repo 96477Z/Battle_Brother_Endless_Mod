@@ -209,7 +209,7 @@ this.el_world_difficulty_change_event <- this.inherit("scripts/events/event", {
 	function onDetermineStartScreen()
 	{
 		local page_index = 0;
-		return "el_world_difficulty_change_event_select_page_0" + page_index;
+		return "el_world_difficulty_change_event_select_page_" + page_index;
 	}
 
 });
