@@ -390,8 +390,8 @@ local gt = getroottable();
 
         local kill = o.kill;
         o.kill = function( _killer = null, _skill = null, _fatalityType = this.Const.FatalityType.None, _silent = false )
-        {
-
+        {  
+            this.World.Assets.EL_removeByPursuitList(this);
             if(_killer != null && (_killer.getFaction() == this.Const.Faction.Player || _killer.getFaction() == this.Const.Faction.PlayerAnimals)) {
 				this.World.Statistics.getFlags().set("EL_IfPlayerPartyKilled", true);
             }

@@ -218,6 +218,17 @@ gt.Const.EL_Item_Other <- {
 		}
 		return false;
 	},
+	function EL_isInBeastList( _actor )
+	{
+		foreach(entity in this.Const.EL_Accessory.EL_BeastList)
+		{
+			if(_actor.getType() == entity)
+			{
+				return true;
+			}
+		}
+		return false;
+	},
 	function EL_actorItemInit( _actor, _isNpc = false )
 	{
 		if(_actor != null)
@@ -232,7 +243,7 @@ gt.Const.EL_Item_Other <- {
 			//this.logInfo("_actor.ID:"+_actor.getName());
 			if(_isNpc && accessory == null)
 			{
-				if(!this.Const.EL_Item_Other.EL_isNoCoreEntity(_actor) && main_hand == null && off_hand == null)
+				if(this.Const.EL_Item_Other.EL_isInBeastList(_actor) || !this.Const.EL_Item_Other.EL_isNoCoreEntity(_actor) && main_hand == null && off_hand == null)
 				{
 					_actor.m.Items.equip(this.new("scripts/items/el_accessory/el_core_item"));
 					accessory = _actor.getItems().getItemAtSlot(this.Const.ItemSlot.Accessory);
