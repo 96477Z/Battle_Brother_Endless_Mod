@@ -6,6 +6,7 @@ this.el_curse_entry <- this.inherit("scripts/skills/el_entrys/el_entry", {
 	{
 		this.el_entry.create();
 		this.m.ID = this.Const.EL_Weapon.EL_Entry.Factor.EL_Curse.ID;
+		this.m.Type = this.Const.SkillType.StatusEffect;
 	}
 
 	function getTooltip( _id )

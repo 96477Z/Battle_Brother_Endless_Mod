@@ -111,7 +111,16 @@ gt.Const.EL_Accessory <- {
 		this.Const.EntityType.ZombieBoss,
 		this.Const.EntityType.ZombieBetrayer,
 		this.Const.EntityType.ZombieTreasureHunter
-	]
+	],
+	EL_BeastList = [
+		this.Const.EntityType.TricksterGod,
+		this.Const.EntityType.Kraken,
+		this.Const.EntityType.KrakenTentacle,
+		this.Const.EntityType.SkeletonLich,
+		this.Const.EntityType.SkeletonLichMirrorImage,
+		this.Const.EntityType.FlyingSkull,
+		this.Const.EntityType.LegendHexeLeader
+	],
 	function EL_updateRankLevelProperties( _item ) {
 		_item.m.EL_BaseWithRankValue = _item.m.EL_BaseNoRankValue * gt.Const.EL_Shield.EL_RankValue[_item.m.EL_RankLevel];
 	},

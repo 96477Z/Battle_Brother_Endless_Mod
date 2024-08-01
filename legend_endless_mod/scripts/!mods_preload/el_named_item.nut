@@ -295,60 +295,7 @@ local gt = getroottable();
 			{
 				if (_stashID == "player")
 				{
-					local num = 0;
-					local items = this.World.Assets.getStash().getItems();
-					foreach( item in items )
-					{
-						if (item != null && item.EL_getRankLevel() == this.Const.EL_Item.Type.Legendary)
-						{
-							++num;
-						}
-					}
-
-					local roster = this.World.getPlayerRoster().getAll();
-					foreach( bro in roster )
-					{
-						local item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand);
-						if (item != null && item.EL_getRankLevel() == this.Const.EL_Item.Type.Legendary)
-						{
-							++num;
-						}
-						item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Offhand);
-						if (item != null && item.EL_getRankLevel() == this.Const.EL_Item.Type.Legendary)
-						{
-							++num;
-						}
-						item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Head);
-						if (item != null && item.EL_getRankLevel() == this.Const.EL_Item.Type.Legendary)
-						{
-							++num;
-						}
-						item = bro.getItems().getItemAtSlot(this.Const.ItemSlot.Body);
-						if (item != null && item.EL_getRankLevel() == this.Const.EL_Item.Type.Legendary)
-						{
-							++num;
-						}
-						for( local i = 0; i < bro.getItems().getUnlockedBagSlots(); i = ++i )
-						{
-							local item = bro.getItems().getItemAtBagSlot(i);
-							if (item != null && item.EL_getRankLevel() == this.Const.EL_Item.Type.Legendary)
-							{
-								++num;
-							}
-						}
-					}
-					if(!this.World.Flags.has("EL_LegendaryItemMaxNum")) {
-						this.World.Flags.set("EL_LegendaryItemMaxNum", 0);
-					}
-					if(!this.World.Flags.has("EL_LegendaryItemNum")) {
-						this.World.Flags.set("EL_LegendaryItemNum", 0);
-					}
-					if(num > this.World.Flags.get("EL_LegendaryItemMaxNum"))
-					{
-						this.World.Flags.set("EL_LegendaryItemMaxNum", num);
-						this.World.Assets.EL_UpdateWorldStrengthAndLevel();
-					}
-					this.World.Flags.set("EL_LegendaryItemNum", num);
+					this.World.Assets.EL_UpdateLegendaryItemNum();
 				}
 			}
 		});
