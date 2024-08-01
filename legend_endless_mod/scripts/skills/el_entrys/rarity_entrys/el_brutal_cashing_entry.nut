@@ -1,7 +1,6 @@
 this.el_brutal_cashing_entry <- this.inherit("scripts/skills/skill", {
 	m = {
-		EL_replacedSkills = [],
-		EL_chainEntity = []
+		EL_replacedSkills = []
 	},
 	function create()
 	{
@@ -89,13 +88,11 @@ this.el_brutal_cashing_entry <- this.inherit("scripts/skills/skill", {
 		{
 			this.Const.EL_Rarity_Entry.EL_ReplaceSkill(this.getContainer().getActor(), this.m.EL_replacedSkills, this.Const.EL_Rarity_Entry.Factor.EL_BrutalCashing.ReplaceSkillList);
 			this.getContainer().add(this.new("scripts/skills/el_actives/el_brutal_cashing_skill"));
-			this.World.Assets.EL_addToPursuitList(this.getContainer().getActor(), this.Const.EL_Rarity_Entry.EL_getAttackSkill(this.getContainer().getActor()));
 		}
 		else
 		{
 			this.m.EL_replacedSkills.clear();
 			this.getContainer().removeByID("actives.strike");
-			this.World.Assets.EL_removeByPursuitList(this.getContainer().getActor());
 		}
 	}
 
@@ -103,12 +100,6 @@ this.el_brutal_cashing_entry <- this.inherit("scripts/skills/skill", {
 	{
 		this.Const.EL_Rarity_Entry.EL_ReturnSkill(this.getContainer().getActor(), this.m.EL_replacedSkills);
 		this.getContainer().removeByID("actives.strike");
-		this.World.Assets.EL_removeByPursuitList(this.getContainer().getActor());
-	}
-
-	function onDeath()
-	{
-		this.World.Assets.EL_removeByPursuitList(this.getContainer().getActor());
 	}
 
 	function isHidden()

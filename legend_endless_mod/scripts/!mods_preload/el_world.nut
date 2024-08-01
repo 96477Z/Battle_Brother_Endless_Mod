@@ -195,9 +195,8 @@ local gt = getroottable();
 		{
 			for(local i = 0; i < this.m.EL_PursuitList.len(); ++i)
 			{
-				if(this.m.EL_PursuitList[i].actor = _actor)
+				if(this.m.EL_PursuitList[i].actor == _actor)
 				{
-			this.logInfo("add pursuit success, len:" + this.m.EL_PursuitList.len());
 					return;
 				}
 			}
@@ -205,21 +204,18 @@ local gt = getroottable();
 				actor = _actor,
 				skill = _skill
 			});
-			this.logInfo("add pursuit, len:" + this.m.EL_PursuitList.len());
 		}
 
 		o.EL_removeByPursuitList <- function( _actor )
 		{
 			for(local i = 0; i < this.m.EL_PursuitList.len(); ++i)
 			{
-				if(this.m.EL_PursuitList[i].actor = _actor)
+				if(this.m.EL_PursuitList[i].actor == _actor)
 				{
 					this.m.EL_PursuitList.remove(i);
-			this.logInfo("remove pursuit success, len:" + this.m.EL_PursuitList.len());
 					return;
 				}
 			}
-			this.logInfo("remove pursuit, len:" + this.m.EL_PursuitList.len());
 		}
 
 		o.EL_UpdateWorldMinDifficulty <- function() {
@@ -529,6 +525,13 @@ local gt = getroottable();
 
 	::mods_hookExactClass("states/tactical_state", function ( o )
 	{
+		local onBattleEnded = o.onBattleEnded;
+		o.onBattleEnded = function ()
+		{
+            this.World.Assets.m.EL_PursuitList = [];
+			onBattleEnded();
+		}
+		
 		// o.onBattleEnded = function ()
 		// {
 		// 	if (this.m.IsExitingToMenu)

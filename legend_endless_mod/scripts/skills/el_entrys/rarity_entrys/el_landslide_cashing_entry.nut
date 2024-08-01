@@ -1,6 +1,6 @@
 this.el_landslide_cashing_entry <- this.inherit("scripts/skills/skill", {
 	m = {
-		EL_chainEntity = []
+		EL_replacedSkills = []
 	},
 	function create()
 	{
@@ -91,6 +91,26 @@ this.el_landslide_cashing_entry <- this.inherit("scripts/skills/skill", {
             hit_info.BodyPart = _bodyPart;
             _targetEntity.onDamageReceived(this.getContainer().getActor(), this, hit_info);
 		}
+	}
+
+	function onAfterUpdate( _properties )
+	{
+		if (EL_isUsable())
+		{
+			this.Const.EL_Rarity_Entry.EL_ReplaceSkill(this.getContainer().getActor(), this.m.EL_replacedSkills, this.Const.EL_Rarity_Entry.Factor.EL_LandslideCashing.ReplaceSkillList);
+			this.getContainer().add(this.new("scripts/skills/el_actives/el_landslide_cashing_skill"));
+		}
+		else
+		{
+			this.m.EL_replacedSkills.clear();
+			this.getContainer().removeByID("actives.batter");
+		}
+	}
+
+	function onRemoved()
+	{
+		this.Const.EL_Rarity_Entry.EL_ReturnSkill(this.getContainer().getActor(), this.m.EL_replacedSkills);
+		this.getContainer().removeByID("actives.batter");
 	}
 	
 	function isHidden()

@@ -1,6 +1,6 @@
 this.el_cold_lie_cashing_entry <- this.inherit("scripts/skills/skill", {
 	m = {
-		EL_chainEntity = []
+		EL_replacedSkills = []
 	},
 	function create()
 	{
@@ -89,22 +89,20 @@ this.el_cold_lie_cashing_entry <- this.inherit("scripts/skills/skill", {
 	{
 		if (EL_isUsable())
 		{
-			this.World.Assets.EL_addToPursuitList(this.getContainer().getActor(), this.Const.EL_Rarity_Entry.EL_getAttackSkill(this.getContainer().getActor()));
+			this.Const.EL_Rarity_Entry.EL_ReplaceSkill(this.getContainer().getActor(), this.m.EL_replacedSkills, this.Const.EL_Rarity_Entry.Factor.EL_ColdLieCashing.ReplaceSkillList);
+			this.getContainer().add(this.new("scripts/skills/el_actives/el_cold_lie_cashing_skill"));
 		}
 		else
 		{
-			this.World.Assets.EL_removeByPursuitList(this.getContainer().getActor());
+			this.m.EL_replacedSkills.clear();
+			this.getContainer().removeByID("actives.prong");
 		}
 	}
 
 	function onRemoved()
 	{
-		this.World.Assets.EL_removeByPursuitList(this.getContainer().getActor());
-	}
-
-	function onDeath()
-	{
-		this.World.Assets.EL_removeByPursuitList(this.getContainer().getActor());
+		this.Const.EL_Rarity_Entry.EL_ReturnSkill(this.getContainer().getActor(), this.m.EL_replacedSkills);
+		this.getContainer().removeByID("actives.prong");
 	}
 	
 	function isHidden()
