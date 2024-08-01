@@ -404,7 +404,7 @@ gt.Const.EL_NPC <- {
         LeaderBossChance = {
             Factor = {
                 Offset = [
-                    0,
+                    10,
                     -20,
                     15
                 ],
@@ -495,7 +495,7 @@ gt.Const.EL_NPC <- {
         LeaderBossChance = {
             Factor = {
                 Offset = [
-                    0,
+                    10,
                     -20,
                     15
                 ],
@@ -1133,8 +1133,10 @@ gt.Const.EL_NPC <- {
 this.Const.EL_Config.EL_chanceTableCalculateAXB(this.Const.EL_NPC.EL_NormalTeam.EliteChance);
 this.Const.EL_Config.EL_chanceTableCalculateAXB(this.Const.EL_NPC.EL_NormalTeam.RandomLeaderChance);
 this.Const.EL_Config.EL_chanceTableCalculateAXB(this.Const.EL_NPC.EL_NormalTeam.StrongestLeaderChance);
+this.Const.EL_Config.EL_chanceTableCalculateAXB(this.Const.EL_NPC.EL_NormalTeam.LeaderBossChance);
 this.Const.EL_Config.EL_chanceTableCalculateAXB(this.Const.EL_NPC.EL_EliteTeam.EliteTeamChance);
 this.Const.EL_Config.EL_chanceTableCalculateAXB(this.Const.EL_NPC.EL_EliteTeam.RandomLeaderChance);
 this.Const.EL_Config.EL_chanceTableCalculateAXB(this.Const.EL_NPC.EL_EliteTeam.StrongestLeaderChance);
+this.Const.EL_Config.EL_chanceTableCalculateAXB(this.Const.EL_NPC.EL_EliteTeam.LeaderBossChance);
 this.Const.EL_Config.EL_chanceTableCalculateAXB(this.Const.EL_NPC.EL_Contract.RollMax);
 
