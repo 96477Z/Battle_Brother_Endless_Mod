@@ -19,7 +19,7 @@ this.el_special_attack_north_noble_entry <- this.inherit("scripts/skills/el_entr
 		};
 		return result;
 	}
-	
+
 	function EL_getEntryColour()
 	{
         for (local index = 0; index <= this.Const.EL_Item.Type.Legendary; ++index)
@@ -79,7 +79,7 @@ this.el_special_attack_north_noble_entry <- this.inherit("scripts/skills/el_entr
 		_EL_totalEntry.m.EL_DamageMultForNorthNoble *= 1.0 + this.m.EL_DamageMult * 0.01;
 		_EL_totalEntry.m.EL_AdditionalAccuracyForNorthNoble += this.m.EL_AdditionalAccuracy;
 	}
-    
+
     function onSerialize( _out )
 	{
 		_out.writeF32(this.m.EL_DamageMult);
