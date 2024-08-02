@@ -548,7 +548,7 @@ local gt = getroottable();
                     text = c.Name
                 });
             }
-            for( local j = 1; j >= 0; --j ) {
+            for( local j = 2; j >= 0; --j ) {
                 for( local i = 0; i < entityTypes[j].len(); ++i )
                 {
                     if (entityTypes[j][i] > 0)
@@ -1786,7 +1786,7 @@ local gt = getroottable();
 
                     foreach( t in troops )
                     {
-                        if (t.Script.len() != "")
+                        if (t.Script.len() != 0)
                         {
                             if (t.EL_IsBossUnit)
                             {
@@ -1834,7 +1834,7 @@ local gt = getroottable();
                     entities.push({
                         Name = this.removeFromBeginningOfText("The ", this.Const.Strings.EntityName[i]) + " X " + entityTypes[2][i],
                         Icon = this.Const.EntityIcon[i],
-                        Overlay = "el_icons/miniboss_rank1.png"
+                        Overlay = "el_icons/miniboss_rank2.png"
                     });
                 }
 
