@@ -23,6 +23,7 @@ local gt = getroottable();
 		o.m.EL_ArenaMaxLevel <- 0;
 
 		o.m.EL_PursuitList <- [];
+		o.m.EL_IsInitPursuitList <- false;
 
 		o.m.EL_DropParty <- null;
 
@@ -585,6 +586,7 @@ local gt = getroottable();
 		o.onBattleEnded = function ()
 		{
             this.World.Assets.m.EL_PursuitList = [];
+			this.World.Assets.m.EL_IsInitPursuitList = false;
 			onBattleEnded();
 		}
 		
