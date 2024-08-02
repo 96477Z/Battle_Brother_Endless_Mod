@@ -1139,7 +1139,7 @@ local gt = getroottable();
                     local unit_population = 0;
                     local used_resourse = 0;
                     local random_leader_avilable_index = [];
-                    if(this.m.EL_HaveStrongestLeader && !troops_info[i].EL_IsWeakUnit && this.m.Troops[i].Strength >= this.Const.EL_NPC.EL_Troop.Rank2LeastStrength) {
+                    if(this.m.EL_HaveStrongestLeader && !troops_info[i].EL_IsWeakUnit && this.m.Troops[i].Strength >= this.Const.EL_NPC.EL_Troop.Rank2LeastStrength && this.m.Troops[i].Strength >= this.Const.EL_NPC.EL_Troop.Rank2LeastStrength) {
                         this.m.Troops[i].EL_RankLevel = this.Math.max(2, this.m.Troops[i].EL_RankLevelMin);
                         if(this.m.Troops[i].EL_RankLevel == 3) {
                             this.m.Troops[i].EL_RankLevel = 2;
