@@ -1369,8 +1369,6 @@ local gt = getroottable();
 			return this.m.EL_IsNPCBuff;
 		}
 
-		o.EL_updateDescription <- function() {}
-
 		o.EL_reset <- function() {}
 
 		o.EL_isRaritySkill <- function()

@@ -53,6 +53,17 @@ this.el_endurance_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_b
                 break;
         }
     }
+	
+    function getDescription() {
+        switch(this.m.EL_RankLevel){
+            case 0:
+                return "免疫眩晕和定身。";
+            case 1:
+                return "免疫眩晕和定身和部分控制效果。";
+            case 2:
+                return "免疫大部分负面效果。";
+        }
+    }
 
 });
 
