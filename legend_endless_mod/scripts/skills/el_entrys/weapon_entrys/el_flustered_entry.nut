@@ -1,5 +1,7 @@
 this.el_flustered_entry <- this.inherit("scripts/skills/el_entrys/el_entry", {
-	m = {},
+	m = {
+		EL_Bonus = 0
+	},
 	function create()
 	{
 		this.el_entry.create();
