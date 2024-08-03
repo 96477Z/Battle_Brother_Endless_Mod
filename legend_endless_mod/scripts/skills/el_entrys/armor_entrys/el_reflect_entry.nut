@@ -5,6 +5,7 @@ this.el_reflect_entry <- this.inherit("scripts/skills/el_entrys/el_accessory_ent
 	function create()
 	{
 		this.el_entry.create();
+		this.m.Order = this.Const.SkillOrder.Last;
 		this.m.ID = this.Const.EL_Armor.EL_Entry.Factor.EL_Reflect.ID;
 	}
 
@@ -66,8 +67,8 @@ this.el_reflect_entry <- this.inherit("scripts/skills/el_entrys/el_accessory_ent
 		if (_attacker != null && _attacker.isAlive() && _attacker.getHitpoints() > 0 && _attacker.getID() != this.getContainer().getActor().getID() && _hitInfo.BodyPart == this.Const.BodyPart.Body && _skill.isAttack()) 
 		{
 			local hitInfo = clone this.Const.Tactical.HitInfo;
-			hitInfo.DamageRegular = _hitInfo.DamageArmor * this.m.EL_ReflectPercent * this.m.EL_StrengthLevel * 0.01;
-			hitInfo.DamageArmor = _hitInfo.DamageArmor * this.m.EL_ReflectPercent * this.m.EL_StrengthLevel * 0.01;
+			hitInfo.DamageRegular = _hitInfo.DamageArmor * this.m.EL_ReflectPercent * this.m.EL_StrengthLevel * 0.01 / _properties.DamageTotalMult;
+			hitInfo.DamageArmor = _hitInfo.DamageArmor * this.m.EL_ReflectPercent * this.m.EL_StrengthLevel * 0.01 / _properties.DamageTotalMult;
 			hitInfo.DamageDirect = 0.0;
 			hitInfo.BodyPart = this.Const.BodyPart.Body;
 			hitInfo.BodyDamageMult = 1.0;

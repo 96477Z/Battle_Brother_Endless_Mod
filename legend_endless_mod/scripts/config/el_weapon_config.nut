@@ -400,6 +400,13 @@ gt.Const.EL_Weapon <- {
 					function EL_ifEligible(_item) { return true; }
 				},
 				{
+					Scripts = "scripts/skills/el_entrys/weapon_entrys/el_flustered_entry",
+					function EL_ifEligible(_item) {
+						if(_item.m.EL_RankLevel <= 1) { return false; }
+						return true;
+					}
+				},
+				{
 					Scripts = "scripts/skills/el_entrys/weapon_entrys/el_hit_head_entry",
 					function EL_ifEligible(_item) { 
 						if(_item.m.ChanceToHitHead == 0) 
@@ -409,6 +416,14 @@ gt.Const.EL_Weapon <- {
 						return true; 
 					}
 				},
+				{
+					Scripts = "scripts/skills/el_entrys/weapon_entrys/el_impair_entry",
+					function EL_ifEligible(_item) {
+						if(_item.m.EL_RankLevel <= 1) { return false; }
+						return true;
+					}
+				},
+				
 				// {
 				// 	Scripts = "scripts/skills/el_entrys/weapon_entrys/el_initiative_entry",
 				// 	function EL_ifEligible(_item) { return true; }
@@ -811,6 +826,10 @@ gt.Const.EL_Weapon <- {
 					10
 				]
 			},
+			EL_Impair = {
+				ID = "el_weapon_entry.flustered",
+				Bonus = 1
+			},
 			EL_HitHead = {
 				ID = "el_weapon_entry.hit_head",
 				BaseHitHead = 10,
@@ -835,6 +854,10 @@ gt.Const.EL_Weapon <- {
 					18,
 					20
 				]
+			},
+			EL_Impair = {
+				ID = "el_weapon_entry.impair",
+				Percentage = 0.5
 			},
 			EL_Initiative = {
 				ID = "el_weapon_entry.initiative",

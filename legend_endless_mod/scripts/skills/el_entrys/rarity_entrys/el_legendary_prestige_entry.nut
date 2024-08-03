@@ -47,12 +47,6 @@ this.el_legendary_prestige_entry <- this.inherit("scripts/skills/skill", {
 				id = 3,
                 type = "text",
                 icon = "ui/icons/special.png",
-				text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]主动值 + 500[/color]"
-			},
-			{
-				id = 3,
-                type = "text",
-                icon = "ui/icons/special.png",
 				text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]疲劳 + 500[/color]"
 			},
 			{
@@ -109,7 +103,6 @@ this.el_legendary_prestige_entry <- this.inherit("scripts/skills/skill", {
 	{
 		if (EL_isUsable())
 		{
-			_properties.Initiative += 500;
 			_properties.Stamina += 500;
 			_properties.Bravery += 100;
 			_properties.MeleeSkill += 100;
