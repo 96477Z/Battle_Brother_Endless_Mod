@@ -826,7 +826,7 @@ gt.Const.EL_Weapon <- {
 					10
 				]
 			},
-			EL_Impair = {
+			EL_Flustered = {
 				ID = "el_weapon_entry.flustered",
 				Bonus = 1
 			},
