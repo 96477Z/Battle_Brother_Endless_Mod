@@ -220,7 +220,7 @@ local gt = getroottable();
 		}
 
 		o.EL_UpdateWorldMinDifficulty <- function() {
-			local min_index = this.Const.EL_World.EL_WorldChangeEvent.DifficultyMinOption[this.World.Assets.getCombatDifficulty()] + this.World.Flags.get("EL_LegendaryItemMaxNum");
+			local min_index = this.Const.EL_World.EL_WorldChangeEvent.DifficultyMinOption[this.World.Assets.getCombatDifficulty()] + this.Math.floor(this.World.Flags.get("EL_LegendaryItemMaxNum") / 3);
 			if(min_index >= this.Const.EL_World.EL_WorldChangeEvent.OptionNum) {
 				min_index = this.Const.EL_World.EL_WorldChangeEvent.OptionNum - 1;
 			}
@@ -589,7 +589,7 @@ local gt = getroottable();
 			this.World.Assets.m.EL_IsInitPursuitList = false;
 			onBattleEnded();
 		}
-		
+
 		// o.onBattleEnded = function ()
 		// {
 		// 	if (this.m.IsExitingToMenu)
