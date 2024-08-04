@@ -119,7 +119,11 @@ gt.Const.EL_Accessory <- {
 		this.Const.EntityType.SkeletonLich,
 		this.Const.EntityType.SkeletonLichMirrorImage,
 		this.Const.EntityType.FlyingSkull,
-		this.Const.EntityType.LegendHexeLeader
+		this.Const.EntityType.LegendHexeLeader,
+		this.Const.EntityType.Schrat,
+		this.Const.EntityType.SchratSmall,
+		this.Const.EntityType.LegendGreenwoodSchrat,
+		this.Const.EntityType.LegendGreenwoodSchratSmall
 	],
 	function EL_updateRankLevelProperties( _item ) {
 		_item.m.EL_BaseWithRankValue = _item.m.EL_BaseNoRankValue * gt.Const.EL_Shield.EL_RankValue[_item.m.EL_RankLevel];

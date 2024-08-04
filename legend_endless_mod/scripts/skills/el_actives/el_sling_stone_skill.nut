@@ -129,7 +129,10 @@ this.el_sling_stone_skill <- this.inherit("scripts/skills/skill", {
 		}
 		foreach(tile in attack_tile)
 		{
-			this.attackEntity(_user, tile.getEntity());
+			if(!tile.IsEmpty && tile.getEntity().isAlive() && !tile.getEntity().isDying())
+			{
+				this.attackEntity(_user, tile.getEntity());
+			}
 		}
 		this.m.Item.setCondition(condition);
 		this.m.Item.lowerCondition();
