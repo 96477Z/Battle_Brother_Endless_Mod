@@ -113,6 +113,11 @@ this.el_unbreakable_entry <- this.inherit("scripts/skills/skill", {
 			this.m.EL_MaxDamageHitInfo = clone this.Const.Tactical.HitInfo;
 		}
 	}
+
+	function onCombatStarted()
+	{
+		this.m.EL_Attacker = null;
+	}
 	
 	function isHidden()
 	{

@@ -15,7 +15,7 @@ this.el_curse_entry <- this.inherit("scripts/skills/el_entrys/el_entry", {
 		local result = {
 			id = _id,
 			type = "text",
-			text = "[color=" + colour + "]命中目标会使其本场战斗受到伤害 + " + this.m.EL_Curse + "%[/color]"
+			text = "[color=" + colour + "]诅咒：命中目标会使其本场战斗受到伤害 + " + this.m.EL_Curse + "%[/color]"
 		};
 		return result;
 	}

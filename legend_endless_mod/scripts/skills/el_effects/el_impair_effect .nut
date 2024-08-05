@@ -1,0 +1,46 @@
+this.el_impair_effect <- this.inherit("scripts/skills/skill", {
+	m = {
+        Bonus = 0.0
+    },
+	function create()
+	{
+		this.m.ID = "el_effects.impair";
+		this.m.Name = "削弱";
+		this.m.Description = "这个角色状态萎靡";
+		this.m.Icon = "skills/icon_mummy_curse.png";
+		this.m.IconMini = "mini_icon_mummy_curse";
+		this.m.Overlay = "mummy_curse";
+		this.m.Type = this.Const.SkillType.StatusEffect;
+		this.m.IsActive = false;
+		this.m.IsRemovedAfterBattle = true;
+	}
+
+	function getName()
+	{
+		return this.m.Name + " (-" + this.m.Bonus + ")";
+	}
+
+	function getTooltip()
+	{
+		local tooltip = this.skill.getTooltip();
+		tooltip.extend([
+			{
+				id = 6,
+				type = "text",
+				icon = "ui/icons/special.png",
+				text = "生命值上限- [color=" + this.Const.UI.Color.NegativeValue + "]+" + this.m.Bonus + "[/color]"
+			}
+		]);
+		return tooltip;
+	}
+
+	function onUpdate( _properties )
+	{
+		_properties.Hitpoints -= this.Math.floor(this.Math.min(this.getContainer().getActor().getBaseProperties().Hitpoints - 1, this.Math.floor(this.m.Bonus)));
+	}
+
+    function EL_addBonus( _bonus )
+	{
+		this.m.Bonus += _bonus;
+	}
+});
