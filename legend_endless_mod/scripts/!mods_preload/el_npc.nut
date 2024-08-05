@@ -1150,7 +1150,7 @@ local gt = getroottable();
                         local boss_chance = this.Const.EL_NPC.EL_EliteTeam.LeaderBossChance.EL_getChance(this.World.Assets.m.EL_WorldLevel) * this.World.Assets.EL_getWorldDifficultFactor();
                         local follower_exist = this.World.Retinue.hasFollower("follower.bounty_hunter");
                         if(follower_exist) {
-                            boss_chance = boss_chance * 2 + 20;
+                            boss_chance = boss_chance * 4;
                         }
                         if(boss_chance >= this.Math.rand(1, 100)) {
                             this.m.Troops[i].EL_IsBossUnit = true;
@@ -1194,7 +1194,7 @@ local gt = getroottable();
                         local boss_chance = this.Const.EL_NPC.EL_EliteTeam.LeaderBossChance.EL_getChance(this.World.Assets.m.EL_WorldLevel) * this.World.Assets.EL_getWorldDifficultFactor();
                         local follower_exist = this.World.Retinue.hasFollower("follower.bounty_hunter");
                         if(follower_exist) {
-                            boss_chance = boss_chance * 2 + 20;
+                            boss_chance = boss_chance * 4;
                         }
                         if(boss_chance >= this.Math.rand(1, 100)) {
                             this.m.Troops[random_leader_index].EL_IsBossUnit = true;
@@ -1241,7 +1241,7 @@ local gt = getroottable();
                         local boss_chance = this.Const.EL_NPC.EL_NormalTeam.LeaderBossChance.EL_getChance(this.World.Assets.m.EL_WorldLevel) * this.World.Assets.EL_getWorldDifficultFactor();
                         local follower_exist = this.World.Retinue.hasFollower("follower.bounty_hunter");
                         if(follower_exist) {
-                            boss_chance = boss_chance * 2 + 20;
+                            boss_chance = boss_chance * 4;
                         }
                         local r = this.Math.rand(1, 100);
                         if(boss_chance >= r) {
@@ -1289,7 +1289,7 @@ local gt = getroottable();
                         local boss_chance = this.Const.EL_NPC.EL_NormalTeam.LeaderBossChance.EL_getChance(this.World.Assets.m.EL_WorldLevel) * this.World.Assets.EL_getWorldDifficultFactor();
                         local follower_exist = this.World.Retinue.hasFollower("follower.bounty_hunter");
                         if(follower_exist) {
-                            boss_chance = boss_chance * 2 + 20;
+                            boss_chance = boss_chance * 4;
                         }
                         if(boss_chance >= this.Math.rand(1, 100)) {
                             this.m.Troops[random_leader_index].EL_IsBossUnit = true;
