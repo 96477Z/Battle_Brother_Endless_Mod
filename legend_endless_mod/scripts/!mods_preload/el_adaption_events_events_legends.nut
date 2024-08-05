@@ -194,7 +194,9 @@ local gt = getroottable();
                         text = _event.m.Barbarian.getName() + " gains [color=" + this.Const.UI.Color.PositiveEventValue + "]+" + bravery + "[/color] Resolve"
                     });
                     _event.m.Barbarian.improveMood(1.0, "prevented a bloodbath in the woods");
-                    _event.m.Rewarditems.getItems().transferToStash(this.World.Assets.getStash());
+                    if(_event.m.Rewarditems != null) {
+                        _event.m.Rewarditems.getItems().transferToStash(this.World.Assets.getStash());
+                    }
                     local item = this.new("scripts/items/loot/looted_valuables_item");
                     this.World.Assets.getStash().add(item);
                     this.List.push({

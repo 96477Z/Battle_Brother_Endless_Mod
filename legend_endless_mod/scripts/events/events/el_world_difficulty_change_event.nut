@@ -34,7 +34,7 @@ this.el_world_difficulty_change_event <- this.inherit("scripts/events/event", {
 			option_start_index = this.Const.EL_World.EL_WorldChangeEvent.OptionNum - 1;
 		}
 		local total_option_num = this.Const.EL_World.EL_WorldChangeEvent.OptionNum - option_start_index;
-		local select_screen_num = ((total_option_num + this.Const.EL_World.EL_WorldChangeEvent.OptionNumPurPage - 1) / this.Const.EL_World.EL_WorldChangeEvent.OptionNumPurPage);
+		local select_screen_num = this.Math.floor((total_option_num + this.Const.EL_World.EL_WorldChangeEvent.OptionNumPurPage - 1) / this.Const.EL_World.EL_WorldChangeEvent.OptionNumPurPage);
 		for(local page = 0; page < select_screen_num; ++page) {
 			local screen = {
 				ID = "el_world_difficulty_change_event_select_page_" + page,
