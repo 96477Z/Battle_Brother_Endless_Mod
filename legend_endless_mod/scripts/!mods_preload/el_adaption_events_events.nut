@@ -512,6 +512,12 @@ local gt = getroottable();
 
     });
 
+	::mods_hookExactClass("events/events/drunkard_loses_stuff_event", function(o){
+        o.onUpdateScore = function()
+        {
+            return;
+        }
+    });
 
 	::mods_hookExactClass("events/events/historian_mysterious_text_event", function(o){
 
