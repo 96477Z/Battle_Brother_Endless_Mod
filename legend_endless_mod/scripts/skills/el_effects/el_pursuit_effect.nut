@@ -30,7 +30,6 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 	
 	function EL_useFreeSkill( _skill, _targetEntity )
 	{
-
 		if (!this.World.Assets.m.EL_IsInitPursuitList)
 		{
 			this.World.Assets.m.EL_IsInitPursuitList = true;
@@ -42,7 +41,7 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 				local is_remove = true;
 				foreach(effective_actor in effective_actors)
 				{
-					if(effective_actor == actor)
+					if(effective_actor.getName() == actor.getName())
 					{
 						is_remove = false;
 						continue;
@@ -53,7 +52,6 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 					this.World.Assets.EL_removeByPursuitList(actor);
 				}
 			}
-			
 		}
 		if (!this.m.EL_IsExtraAttack)
 		{
@@ -73,7 +71,7 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 				{
 					continue;
 				}
-				if (actor == user)
+				if (actor.getName() == user.getName())
 				{
 					continue;
 				}

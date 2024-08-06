@@ -39,7 +39,7 @@ this.el_action_point_entry <- this.inherit("scripts/skills/el_entrys/el_accessor
 
 	function onUpdate( _properties )
 	{
-		if(this.m.EL_CurrentLevel)
+		if(this.m.EL_CurrentLevel == 1)
 		{
 			_properties.ActionPoints += this.m.EL_ActionPoint;
 		}
