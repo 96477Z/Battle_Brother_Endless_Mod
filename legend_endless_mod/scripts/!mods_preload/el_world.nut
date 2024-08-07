@@ -211,7 +211,7 @@ local gt = getroottable();
 		{
 			for(local i = 0; i < this.m.EL_PursuitList.len(); ++i)
 			{
-				if(this.m.EL_PursuitList[i].actor == _actor)
+				if(this.m.EL_PursuitList[i].actor.getName() == _actor.getName())
 				{
 					this.m.EL_PursuitList.remove(i);
 					return;
