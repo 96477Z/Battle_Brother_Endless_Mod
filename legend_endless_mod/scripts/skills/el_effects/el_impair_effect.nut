@@ -15,7 +15,7 @@ this.el_impair_effect <- this.inherit("scripts/skills/skill", {
 		this.m.IsRemovedAfterBattle = true;
 		this.m.Order = this.Const.SkillOrder.VeryLast + 999999;
 	}
-s
+
 	function getName()
 	{
 		return this.m.Name + " (-" + this.m.Bonus + ")";

@@ -1291,7 +1291,7 @@ local gt = getroottable();
 
                 if (payback != null)
                 {
-                    this.getContainer().setBusy(true);
+                    //this.getContainer().setBusy(true);
                     local attackinfo = {
                         User = this.getContainer().getActor(),
                         Skill = payback,
@@ -1337,7 +1337,7 @@ local gt = getroottable();
             if(_attackinfo.Container == null) {
                 return false;
             }
-            _attackinfo.Container.setBusy(false);
+            //_attackinfo.Container.setBusy(false);
             if(_attackinfo.User == null ||  _attackinfo.TargetTile.getEntity() == null) {
                 return false;
             }
