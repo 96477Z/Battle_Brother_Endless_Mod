@@ -13,8 +13,9 @@ this.el_impair_effect <- this.inherit("scripts/skills/skill", {
 		this.m.Type = this.Const.SkillType.StatusEffect;
 		this.m.IsActive = false;
 		this.m.IsRemovedAfterBattle = true;
+		this.m.Order = this.Const.SkillOrder.VeryLast + 999999;
 	}
-
+s
 	function getName()
 	{
 		return this.m.Name + " (-" + this.m.Bonus + ")";
@@ -36,11 +37,14 @@ this.el_impair_effect <- this.inherit("scripts/skills/skill", {
 
 	function onUpdate( _properties )
 	{
-		_properties.Hitpoints -= this.Math.floor(this.Math.min(this.getContainer().getActor().getBaseProperties().Hitpoints - 1, this.Math.floor(this.m.Bonus)));
+		_properties.Hitpoints -= this.Math.floor(this.m.Bonus);
+		if(_properties.Hitpoints < 1) {
+			_properties.Hitpoints = 1
+		}
 	}
 
     function EL_addBonus( _bonus )
 	{
-		this.m.Bonus += _bonus;
+		this.m.Bonus += _bonus_;
 	}
 });
