@@ -18,7 +18,7 @@ this.el_impair_effect <- this.inherit("scripts/skills/skill", {
 
 	function getName()
 	{
-		return this.m.Name + " (-" + this.m.Bonus + ")";
+		return this.m.Name + " (-" + this.Math.floor(this.m.Bonus) + ")";
 	}
 
 	function getTooltip()
@@ -45,6 +45,6 @@ this.el_impair_effect <- this.inherit("scripts/skills/skill", {
 
     function EL_addBonus( _bonus )
 	{
-		this.m.Bonus += _bonus_;
+		this.m.Bonus += _bonus;
 	}
 });
