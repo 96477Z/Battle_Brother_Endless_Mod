@@ -30,6 +30,10 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 	
 	function EL_useFreeSkill( _skill, _targetEntity )
 	{
+		if (_targetEntity == null || !_targetEntity.isAlive() || _targetEntity.isDying())
+		{
+			return;
+		}
 		if (!this.World.Assets.m.EL_IsInitPursuitList)
 		{
 			this.World.Assets.m.EL_IsInitPursuitList = true;
@@ -57,11 +61,11 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 		{
 			this.m.EL_IsExtraAttack = true;
 			local user = this.getContainer().getActor();
-			this.Tactical.Entities.getAllInstancesAsArray();
 			for(local i = 0; i < this.World.Assets.m.EL_PursuitList.len(); ++i)
 			{
 				local actor = this.World.Assets.m.EL_PursuitList[i].actor;
 				local skill = this.World.Assets.m.EL_PursuitList[i].skill;
+				
 				if (actor == null || !actor.isAlive() || actor.isDying())
 				{
             		this.World.Assets.EL_removeByPursuitList(actor);
@@ -72,6 +76,10 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 					continue;
 				}
 				if (actor.getName() == user.getName())
+				{
+					continue;
+				}
+				if (_targetEntity.getTile() == null || actor.getTile() == null)
 				{
 					continue;
 				}
