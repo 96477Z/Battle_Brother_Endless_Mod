@@ -27,6 +27,12 @@ local gt = getroottable();
 
 		o.m.EL_DropParty <- null;
 
+		o.m.EL_CurrentAttackActor <- null;
+		o.m.EL_CurrentAttackedActor <- null;
+		o.m.EL_CurrentAttackActorIsAlive <- false;
+		o.m.EL_CurrentAttackedActorIsAlive <- false;
+
+
 		o.getSellPriceMult = function ()
 		{
 			return this.World.Retinue.hasFollower("follower.trader") ? 1.1 * this.m.SellPriceMult : this.m.SellPriceMult;
@@ -211,7 +217,7 @@ local gt = getroottable();
 		{
 			for(local i = 0; i < this.m.EL_PursuitList.len(); ++i)
 			{
-				if(this.m.EL_PursuitList[i].actor.getName() == _actor.getName())
+				if(this.m.EL_PursuitList[i].actor == _actor)
 				{
 					this.m.EL_PursuitList.remove(i);
 					return;

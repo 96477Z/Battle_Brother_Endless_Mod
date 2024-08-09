@@ -30,32 +30,13 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 	
 	function EL_useFreeSkill( _skill, _targetEntity )
 	{
-		if (_targetEntity == null || !_targetEntity.isAlive() || _targetEntity.isDying())
+		if(this.World.Assets.m.EL_CurrentAttackActorIsAlive == false || this.World.Assets.m.EL_CurrentAttackedActorIsAlive == false)
 		{
 			return;
 		}
-		if (!this.World.Assets.m.EL_IsInitPursuitList)
+		if (_targetEntity == null || !_targetEntity.isAlive() || _targetEntity.isDying())
 		{
-			this.World.Assets.m.EL_IsInitPursuitList = true;
-			local effective_actors = this.Tactical.Entities.getAllInstancesAsArray();
-			local len = this.World.Assets.m.EL_PursuitList.len();
-			for(local i = len - 1; i >= 0; --i)
-			{				
-				local actor = this.World.Assets.m.EL_PursuitList[i].actor;
-				local is_remove = true;
-				foreach(effective_actor in effective_actors)
-				{
-					if(effective_actor.getName() == actor.getName())
-					{
-						is_remove = false;
-						continue;
-					}
-				}
-				if(is_remove)
-				{
-					this.World.Assets.EL_removeByPursuitList(actor);
-				}
-			}
+			return;
 		}
 		if (!this.m.EL_IsExtraAttack)
 		{
@@ -65,7 +46,15 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 			{
 				local actor = this.World.Assets.m.EL_PursuitList[i].actor;
 				local skill = this.World.Assets.m.EL_PursuitList[i].skill;
-				
+				if (!_targetEntity.isPlacedOnMap())
+				{
+					return;
+				}
+				if (!actor.isPlacedOnMap())
+				{
+            		this.World.Assets.EL_removeByPursuitList(actor);
+					continue;
+				}
 				if (actor == null || !actor.isAlive() || actor.isDying())
 				{
             		this.World.Assets.EL_removeByPursuitList(actor);
@@ -75,7 +64,7 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 				{
 					continue;
 				}
-				if (actor.getName() == user.getName())
+				if (actor == user)
 				{
 					continue;
 				}
