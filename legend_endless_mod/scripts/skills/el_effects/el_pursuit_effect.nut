@@ -46,10 +46,6 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 			{
 				local actor = this.World.Assets.m.EL_PursuitList[i].actor;
 				local skill = this.World.Assets.m.EL_PursuitList[i].skill;
-				if (!_targetEntity.isPlacedOnMap())
-				{
-					return;
-				}
 				if (!actor.isPlacedOnMap())
 				{
             		this.World.Assets.EL_removeByPursuitList(actor);

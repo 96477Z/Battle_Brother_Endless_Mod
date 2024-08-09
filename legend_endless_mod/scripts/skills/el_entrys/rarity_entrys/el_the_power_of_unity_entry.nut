@@ -84,6 +84,10 @@ this.el_the_power_of_unity_entry <- this.inherit("scripts/skills/skill", {
 
 			foreach( actor in actors )
 			{
+				if(this.World.Assets.m.EL_CurrentAttackActorIsAlive == false || this.World.Assets.m.EL_CurrentAttackedActorIsAlive == false)
+				{
+					return;
+				}
 				if (actor.getID() == user.getID())
 				{
 					continue;

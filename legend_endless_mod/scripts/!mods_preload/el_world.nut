@@ -583,6 +583,14 @@ local gt = getroottable();
 				this.setPause(true);
 			}
 		}
+
+		local getLocalCombatProperties = o.getLocalCombatProperties;
+		o.getLocalCombatProperties = function ( _pos, _ignoreNoEnemies = false )
+		{
+            this.World.Assets.m.EL_PursuitList = [];
+			this.World.Assets.m.EL_IsInitPursuitList = false;
+			return getLocalCombatProperties(_pos, _ignoreNoEnemies);
+		}
 	});
 
 
