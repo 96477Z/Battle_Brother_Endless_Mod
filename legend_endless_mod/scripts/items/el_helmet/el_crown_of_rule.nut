@@ -21,8 +21,8 @@ this.el_crown_of_rule <- this.inherit("scripts/items/helmets/helmet", {
 		this.updateVariant();
 		this.m.ImpactSound = this.Const.Sound.ArmorHalfplateImpact;
 		this.m.InventorySound = this.Const.Sound.ArmorHalfplateImpact;
-		this.m.Condition = 600.0;
-		this.m.ConditionMax = 600.0;
+		this.m.Condition = 600.0 * 2;
+		this.m.ConditionMax = 600.0 * 2;
 		this.m.StaminaModifier = -35;
 		this.m.ItemType = this.m.ItemType | this.Const.Items.ItemType.Legendary;
 	}

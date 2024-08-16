@@ -397,10 +397,10 @@ gt.Const.EL_Rarity_Entry <- {
 		_EL_replacedSkills.clear();
 	}
 
-	function EL_addPursuitEffect( _targetEntity, _EL_sourceEntity, _EL_attackSkill )
-	{
-		local skill = this.new("scripts/skills/el_effects/el_pursuit_effect");
-		skill.EL_setSourceActorAndAttackSkill(_EL_sourceEntity, _EL_attackSkill);
-		_targetEntity.getSkills().add(skill);
-	}
+	// function EL_addPursuitEffect( _targetEntity, _EL_sourceEntity, _EL_attackSkill )
+	// {
+	// 	local skill = this.new("scripts/skills/el_effects/el_pursuit_effect");
+	// 	skill.EL_setSourceActorAndAttackSkill(_EL_sourceEntity, _EL_attackSkill);
+	// 	_targetEntity.getSkills().add(skill);
+	// }
 };

@@ -36,7 +36,13 @@ this.el_heart_triumphs_over_things_entry <- this.inherit("scripts/skills/skill",
 				id = 4,
                 type = "text",
                 icon = "ui/icons/special.png",
-				text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]你的攻击必定命中，并根据主动值进行额外的攻击[/color]"
+				text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]你的攻击必定命中，并根据主动值进行额外的连击[/color]"
+			},
+			{
+				id = 4,
+                type = "text",
+                icon = "ui/icons/special.png",
+				text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]你的决心会对攻击范围带来额外的加成[/color]"
 			},
 			{
 				id = 4,

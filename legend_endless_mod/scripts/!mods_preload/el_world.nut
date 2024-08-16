@@ -23,7 +23,9 @@ local gt = getroottable();
 		o.m.EL_ArenaMaxLevel <- 0;
 
 		o.m.EL_PursuitList <- [];
-		o.m.EL_IsInitPursuitList <- false;
+		o.m.EL_IsUnitMoving <- false;
+		o.m.EL_WaitToEnterDeadList <- [];
+		o.m.EL_DeadList <- [];
 
 		o.m.EL_DropParty <- null;
 
@@ -138,7 +140,6 @@ local gt = getroottable();
 			this.m.EL_EquipmentEssence[_rank] = _num;
 		}
 
-
 		o.EL_addSoulEnergy <- function( _num, _isKill = true )
 		{
 			local soul_energy_max = 100;
@@ -223,6 +224,93 @@ local gt = getroottable();
 					return;
 				}
 			}
+		}
+
+		o.EL_addToWaitToEnterDeadList <- function( _actor, _killer, _skill, _fatalityType , _silent )
+		{
+			for(local i = 0; i < this.m.EL_WaitToEnterDeadList.len(); ++i)
+			{
+				if(this.m.EL_WaitToEnterDeadList[i].actor == _actor)
+				{
+					return;
+				}
+			}
+			this.m.EL_WaitToEnterDeadList.push({
+				actor = _actor,
+				killer = _killer,
+				skill = _skill,
+				fatalityType = _fatalityType,
+				silent = _silent
+			});
+		}
+
+		o.EL_IsInWaitToEnterDeadList <- function( _actor )
+		{
+			for(local i = 0; i < this.m.EL_WaitToEnterDeadList.len(); ++i)
+			{
+				if(this.m.EL_WaitToEnterDeadList[i].actor == _actor)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
+		o.EL_addToDeadActorList <- function( _actor )
+		{
+			//this.logInfo("dead actor adding");
+			for(local i = 0; i < this.m.EL_DeadList.len(); ++i)
+			{
+				if(this.m.EL_DeadList[i].actor == _actor)
+				{
+					return;
+				}
+			}
+			local skills = _actor.getSkills();
+			skills.removeByID("effects.shieldwall");
+			skills.removeByID("effects.spearwall");
+			skills.removeByID("effects.riposte");
+			skills.removeByID("effects.legend_vala_chant_disharmony_effect");
+			skills.removeByID("effects.legend_vala_chant_fury_effect");
+			skills.removeByID("effects.legend_vala_chant_senses_effect");
+			skills.removeByID("effects.legend_vala_currently_chanting");
+			skills.removeByID("effects.legend_vala_in_trance");
+			//skills.add(this.new("scripts/skills/terrain/hidden_effect"));
+			//_actor.m.IsAbleToDie = false;
+
+			this.m.EL_DeadList.push({
+				actor = _actor,
+				tile = _actor.getTile()
+			});
+			//this.logInfo("dead actor already add,current num:" + this.m.EL_DeadList.len());
+		}
+
+		o.EL_IsInDeadActorList <- function( _actor )
+		{
+			for(local i = 0; i < this.m.EL_DeadList.len(); ++i)
+			{
+				if(this.m.EL_DeadList[i].actor == _actor)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+		
+		o.EL_ClearDeadActorList <- function()
+		{
+			this.logInfo("dead actor num:"+this.m.EL_DeadList.len());
+			for(local i = 0; i < this.m.EL_DeadList.len(); ++i)
+			{
+				if(!this.m.EL_DeadList[i].actor.isPlacedOnMap())
+				{
+					this.Tactical.addEntityToMap(this.m.EL_DeadList[i].actor, this.m.EL_DeadList[i].tile.Coords.X, this.m.EL_DeadList[i].tile.Coords.Y);
+					this.logInfo("dead actor relly die:"+(i+1));
+					//_actor.m.IsAbleToDie = true;
+					this.m.EL_DeadList[i].actor.die();
+				}
+			}
+			this.m.EL_DeadList.clear();
 		}
 
 		o.EL_UpdateWorldMinDifficulty <- function() {
@@ -587,8 +675,7 @@ local gt = getroottable();
 		local getLocalCombatProperties = o.getLocalCombatProperties;
 		o.getLocalCombatProperties = function ( _pos, _ignoreNoEnemies = false )
 		{
-            this.World.Assets.m.EL_PursuitList = [];
-			this.World.Assets.m.EL_IsInitPursuitList = false;
+            this.World.Assets.m.EL_PursuitList.clear();
 			return getLocalCombatProperties(_pos, _ignoreNoEnemies);
 		}
 	});
@@ -599,8 +686,8 @@ local gt = getroottable();
 		local onBattleEnded = o.onBattleEnded;
 		o.onBattleEnded = function ()
 		{
-            this.World.Assets.m.EL_PursuitList = [];
-			this.World.Assets.m.EL_IsInitPursuitList = false;
+            this.World.Assets.m.EL_PursuitList.clear();
+			this.World.Assets.EL_ClearDeadActorList();
 			onBattleEnded();
 		}
 
