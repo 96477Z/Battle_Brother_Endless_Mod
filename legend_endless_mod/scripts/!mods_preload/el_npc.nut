@@ -420,6 +420,7 @@ local gt = getroottable();
                 this.World.Assets.m.EL_WaitToEnterDeadList[i].actor.kill(this.World.Assets.m.EL_WaitToEnterDeadList[i].killer, this.World.Assets.m.EL_WaitToEnterDeadList[i].skill, this.World.Assets.m.EL_WaitToEnterDeadList[i].fatalityType, this.World.Assets.m.EL_WaitToEnterDeadList[i].silent)
             }
             this.World.Assets.m.EL_WaitToEnterDeadList.clear();
+			this.World.Assets.EL_ClearDeadActorList();
         }
 
         local kill = o.kill;

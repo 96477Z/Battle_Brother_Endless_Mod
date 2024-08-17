@@ -687,7 +687,7 @@ local gt = getroottable();
 		o.onBattleEnded = function ()
 		{
             this.World.Assets.m.EL_PursuitList.clear();
-			this.World.Assets.EL_ClearDeadActorList();
+			//this.World.Assets.EL_ClearDeadActorList();
 			onBattleEnded();
 		}
 
