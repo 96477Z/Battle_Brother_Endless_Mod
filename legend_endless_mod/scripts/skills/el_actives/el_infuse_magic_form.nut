@@ -57,7 +57,7 @@ this.el_infuse_magic_form <- this.inherit("scripts/skills/skill", {
             id = 7,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "施法时有40%效果对同目标再次施法。（此效果判定成功时可重复判定）"
+            text = "施法时有50%效果对同目标再次施法。（此效果判定成功时可重复判定）"
         });
 		if (!this.m.isOpen)
 		{

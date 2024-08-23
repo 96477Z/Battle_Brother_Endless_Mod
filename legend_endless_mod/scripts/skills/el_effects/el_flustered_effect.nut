@@ -17,7 +17,7 @@ this.el_flustered_effect <- this.inherit("scripts/skills/skill", {
 
 	function getName()
 	{
-		return this.m.Name + " (-" + this.m.Bonus + ")";
+		return this.m.Name + " (-" + this.m.Bonus + "防)";
 	}
 
 	function getTooltip()

@@ -35,7 +35,7 @@ this.el_bloody_cutting_entry <- this.inherit("scripts/skills/skill", {
 				id = 4,
                 type = "text",
                 icon = "ui/icons/special.png",
-				text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]额外附加等量于造成血量伤害比例的“血意诅咒”效果[/color]"
+				text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]额外附加等量于造成血量伤害比例的“血意诅咒（护甲血量同时流失）”效果[/color]"
 			}
         ]
 		if (!EL_isUsable())

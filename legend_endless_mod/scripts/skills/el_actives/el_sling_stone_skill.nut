@@ -129,9 +129,14 @@ this.el_sling_stone_skill <- this.inherit("scripts/skills/skill", {
 		}
 		foreach(tile in attack_tile)
 		{
-			if(!tile.IsEmpty && tile.getEntity().isAlive() && !tile.getEntity().isDying())
+			local target_entity = tile.getEntity();
+			if (target_entity.isRock() || target_entity.isSticks() || target_entity.isBush() || target_entity.isTree() || target_entity.isSupplies())
 			{
-				this.attackEntity(_user, tile.getEntity());
+				continue;
+			}
+			if(!tile.IsEmpty && target_entity.isAlive() && !target_entity.isDying())
+			{
+				this.attackEntity(_user, target_entity);
 			}
 		}
 		this.m.Item.setCondition(condition);

@@ -259,14 +259,14 @@ gt.Const.EL_Rarity_Entry <- {
 		},
 		EL_RadianceOfMagic = {
 			InfuseMagic = {
-				DamageMult = 1.5,
+				DamageMult = 2.0,
 				RangeMaxMult = 1.5,
 				ActionPointCostMult = 0.67,
 				FatigueCostMult = 0.67,
-				MultipleChance = 40,
+				MultipleChance = 50,
 			},
 			StagnantSpirit = {
-				MultipleChance = 40,
+				MultipleChance = 50,
 				NegativeEffectList = [
 					"scripts/skills/effects/withered_effect",
 					"scripts/skills/effects/insect_swarm_effect",

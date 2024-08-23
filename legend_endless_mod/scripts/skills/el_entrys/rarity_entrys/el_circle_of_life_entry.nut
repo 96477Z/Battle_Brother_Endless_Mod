@@ -40,7 +40,7 @@ this.el_circle_of_life_entry <- this.inherit("scripts/skills/skill", {
 				id = 4,
                 type = "text",
                 icon = "ui/icons/special.png",
-                text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]回合开始是恢复 " + this.Const.EL_Rarity_Entry.Factor.EL_CircleofLife.HitpointsRecover * 100 + "%生命值, " + this.Const.EL_Rarity_Entry.Factor.EL_CircleofLife.ArmorConditonRecover * 100 + "%护甲耐久和 " + this.Const.EL_Rarity_Entry.Factor.EL_CircleofLife.FatigueRecover * 100 + "%疲劳, 同时随机清除一项负面效果[/color]"
+                text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]回合开始时恢复 " + this.Const.EL_Rarity_Entry.Factor.EL_CircleofLife.HitpointsRecover * 100 + "%生命值, " + this.Const.EL_Rarity_Entry.Factor.EL_CircleofLife.ArmorConditonRecover * 100 + "%护甲耐久和 " + this.Const.EL_Rarity_Entry.Factor.EL_CircleofLife.FatigueRecover * 100 + "%疲劳, 同时随机清除一项负面效果[/color]"
 			},
 			{
 				id = 4,
