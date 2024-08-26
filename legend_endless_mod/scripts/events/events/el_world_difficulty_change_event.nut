@@ -28,6 +28,9 @@ this.el_world_difficulty_change_event <- this.inherit("scripts/events/event", {
 	{
 		local option_start_index = this.Const.EL_World.EL_WorldChangeEvent.DifficultyMinOption[this.World.Assets.getCombatDifficulty()];
 		if(this.World.Assets.getCombatDifficulty() == this.Const.Difficulty.Legendary) {
+			if(!this.World.Flags.has("EL_LegendaryItemMaxNum")) {
+				this.World.Flags.set("EL_LegendaryItemMaxNum", 0);
+			}
 			option_start_index += this.Math.floor(this.World.Flags.get("EL_LegendaryItemMaxNum") / 3);
 		}
 		if(option_start_index >= this.Const.EL_World.EL_WorldChangeEvent.OptionNum) {
