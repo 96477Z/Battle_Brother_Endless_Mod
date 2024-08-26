@@ -35,7 +35,7 @@ this.el_bloody_knock_entry <- this.inherit("scripts/skills/skill", {
 				id = 3,
                 type = "text",
                 icon = "ui/icons/special.png",
-				text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]必定爆头[/color]"
+				text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]命中时100%击中头部[/color]"
 			},
 			{
 				id = 4,

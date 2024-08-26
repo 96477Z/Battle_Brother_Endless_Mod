@@ -13,6 +13,14 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 
     function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
+		if (!this.m.EL_IsExtraAttack)
+		{
+			//this.logInfo("set Actor");
+			this.World.Assets.m.EL_CurrentAttackActor = this.getContainer().getActor();
+			this.World.Assets.m.EL_CurrentAttackedActor = _targetEntity;
+			this.World.Assets.m.EL_CurrentAttackActorIsAlive = true;
+			this.World.Assets.m.EL_CurrentAttackedActorIsAlive = true;
+		}
 		if (_targetEntity == null || !_targetEntity.isAlive() || _targetEntity.isDying())
 		{
 			return;
@@ -25,16 +33,26 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 
 	function onTargetMissed( _skill, _targetEntity )
 	{
+		if (!this.m.EL_IsExtraAttack)
+		{
+			//this.logInfo("set Actor");
+			this.World.Assets.m.EL_CurrentAttackActor = this.getContainer().getActor();
+			this.World.Assets.m.EL_CurrentAttackedActor = _targetEntity;
+			this.World.Assets.m.EL_CurrentAttackActorIsAlive = true;
+			this.World.Assets.m.EL_CurrentAttackedActorIsAlive = true;
+		}
 		EL_useFreeSkill(_skill, _targetEntity);
 	}
 	
 	function EL_useFreeSkill( _skill, _targetEntity )
 	{
-		if(this.World.Assets.m.EL_CurrentAttackActorIsAlive == false || this.World.Assets.m.EL_CurrentAttackedActorIsAlive == false)
+		//this.logInfo("useFreeSkill Start");
+		
+		if (_targetEntity == null || !_targetEntity.isAlive() || _targetEntity.isDying())
 		{
 			return;
 		}
-		if (_targetEntity == null || !_targetEntity.isAlive() || _targetEntity.isDying())
+		if (this.World.Assets.EL_IsInWaitToEnterDeadList(_targetEntity) || this.World.Assets.EL_IsInDeadActorList(_targetEntity))
 		{
 			return;
 		}
@@ -44,13 +62,15 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 			local user = this.getContainer().getActor();
 			for(local i = 0; i < this.World.Assets.m.EL_PursuitList.len(); ++i)
 			{
-				local actor = this.World.Assets.m.EL_PursuitList[i].actor;
-				local skill = this.World.Assets.m.EL_PursuitList[i].skill;
-				if (!_targetEntity.isPlacedOnMap())
+				if(this.World.Assets.m.EL_CurrentAttackActorIsAlive == false || this.World.Assets.m.EL_CurrentAttackedActorIsAlive == false)
 				{
 					return;
 				}
-				if (!actor.isPlacedOnMap())
+				//this.logInfo(this.World.Assets.m.EL_CurrentAttackActorIsAlive);
+				//this.logInfo(this.World.Assets.m.EL_CurrentAttackedActorIsAlive);
+				local actor = this.World.Assets.m.EL_PursuitList[i].actor;
+				local skill = this.World.Assets.m.EL_PursuitList[i].skill;
+				if (!actor.isPlacedOnMap() || actor.isHiddenToPlayer())
 				{
             		this.World.Assets.EL_removeByPursuitList(actor);
 					continue;

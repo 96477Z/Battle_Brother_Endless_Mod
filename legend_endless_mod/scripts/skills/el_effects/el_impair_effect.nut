@@ -18,7 +18,7 @@ this.el_impair_effect <- this.inherit("scripts/skills/skill", {
 
 	function getName()
 	{
-		return this.m.Name + " (-" + this.Math.floor(this.m.Bonus) + ")";
+		return this.m.Name + " (-" + this.Math.floor(this.m.Bonus) + "血限)";
 	}
 
 	function getTooltip()

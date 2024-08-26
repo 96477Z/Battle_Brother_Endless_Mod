@@ -38,7 +38,7 @@ this.el_pursuit_of_wind_entry <- this.inherit("scripts/skills/skill", {
 				id = 4,
                 type = "text",
                 icon = "ui/icons/special.png",
-				text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]攻击必定命中，拥有无限的射程[/color]"
+				text = "[color=" + this.Const.EL_Item.Colour[this.Const.EL_Item.Type.Special] + "]攻击必定命中，拥有无限的射程（但你无法攻击当前角色看不到的敌人）[/color]"
 			},
 			{
 				id = 5,

@@ -17,7 +17,7 @@ this.el_curse_effect <- this.inherit("scripts/skills/skill", {
 
 	function getName()
 	{
-		return this.m.Name + " (+" + this.m.Bonus + "%)";
+		return this.m.Name + " (+" + this.m.Bonus + "%受伤)";
 	}
 
 	function getTooltip()

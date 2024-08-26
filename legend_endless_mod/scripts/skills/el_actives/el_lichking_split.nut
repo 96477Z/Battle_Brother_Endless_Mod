@@ -223,10 +223,10 @@ this.el_lichking_split <- this.inherit("scripts/skills/skill", {
 				};
 				if(target.getMoraleState() == this.Const.MoraleState.Fleeing)
 				{
-					local is_able_to_die = target.m.IsAbleToDie;
-					target.m.IsAbleToDie = false;
+					// local is_able_to_die = target.m.IsAbleToDie;
+					// target.m.IsAbleToDie = false;
 					this.onScheduledTargetHit(info);
-					target.m.IsAbleToDie = is_able_to_die;
+					// target.m.IsAbleToDie = is_able_to_die;
 				}
 				else
 				{

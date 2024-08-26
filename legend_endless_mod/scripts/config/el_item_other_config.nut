@@ -315,6 +315,7 @@ gt.Const.EL_Item_Other <- {
 				item.EL_generateByRankAndLevel(this.Const.EL_Item.Type.Normal, _actor.EL_getLevel());
 				if(_isNpc)
 				{
+					
 					if(rank_level == 0)
 					{
 						if(this.Math.rand(1, 100000) <= this.Const.EL_Item_Other.EL_NormalNPCEquipmentRankUpChance.EL_getChance(this.World.Assets.m.EL_WorldLevel) * this.World.Assets.EL_getWorldDifficultFactor())

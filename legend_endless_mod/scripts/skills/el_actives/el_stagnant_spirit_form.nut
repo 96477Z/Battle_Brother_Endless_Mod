@@ -57,7 +57,7 @@ this.el_stagnant_spirit_form <- this.inherit("scripts/skills/skill", {
             id = 7,
             type = "text",
             icon = "ui/icons/special.png",
-            text = "施法时有40%效果对范围内的其他目标再次施法。（此效果判定成功时可重复判定）"
+            text = "施法时有50%效果对范围内的其他目标再次施法。（此效果判定成功时可重复判定）"
         });
 		if (!this.m.isOpen)
 		{

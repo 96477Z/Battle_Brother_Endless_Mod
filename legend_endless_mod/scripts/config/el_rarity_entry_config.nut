@@ -259,14 +259,14 @@ gt.Const.EL_Rarity_Entry <- {
 		},
 		EL_RadianceOfMagic = {
 			InfuseMagic = {
-				DamageMult = 1.5,
+				DamageMult = 2.0,
 				RangeMaxMult = 1.5,
 				ActionPointCostMult = 0.67,
 				FatigueCostMult = 0.67,
-				MultipleChance = 40,
+				MultipleChance = 50,
 			},
 			StagnantSpirit = {
-				MultipleChance = 40,
+				MultipleChance = 50,
 				NegativeEffectList = [
 					"scripts/skills/effects/withered_effect",
 					"scripts/skills/effects/insect_swarm_effect",
@@ -397,10 +397,10 @@ gt.Const.EL_Rarity_Entry <- {
 		_EL_replacedSkills.clear();
 	}
 
-	function EL_addPursuitEffect( _targetEntity, _EL_sourceEntity, _EL_attackSkill )
-	{
-		local skill = this.new("scripts/skills/el_effects/el_pursuit_effect");
-		skill.EL_setSourceActorAndAttackSkill(_EL_sourceEntity, _EL_attackSkill);
-		_targetEntity.getSkills().add(skill);
-	}
+	// function EL_addPursuitEffect( _targetEntity, _EL_sourceEntity, _EL_attackSkill )
+	// {
+	// 	local skill = this.new("scripts/skills/el_effects/el_pursuit_effect");
+	// 	skill.EL_setSourceActorAndAttackSkill(_EL_sourceEntity, _EL_attackSkill);
+	// 	_targetEntity.getSkills().add(skill);
+	// }
 };

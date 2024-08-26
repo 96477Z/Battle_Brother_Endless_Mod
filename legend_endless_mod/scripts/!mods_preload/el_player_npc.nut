@@ -1715,10 +1715,6 @@ local gt = getroottable();
 				return false;
 			}
 			
-			this.World.Assets.m.EL_CurrentAttackActor = _user;
-			this.World.Assets.m.EL_CurrentAttackedActor = _targetEntity;
-			this.World.Assets.m.EL_CurrentAttackActorIsAlive = true;
-			this.World.Assets.m.EL_CurrentAttackedActorIsAlive = true;
 
 			local properties = this.m.Container.buildPropertiesForUse(this, _targetEntity);
 			local userTile = _user.getTile();

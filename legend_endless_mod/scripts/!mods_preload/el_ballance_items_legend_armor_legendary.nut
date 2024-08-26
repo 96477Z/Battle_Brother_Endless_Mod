@@ -208,8 +208,8 @@ local gt = getroottable();
             //this.logInfo("legend_armor_of_davkul create");
             create();
 			this.m.Value = 0;
-            this.m.Condition *= 1.5;
-            this.m.ConditionMax *= 1.5;
+            this.m.Condition *= 2;
+            this.m.ConditionMax *= 2;
             this.EL_generateByRankAndLevel(this.Const.EL_Item.Type.Legendary, 0);
         }
 
@@ -247,8 +247,8 @@ local gt = getroottable();
         o.create = function()
         {
             create();
-            this.m.Condition *= 1.5;
-            this.m.ConditionMax *= 1.5;
+            this.m.Condition *= 2;
+            this.m.ConditionMax *= 2;
             this.EL_generateByRankAndLevel(this.Const.EL_Item.Type.Legendary, this.Math.min(this.World.Assets.m.EL_WorldLevel, EL_getLevelMax()));
         }
 
@@ -290,8 +290,8 @@ local gt = getroottable();
         {
             //this.logInfo("legend_emperors_armor create");
             create();
-            this.m.Condition *= 1.5;
-            this.m.ConditionMax *= 1.5;
+            this.m.Condition *= 2;
+            this.m.ConditionMax *= 2;
 			this.m.Value = 0;
             this.EL_generateByRankAndLevel(this.Const.EL_Item.Type.Legendary, 0);
         }
@@ -341,8 +341,8 @@ local gt = getroottable();
         o.create = function()
         {
             create();
-            this.m.Condition *= 1.5;
-            this.m.ConditionMax *= 1.5;
+            this.m.Condition *= 2;
+            this.m.ConditionMax *= 2;
 			this.m.Value = 0;
             this.EL_generateByRankAndLevel(this.Const.EL_Item.Type.Legendary, 0);
         }

@@ -15,8 +15,8 @@ this.el_arena_champion_armor <- this.inherit("scripts/items/armor/armor", {
 		this.m.ImpactSound = this.Const.Sound.ArmorHalfplateImpact;
 		this.m.InventorySound = this.Const.Sound.ArmorHalfplateImpact;
 		this.m.Value = 0;
-		this.m.Condition = 350 * 1.5;
-		this.m.ConditionMax = 350 * 1.5;
+		this.m.Condition = 350 * 2;
+		this.m.ConditionMax = 350 * 2;
 		this.m.StaminaModifier = -25;
 		this.EL_generateByRankAndLevel(this.Const.EL_Item.Type.Legendary, 0);
 	}
