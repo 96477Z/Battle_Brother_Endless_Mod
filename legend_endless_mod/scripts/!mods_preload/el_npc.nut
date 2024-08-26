@@ -737,7 +737,11 @@ local gt = getroottable();
                 {
                     this.World.Assets.EL_addToDeadActorList(this);
                 }
-                this.removeFromMap();
+                while (this.isPlacedOnMap())
+                {
+                    this.removeFromMap();
+                }
+                this.logInfo("isPlacedOnMap?"+this.isPlacedOnMap());
             }
             else
             {
