@@ -733,15 +733,11 @@ local gt = getroottable();
             if(isReallyDead)
             {
                 //this.die();
-                if (this.isPlayerControlled())
+                if (this.isPlayerControlled() && !this.IsSummoned())
                 {
                     this.World.Assets.EL_addToDeadActorList(this);
                 }
-                while (this.isPlacedOnMap())
-                {
-                    this.removeFromMap();
-                }
-                this.logInfo("isPlacedOnMap?"+this.isPlacedOnMap());
+                this.removeFromMap();
             }
             else
             {

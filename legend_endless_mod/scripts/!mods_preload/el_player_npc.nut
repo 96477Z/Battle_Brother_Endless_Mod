@@ -119,7 +119,20 @@ local gt = getroottable();
 		{
 			if (!this.isPlacedOnMap() || !this.isAlive() || this.isDying())
 			{
-				return [];
+				this.logInfo("invalid actor!!!");
+                this.logInfo("isPlacedOnMap?"+this.isPlacedOnMap());
+                this.logInfo("isAlive?"+this.isAlive());
+                this.logInfo("isDying?"+this.isDying());
+                this.logInfo("actor:"+this.getName());
+				this.kill(null, null, this.Const.FatalityType.Suicide);
+				local tooltip = [
+					{
+						id = 1,
+						type = "title",
+						text = "看到此信息请上传log至群文件，随后暂且退回至107版本。log文件发送方法详见置顶公告"
+					}
+				];
+				return tooltip;
 			}
 
 			if (!this.isDiscovered())
@@ -1018,6 +1031,7 @@ local gt = getroottable();
 				// 	this.Tactical.getShaker().shake(this, _attacker.getTile(), this.m.IsShakingOnHit ? 2 : 3, this.Const.Combat.ShakeEffectHitpointsHitColor, this.Const.Combat.ShakeEffectHitpointsHitHighlight, this.Const.Combat.ShakeEffectHitpointsHitFactor, this.Const.Combat.ShakeEffectHitpointsSaturation, layers, recoverMult);
 				// }
 			}
+			
 
 			return damage;
 		}
