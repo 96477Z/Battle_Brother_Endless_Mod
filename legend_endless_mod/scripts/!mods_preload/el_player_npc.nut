@@ -120,16 +120,37 @@ local gt = getroottable();
 			if (!this.isPlacedOnMap() || !this.isAlive() || this.isDying())
 			{
 				this.logInfo("invalid actor!!!");
+                this.logInfo("actor:"+this.getName());
                 this.logInfo("isPlacedOnMap?"+this.isPlacedOnMap());
                 this.logInfo("isAlive?"+this.isAlive());
                 this.logInfo("isDying?"+this.isDying());
-                this.logInfo("actor:"+this.getName());
-				this.kill(null, null, this.Const.FatalityType.Suicide);
+                this.logInfo("Hitpoints:"+this.m.Hitpoints);
+                this.logInfo("isAttackable?"+this.isAttackable());
+				local hitInfo = clone this.Const.Tactical.HitInfo;
+				hitInfo.DamageRegular = this.Math.rand(10, 20);
+				hitInfo.DamageDirect = 1.0;
+				hitInfo.BodyPart = this.Const.BodyPart.Body;
+				hitInfo.BodyDamageMult = 1.0;
+				hitInfo.FatalityChanceMult = 0.0;
+				this.onDamageReceived(this, null, hitInfo);
+				this.logInfo("after try1!!!");
+                this.logInfo("isPlacedOnMap?"+this.isPlacedOnMap());
+                this.logInfo("isAlive?"+this.isAlive());
+                this.logInfo("isDying?"+this.isDying());
+                this.logInfo("Hitpoints:"+this.m.Hitpoints);
+                this.logInfo("isAttackable?"+this.isAttackable());
+                this.removeFromMap();
+				this.logInfo("after try2!!!");
+                this.logInfo("isPlacedOnMap?"+this.isPlacedOnMap());
+                this.logInfo("isAlive?"+this.isAlive());
+                this.logInfo("isDying?"+this.isDying());
+                this.logInfo("Hitpoints:"+this.m.Hitpoints);
+                this.logInfo("isAttackable?"+this.isAttackable());
 				local tooltip = [
 					{
 						id = 1,
 						type = "title",
-						text = "看到此信息请上传log至群文件，随后暂且退回至107版本。log文件发送方法详见置顶公告"
+						text = "当前版本117。看到此信息请上传log至群文件，随后暂且退回至107版本。log文件发送方法详见置顶公告"
 					}
 				];
 				return tooltip;
