@@ -730,22 +730,24 @@ local gt = getroottable();
             }
 
             this.onAfterDeath(myTile);
-            if(isReallyDead)
+            if(!this.m.EL_IsDying)
             {
-                //this.die();
-                if (this.isPlayerControlled() && !this.IsSummoned())
+                this.m.EL_IsDying = true;
+                if(isReallyDead)
                 {
-                    this.World.Assets.EL_addToDeadActorList(this);
+                    //this.die();
+                    if (this.isPlayerControlled() && !this.IsSummoned())
+                    {
+                        this.World.Assets.EL_addToDeadActorList(this);
+                    }
+                    this.removeFromMap();
                 }
-                this.removeFromMap();
+                else
+                {
+                    this.removeFromMap();
+                }
             }
-            else
-            {
-                this.removeFromMap();
-            }
-
         }
-
 	});
 
 	::mods_hookClass("entity/world/world_entity", function(o) {

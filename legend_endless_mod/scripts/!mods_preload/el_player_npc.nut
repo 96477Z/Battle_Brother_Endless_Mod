@@ -17,7 +17,7 @@ local gt = getroottable();
 
 
 	::mods_hookExactClass("entity/tactical/actor", function(o){
-
+		o.m.EL_IsDying <- false;
 		o.m.EL_RankLevel <- 0;
 
 		local onSerialize = o.onSerialize;
@@ -150,7 +150,7 @@ local gt = getroottable();
 					{
 						id = 1,
 						type = "title",
-						text = "当前版本117。看到此信息请上传log至群文件，随后暂且退回至107版本。log文件发送方法详见置顶公告"
+						text = "当前版本118。看到此信息请上传log至群文件，随后暂且退回至107版本。log文件发送方法详见置顶公告"
 					}
 				];
 				return tooltip;

@@ -20,6 +20,11 @@ this.el_check_racial <- this.inherit("scripts/skills/skill", {
         return this.m.isInTurn;
     }
 
+    function onCombatStarted()
+    {
+		this.getContainer().getActor().m.EL_IsDying = false;
+    }
+
     function onTurnStart()
     {
         this.m.isInTurn = true;

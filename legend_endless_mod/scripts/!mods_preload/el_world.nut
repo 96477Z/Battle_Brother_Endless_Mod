@@ -688,6 +688,11 @@ local gt = getroottable();
 		{
             this.World.Assets.m.EL_PursuitList.clear();
 			//this.World.Assets.EL_ClearDeadActorList();
+            local brothers = this.World.getPlayerRoster().getAll();
+            foreach( bro in brothers )
+            {
+                bro.m.EL_IsDying = false;
+            }
 			onBattleEnded();
 		}
 
