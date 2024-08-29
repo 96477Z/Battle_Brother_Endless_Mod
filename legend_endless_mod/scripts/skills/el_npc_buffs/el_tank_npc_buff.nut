@@ -17,7 +17,7 @@ this.el_tank_npc_buff <- this.inherit("scripts/skills/el_npc_buffs/el_npc_buff",
 	}
 	
     function getDescription() {
-		return "生命和护甲增加" + (this.Const.EL_NPC.EL_NPCBuff.Factor.Tank.HitpointsMult[this.m.EL_RankLevel] - 1) * 100 + "，疲劳增加" + this.Const.EL_NPC.EL_NPCBuff.Factor.Tank.Stamina[this.m.EL_RankLevel] + "。";
+		return "生命值和护甲值增加" + (this.Const.EL_NPC.EL_NPCBuff.Factor.Tank.HitpointsMult[this.m.EL_RankLevel] - 1) * 100 + "%，疲劳增加" + this.Const.EL_NPC.EL_NPCBuff.Factor.Tank.Stamina[this.m.EL_RankLevel] + "%。";
     }
 
 });

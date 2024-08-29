@@ -117,6 +117,11 @@ this.el_cold_lie_cashing_skill <- this.inherit("scripts/skills/skill", {
         return true;
     }
 
+	function EL_isPursuitSkill()
+    {
+        return true;
+    }
+
 	function onAdded()
 	{
 		this.World.Assets.EL_addToPursuitList(this.getContainer().getActor(), this.Const.EL_Rarity_Entry.EL_getAttackSkill(this.getContainer().getActor()));

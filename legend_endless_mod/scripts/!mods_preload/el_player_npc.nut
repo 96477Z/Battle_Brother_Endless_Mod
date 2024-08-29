@@ -126,19 +126,19 @@ local gt = getroottable();
                 this.logInfo("isDying?"+this.isDying());
                 this.logInfo("Hitpoints:"+this.m.Hitpoints);
                 this.logInfo("isAttackable?"+this.isAttackable());
-				local hitInfo = clone this.Const.Tactical.HitInfo;
-				hitInfo.DamageRegular = this.Math.rand(10, 20);
-				hitInfo.DamageDirect = 1.0;
-				hitInfo.BodyPart = this.Const.BodyPart.Body;
-				hitInfo.BodyDamageMult = 1.0;
-				hitInfo.FatalityChanceMult = 0.0;
-				this.onDamageReceived(this, null, hitInfo);
-				this.logInfo("after try1!!!");
-                this.logInfo("isPlacedOnMap?"+this.isPlacedOnMap());
-                this.logInfo("isAlive?"+this.isAlive());
-                this.logInfo("isDying?"+this.isDying());
-                this.logInfo("Hitpoints:"+this.m.Hitpoints);
-                this.logInfo("isAttackable?"+this.isAttackable());
+				// local hitInfo = clone this.Const.Tactical.HitInfo;
+				// hitInfo.DamageRegular = this.Math.rand(10, 20);
+				// hitInfo.DamageDirect = 1.0;
+				// hitInfo.BodyPart = this.Const.BodyPart.Body;
+				// hitInfo.BodyDamageMult = 1.0;
+				// hitInfo.FatalityChanceMult = 0.0;
+				// this.onDamageReceived(this, null, hitInfo);
+				// this.logInfo("after try1!!!");
+                // this.logInfo("isPlacedOnMap?"+this.isPlacedOnMap());
+                // this.logInfo("isAlive?"+this.isAlive());
+                // this.logInfo("isDying?"+this.isDying());
+                // this.logInfo("Hitpoints:"+this.m.Hitpoints);
+                // this.logInfo("isAttackable?"+this.isAttackable());
                 this.removeFromMap();
 				this.logInfo("after try2!!!");
                 this.logInfo("isPlacedOnMap?"+this.isPlacedOnMap());
@@ -150,7 +150,7 @@ local gt = getroottable();
 					{
 						id = 1,
 						type = "title",
-						text = "当前版本118。看到此信息请上传log至群文件，随后暂且退回至107版本。log文件发送方法详见置顶公告"
+						text = "当前版本122。看到此信息请上传log至群文件，随后暂且退回至107版本。log文件发送方法详见置顶公告"
 					}
 				];
 				return tooltip;
@@ -1411,6 +1411,11 @@ local gt = getroottable();
 			return false;
 		}
 
+		o.EL_isPursuitSkill <- function()
+		{
+			return false;
+		}
+
         o.EL_onOtherSkillUesd <- function ( _skill, _targetEntity ) {}
 
 		o.onScheduledTargetHit = function( _info )
@@ -2002,7 +2007,16 @@ local gt = getroottable();
 
 					this.onScheduledTargetHit(info);
 				}
-
+				if (_targetEntity.isPlacedOnMap() && _targetEntity.isAlive() && _targetEntity.isDying())
+				{
+					_targetEntity.die();
+					this.logInfo("try to remove after attack");
+					this.logInfo("isPlacedOnMap?"+_targetEntity.isPlacedOnMap());
+					this.logInfo("isAlive?"+_targetEntity.isAlive());
+					this.logInfo("isDying?"+_targetEntity.isDying());
+					this.logInfo("Hitpoints:"+_targetEntity.m.Hitpoints);
+					this.logInfo("isAttackable?"+_targetEntity.isAttackable());
+				}
 				return true;
 			}
 			else
@@ -2100,7 +2114,17 @@ local gt = getroottable();
 						}
 					}
 				}
-
+				
+				if (_targetEntity.isPlacedOnMap() && _targetEntity.isAlive() && _targetEntity.isDying())
+				{
+					_targetEntity.die();
+					this.logInfo("try to remove after attack");
+					this.logInfo("isPlacedOnMap?"+_targetEntity.isPlacedOnMap());
+					this.logInfo("isAlive?"+_targetEntity.isAlive());
+					this.logInfo("isDying?"+_targetEntity.isDying());
+					this.logInfo("Hitpoints:"+_targetEntity.m.Hitpoints);
+					this.logInfo("isAttackable?"+_targetEntity.isAttackable());
+				}
 				return false;
 			}
 		}

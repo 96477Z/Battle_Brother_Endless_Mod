@@ -736,7 +736,7 @@ local gt = getroottable();
                 if(isReallyDead)
                 {
                     //this.die();
-                    if (this.isPlayerControlled() && !this.IsSummoned())
+                    if (this.isPlayerControlled() && !this.isSummoned())
                     {
                         this.World.Assets.EL_addToDeadActorList(this);
                     }
