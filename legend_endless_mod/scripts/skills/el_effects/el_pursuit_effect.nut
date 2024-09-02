@@ -13,7 +13,7 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 
     function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
-		if (!this.m.EL_IsExtraAttack && !_skill.EL_isPursuitSkill())
+		if (!_skill.EL_isPursuitSkill())
 		{
 			//this.logInfo("set Actor");
 			this.World.Assets.m.EL_CurrentAttackActor = this.getContainer().getActor();
@@ -33,7 +33,7 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 
 	function onTargetMissed( _skill, _targetEntity )
 	{
-		if (!this.m.EL_IsExtraAttack && !_skill.EL_isPursuitSkill())
+		if (!_skill.EL_isPursuitSkill())
 		{
 			//this.logInfo("set Actor");
 			this.World.Assets.m.EL_CurrentAttackActor = this.getContainer().getActor();
@@ -52,11 +52,7 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 		{
 			return;
 		}
-		if (this.World.Assets.EL_IsInWaitToEnterDeadList(_targetEntity) || this.World.Assets.EL_IsInDeadActorList(_targetEntity))
-		{
-			return;
-		}
-		if (_skill.isRanged() || !_skill.m.IsWeaponSkill || _skill.getID() == "actives.split_shield")
+		if (_skill.EL_isPursuitSkill() || _skill.isRanged() || !_skill.m.IsWeaponSkill || _skill.getID() == "actives.split_shield")
 		{
 			return;
 		}

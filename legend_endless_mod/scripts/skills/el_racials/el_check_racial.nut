@@ -15,25 +15,20 @@ this.el_check_racial <- this.inherit("scripts/skills/skill", {
 		this.m.IsHidden = true;
 	}
 
-    function isInTurn()
-    {
-        return this.m.isInTurn;
-    }
+    // function isInTurn()
+    // {
+    //     return this.m.isInTurn;
+    // }
 
-    function onCombatStarted()
-    {
-		this.getContainer().getActor().m.EL_IsDying = false;
-    }
+    // function onTurnStart()
+    // {
+    //     this.m.isInTurn = true;
+    // }
 
-    function onTurnStart()
-    {
-        this.m.isInTurn = true;
-    }
-
-	function onTurnEnd()
-	{
-        this.m.isInTurn = false;
-	}
+	// function onTurnEnd()
+	// {
+    //     this.m.isInTurn = false;
+	// }
 
 	// function onAfterUpdate( _properties )
 	// {
