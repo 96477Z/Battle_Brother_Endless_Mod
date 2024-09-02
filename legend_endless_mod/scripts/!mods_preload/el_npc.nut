@@ -389,40 +389,6 @@ local gt = getroottable();
 			return this.m.Name + " - Lv" + this.Math.min(this.m.EL_NPCLevel, this.Const.EL_NPC.EL_Troop.MaxCalculateLevel) + "(" + ((this.Math.round(this.EL_getCombatLevel() * 10) * 0.1)) + ")";
 		}
 
-        local onMovementStart = o.onMovementStart;
-        o.onMovementStart = function ( _tile, _numTiles )
-        {
-            this.logInfo("111111111");
-            this.World.Assets.m.EL_IsUnitMoving = true;
-            if(this.World.Assets.EL_IsInDeadActorList(this))
-            {
-                return;
-            }
-            onMovementStart(_tile, _numTiles);
-        }
-
-        local onMovementFinish = o.onMovementFinish;
-        o.onMovementFinish = function ( _tile )
-        {
-            this.logInfo("222222222");
-            this.World.Assets.m.EL_IsUnitMoving = false;
-            onMovementFinish(_tile);
-        }
-
-        local onTurnEnd = o.onTurnEnd;
-        o.onTurnEnd = function ()
-        {
-            this.logInfo("333333333");
-            onTurnEnd();
-            for(local i = 0; i < this.World.Assets.m.EL_WaitToEnterDeadList.len(); ++i)
-            {
-                //this.logInfo("add into waitdeadlist ");
-                this.World.Assets.m.EL_WaitToEnterDeadList[i].actor.kill(this.World.Assets.m.EL_WaitToEnterDeadList[i].killer, this.World.Assets.m.EL_WaitToEnterDeadList[i].skill, this.World.Assets.m.EL_WaitToEnterDeadList[i].fatalityType, this.World.Assets.m.EL_WaitToEnterDeadList[i].silent)
-            }
-            this.World.Assets.m.EL_WaitToEnterDeadList.clear();
-			this.World.Assets.EL_ClearDeadActorList();
-        }
-
         local kill = o.kill;
         o.kill = function( _killer = null, _skill = null, _fatalityType = this.Const.FatalityType.None, _silent = false )
         {
@@ -437,22 +403,8 @@ local gt = getroottable();
                 this.logInfo("EL_CurrentAttackedActor die");
 			    this.World.Assets.m.EL_CurrentAttackedActorIsAlive = false;
             }
-            if(this.World.Assets.m.EL_IsUnitMoving)
-            {
-                this.World.Assets.EL_addToWaitToEnterDeadList(this, _killer, _skill, _fatalityType, _silent);
-                return;
-            }
             this.World.Assets.EL_removeByPursuitList(this);
             
-            if(this.getSkills().getSkillByID("el_racial.check_thief").isInTurn())
-            {
-                this.logInfo("die inThisTurn");
-                this.World.Assets.EL_addToWaitToEnterDeadList(this, _killer, _skill, _fatalityType, _silent);
-                this.setActionPoints(0);
-                this.setFatigue(actor.getFatigueMax());
-                return;
-            }
-            this.logInfo("add into deadlist ");
             if(_killer != null && (_killer.getFaction() == this.Const.Faction.Player || _killer.getFaction() == this.Const.Faction.PlayerAnimals)) {
 				this.World.Statistics.getFlags().set("EL_IfPlayerPartyKilled", true);
             }
@@ -730,22 +682,13 @@ local gt = getroottable();
             }
 
             this.onAfterDeath(myTile);
-            if(!this.m.EL_IsDying)
+            if(isReallyDead)
             {
-                this.m.EL_IsDying = true;
-                if(isReallyDead)
-                {
-                    //this.die();
-                    if (this.isPlayerControlled() && !this.isSummoned())
-                    {
-                        this.World.Assets.EL_addToDeadActorList(this);
-                    }
-                    this.removeFromMap();
-                }
-                else
-                {
-                    this.removeFromMap();
-                }
+                this.die();
+            }
+            else
+            {
+                this.removeFromMap();
             }
         }
 	});

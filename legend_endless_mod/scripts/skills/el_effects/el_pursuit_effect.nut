@@ -56,7 +56,7 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 		{
 			return;
 		}
-		if (skill.isRanged() || !_skill.m.IsWeaponSkill)
+		if (_skill.isRanged() || !_skill.m.IsWeaponSkill || _skill.getID() == "actives.split_shield")
 		{
 			return;
 		}

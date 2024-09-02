@@ -35,5 +35,16 @@ this.el_check_racial <- this.inherit("scripts/skills/skill", {
         this.m.isInTurn = false;
 	}
 
+	// function onAfterUpdate( _properties )
+	// {
+	// 	local actor = this.getContainer().getActor();
+	// 	if (actor.isPlacedOnMap() && actor.isAlive() && actor.isDying())
+	// 	{
+	// 		this.logInfo("try to delete invalid actor-");
+	// 		actor.die();
+	// 		this.logInfo("try to delete invalid actor。");
+	// 	}
+	// }
+
 });
 
