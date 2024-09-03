@@ -130,7 +130,7 @@ this.el_sling_stone_skill <- this.inherit("scripts/skills/skill", {
 		foreach(tile in attack_tile)
 		{
 			local target_entity = tile.getEntity();
-			if (target_entity != null || target_entity.isRock() || target_entity.isSticks() || target_entity.isBush() || target_entity.isTree() || target_entity.isSupplies())
+			if (target_entity == null || target_entity.isRock() || target_entity.isSticks() || target_entity.isBush() || target_entity.isTree() || target_entity.isSupplies())
 			{
 				continue;
 			}

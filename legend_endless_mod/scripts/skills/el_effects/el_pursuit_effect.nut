@@ -13,7 +13,7 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 
     function onTargetHit( _skill, _targetEntity, _bodyPart, _damageInflictedHitpoints, _damageInflictedArmor )
 	{
-		if (!_skill.EL_isPursuitSkill())
+		if (!this.m.EL_IsExtraAttack || !_skill.EL_isPursuitSkill())
 		{
 			//this.logInfo("set Actor");
 			this.World.Assets.m.EL_CurrentAttackActor = this.getContainer().getActor();
@@ -33,7 +33,7 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 
 	function onTargetMissed( _skill, _targetEntity )
 	{
-		if (!_skill.EL_isPursuitSkill())
+		if (!this.m.EL_IsExtraAttack || !_skill.EL_isPursuitSkill())
 		{
 			//this.logInfo("set Actor");
 			this.World.Assets.m.EL_CurrentAttackActor = this.getContainer().getActor();
@@ -98,7 +98,9 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 				}
 				if (actor.getFaction() == user.getFaction())
 				{   
+					actor.getSkillByID("el_rarity_effects.pursuit").m.EL_IsExtraAttack = true;
 					skill.useForFree(_targetEntity.getTile());
+					actor.getSkillByID("el_rarity_effects.pursuit").m.EL_IsExtraAttack = false;
 				}
 			}
 		}

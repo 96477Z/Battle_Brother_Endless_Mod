@@ -32,7 +32,7 @@ this.el_boss_entry <- this.inherit("scripts/skills/skill", {
 	{
         if(EL_isUsable())
         {
-			_properties.InitiativeForTurnOrderAdditional -= 1000;
+			_properties.InitiativeForTurnOrderAdditional -= 10000;
         }
 	}
 });
