@@ -92,37 +92,40 @@ this.el_heart_triumphs_over_things_entry <- this.inherit("scripts/skills/skill",
 		{
 			return;
 		}
-		if (skill.getID() != "actives.hand_to_hand" && skill.getID() != "actives.legend_choke" && skill.getID() != "actives.legend_unarmed_lunge"
-		 && skill.getID() != "actives.legend_grapple" && skill.getID() != "actives.legend_kick")
-		{
-			return;
-		}
-		if (EL_isUsable())
-		{
-			local hit_info = clone this.Const.Tactical.HitInfo;
-			hit_info.DamageRegular = this.getContainer().getActor().getHitpoints() / this.Const.EL_Rarity_Entry.Factor.EL_HeartTriumphsOverThings.ExtraDamageHitpointsCiv;
-			hit_info.DamageDirect = 1.0;
-			hit_info.BodyPart = _bodyPart;
-            _targetEntity.onDamageReceived(this.getContainer().getActor(), this, hit_info);
-			if(!this.m.EL_IsExtraAttack)
+		if (_skill.getID() == "actives.hand_to_hand" || _skill.getID() == "actives.legend_choke" || _skill.getID() == "actives.legend_unarmed_lunge"
+		 || _skill.getID() == "actives.legend_grapple" || _skill.getID() == "actives.legend_kick")
+		{	
+			if (EL_isUsable())
 			{
-				local attack_time = EL_getExtraAttackTime();
-				while(attack_time)
+						this.logInfo("11111111111111");
+				local hit_info = clone this.Const.Tactical.HitInfo;
+				hit_info.DamageRegular = this.getContainer().getActor().getHitpoints() / this.Const.EL_Rarity_Entry.Factor.EL_HeartTriumphsOverThings.ExtraDamageHitpointsCiv;
+				hit_info.DamageDirect = 1.0;
+				hit_info.BodyPart = _bodyPart;
+				_targetEntity.onDamageReceived(this.getContainer().getActor(), this, hit_info);
+				if(!this.m.EL_IsExtraAttack)
 				{
-					if (_targetEntity == null || !_targetEntity.isAlive() || _targetEntity.isDying())
+					local attack_time = EL_getExtraAttackTime();
+					while(attack_time)
 					{
-						return;
+						this.logInfo("attack_time"+attack_time);
+						if (_targetEntity == null || !_targetEntity.isAlive() || _targetEntity.isDying())
+						{
+							this.logInfo("_targetEntity die");
+							return;
+						}
+						local actor = this.getContainer().getActor();
+						if (actor.getFatigue() + _skill.getFatigueCost() > actor.getFatigueMax())
+						{
+							this.logInfo("Fatigue check fail");
+							return;
+						}
+						this.m.EL_IsExtraAttack = true;
+						_skill.useForFree(_targetEntity.getTile());
+						actor.setFatigue(actor.getFatigue() + _skill.getFatigueCost());
+						this.m.EL_IsExtraAttack = false;
+						--attack_time;
 					}
-					local actor = this.getContainer().getActor();
-					if (actor.getFatigue() + _skill.getFatigueCost() > actor.getFatigueMax())
-					{
-						return;
-					}
-					this.m.EL_IsExtraAttack = true;
-					_skill.useForFree(_targetEntity.getTile());
-					actor.setFatigue(actor.getFatigue() + _skill.getFatigueCost());
-					this.m.EL_IsExtraAttack = false;
-					--attack_time;
 				}
 			}
 		}

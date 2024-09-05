@@ -98,9 +98,9 @@ this.el_pursuit_effect <- this.inherit("scripts/skills/skill", {
 				}
 				if (actor.getFaction() == user.getFaction())
 				{   
-					actor.getSkillByID("el_rarity_effects.pursuit").m.EL_IsExtraAttack = true;
+					actor.getSkills().getSkillByID("el_rarity_effects.pursuit").m.EL_IsExtraAttack = true;
 					skill.useForFree(_targetEntity.getTile());
-					actor.getSkillByID("el_rarity_effects.pursuit").m.EL_IsExtraAttack = false;
+					actor.getSkills().getSkillByID("el_rarity_effects.pursuit").m.EL_IsExtraAttack = false;
 				}
 			}
 		}

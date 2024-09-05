@@ -5,7 +5,7 @@ this.el_reflect_entry <- this.inherit("scripts/skills/el_entrys/el_accessory_ent
 	function create()
 	{
 		this.el_entry.create();
-		this.m.Order = this.Const.SkillOrder.Last;
+		this.m.Order = this.Const.SkillOrder.VeryLast;
 		this.m.ID = this.Const.EL_Helmet.EL_Entry.Factor.EL_Reflect.ID;
 	}
 
@@ -68,7 +68,6 @@ this.el_reflect_entry <- this.inherit("scripts/skills/el_entrys/el_accessory_ent
 		{
 			local hitInfo = clone this.Const.Tactical.HitInfo;
 			hitInfo.DamageRegular = _hitInfo.DamageArmor * this.m.EL_ReflectPercent * this.m.EL_StrengthLevel * 0.01 / _properties.DamageTotalMult;
-			hitInfo.DamageArmor = _hitInfo.DamageArmor * this.m.EL_ReflectPercent * this.m.EL_StrengthLevel * 0.01 / _properties.DamageTotalMult;
 			hitInfo.DamageDirect = 0.0;
 			hitInfo.BodyPart = this.Const.BodyPart.Head;
 			hitInfo.BodyDamageMult = 1.0;
