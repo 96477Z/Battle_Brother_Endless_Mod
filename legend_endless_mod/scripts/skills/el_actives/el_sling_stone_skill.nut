@@ -134,7 +134,7 @@ this.el_sling_stone_skill <- this.inherit("scripts/skills/skill", {
 			{
 				continue;
 			}
-			if(!tile.IsEmpty && target_entity.isAlive() && !target_entity.isDying())
+			if(target_entity.getName() != "UNKNOWN" && !tile.IsEmpty && target_entity.isAlive() && !target_entity.isDying())
 			{
 				this.attackEntity(_user, target_entity);
 			}

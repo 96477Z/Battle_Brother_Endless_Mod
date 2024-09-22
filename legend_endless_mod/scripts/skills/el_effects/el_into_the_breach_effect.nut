@@ -84,6 +84,11 @@ this.el_into_the_breach_effect <- this.inherit("scripts/skills/skill", {
 
 	function onAnySkillUsed( _skill, _targetEntity, _properties )
 	{
+		if (!this.getContainer().getActor().isPlacedOnMap())
+		{
+			this.removeSelf();
+			return;
+		}
 		if (this.Tactical.TurnSequenceBar.getActiveEntity() == null || this.Tactical.TurnSequenceBar.getActiveEntity().getID() != this.getContainer().getActor().getID())
 		{
 			_properties.DamageTotalMult *= 0.5;
