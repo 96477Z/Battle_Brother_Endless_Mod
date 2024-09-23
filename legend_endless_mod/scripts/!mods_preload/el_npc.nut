@@ -423,6 +423,7 @@ local gt = getroottable();
                 }
                 local items = this.getItems();
                 local accessory = items == null ? null : items.getItemAtSlot(this.Const.ItemSlot.Accessory);
+                this.logInfo("address 1");
                 if(accessory != null && accessory.getID() == "el_accessory.core") {
                     local core = this.new("scripts/items/el_misc/el_core_rank_" + accessory.EL_getRankLevel() + "_item");
                     core.EL_generateCoreXPByActorXP(this.Math.floor(this.getXP()));
@@ -479,6 +480,7 @@ local gt = getroottable();
                 }
             }
 
+                this.logInfo("address 2");
             if (!this.Tactical.State.isScenarioMode() && _killer != null && _killer.isPlayerControlled() && _skill != null && _skill.getID() == "actives.deathblow")
             {
                 this.updateAchievement("Assassin", 1, 1);
@@ -514,8 +516,10 @@ local gt = getroottable();
 
             if (_killer != null && !_killer.isHiddenToPlayer() && !this.isHiddenToPlayer())
             {
+                this.logInfo("address 3");
                 if (isReallyDead)
                 {
+                this.logInfo("address 3.5");
                     if (_killer.getID() != this.getID())
                     {
                         this.Tactical.EventLog.logEx(this.Const.UI.getColorizedEntityName(_killer) + " has killed " + this.Const.UI.getColorizedEntityName(this));
@@ -543,6 +547,8 @@ local gt = getroottable();
                 {
                     foreach( a in i )
                     {
+                        
+                this.logInfo("address 5");
                         if (a.getID() != this.getID() && a.isPlacedOnMap())
                         {
                             a.onOtherActorDeath(_killer, this, _skill);
@@ -600,6 +606,7 @@ local gt = getroottable();
 
                 if (this.Tactical.State.getStrategicProperties() != null && this.Tactical.State.getStrategicProperties().IsArenaMode)
                 {
+                this.logInfo("address 6");
                     if (_killer == null || _killer.getID() == this.getID())
                     {
                         this.Sound.play(this.Const.Sound.ArenaFlee[this.Math.rand(0, this.Const.Sound.ArenaFlee.len() - 1)], this.Const.Sound.Volume.Tactical * this.Const.Sound.Volume.Arena);
@@ -657,6 +664,7 @@ local gt = getroottable();
                     {
                         if (bro.isAlive() && !bro.isDying() && bro.getCurrentProperties().IsAffectedByDyingAllies)
                         {
+                this.logInfo("address 7");
                             if (this.World.Assets.getOrigin().getID() != "scenario.manhunters" || this.getBackground().getID() != "background.slave" || bro.getBackground().getID() == "background.slave")
                             {
                                 bro.worsenMood(this.Const.MoodChange.BrotherDied, this.getName() + " died in battle");
@@ -676,6 +684,7 @@ local gt = getroottable();
                 }
             }
 
+                this.logInfo("address 8");
             if (!this.Tactical.State.isScenarioMode() && _killer != null && _killer.getFaction() == this.Const.Faction.PlayerAnimals && _skill != null && _skill.getID() == "actives.wardog_bite")
             {
                 this.updateAchievement("WhoLetTheDogsOut", 1, 1);
@@ -1619,6 +1628,7 @@ local gt = getroottable();
                         }
                         else
                         {
+                this.logInfo("address 9");
                             this.logInfo("Script Error: item id:" + item.getID());
                         }
                     }
